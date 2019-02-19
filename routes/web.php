@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-});
+//example
+//route to webpage using a function in pagescontroler
+Route::get('/', 'PagesController@index');
 
+
+//Authentication routes
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

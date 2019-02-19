@@ -7,5 +7,11 @@ use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
-    //
+
+    //example
+    //opening an webpage
+    public function index()
+    {
+        return view('pages.index');
+    }
 }

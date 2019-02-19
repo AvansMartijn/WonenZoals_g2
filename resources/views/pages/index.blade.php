@@ -2,6 +2,6 @@
 
 @section('content')
     
-<h1> hoop is groot</h1>
+<h1>HomePage</h1>
 
 @endsection
