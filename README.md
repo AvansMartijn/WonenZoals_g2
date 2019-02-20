@@ -11,11 +11,11 @@ Toevoegen in c:/xampp/apache/conf/extra/httpd-vhosts.conf
 ```
 <VirtualHost *:80>
     # Define directory to serve
-    DocumentRoot "PATH/WonenZoals_g2"
+    DocumentRoot "PATH/WonenZoals_g2/public"
     # Attach to hostname web.local
     ServerName wonenzoals.local
 
-    <Directory "PATH/WonenZoals_g2">
+    <Directory "PATH/WonenZoals_g2/public">
         # Allow everyone to fetch stuff from this directory
         Require all granted
     </Directory>
