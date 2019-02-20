@@ -22,6 +22,16 @@ Toevoegen in c:/xampp/apache/conf/extra/httpd-vhosts.conf
 </VirtualHost>
 ```
 
+Toevoegen in c:/xampp/apache/conf/extra/httpd-vhosts.conf
+
+```
+<Directory />
+    Options Indexes FollowSymLinks Includes ExecCGI
+    AllowOverride All
+    Require all granted
+</Directory>
+```
+
 <br>
 Toevoegen in C:\Windows\System32\drivers\etc\hosts: <br>
 
