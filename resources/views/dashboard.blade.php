@@ -13,8 +13,32 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                
+                    @if (Auth::user()->role == 'Beheerder')
 
-                    You are logged in!
+                        <h1>beheerder</h1>
+
+                        <a class="btn btn-primary" href="{{ route('register') }}">Register new user</a>
+                        <a class="btn btn-primary" href="/cmsHome">CMS</a>
+
+                    @endif
+
+                    @if (Auth::user()->role == 'Bewoner')
+
+                        <h1>Welcom {{Auth::user()->name}}</h1>
+                        <p>dit is uw persoonlijke bewoner pagina</p>
+
+
+
+                    @endif
+
+                    @if (Auth::user()->role == 'Vrijwilliger')
+
+                        <h1>Welcom {{Auth::user()->name}}</h1>
+                        <p>dit is uw persoonlijke vrijwilliger omgeving</p>
+
+                    @endif
+
                 </div>
             </div>
         </div>

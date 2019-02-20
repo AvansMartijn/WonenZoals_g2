@@ -14,4 +14,11 @@ class PagesController extends Controller
     {
         return view('pages.index');
     }
+
+    
+
+    public function cmsHome()
+    {
+        return view('dashPages.cmsHome');
+    }
 }
