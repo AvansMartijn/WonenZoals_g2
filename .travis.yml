@@ -10,10 +10,9 @@ before_script:
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
   - nvm install 7.7.1
-  - php artisan key:generate
-  - npm install npm@latest -g
-  - npm install -g jshint
   - npm install
+  - npm install -g jshint
+  - php artisan key:generate
   
 script:
   - vendor/bin/phpunit --coverage-text
