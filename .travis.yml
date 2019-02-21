@@ -24,3 +24,6 @@ cache:
   directories:
     - node_modules
     - vendor
+    
+env:
+  - TRAVIS_NODE_VERSION="4"
