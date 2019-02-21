@@ -4,26 +4,33 @@ php:
   - '7.1'
   
 before_script:
-#Composer install
+# Composer install
   - composer self-update
   - composer install --no-interaction
-#Set the .env file for Travis
+# Set the .env file for Travis
   - cp .env.travis .env
-#Get Codesniffer
+# Get Codesniffer
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
-#npm with JSHint
+# npm with JSHint
   - npm install
   - npm install -g jshint
+# Install artisan migrate
+  - php artisan migrate:install --env=testing --no-interaction -vvv
 #Generate the key in the .env
   - php artisan key:generate
   
+  
 script:
-#Run PHPUnit tests
+# Run PHPUnit tests
   - vendor/bin/phpunit --coverage-text
-#Run code analysis
+# Run code analysis
   - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
-#Run Mix tasks
+# Run artisan database test
+  - php artisan migrate --env=testing --no-interaction -vvv
+  - php artisan db:seed --env=testing --no-interaction -vvv
+  - php artisan migrate:rollback --env=testing --no-interaction -vvv
+# Run Mix tasks
   - npm run production
   
 cache:
