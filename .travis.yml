@@ -9,7 +9,6 @@ before_script:
   - cp .env.example .env
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
-  - nvm install 7.7.1
   - npm install
   - npm install -g jshint
   - php artisan key:generate
