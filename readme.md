@@ -41,38 +41,43 @@ Toevoegen in C:\Windows\System32\drivers\etc\hosts: <br>
 <br>
 
 
-<h2>update composer</h2>
+<h1>Installation</h1>
 
-run:
+First you need to install all the laravel packages 
+
+<h2>Install composer</h2>
+
+Run:
+```
+
+composer install
 
 ```
 
-composer update
+<h2>Install npm</h2>
 
-```
+npm is used for compiling css and js 
 
-<h2>install npm</h2>
-
-for installing npm
-
+Run:
 ```
 npm install
 ```
-<h3>compile css</h3>
+<h3>Compile css</h3>
 
-compile assests (css/js)
+How to use npm for compiling css and js
 
+If you change css or js run:
 ```
 npm run dev
 ```
 
-auto compile assets (css/js)
+Auto compile (css/js)
 
 ```
 npm run watch
 ```
 
-quit the watch 
+Quit the watch 
 
 ```
 crtl + C
