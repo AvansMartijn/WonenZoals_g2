@@ -4,24 +4,29 @@ php:
   - '7.1'
   
 before_script:
+#Composer install
   - composer self-update
   - composer install --no-interaction
-  - cp .env.example .env
+#Set the .env file for Travis
+  - cp .env.travis .env
+#Get Codesniffer
   - pear install pear/PHP_CodeSniffer
   - phpenv rehash
+#npm with JSHint
   - npm install
   - npm install -g jshint
+#Generate the key in the .env
   - php artisan key:generate
   
 script:
+#Run PHPUnit tests
   - vendor/bin/phpunit --coverage-text
+#Run code analysis
   - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
+#Run Mix tasks
   - npm run production
   
 cache:
   directories:
     - node_modules
     - vendor
-    
-env:
-  - TRAVIS_NODE_VERSION="4"
