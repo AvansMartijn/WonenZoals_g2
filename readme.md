@@ -40,20 +40,6 @@ Toevoegen in C:\Windows\System32\drivers\etc\hosts: <br>
 ```
 <br>
 
-<H2>database connection</H2>
-
-env. 
-replace the following code in env.
-
-```
-DB_CONNECTION=mysql
-DB_HOST=mardy.tk
-DB_PORT=25545
-DB_DATABASE=wza_db
-DB_USERNAME=root
-DB_PASSWORD=Al79Bs89rw!@
-
-```
 
 <h2>update composer</h2>
 
