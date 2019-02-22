@@ -1,4 +1,4 @@
-# WonenZoals_g2
+# WonenZoals_g2 [![Build Status](https://travis-ci.com/AvansMartijn/WonenZoals_g2.svg?token=cMYcmim3J5pom6ekzBWX&branch=master)](https://travis-ci.com/AvansMartijn/WonenZoals_g2)
 Website voor WonenZoals
 <br>
 <br>
