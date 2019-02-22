@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+
 
 class RegisterController extends Controller
 {
@@ -23,12 +25,13 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -37,7 +40,19 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
+            
+        //fixed register login
+        $this->middleware(function ($request, $next) {
+            $role = Auth::user()->role;
+
+            if($role !== 'Beheerder')
+            {
+                return redirect('/dashboard');
+            }
+
+            return $next($request);
+        });
     }
 
     /**
@@ -52,6 +67,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
+            //'role' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -67,6 +83,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role']
         ]);
     }
 }
