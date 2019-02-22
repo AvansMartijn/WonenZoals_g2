@@ -1,6 +1,13 @@
-# WonenZoals_g2 [![Build Status](https://travis-ci.com/AvansMartijn/WonenZoals_g2.svg?token=cMYcmim3J5pom6ekzBWX&branch=master)](https://travis-ci.com/AvansMartijn/WonenZoals_g2)
+# WonenZoals_g2 
 Website voor WonenZoals
-<br>
+
+<h1>Status</h1>
+
+Master 
+[![Build Status](https://travis-ci.com/AvansMartijn/WonenZoals_g2.svg?token=cMYcmim3J5pom6ekzBWX&branch=master)](https://travis-ci.com/AvansMartijn/WonenZoals_g2)
+
+Development
+[![Build Status](https://travis-ci.com/AvansMartijn/WonenZoals_g2.svg?token=cMYcmim3J5pom6ekzBWX&branch=development)](https://travis-ci.com/AvansMartijn/WonenZoals_g2)
 <br>
 <h1>Setup</h1>
 1) Clone de repository naar je een map naar keuze. Het liefst zo dicht mogelijk op een root. Dit pad noemen we nu PATH.<br> <br>
