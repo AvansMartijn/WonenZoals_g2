@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//example
+//route to webpage using a function in pagescontroler
+Route::get('/', 'PagesController@index');
+
+Route::get('/cmsHome', 'PagesController@cmsHome');
+
+
+//Authentication routes
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
