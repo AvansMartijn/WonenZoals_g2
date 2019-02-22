@@ -5,12 +5,11 @@
  * PHP version 7.3
  *
  * @category Controllers
- * @package Wonenzoals
- * @author Xandor Janssen <username@example.com>
- * @license https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
- * @link https://wonenzoals.mardy.tk
+ * @package  Wonenzoals
+ * @author   Xandor Janssen <username@example.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link     https://wonenzoals.mardy.tk
  */
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -19,11 +18,10 @@ use Illuminate\Http\Request;
  * DashboardController Class Doc Comment
  *
  * @category Class
- * @package DashboardController
- * @author Xandor Janssen <username@example.com>
- * @license https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
- * @link https://wonenzoals.mardy.tk
- *
+ * @package  DashboardController
+ * @author   Xandor Janssen <username@example.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link     https://wonenzoals.mardy.tk
  */
 class DashboardController extends Controller
 {
