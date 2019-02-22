@@ -1,13 +1,31 @@
 <?php
 /**
- * @file
- * Description of what this module (or file) is doing.
+ * Main controller for pages
+ *
+ * PHP version 7.3
+ *
+ * @category   Controllers
+ * @package    Wonenzoals
+ * @author     Xandor Janssen
+ * @license    https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link       https://wonenzoals.mardy.tk
  */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * PagesController Class Doc Comment
+ *
+ * @category Class
+ * @package  PagesController
+ * @author   Xandor Janssen
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link     https://wonenzoals.mardy.tk
+ *
+ */
 class PagesController extends Controller
 {
 
