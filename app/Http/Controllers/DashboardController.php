@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @file
+ * Dashboard Controller
+ */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
