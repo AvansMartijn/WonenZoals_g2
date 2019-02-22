@@ -15,8 +15,8 @@ before_script:
 # npm with JSHint
   - npm install
   - npm install -g jshint
-# Install artisan migrate
-  - php artisan migrate:install --env=testing --no-interaction -vvv
+# Install artisan migrate (Only needs to be done once, creates the migration table)
+#  - php artisan migrate:install --env=testing --no-interaction -vvv
 #Generate the key in the .env
   - php artisan key:generate
   
