@@ -42,6 +42,22 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        if(auth()->user()->role == 'Beheerder')
+        {
+            return view('dashPages.dashBeheerder');
+        }
+        elseif(auth()->user()->role == 'Bewoner')
+        {
+            return view('dashPages.dashBewoner');
+        }
+        elseif(auth()->user()->role == 'Vrijwilliger')
+        {
+            return view('dashPages.dashVrijwilliger');
+        }
+        else
+        {
+            return view('login');
+        }
+
     }
 }
