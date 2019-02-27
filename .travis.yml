@@ -23,7 +23,8 @@ before_script:
   
 script:
 # Run PHPUnit tests
-  - vendor/bin/phpunit --coverage-text
+# - vendor/bin/phpunit --coverage-text
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
 # Run code analysis
   - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
 # Run artisan database test
@@ -32,8 +33,15 @@ script:
   - php artisan migrate:rollback --env=testing --no-interaction -vvv
 # Run Mix tasks
   - npm run production
+
+# Code Cov
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
   
 cache:
   directories:
     - node_modules
     - vendor
+
+notifications:
+  email: false
