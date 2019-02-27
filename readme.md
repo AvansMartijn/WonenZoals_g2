@@ -88,6 +88,17 @@ Quit the watch
 crtl + C
 ```
 
+<h2>PHP Code Sniffer</h2>
+
+```
+./vendor/bin/phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
+```
+Automatisch fixen:
+
+```
+./vendor/bin/phpcbf app/Http/Controllers/<ControllerNaam>.php
+```
+
 <h2>Useful Info</h2>
 
 <h4>Visual Studio Code Extentions</h4>
