@@ -23,7 +23,8 @@ before_script:
   
 script:
 # Run PHPUnit tests
-  - vendor/bin/phpunit --coverage-text
+# - vendor/bin/phpunit --coverage-text
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
 # Run code analysis
   - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
 # Run artisan database test
