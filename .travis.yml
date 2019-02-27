@@ -1,7 +1,7 @@
 language: php
 
 php:
-  - '7.1'
+  - '7.3'
   
 before_script:
 # Composer install
@@ -9,15 +9,13 @@ before_script:
   - composer install --no-interaction
 # Set the .env file for Travis
   - cp .env.travis .env
-# Get Codesniffer
-  - pear install pear/PHP_CodeSniffer
   - phpenv rehash
 # npm with JSHint
   - npm install
-  - npm install -g jshint
+# - npm install -g jshint
 # Install artisan migrate (Only needs to be done once, creates the migration table)
 #  - php artisan migrate:install --env=testing --no-interaction -vvv
-#Generate the key in the .env
+# Generate the key in the .env
   - php artisan key:generate
   
   
@@ -26,7 +24,7 @@ script:
 # - vendor/bin/phpunit --coverage-text
   - vendor/bin/phpunit --coverage-clover=coverage.xml
 # Run code analysis
-  - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
+  - vendor/bin/phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
 # Run artisan database test
   - php artisan migrate --env=testing --no-interaction -vvv
   - php artisan db:seed --env=testing --no-interaction -vvv
