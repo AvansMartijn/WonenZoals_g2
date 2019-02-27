@@ -21,13 +21,14 @@ before_script:
   
 script:
 # Run PHPUnit tests
+# Run artisan database test
+  - php artisan migrate --env=testing --no-interaction -vvv
+  - php artisan db:seed --env=testing --no-interaction -vvv
 # - vendor/bin/phpunit --coverage-text
   - vendor/bin/phpunit --coverage-clover=coverage.xml
 # Run code analysis
   - vendor/bin/phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
-# Run artisan database test
-  - php artisan migrate --env=testing --no-interaction -vvv
-  - php artisan db:seed --env=testing --no-interaction -vvv
+# Rollback Database tests
   - php artisan migrate:rollback --env=testing --no-interaction -vvv
 # Run Mix tasks
   - npm run production
