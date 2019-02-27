@@ -3,7 +3,7 @@
  * Main controller for pages
  *
  * PHP version 7.3
- *
+ * 
  * @category Controllers
  * @package  Wonenzoals
  * @author   Xandor Janssen <username@example.com>
@@ -41,6 +41,7 @@ class ContactUSController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param \Illuminate\Http\Request 
      * @return \Illuminate\Http\Response
      */
     public function contactUSPost(Request $request)
