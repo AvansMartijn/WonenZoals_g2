@@ -88,7 +88,14 @@ crtl + C
 
 <h2>Useful Info</h2>
 
+<h4>Visual Studio Code Extentions</h4>
+
+- Laravel Blade Snippets -> Blade support
+
+- phpfmt -> Automatisch formatteren
+
 <h4>Accounts</h4>
+
 ```
 Beheerder: beheerder@wza.nl 123456
 Bewoner: bewoner@wza.nl 123456
