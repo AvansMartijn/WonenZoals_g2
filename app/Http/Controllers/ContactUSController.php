@@ -41,7 +41,7 @@ class ContactUSController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @param  \Illuminate\Http\Request $request a request
+     * @param  \Illuminate\Http\Request $request request
      *
      * @return \Illuminate\Http\Response
      */
@@ -60,14 +60,17 @@ class ContactUSController extends Controller
             $request->all()
         );
 
-        Mail::send('emailTemplate.email',
+        Mail::send(
+            'emailTemplate.email',
             array(
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
                 'user_message' => $request->get('message'),
             ), function ($message) {
                 $message->from('wonentestzoals123@gmail.com');
-                $message->to('wonentestzoals123@gmail.com', 'Admin')->subject('Contact form');
+                $message->to(
+                    'wonentestzoals123@gmail.com', 'Admin')->subject('Contact form'
+                );
             }
         );
 
