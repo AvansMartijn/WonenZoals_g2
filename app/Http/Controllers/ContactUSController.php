@@ -41,7 +41,7 @@ class ContactUSController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @param  \Illuminate\Http\Request $request request
+     * @param \Illuminate\Http\Request $request request
      *
      * @return \Illuminate\Http\Response
      */
@@ -69,7 +69,9 @@ class ContactUSController extends Controller
             ), function ($message) {
                 $message->from('wonentestzoals123@gmail.com');
                 $message->to(
-                    'wonentestzoals123@gmail.com', 'Admin')->subject('Contact form'
+                    'wonentestzoals123@gmail.com', 'Admin'
+                )->subject(
+                    'Contact form'
                 );
             }
         );
