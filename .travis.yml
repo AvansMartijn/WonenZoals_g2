@@ -32,8 +32,15 @@ script:
   - php artisan migrate:rollback --env=testing --no-interaction -vvv
 # Run Mix tasks
   - npm run production
+
+# Code Cov
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
   
 cache:
   directories:
     - node_modules
     - vendor
+
+notifications:
+  email: false
