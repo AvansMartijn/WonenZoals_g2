@@ -47,10 +47,13 @@ class ContactUSController extends Controller
     public function contactUSPost(Request $request)
     {
 
-        $this->validate($request, ['name' => 'required', 'email' => 'required|email',
-            'message' => 'required']);
+        $this->validate(
+            $request, ['name' => 'required', 'email' => 'required|email', 'message' => 'required']
+        );
 
-        ContactUS::create($request->all());
+        ContactUS::create(
+            $request->all()
+        );
 
         Mail::send('emailTemplate.email',
             array(
@@ -63,6 +66,8 @@ class ContactUSController extends Controller
             }
         );
 
-        return back()->with('success', 'Thanks for contacting us!');
+        return back()->with(
+            'success', 'Thanks for contacting us!'
+        );
     }
 }
