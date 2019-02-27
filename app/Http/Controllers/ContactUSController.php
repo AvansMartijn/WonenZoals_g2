@@ -41,14 +41,19 @@ class ContactUSController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request $request a request
+     *
      * @return \Illuminate\Http\Response
      */
     public function contactUSPost(Request $request)
     {
 
         $this->validate(
-            $request, ['name' => 'required', 'email' => 'required|email', 'message' => 'required']
+            $request, [
+                'name' => 'required',
+                'email' => 'required|email',
+                'message' => 'required',
+            ]
         );
 
         ContactUS::create(
