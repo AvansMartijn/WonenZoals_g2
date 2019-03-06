@@ -1,8 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel sticky-top navbar-custom">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+        <img src="{{ asset('img/logoFull.png') }}" class="d-inline-block align-top" height="40px" alt="">
         </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -17,9 +18,25 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    <li class="nav-item">
+                <li>
+                    <a class="nav-link text-dark font-weight-bold" href="#OverOns">Over Ons</a>
+                </li>
+
+                <li>
+                    <a class="nav-link text-dark font-weight-bold" href="#Bewoners">Bewoners</a>
+                </li>
+
+                <li>
+                    <a class="nav-link text-dark font-weight-bold" href="#Nieuws">Nieuws</a>
+                </li>
+
+                <li>
+                    <a class="nav-link btn btn-success text-white font-weight-bold" href="#Contact">Contact</a>
+                </li>
+
+                <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
+                    </li> -->
                     {{-- registreren --}}
                     {{-- @if (Route::has('register'))
                         <li class="nav-item">
