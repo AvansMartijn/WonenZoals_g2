@@ -77,3 +77,12 @@ header > div > h1 {
 .extraMarginBottom {
     margin-bottom: 100px;
 }
+
+.ImageMargin {
+    margin-left: 25px;
+    margin-bottom: 25px;
+}
+
+.minMargin {
+    margin-bottom: -10px;
+}
