@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+.slidee{
+  font-family: 'Oxygen', sans-serif;
+}
+.profile--info {
+    text-align: left;
+}
+
+.profile--info span {
+    z-index: 1;
+    left: 15px;
+    top: 15px;
+    font-size: 1em;
+    color: rgba(84, 95, 89, 0.75);
+    display: block;
+}
+
+.profile--info span.username {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.25em;
+    color: black;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.profile--info span.userquote {
+    margin-top: -15px;
+    font-size: 0.85em;
+    color: rgba(84, 95, 89, 0.75);
+}
+
+.user {
+    background-color: white;
+    width: 100%;
+    margin-top: 0;
+    max-height: 600px;
+    position: relative;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.user-social-wrapper {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    margin: 20px 0;
+    padding: 17px 0;
+}
+
+.user-social-wrapper::after,
+.user-social-wrapper::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(241, 193, 226, 0.5);
+}
+
+.user-social-wrapper::before {
+    top: initial;
+    bottom: 0;
+}
+
+.user-social-wrapper .user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 200;
+/*     flex: 1 1; */
+}
+
+.user-social-wrapper .user-info span:first-child {
+    font-size: 1.50em;
+}
+
+.user-social-wrapper .user-info span:last-child {
+    font-size: 1em;
+    color: rgba(84, 95, 89, 0.75);
+}
+
+.wave {
+    opacity: 0.4;
+    position: absolute;
+    left: 50%;
+    background: #9bbc59;
+    width: 500px;
+    height: 650px;
+    margin-left: -250px;
+    margin-top: -50px;
+    transform-origin: 50% 48%;
+    border-radius: 43%;
+    animation: drift 5000ms infinite linear;
+}
+
+.wave.-three {
+    animation: drift 7000ms infinite linear;
+    background: white;
+    opacity: 1;
+}
+
+.wave.-two {
+    animation: drift 9000ms infinite linear;
+    opacity: 0.4;
+    background: #953635;
+}
+
+@keyframes drift {
+    from {
+        transform: rotate(0deg);
+    }
+    from {
+        transform: rotate(360deg);
+    }
+}

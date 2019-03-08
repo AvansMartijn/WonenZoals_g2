@@ -27,13 +27,17 @@
                 </li>
 
                 <li>
+                    <a class="nav-link text-dark font-weight-bold" href="#Ondersteuning">Ondersteuning</a>
+                </li>
+
+                <li>
                     <a class="nav-link text-dark font-weight-bold" href="#Nieuws">Nieuws</a>
                 </li>
 
                 <li>
-                    <a class="nav-link btn btn-success text-white font-weight-bold" href="#Contact">Contact</a>
+                    <a class="nav-link btn btn-custom text-white font-weight-bold" href="#Contact">Contact</a>
                 </li>
-
+                
                 <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li> -->
