@@ -217,33 +217,58 @@
 
     <!-- Section: Contact -->
     <section class="container">
+
+    
+
+        <!-- Section: new contact -->
+        {!! Form::open(['route'=>'contactus.store']) !!}
         <div class="ContentPadding extraMarginBottom">
             <div class="row">
                 <div class="col">
                     <h1 class="display-3 MarginBottom-40">Contact</h1>
+
+                    <!--succes-->
+                    @if(Session::has('success'))
+                    <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                    </div>
+                    @endif
+                    <!--succes-->
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="ContactName" placeholder="Naam">
+                        <div class="form-group  {{ $errors->has('name') ? 'has-error' : '' }} ">
+                            {!! Form::label('Naam:') !!}
+                            {!! Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Naam']) !!}
+
+                            <span class="text-danger">{{ $errors->first('name') }}</span>
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="ContactEmail" placeholder="Email adres">
+                        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                                {!! Form::label('Email:') !!}
+                                {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Email']) !!}
+
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
                         </div>
-                        <div class="form-group">
-                            <select class="custom-select">
-                                <option selected disabled>Onderwerp</option>
-                                <option value="1">Informatie opvragen</option>
-                                <option value="2">Uitschrijven Nieuwsbrief</option>
-                                <option value="3">Overig</option>
-                            </select>
+                        <div class="form-group {{ $errors->has('subject') ? 'has-error' : '' }}">
+                                {!! Form::label('Onderwerp:') !!}
+                                {!! Form::select('subject', [
+                                'Vraag' => 'Vraag',
+                                'Afmelden nieuwsbrief' => 'Afmelden nieuwsbrief', 
+                                'Aanmelden woningzoekende' => 'Aanmelden woningzoekende',
+                                'Ouderaccount aanvragen' => 'Ouderaccount aanvragen'], 
+                                null,
+                                ['class'=>'form-control']) !!}
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control" id="ContactBericht" rows="5" placeholder="Bericht"></textarea>
+                        <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
+                                {!! Form::label('Bericht:') !!}
+                                {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'placeholder'=>'Bericht']) !!}
+                            
+                                <span class="text-danger">{{ $errors->first('message') }}</span>
                         </div>
-                        <button class="btn btn-primary" type="submit">Verzenden</button>
+                        <button class="btn btn-primary">Verzenden</button>
                     </form>
                 </div>
                 <div class="col-6">
@@ -252,6 +277,8 @@
             </div>
         </div>
     </section>
+    {!! Form::close() !!}
+    <!-- Section: new contact end -->
 
     <section>
         <div class="jumbotron Parallax">
