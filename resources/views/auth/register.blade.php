@@ -84,6 +84,7 @@
                                     <select id="role" type="text" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" value="{{ old('role') }}" required autofocus>
                                             <option>Bewoner</option>
                                             <option>Vrijwilliger</option>
+                                            <option>Ouder</option>
                                             <option>Beheerder</option>
                                           </select>
 
