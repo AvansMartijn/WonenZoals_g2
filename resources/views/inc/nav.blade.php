@@ -9,10 +9,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-                <a class="nav-link" href="/contact-us">Contact</a>
-            </ul>
+            
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -35,7 +32,7 @@
                 </li>
 
                 <li>
-                    <a class="nav-link btn btn-custom text-white font-weight-bold" href="#Contact">Contact</a>
+                    <a class="nav-link btn btn-custom text-white font-weight-bold" href="/login">Login</a>
                 </li>
                 
                 <!-- <li class="nav-item">
