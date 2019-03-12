@@ -222,6 +222,7 @@
                 </div>
             </div>
         </div>
+        <hr>
     </section>
 
     <!-- Section: Contact -->
