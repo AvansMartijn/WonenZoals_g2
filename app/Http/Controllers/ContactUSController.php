@@ -63,7 +63,7 @@ class ContactUSController extends Controller
                 $message->to(
                     'wonentestzoals123@gmail.com', 'Admin'
                 )->subject(
-                   'Contact formulier:'
+                    'Contact formulier:'
                 );
             }
         );
