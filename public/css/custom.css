@@ -1,5 +1,6 @@
 body {
     font-family: sans-serif!important;
+    padding-top:0;
 }
 
 .landingImage {
@@ -15,7 +16,8 @@ body {
 }
 
 .navbar-custom {
-    background-color: #f5f5f577; /*rgba(255, 255, 255, 0.3)*/
+    /* background-color: #f5f5f577; rgba(255, 255, 255, 0.3) */
+    background:rgba(245,245,245,0.9)
 }
 .btn-custom {
     background-color: #9bbc59;
@@ -86,3 +88,39 @@ header > div > h1 {
 .minMargin {
     margin-bottom: -10px;
 }
+
+.leaf-wrapper{
+    padding:10px;
+}
+
+.leaf{
+    border-top-right-radius: 75px;
+    border-bottom-left-radius: 75px;
+    background-color: #857793bf;
+    padding: 25px;
+}
+
+/* curves */
+
+@media only screen and (max-width: 767px) {
+    .landingImage{
+        margin-top:-266px;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    .navbar-custom {
+        border-bottom-left-radius: 100% 90%;
+        border-bottom-right-radius: 100% 90%;
+        background:rgba(245,245,245,0.9)
+    }
+    .landingImage{
+        margin-top:-106px;
+    }
+    .navbar{
+        padding:0.5rem 1rem 1.5rem 1rem;
+    }
+  }
+
+  /* end curves */
