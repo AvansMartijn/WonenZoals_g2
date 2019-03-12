@@ -35,12 +35,16 @@
                 </li>
 
                 <li>
-                    <a class="nav-link btn btn-custom text-white font-weight-bold" href="{{url('/')}}/#Contact">Contact</a>
+                    <a class="nav-link text-dark font-weight-bold" href="{{url('/')}}/#Contact">Contact</a>
+                </li>
+
+                <li>
+                    <a class="nav-link btn btn-custom text-white font-weight-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
                 
-                <!-- <li class="nav-item">
+                <!--<li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li> -->
+                </li> -->
                     {{-- registreren --}}
                     {{-- @if (Route::has('register'))
                         <li class="nav-item">
