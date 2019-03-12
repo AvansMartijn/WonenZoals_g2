@@ -9,10 +9,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-                <a class="nav-link" href="/contact-us">Contact</a>
-            </ul>
+            
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -64,7 +61,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Uitloggen') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

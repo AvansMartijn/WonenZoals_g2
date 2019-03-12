@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    
+    @include('modal.modals')
     <!-- Header -->
     <header class="landingImage d-flex align-items-center center">
         <div class="mx-auto text-center">
@@ -68,7 +68,7 @@
                             <span style="color: black;" class="userquote"></span></div>
 
                             <div align="center">
-                                <button class="btn btn-primary">Lees Meer</button></button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#auke">Lees Meer</button></button>
                             </div>
                         </div>
                     </slide>
@@ -86,7 +86,7 @@
                             <span style="color: black;" class="userquote"></span></div>
 
                             <div align="center">
-                                <button class="btn btn-primary">Lees Meer</button></button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#stef">Lees Meer</button></button>
                             </div>
                         </div>
                     </slide>
@@ -100,11 +100,11 @@
                         </div>
 
                         <div class="user">
-                            <div class="profile--info"><span class="username">Isabel</span><span></span><br/>
+                            <div class="profile--info"><span class="username">Isabelle</span><span></span><br/>
                             <span style="color: black;" class="userquote"></span></div>
 
                             <div align="center">
-                                <button class="btn btn-primary">Lees Meer</button></button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Isabelle">Lees Meer</button></button>
                             </div>
                         </div>
                     </slide>
@@ -175,7 +175,7 @@
                         <p class="newsTitle font-weight-bold">Brabants Dagblad 29 november 2018</p>
                         <p class="newsText">Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jon...</p>
                         <hr>
-                        <button class="btn btn-primary">Lees meer</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#nieuws">Lees meer</button>
                     </div>
                 </div>
                 <div class="col-3">
@@ -186,7 +186,7 @@
                         <p class="newsTitle font-weight-bold">Brabants Dagblad 29 november 2018</p>
                         <p class="newsText">Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jon...</p>
                         <hr>
-                        <button class="btn btn-primary">Lees meer</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#nieuws">Lees meer</button>
                     </div>
                 </div>
                 <div class="col-3">
@@ -197,7 +197,7 @@
                         <p class="newsTitle font-weight-bold">Brabants Dagblad 29 november 2018</p>
                         <p class="newsText">Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jon...</p>
                         <hr>
-                        <button class="btn btn-primary">Lees meer</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#nieuws">Lees meer</button>
                     </div>
                 </div>
                 <div class="col-3">
@@ -208,7 +208,7 @@
                         <p class="newsTitle font-weight-bold">Brabants Dagblad 29 november 2018</p>
                         <p class="newsText">Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jon...</p>
                         <hr>
-                        <button class="btn btn-primary">Lees meer</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#nieuws">Lees meer</button>
                     </div>
                 </div>
             </div>
@@ -216,34 +216,61 @@
     </section>
 
     <!-- Section: Contact -->
-    <section id="Contact" class="container">
+
+    <section class="container">
+
+    
+
+        <!-- Section: new contact -->
+        {!! Form::open(['route'=>'contactus.store']) !!}
+
         <div class="ContentPadding extraMarginBottom">
             <div class="row">
                 <div class="col">
                     <h1 class="display-3 MarginBottom-40">Contact</h1>
+
+                    <!--succes-->
+                    @if(Session::has('success'))
+                    <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                    </div>
+                    @endif
+                    <!--succes-->
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-6">
                     <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="ContactName" placeholder="Naam">
+                        <div class="form-group  {{ $errors->has('name') ? 'has-error' : '' }} ">
+                            {!! Form::label('Naam:') !!}
+                            {!! Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Naam']) !!}
+
+                            <span class="text-danger">{{ $errors->first('name') }}</span>
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="ContactEmail" placeholder="Email adres">
+                        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                                {!! Form::label('Email:') !!}
+                                {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Email']) !!}
+
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
                         </div>
-                        <div class="form-group">
-                            <select class="custom-select">
-                                <option selected disabled>Onderwerp</option>
-                                <option value="1">Informatie opvragen</option>
-                                <option value="2">Uitschrijven Nieuwsbrief</option>
-                                <option value="3">Overig</option>
-                            </select>
+                        <div class="form-group {{ $errors->has('subject') ? 'has-error' : '' }}">
+                                {!! Form::label('Onderwerp:') !!}
+                                {!! Form::select('subject', [
+                                'Vraag' => 'Vraag',
+                                'Afmelden nieuwsbrief' => 'Afmelden nieuwsbrief', 
+                                'Aanmelden woningzoekende' => 'Aanmelden woningzoekende',
+                                'Ouderaccount aanvragen' => 'Ouderaccount aanvragen'], 
+                                null,
+                                ['class'=>'form-control']) !!}
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-control" id="ContactBericht" rows="5" placeholder="Bericht"></textarea>
+                        <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
+                                {!! Form::label('Bericht:') !!}
+                                {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'placeholder'=>'Bericht']) !!}
+                            
+                                <span class="text-danger">{{ $errors->first('message') }}</span>
                         </div>
-                        <button class="btn btn-primary" type="submit">Verzenden</button>
+                        <button class="btn btn-primary">Verzenden</button>
                     </form>
                 </div>
                 <div class="col-6">
@@ -252,6 +279,8 @@
             </div>
         </div>
     </section>
+    {!! Form::close() !!}
+    <!-- Section: new contact end -->
 
     <section>
         <div class="jumbotron Parallax">

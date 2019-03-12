@@ -14,10 +14,9 @@
                         </div>
                     @endif
 
-                        <h1>beheerder</h1>
+                        <h1>Beheerder</h1>
 
-                        <a class="btn btn-primary" href="{{ route('register') }}">Register new user</a>
-                        <a class="btn btn-primary" href="/cmsHome">CMS</a>
+                        <a class="btn btn-primary" href="{{ route('register') }}">Een nieuwe gebruiker registreren</a>
 
                 </div>
             </div>

@@ -8,5 +8,5 @@ class ContactUS extends Model
 {
     public $table = 'contactus';
 
-    public $fillable = ['name', 'email', 'message'];
+    public $fillable = ['name', 'email','subject', 'message'];
 }
