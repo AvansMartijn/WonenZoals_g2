@@ -219,7 +219,7 @@
 
     <!-- Section: Contact -->
 
-    <section class="container">
+    <section id="Contact" class="container">
 
     
 
