@@ -9,6 +9,7 @@
               </button>
             </div>
             <div class="modal-body">
+                <img class="img-thumbnail" src="{{ asset('img/Auke.jpg') }}">
                 <p>
                     Ik ben Auke, geboren op 24 november 1995. Ik woon momenteel met mijn vader en moeder in ’s-Hertogenbosch. Verder heb ik nog een oudere zus die net zoals wij ook in 's-Hertogenbosch woont.
 
@@ -44,6 +45,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
+                    <img class="img-thumbnail" src="{{ asset('img/Stef.jpg') }}">
                     <p>
                         Ik ben Stef, geboren op 5 mei 1996. Geboren en getogen (zoals ze wel eens zeggen) in Ammerzoden. Ik woon daar met mijn vader en moeder en mijn oudere broer Geert.
 
@@ -73,6 +75,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
+                        <img class="img-thumbnail" src="{{ asset('img/Isabel.jpg') }}">
                         <p>
                             Ik ben Isabelle, geboren op 8 augustus 1998.
                             Ik loop stage bij een zorginstelling, waar ik in de horeca en schoonmaak werk. Heb het erg naar mijn zin en werk met leuke collega's.
@@ -101,6 +104,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
+                            <img class="img-thumbnail" src="{{ asset('img/News.jpeg') }}" alt="">
                             <p>
                                 <h2>Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel</h2>
                                 DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jongeren tussen de 20 en de 35 jaar met een lichte beperking.
