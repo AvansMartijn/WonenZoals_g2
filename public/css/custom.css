@@ -1,0 +1,126 @@
+body {
+    font-family: sans-serif!important;
+    padding-top:0;
+}
+
+.landingImage {
+    background-image: url(../img/landingImage.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    margin-top: -90px;
+    border-bottom: 5px solid #9bbc59;
+}
+
+.navbar-custom {
+    /* background-color: #f5f5f577; rgba(255, 255, 255, 0.3) */
+    background:rgba(245,245,245,0.9)
+}
+.btn-custom {
+    background-color: #9bbc59;
+    border-color: #9bbc59;
+}
+
+.btn-custom-shadow {
+    background-color: #9bbc59;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-color: #9bbc59;
+}
+
+.btn-custom:hover {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+.text-custom-heading-shadow {
+    color: #9bbc59;
+    text-shadow: 3px 3px #7f64a2;
+}
+.text-custom-heading {
+    color: #7f64a2;
+}
+
+header > div > h1 {
+    font-family: sans-serif;
+}
+
+.ContentPadding {
+    padding: 100px 0px 20px 0px;
+}
+.text-readable {
+    letter-spacing: 1.3px;
+}
+.MarginBottom-40 {
+    margin-bottom: 40px;
+}
+.title-margin {
+    margin-top: 130px;
+}
+.full-width {
+    width: 100%!important;
+}
+.nieuwsbriefMargin-20 {
+    margin-left: 20px;
+}
+.nieuwsbriefMargin-10 {
+    margin-left: 10px;
+}
+
+.Parallax {
+    background-image: url(../img/parallax.JPG);
+    background-position: center;
+    background-repeat: none;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+}
+
+.extraMarginBottom {
+    margin-bottom: 100px;
+}
+
+.ImageMargin {
+    margin-left: 25px;
+    margin-bottom: 25px;
+}
+
+.minMargin {
+    margin-bottom: -10px;
+}
+
+.leaf-wrapper{
+    padding:10px;
+}
+
+.leaf{
+    border-top-right-radius: 75px;
+    border-bottom-left-radius: 75px;
+    background-color: #857793bf;
+    padding: 25px;
+}
+
+/* curves */
+
+@media only screen and (max-width: 767px) {
+    .landingImage{
+        margin-top:-266px;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    .navbar-custom {
+        border-bottom-left-radius: 100% 90%;
+        border-bottom-right-radius: 100% 90%;
+        background:rgba(245,245,245,0.9)
+    }
+    .landingImage{
+        margin-top:-106px;
+    }
+    .navbar{
+        padding:0.5rem 1rem 1.5rem 1rem;
+    }
+  }
+
+  /* end curves */

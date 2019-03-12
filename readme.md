@@ -1,6 +1,15 @@
-# WonenZoals_g2 [![Build Status](https://travis-ci.com/AvansMartijn/WonenZoals_g2.svg?token=cMYcmim3J5pom6ekzBWX&branch=master)](https://travis-ci.com/AvansMartijn/WonenZoals_g2)
+# WonenZoals_g2 
 Website voor WonenZoals
-<br>
+
+<h1>Status</h1>
+
+Master 
+[![Build Status](https://travis-ci.com/AvansMartijn/WonenZoals_g2.svg?token=cMYcmim3J5pom6ekzBWX&branch=master)](https://travis-ci.com/AvansMartijn/WonenZoals_g2)
+[![codecov](https://codecov.io/gh/AvansMartijn/WonenZoals_g2/branch/master/graph/badge.svg?token=UaYpwLMjU7)](https://codecov.io/gh/AvansMartijn/WonenZoals_g2)
+
+Development
+[![Build Status](https://travis-ci.com/AvansMartijn/WonenZoals_g2.svg?token=cMYcmim3J5pom6ekzBWX&branch=development)](https://travis-ci.com/AvansMartijn/WonenZoals_g2)
+[![codecov](https://codecov.io/gh/AvansMartijn/WonenZoals_g2/branch/development/graph/badge.svg?token=UaYpwLMjU7)](https://codecov.io/gh/AvansMartijn/WonenZoals_g2)
 <br>
 <h1>Setup</h1>
 1) Clone de repository naar je een map naar keuze. Het liefst zo dicht mogelijk op een root. Dit pad noemen we nu PATH.<br> <br>
@@ -43,26 +52,22 @@ Toevoegen in C:\Windows\System32\drivers\etc\hosts: <br>
 
 <h1>Installation</h1>
 
-First you need to install all the laravel packages 
+After Cloning, you need to install the composer packages and npm to compile CSS
 
-<h2>Install composer</h2>
+<h2>Initial Setup</h2>
 
-Run:
+First off, cd to your WonenZoals_g2 folder.
+
+Install packages using composer:
+
 ```
-
 composer install
-
 ```
-
-<h2>Install npm</h2>
-
-npm is used for compiling css and js 
-
-Run:
+Install npm: (is used for compiling css and js) 
 ```
 npm install
 ```
-<h3>Compile css</h3>
+<h2>Compile css</h2>
 
 How to use npm for compiling css and js
 
@@ -81,4 +86,31 @@ Quit the watch
 
 ```
 crtl + C
+```
+
+<h2>PHP Code Sniffer</h2>
+
+```
+./vendor/bin/phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
+```
+Automatisch fixen:
+
+```
+./vendor/bin/phpcbf app/Http/Controllers/<ControllerNaam>.php
+```
+
+<h2>Useful Info</h2>
+
+<h4>Visual Studio Code Extentions</h4>
+
+- Laravel Blade Snippets -> Blade support
+
+- phpfmt -> Automatisch formatteren
+
+<h4>Accounts</h4>
+
+```
+Beheerder: beheerder@wza.nl 123456
+Bewoner: bewoner@wza.nl 123456
+Vrijwilliger: vrijwilliger@wza.nl 123456
 ```

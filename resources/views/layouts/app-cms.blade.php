@@ -18,19 +18,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/Carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-
-        @include('inc.nav')
-
-        <main class="py-4">
-
-            @yield('content')
-
-        </main>
+        @include('inc.nav-cms')
+        <div class="row" id="body-row">
+            @include('inc.nav-cms-left')
+                <main class="py-3 col">
+                        @yield('content')
+                </main>
+        </div>
     </div>
 </body>
 </html>

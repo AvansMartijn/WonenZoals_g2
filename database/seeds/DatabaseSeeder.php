@@ -1,7 +1,25 @@
 <?php
-
+/**
+ * Main Seeder
+ *
+ * PHP version 7.3
+ *
+ * @category Seeders
+ * @package  Wonenzoals
+ * @author   Martijn Hanegraaf <mfghaneg@avans.nl>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link     https://wonenzoals.mardy.tk
+ */
 use Illuminate\Database\Seeder;
-
+/**
+ * User Table Seeder with one user of every type
+ *
+ * @category Class
+ * @package  DatabaseSeeder
+ * @author   Martijn Hanegraaf <mfghaneg@avans.nl>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link     https://wonenzoals.mardy.tk
+ */
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,6 +29,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
     }
 }

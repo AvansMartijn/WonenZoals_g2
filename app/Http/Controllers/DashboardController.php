@@ -12,8 +12,6 @@
  */
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 /**
  * DashboardController Class Doc Comment
  *
@@ -42,6 +40,17 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        if (auth()->user()->role == 'Beheerder') {
+            return view('dashPages.dashBeheerder');
+        } else if (auth()->user()->role == 'Bewoner') {
+            return view('dashPages.dashBewoner');
+        } else if (auth()->user()->role == 'Vrijwilliger') {
+            return view('dashPages.dashVrijwilliger');
+        } else if (auth()->user()->role == 'Ouder') {
+            return view('dashPages.dashOuder');
+        } else {
+            return view('login');
+        }
+
     }
 }
