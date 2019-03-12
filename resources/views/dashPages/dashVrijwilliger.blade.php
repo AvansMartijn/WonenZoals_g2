@@ -15,7 +15,7 @@
                     @endif
             
                         <h1>Welkom {{Auth::user()->name}}</h1>
-                        <p>Dit is uw persoonlijke bewoner pagina</p>
+                        <p>Dit is uw persoonlijke Vrijwilliger pagina</p>
 
                 </div>
             </div>

@@ -138,6 +138,13 @@
 
     <!-- Section: Nieuwsbrief -->
     <section>
+        <div class="jumbotron mx-auto text-center Parallax">
+            <h4 class="display-4 text-white">Wonen Zoals</h4>
+            <h4 class="text-white">Beschermd Wonen</h4>
+        </div>
+    </section>
+
+    <!-- <section>
         <div class="jumbotron Parallax">
             <div class="container">
                 <div class="row">
@@ -158,7 +165,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Section: Nieuws -->
     <section id="Nieuws" class="container">

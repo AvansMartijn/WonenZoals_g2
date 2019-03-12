@@ -29,7 +29,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
                     </p>
                     </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
                 </div>
               </div>
             </div>
@@ -88,7 +88,7 @@
                         </p>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
                     </div>
                   </div>
                 </div>
@@ -116,7 +116,7 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluit</button>
                         </div>
                       </div>
                     </div>

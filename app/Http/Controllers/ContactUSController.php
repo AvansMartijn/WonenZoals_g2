@@ -68,7 +68,7 @@ class ContactUSController extends Controller
             }
         );
 
-        return back()->with(
+        return redirect("#Contact")->with(
             'success', 'Uw contact formulier is succesvol verzonden!'
         );
     }

@@ -14,8 +14,8 @@
                         </div>
                     @endif
 
-                        <h1>Beheerder</h1>
-
+                        <h1>Welkom {{Auth::user()->name}}</h1>
+                        <p>Dit is uw persoonlijke Beheerder pagina</p>
                         <a class="btn btn-primary" href="{{ route('register') }}">Een nieuwe gebruiker registreren</a>
 
                 </div>
