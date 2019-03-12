@@ -12,7 +12,7 @@
     </header>
 
     <!-- Section: Over Ons -->
-    <section class="container">
+    <section id="OverOns" class="container">
         <div class="ContentPadding extraMarginBottom">
             <div class="row">
                 <div class="col">
@@ -46,7 +46,7 @@
     </section>
 
     <!-- Section: Bewoners -->
-    <section class="container">
+    <section id="Bewoners" class="container">
         <div class="ContentPadding">
             <div class="row">
                 <div class="col">
@@ -115,7 +115,7 @@
     </section>
 
     <!-- Section: Ondersteuning  -->
-    <section class="container">
+    <section id="Ondersteuning" class="container">
         <div class="ContentPadding extraMarginBottom">
             <div class="row">
                 <div class="col">
@@ -159,7 +159,7 @@
     </section>
 
     <!-- Section: Nieuws -->
-    <section class="container">
+    <section id="Nieuws" class="container">
         <div class="ContentPadding">
             <div class="row">
                 <div class="col">
@@ -216,12 +216,14 @@
     </section>
 
     <!-- Section: Contact -->
+
     <section class="container">
 
     
 
         <!-- Section: new contact -->
         {!! Form::open(['route'=>'contactus.store']) !!}
+
         <div class="ContentPadding extraMarginBottom">
             <div class="row">
                 <div class="col">

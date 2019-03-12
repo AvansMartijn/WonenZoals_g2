@@ -16,28 +16,32 @@
                 <!-- Authentication Links -->
                 @guest
                 <li>
-                    <a class="nav-link text-dark font-weight-bold" href="#OverOns">Over Ons</a>
+                    <a class="nav-link text-dark font-weight-bold" href="{{url('/')}}/#OverOns">Over Ons</a>
                 </li>
 
                 <li>
-                    <a class="nav-link text-dark font-weight-bold" href="#Bewoners">Bewoners</a>
+                    <a class="nav-link text-dark font-weight-bold" href="{{url('/')}}/#Bewoners">Bewoners</a>
                 </li>
 
                 <li>
-                    <a class="nav-link text-dark font-weight-bold" href="#Ondersteuning">Ondersteuning</a>
+                    <a class="nav-link text-dark font-weight-bold" href="{{url('/')}}/#Ondersteuning">Ondersteuning</a>
                 </li>
 
                 <li>
-                    <a class="nav-link text-dark font-weight-bold" href="#Nieuws">Nieuws</a>
+                    <a class="nav-link text-dark font-weight-bold" href="{{url('/')}}/#Nieuws">Nieuws</a>
                 </li>
 
                 <li>
-                    <a class="nav-link btn btn-custom text-white font-weight-bold" href="/login">Login</a>
+                    <a class="nav-link text-dark font-weight-bold" href="{{url('/')}}/#Contact">Contact</a>
+                </li>
+
+                <li>
+                    <a class="nav-link btn btn-custom text-white font-weight-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
                 
-                <!-- <li class="nav-item">
+                <!--<li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li> -->
+                </li> -->
                     {{-- registreren --}}
                     {{-- @if (Route::has('register'))
                         <li class="nav-item">
