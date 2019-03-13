@@ -150,6 +150,7 @@ header > div > h1 {
 }
 
 .ToTop{
+    padding: 5px 10px;
     color: black;
     display: none;
     font-size: 40px;
