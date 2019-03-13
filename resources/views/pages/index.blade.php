@@ -21,7 +21,7 @@
                     <h1 class="display-3 MarginBottom-40 Mobile-center">Stichting Zoals</h1>
 
                     <p class="text-readable float-left">
-                        <img class="img-fluid float-right ImageMargin" src="{{ asset('img/wz_1.jpg') }}" alt="">
+                        <img class="img-fluid float-right ImageMargin image-shadow" src="{{ asset('img/wz_1.jpg') }}" alt="">
                         Een groepje ouders heeft zich in 2011 verenigd om gezamenlijk een initiatief op te starten voor hun kinderen met als doel om vanaf ongeveer 2019 een project gerealiseerd te hebben.
                         <br><br>
                         Besloten is om dit samen met een zorgaanbieder te doen in de vorm van een wooninitiatief.
@@ -124,7 +124,7 @@
                     <h1 class="display-3 MarginBottom-40 Mobile-center">Ondersteuning</h1>
 
                     <p class="text-readable float-left">
-                        <img class="img-fluid ImageMargin float-right custom-image" src="{{ asset('img/wz_2.png') }}" alt="">
+                        <img class="img-fluid ImageMargin float-right custom-image image-shadow" src="{{ asset('img/wz_2.png') }}" alt="">
                         De Stichting Zoals wordt door de belastingdienst aangemerkt als Algemeen Nut Beogende Instelling (ANBI), hetgeen o.a de weg vrij maakt voor het geheel of gedeeltelijk aftrekbaar maken van giften, schenkingen en legaten van het belastbaar inkomen van de gever.
                         <br><br>
                         Naast donaties en giften stellen wij iedere hulp van bedrijven, instellingen en particulieren bijzonder op prijs. Als de Stichting Zoals meer vaste grond onder de voeten krijgt zal er op tal van terreinen praktische hulp en support nodig zijn. Mocht u nu al willen bijdragen aan onze ontwikkeling of goed voorbereid willen zijn voor als er eenmaal gebouwd en gewoond wordt neem dan contact op met het bestuur van de stichting Zoals (bestuur@wonenzoals.nl/GSM 06-533 765 72)
@@ -275,7 +275,7 @@
                 </div>
                 
                 <div class="contact-item tablet-hide">
-                    <iframe width="100%" height="350" src="https://maps.google.com/maps?hl=en&amp;q=51.681287%2C%205.318419+(Titel)&amp;ie=UTF8&amp;t=&amp;z=18&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <iframe width="100%" height="600" id="gmap_canvas" src="https://maps.google.com/maps?q=Graafseweg%20247&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                 </div>
             </div>
         </div>

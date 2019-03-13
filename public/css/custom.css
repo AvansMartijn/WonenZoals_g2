@@ -16,6 +16,8 @@ body {
 }
 
 .navbar-custom {
+    border-bottom-left-radius: 100% 90%;
+    border-bottom-right-radius: 100% 90%;
     background:rgba(245,245,245,0.9)
 }
 .btn-custom {
@@ -113,7 +115,10 @@ header > div > h1 {
     width: 640px;
 }
 
-
+.image-shadow {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)!important;
+    border-radius: 10px;
+}
 
 /* curves */
 
@@ -135,16 +140,10 @@ header > div > h1 {
   /* Tablet Portrait */
 @media screen and (max-width: 768px)
 {
-    .navbar-custom {
-        border-bottom-left-radius: 100% 90%;
-        border-bottom-right-radius: 100% 90%;
-        background:rgba(245,245,245,0.9)
-    }
-
     .navbar{
         padding:0.5rem 1rem 1.5rem 1rem;
     }
-    
+
     .text-readable {
         letter-spacing: 1.3px;
         text-align: center;
