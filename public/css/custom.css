@@ -98,27 +98,115 @@ header > div > h1 {
     padding: 25px;
 }
 
-/* curves */
+.NieuwsBericht {
+    width: calc(25% - 20px);
+    margin: 10px;
+    float: left;
+}
 
-@media only screen and (max-width: 767px) {
-    .landingImage{
-        margin-top:-266px;
-    }
+.contact-item {
+    width: calc(50% - 20px);
+    margin: 10px;
+}
+
+.custom-image {
+    width: 640px;
 }
 
 
-@media only screen and (min-width: 768px) {
+
+/* curves */
+
+@media only screen and (max-width: 955px) {
+    .ImageMargin {
+        margin-left: 25px;
+        margin-bottom: 25px;
+        margin-right: 25px;
+    }
+
+    .NieuwsBericht {
+        width: calc(50% - 20px);
+        margin: 10px;
+        float: left;
+        text-align: center;
+    }
+}
+
+  /* Tablet Portrait */
+@media screen and (max-width: 768px)
+{
     .navbar-custom {
         border-bottom-left-radius: 100% 90%;
         border-bottom-right-radius: 100% 90%;
         background:rgba(245,245,245,0.9)
     }
-    .landingImage{
-        margin-top:-106px;
-    }
+
     .navbar{
         padding:0.5rem 1rem 1.5rem 1rem;
     }
-  }
+    
+    .text-readable {
+        letter-spacing: 1.3px;
+        text-align: center;
+    }
 
-  /* end curves */
+    .Mobile-center {
+        text-align: center;
+    }
+
+    .contact-item {
+        width: 100%;
+        margin: 10px;
+    }
+
+    .ContentPadding {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .extraMarginBottom {
+        margin-bottom: 20px;
+    }
+
+    .tablet-hide {
+        display: none;
+    }
+
+}
+
+/* Mobile Landscape */
+@media screen and (max-width: 670px) {
+    .text-custom-heading-shadow {
+        color: #9bbc59;
+        font-size: 3rem;
+    }
+
+    .leaf {
+        border-top-right-radius: 75px;
+        border-bottom-left-radius: 75px;
+        background-color: #857793bf;
+        padding: 10px;
+    }
+
+    .ImageMargin {
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 25px;
+    }
+
+    .MarginBottom-40 {
+        margin-bottom: 10px;
+        font-size: 3rem;
+    }
+}
+
+/* Mobile Portrait */
+@media screen and (max-width: 400px) {
+
+    .NieuwsBericht {
+        width: calc(100% - 20px);
+        margin: 10px;
+        float: left;
+        text-align: center;
+    }
+
+}
