@@ -1,5 +1,5 @@
 
-<h2>gegevens:</h2>
+<h2>Gegevens:</h2>
 <p>
 Naam: {{ $name }}
 </p>

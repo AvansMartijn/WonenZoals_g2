@@ -11,14 +11,37 @@ body {
     background-attachment: fixed;
     height: 100vh;
     width: 100%;
-    margin-top: -90px;
+    margin-top: -105px;
     border-bottom: 5px solid #9bbc59;
+}
+.navbar {
+    
 }
 
 .navbar-custom {
-    /* background-color: #f5f5f577; rgba(255, 255, 255, 0.3) */
-    background:rgba(245,245,245,0.9)
+    padding: 5px 0px 25px 0px; 
+    border-bottom-left-radius: 100% 90%;
+    border-bottom-right-radius: 100% 90%;
+    background:rgba(245,245,245,0.5);
 }
+
+.navbar-custom-opacity {
+    padding: 5px 0px 25px 0px; 
+    border-bottom-left-radius: 100% 90%;
+    border-bottom-right-radius: 100% 90%;
+    transition: background .5s;
+    background:rgba(245,245,245,0.5);
+}
+
+.navbar-custom-solid {
+    padding: 5px 0px 25px 0px;
+    border-bottom-left-radius: 100% 90%;
+    border-bottom-right-radius: 100% 90%;
+    transition: background .5s;
+    background:rgba(245,245,245,1);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+}
+
 .btn-custom {
     background-color: #9bbc59;
     border-color: #9bbc59;
@@ -35,7 +58,6 @@ body {
 }
 .text-custom-heading-shadow {
     color: #9bbc59;
-    text-shadow: 3px 3px #7f64a2;
 }
 .text-custom-heading {
     color: #7f64a2;
@@ -100,27 +122,192 @@ header > div > h1 {
     padding: 25px;
 }
 
+.NieuwsBericht {
+    width: calc(25% - 20px);
+    margin: 10px;
+    float: left;
+}
+
+.contact-item {
+    width: calc(50% - 20px);
+    margin: 10px;
+}
+
+.custom-image {
+    width: 640px;
+}
+
+.image-shadow {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)!important;
+    border-radius: 10px;
+}
+
+.modal-dialog {
+    max-width: 60%;
+    margin: 1.75rem auto;
+}
+
+.modal-picture {
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    margin: 0px 0px 25px 25px;
+    float: right;
+}
+
+.ToTop{
+    padding: 5px 10px;
+    color: black;
+    display: none;
+    font-size: 40px;
+    position: fixed;
+    right: 100px;
+    bottom: 100px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.ToTop:hover{
+    cursor: pointer;
+    color: black;
+}
+
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 50px;
+}
+
 /* curves */
 
-@media only screen and (max-width: 767px) {
-    .landingImage{
-        margin-top:-266px;
+@media only screen and (max-width: 955px) {
+    .ImageMargin {
+        margin-right: 25px;
+        margin-left: 25px;
+        margin-bottom: 25px;
+    }
+
+    .NieuwsBericht {
+        width: calc(50% - 20px);
+        margin: 10px;
+        float: left;
+        text-align: center;
+    }
+    .navbar-custom {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        background:rgba(245,245,245,1);
+    }
+    
+    .navbar-custom-opacity {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        transition: background .5s;
+        background:rgba(245,245,245,1);
+    }
+    
+    .navbar-custom-solid {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        transition: background .5s;
+        background:rgba(245,245,245,1);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+    }
+
+    .text-readable {
+        letter-spacing: 1.3px;
+        text-align: center;
+    }
+
+    .ToTop {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .Mobile-center {
+        text-align: center;
+    }
+
+    .modal-picture {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        margin: 0px 0px 25px 25px;
+        float: right;
+    }
+
+    .modal-Name {
+        text-align: center;
+    }
+
+    .modal-dialog {
+        max-width: 80%;
+        margin: 1.75rem auto;
     }
 }
 
-
-@media only screen and (min-width: 768px) {
-    .navbar-custom {
-        border-bottom-left-radius: 100% 90%;
-        border-bottom-right-radius: 100% 90%;
-        background:rgba(245,245,245,0.9)
-    }
-    .landingImage{
-        margin-top:-106px;
-    }
+  /* Tablet Portrait */
+@media screen and (max-width: 768px)
+{
     .navbar{
         padding:0.5rem 1rem 1.5rem 1rem;
     }
-  }
 
-  /* end curves */
+    .contact-item {
+        width: 100%;
+        margin: 10px;
+    }
+
+    .ContentPadding {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .extraMarginBottom {
+        margin-bottom: 20px;
+    }
+
+    .tablet-hide {
+        display: none;
+    }
+
+}
+
+/* Mobile Landscape */
+@media screen and (max-width: 670px) {
+    .text-custom-heading-shadow {
+        color: #9bbc59;
+        font-size: 3rem;
+    }
+
+    .leaf {
+        border-top-right-radius: 75px;
+        border-bottom-left-radius: 75px;
+        background-color: #857793bf;
+        padding: 10px;
+    }
+
+    .ImageMargin {
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 25px;
+    }
+
+    .MarginBottom-40 {
+        margin-bottom: 10px;
+        font-size: 3rem;
+    }
+}
+
+/* Mobile Portrait */
+@media screen and (max-width: 400px) {
+
+    .NieuwsBericht {
+        width: calc(100% - 20px);
+        margin: 10px;
+        float: left;
+        text-align: center;
+    }
+
+}
