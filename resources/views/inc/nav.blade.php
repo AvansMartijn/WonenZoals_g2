@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel sticky-top navbar-custom">
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel sticky-top navbar-custom" id="navigation">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('img/logoFull.png') }}" class="d-inline-block align-top" height="40px" alt="">

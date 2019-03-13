@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('modal.modals')
+    
     <!-- Header -->
-    <header class="landingImage d-flex align-items-center center">
+    <header class="landingImage d-flex align-items-center center" id="Top">
         <div class="leaf-wrapper mx-auto">
             <div class="mx-auto leaf text-center">
                 <h1 class="text-custom-heading-shadow display-1">Wonen Zoals</h1>
@@ -48,6 +48,8 @@
     </section>
 
     <!-- Section: Bewoners -->
+    @include('modal.modals')
+    
     <section id="Bewoners" class="container">
         <div class="ContentPadding">
             <div class="row">
@@ -321,5 +323,10 @@
             <p class="text-muted minMargin">© 2019 Copyright: <a href="{{ url('/') }}">Stichting Zoals</a></p>
         </div>
     </footer>
+
+    <a class="ToTop nav-link" href="{{url('/')}}/#Top">
+        <i class="fa fa-angle-double-up "></i>
+    </a>
+
 
 @endsection
