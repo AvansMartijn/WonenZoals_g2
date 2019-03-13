@@ -188,6 +188,28 @@ header > div > h1 {
         float: left;
         text-align: center;
     }
+    .navbar-custom {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        background:rgba(245,245,245,1);
+    }
+    
+    .navbar-custom-opacity {
+        transition: background .5s;
+        background:rgba(245,245,245,1);
+    }
+    
+    .navbar-custom-solid {
+        transition: background .5s;
+        background:rgba(245,245,245,1);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+    }
+
+    .ToTop {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+    }
 }
 
   /* Tablet Portrait */
