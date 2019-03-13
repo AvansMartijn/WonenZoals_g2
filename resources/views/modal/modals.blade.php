@@ -95,12 +95,12 @@
 
                             <p class="text-readable">
                                 <img class="modal-picture" src="{{ asset('img/News.jpeg') }}" alt="">
-                                <h2 class="font-weight-bold">Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel</h2>
+                                <h2 class="font-weight-bold text-readable">Woonzorg appartementen voor jongeren op plaats oude school Mozartsingel</h2>
                                 DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jongeren tussen de 20 en de 35 jaar met een lichte beperking.
                                 <br><br>
                                 Het plan is een initiatief van BrabantWonen en ontwikkeld na diverse gesprekken met omwonenden. De jongeren komen er in de toekomst in groepsverband te wonen, waarbij elke jongere een eigen appartement heeft in een van de twee bouwlagen. Het complex heeft twee gemeenschappelijke ruimten, onder meer om te eten. Op het terrein komen elf parkeerplaatsen.
                                 <br><br>
-                                <h2 class="font-weight-bold">Professionele begeleiding</h2>
+                                <h2 class="font-weight-bold text-readable">Professionele begeleiding</h2>
                                 In het complex is straks 24 uur per dag zorg beschikbaar, is er altijd professionele begeleiding en is er ’s nachts altijd een slaapwacht aanwezig. Overdag verblijven de jongeren met een lichte verstandelijke of lichamelijke beperking niet in het gebouw, maar is er altijd dagbesteding of werk buitenshuis.
                             </p>
                         </div>
