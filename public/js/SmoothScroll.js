@@ -24,7 +24,12 @@ Doc.on('scroll', function(){
   
 Link.click(function(e){
     e.preventDefault();
-    if(Doc.width() < 768) {
+    if(Doc.width() < 769 && Doc.width() > 680) {
+        $('body, html').animate({
+            scrollTop: $(this.hash).offset().top - 80
+        }, 500);
+    } else if(Doc.width() < 680) {
+        console.log('eikel');
         $('body, html').animate({
             scrollTop: $(this.hash).offset().top - 320
         }, 500);
