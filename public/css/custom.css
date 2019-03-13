@@ -14,14 +14,19 @@ body {
     margin-top: -90px;
     border-bottom: 5px solid #9bbc59;
 }
+.navbar {
+    
+}
 
 .navbar-custom {
+    padding: 5px 0px 25px 0px; 
     border-bottom-left-radius: 100% 90%;
     border-bottom-right-radius: 100% 90%;
     background:rgba(245,245,245,0.5);
 }
 
 .navbar-custom-opacity {
+    padding: 5px 0px 25px 0px; 
     border-bottom-left-radius: 100% 90%;
     border-bottom-right-radius: 100% 90%;
     transition: background .5s;
@@ -29,6 +34,7 @@ body {
 }
 
 .navbar-custom-solid {
+    padding: 5px 0px 25px 0px;
     border-bottom-left-radius: 100% 90%;
     border-bottom-right-radius: 100% 90%;
     transition: background .5s;
@@ -177,9 +183,9 @@ header > div > h1 {
 
 @media only screen and (max-width: 955px) {
     .ImageMargin {
+        margin-right: 25px;
         margin-left: 25px;
         margin-bottom: 25px;
-        margin-right: 25px;
     }
 
     .NieuwsBericht {
@@ -195,20 +201,33 @@ header > div > h1 {
     }
     
     .navbar-custom-opacity {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
         transition: background .5s;
         background:rgba(245,245,245,1);
     }
     
     .navbar-custom-solid {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
         transition: background .5s;
         background:rgba(245,245,245,1);
         box-shadow: 0 14px 28px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+    }
+
+    .text-readable {
+        letter-spacing: 1.3px;
+        text-align: center;
     }
 
     .ToTop {
         position: fixed;
         right: 20px;
         bottom: 20px;
+    }
+
+    .Mobile-center {
+        text-align: center;
     }
 }
 
@@ -217,15 +236,6 @@ header > div > h1 {
 {
     .navbar{
         padding:0.5rem 1rem 1.5rem 1rem;
-    }
-
-    .text-readable {
-        letter-spacing: 1.3px;
-        text-align: center;
-    }
-
-    .Mobile-center {
-        text-align: center;
     }
 
     .contact-item {
