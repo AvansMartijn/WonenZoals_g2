@@ -243,19 +243,19 @@
                 <div class="contact-item">
                     {!! Form::open(['route'=>'contactus.store']) !!}
                         <div class="form-group  {{ $errors->has('name') ? 'has-error' : '' }} ">
-                            {!! Form::label('Naam:') !!}
-                            {!! Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Naam']) !!}
+                            {!! Form::label('Naam') !!}
+                            {!! Form::text('name', old('name'), ['class'=>'form-control']) !!}
 
                             <span class="text-danger">{{ $errors->first('name') }}</span>
                         </div>
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                                {!! Form::label('Email:') !!}
-                                {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Email']) !!}
+                                {!! Form::label('Email') !!}
+                                {!! Form::text('email', old('email'), ['class'=>'form-control']) !!}
 
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                         </div>
                         <div class="form-group {{ $errors->has('subject') ? 'has-error' : '' }}">
-                                {!! Form::label('Onderwerp:') !!}
+                                {!! Form::label('Onderwerp') !!}
                                 {!! Form::select('subject', [
                                 'Vraag' => 'Vraag',
                                 'Afmelden nieuwsbrief' => 'Afmelden nieuwsbrief', 
@@ -265,8 +265,8 @@
                                 ['class'=>'form-control']) !!}
                         </div>
                         <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
-                                {!! Form::label('Bericht:') !!}
-                                {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'placeholder'=>'Bericht']) !!}
+                                {!! Form::label('Bericht') !!}
+                                {!! Form::textarea('message', old('message'), ['class'=>'form-control']) !!}
                             
                                 <span class="text-danger">{{ $errors->first('message') }}</span>
                         </div>
