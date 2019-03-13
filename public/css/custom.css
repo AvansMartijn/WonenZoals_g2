@@ -120,6 +120,25 @@ header > div > h1 {
     border-radius: 10px;
 }
 
+.modal-dialog {
+    max-width: 60%;
+    margin: 1.75rem auto;
+}
+
+.modal-picture {
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    margin: 0px 0px 25px 25px;
+    float: right;
+}
+
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 50px;
+}
+
 /* curves */
 
 @media only screen and (max-width: 955px) {
