@@ -229,8 +229,6 @@
 
     <section id="Contact" class="container">
 
-    
-
         <!-- Section: new contact -->
         {!! Form::open(['route'=>'contactus.store']) !!}
 
