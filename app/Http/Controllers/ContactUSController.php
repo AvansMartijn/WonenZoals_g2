@@ -14,6 +14,7 @@
 namespace App\Http\Controllers;
 
 use App\ContactUS;
+use Validator;
 use Illuminate\Http\Request;
 use Mail;
 
@@ -38,14 +39,21 @@ class ContactUSController extends Controller
     public function contactUSPost(Request $request)
     {
 
-        $this->validate(
-            $request, [
-                'name' => 'required',
-                'email' => 'required|email',
-                'subject' => 'required',
-                'message' => 'required',
+        $validator = Validator::make(
+            $request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
             ]
         );
+
+        if ($validator->fails()) {
+            return redirect('#Contact')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
 
         ContactUS::create(
             $request->all()
