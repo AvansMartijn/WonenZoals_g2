@@ -318,7 +318,7 @@
                 <img src="{{ asset('img/logoFull.png') }}" class="d-inline-block align-top" height="50px" alt="">
             </a>
             <hr>
-            <p class="text-muted minMargin">© 2019 Copyright: Stichting Zoals</p>
+            <p class="text-muted minMargin">© 2019 Copyright: <a href="{{ url('/') }}">Stichting Zoals</a></p>
         </div>
     </footer>
 
