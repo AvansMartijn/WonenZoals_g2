@@ -30,6 +30,7 @@ class AuthenticationTest extends TestCase
         $user = factory(User::class)->make();
         $response = $this->actingAs($user)->get('/login');
         $response->assertRedirect('/dashboard');
+        $user->delete();
     }
 
     /**
@@ -53,6 +54,7 @@ class AuthenticationTest extends TestCase
         $this->assertTrue(session()->hasOldInput('email'));
         $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
+        $user->delete();
     }
 
     /**
@@ -63,7 +65,6 @@ class AuthenticationTest extends TestCase
     public function test_remember_me_functionality()
     {
         $user = factory(User::class)->create([
-            'id' => random_int(1, 100),
             'password' => bcrypt($password = 'i-love-laravel'),
         ]);
 
@@ -80,5 +81,6 @@ class AuthenticationTest extends TestCase
             $user->password,
         ]));
         $this->assertAuthenticatedAs($user);
+        $user->delete();
     }
 }
