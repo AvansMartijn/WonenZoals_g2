@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.cms')
 
 @section('content')
 <div class="container">
@@ -14,8 +14,8 @@
                         </div>
                     @endif
             
-                        <h1>Welcom {{Auth::user()->name}}</h1>
-                        <p>dit is uw persoonlijke bewoner pagina</p>
+                        <h1>Welkom {{Auth::user()->name}}</h1>
+                        <p>Dit is uw persoonlijke Bewoner pagina</p>
 
                 </div>
             </div>

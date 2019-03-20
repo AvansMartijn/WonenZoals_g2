@@ -17,9 +17,7 @@ Route::get('/', 'PagesController@index');
 
 Route::get('/cmsHome', 'PagesController@cmsHome');
 
-Route::get('/contact-us', 'ContactUSController@contactUS');
-
-Route::post('/contact-us', ['as' => 'contactus.store', 'uses' => 'ContactUSController@contactUSPost']);
+Route::post('/', ['as' => 'contactus.store', 'uses' => 'ContactUSController@contactUSPost']);
 
 //Authentication routes
 Auth::routes();

@@ -46,6 +46,8 @@ class DashboardController extends Controller
             return view('dashPages.dashBewoner');
         } else if (auth()->user()->role == 'Vrijwilliger') {
             return view('dashPages.dashVrijwilliger');
+        } else if (auth()->user()->role == 'Ouder') {
+            return view('dashPages.dashOuder');
         } else {
             return view('login');
         }

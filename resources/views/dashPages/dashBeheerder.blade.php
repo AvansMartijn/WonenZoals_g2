@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.cms')
 
 @section('content')
 <div class="container">
@@ -14,10 +14,9 @@
                         </div>
                     @endif
 
-                        <h1>beheerder</h1>
-
-                        <a class="btn btn-primary" href="{{ route('register') }}">Register new user</a>
-                        <a class="btn btn-primary" href="/cmsHome">CMS</a>
+                        <h1>Welkom {{Auth::user()->name}}</h1>
+                        <p>Dit is uw persoonlijke Beheerder pagina</p>
+                        <a class="btn btn-primary" href="{{ route('register') }}">Een nieuwe gebruiker registreren</a>
 
                 </div>
             </div>

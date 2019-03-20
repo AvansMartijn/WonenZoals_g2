@@ -14,6 +14,7 @@
 namespace App\Http\Controllers;
 
 use App\ContactUS;
+use Validator;
 use Illuminate\Http\Request;
 use Mail;
 
@@ -31,16 +32,6 @@ class ContactUSController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function contactUS()
-    {
-        return view('pages.contactUS');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
      * @param \Illuminate\Http\Request $request request
      *
      * @return \Illuminate\Http\Response
@@ -48,13 +39,21 @@ class ContactUSController extends Controller
     public function contactUSPost(Request $request)
     {
 
-        $this->validate(
-            $request, [
-                'name' => 'required',
-                'email' => 'required|email',
-                'message' => 'required',
+        $validator = Validator::make(
+            $request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
             ]
         );
+
+        if ($validator->fails()) {
+            return redirect('#Contact')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
 
         ContactUS::create(
             $request->all()
@@ -65,19 +64,20 @@ class ContactUSController extends Controller
             array(
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
+                'subject' => $request->get('subject'),
                 'user_message' => $request->get('message'),
             ), function ($message) {
                 $message->from('wonentestzoals123@gmail.com');
                 $message->to(
                     'wonentestzoals123@gmail.com', 'Admin'
                 )->subject(
-                    'Contact form'
+                    'Contact formulier:'
                 );
             }
         );
 
-        return back()->with(
-            'success', 'Thanks for contacting us!'
+        return redirect("#Contact")->with(
+            'success', 'Uw contact formulier is succesvol verzonden!'
         );
     }
 }
