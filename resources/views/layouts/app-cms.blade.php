@@ -25,6 +25,7 @@
         <div class="row" id="body-row">
             @include('inc.nav-cms-left')
                 <main class="py-3 col">
+                        @include('inc.messages')
                         @yield('content')
                 </main>
         </div>

@@ -16,7 +16,7 @@
 
         {{ Form::hidden('id', $user->id) }}
 
-        {{Form::submit("Verstiren", ['class' => 'btn btn-success'])}}
+        {{Form::submit("Versturen", ['class' => 'btn btn-success'])}}
 
     {!! Form::close() !!}
 
@@ -31,7 +31,12 @@
         @foreach ($authoriation as $authoriationn)
         <tr>
                 <td>{{$authoriationn->authorization}}</td>
-                <td><a href="#" class="btn btn-danger">Verwijderen</td>
+                <td>
+                {!!Form::open(['action' => ['GebruikerBeheren@destroymachtiging', $authoriationn->id], 'method' => 'POST'])!!}
+                            {{Form::hidden('_method', 'DELETE')}}
+                            {{Form::submit('Verwijderen', ['class' => 'btn btn-danger'])}}
+                {!!Form::close()!!}
+                </td>
         </tr>
         @endforeach
 
