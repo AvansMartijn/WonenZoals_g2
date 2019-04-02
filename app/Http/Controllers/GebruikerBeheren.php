@@ -48,14 +48,14 @@ class GebruikerBeheren extends Controller
             }
         }
 
-        //create the event
+        //create the machtiging
         $macht = new authorization();
         $macht->user_id = $request->input('id');
         $macht->authorization = $request->input('machtiging');
         $macht->save();
 
-        // redirect customer to Mollie checkout page
-        return redirect(route('gebruikers', $request->id));
+        // redirect user back
+        return redirect()->back()->with('success', 'De machtiging is toegevoegd');
     }
 
     public function destroymachtiging($id)
@@ -88,5 +88,26 @@ class GebruikerBeheren extends Controller
     
 
         return redirect()->back()->with('success', 'De gebruiker is verwijdert');
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate(
+            $request, [
+                'naam' => 'required',
+                'email' => 'required',
+            ]
+        );
+
+        $user = User::find($request->id);
+        $user->name = $request->input('naam');
+        $user->email = $request->input('email');
+        if($request->wachtwoord != "")
+        {
+            $user->password = bcrypt($request->input('wachtwoord'));
+        }
+        $user->save();
+
+        return redirect()->back()->with('success', 'Gebruiker is geupdate');
     }
 }

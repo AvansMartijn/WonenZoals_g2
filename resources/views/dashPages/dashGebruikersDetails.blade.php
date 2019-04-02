@@ -41,11 +41,37 @@
         @endforeach
 
         
-    </table>
-
-        
+    </table>        
     @else
     <p>er zijn geen machtigingen voor deze Gebruiker</p>
 
 @endif
+
+
+
+    {!! Form::open(['action' => 'GebruikerBeheren@update', 'methode' => 'POST']) !!}
+        
+    <div class="from-group">
+        {{Form::label('naam', 'Naam')}}
+        {{Form::text('naam',$user->name,['class' => 'form-control', 'placeholder' => 'Naam'])}}
+    </div>
+
+    <div class="from-group">
+        {{Form::label('email', 'Email')}}
+        {{Form::text('email',$user->email,['class' => 'form-control', 'placeholder' => 'Email'])}}
+    </div>
+
+    <div class="from-group">
+        {{Form::label('wachtwoord', 'Wachtwoord')}}
+        {{Form::text('wachtwoord','',['class' => 'form-control', 'placeholder' => 'wachtwoord'])}}
+    </div>
+
+    {{ Form::hidden('id', $user->id) }}
+    
+    <hr>
+
+    {{Form::submit("versturen", ['class' => 'btn btn-success'])}}
+
+    {!! Form::close() !!}
+
 @endsection
