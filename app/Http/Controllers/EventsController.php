@@ -74,7 +74,7 @@ class EventsController extends Controller
     }
 
     public function cancel($id){
-        $event_user = \App\UsersAgendaEvents::where('event_id', $id);
+        $event_user = \App\UsersAgendaEvents::where([['event_id', $id], ['user_id', Auth::id()]]);
         $event_user->delete();
         return back();
     }
