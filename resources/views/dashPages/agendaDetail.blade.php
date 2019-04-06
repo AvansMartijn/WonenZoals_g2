@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card bottom-spacer">
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
@@ -22,6 +22,32 @@
                             @else
                             <a class="btn btn-primary" href="{{ url('/dashboard/agenda/item/' . $data['event']->id . '/apply') }}">Aanmelden</a>
                         @endif
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">Wie heeft zich aangemeld?</div>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">naam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data['users'] as $user)
+                            <tr>
+                                <td>{{$user->name}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
 
                 </div>
             </div>

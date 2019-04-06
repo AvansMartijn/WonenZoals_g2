@@ -90,6 +90,7 @@ class EventsController extends Controller
     {
         $event = \App\AgendaEvent::find($id);
         $user_events = Auth::user()->events()->get();
+        $users_applied = $event->users()->get();
         // echo '<pre>';
         // var_dump($user_events);
         // die;
@@ -98,7 +99,7 @@ class EventsController extends Controller
         }else{
             $event->applied = false;
         }
-        $data = ['event' => $event];
+        $data = ['event' => $event, 'users' => $users_applied];
         return View('Dashpages.agendaDetail', ["data" => $data]);
     }
 
