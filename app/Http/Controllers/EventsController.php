@@ -39,7 +39,7 @@ class EventsController extends Controller
             }
             $event_list[] = Calendar::event(
                 $event->eventname,
-                true,
+                false,
                 new \DateTime($event->start_date),
                 new \DateTime($event->end_date),
                 $event->id,
@@ -113,55 +113,6 @@ class EventsController extends Controller
     public function addEvents(Request $request)
     {
 
-        // TODO add events
-        // \App::setLocale('nl');
-
-        // $validator = Validator::make(
-        //     $request->all(), [
-        //         'event_name' => 'required|between:3,50',
-        //         'start_date' => 'required',
-        //         'times' => 'required',
-        //         'interval' => 'required',
-        //         'payment_times' => 'required',
-        //         'payment_amount' => 'required|min:1',
-        //         'payment_times' => 'required|min:1',
-        //         'description' => 'required|between:3,200',
-        //         'bank_account' => 'required',
-        //     ]
-        // );
-
-        // if ($validator->fails()) {
-        //     \Session::flash('Warning', 'please enter valid details');
-        //     return back()->withInput()->withInput()->withErrors($validator);
-        // }
-
-        // for ($i = 0; $i < $request['times']; $i++) {
-        //     $dt = Carbon::create($request['start_date']);
-        //     if ($request['interval'] == 'daily') {
-        //         $newDate = $dt->addDays($i);
-        //     } elseif ($request['interval'] == 'weekly') {
-        //         $newDate = $dt->addWeeks($i);
-        //     } elseif ($request['interval'] == 'monthly') {
-        //         $newDate = $dt->addMonths($i);
-        //     } elseif ($request['interval'] == 'yearly') {
-        //         $newDate = $dt->addYears($i);
-        //     }
-        //     $event = new Event;
-        //     $event->user_id = Auth::id();
-        //     $event->name = $request['event_name'];
-        //     $event->payment_amount = $request['payment_amount'];
-        //     $event->payment_times = $request['payment_times'];
-        //     $event->description = $request['description'];
-        //     $event->bank_account_id = $request['bank_account'];
-        //     $event->currency_code = $request['currency_code'];
-        //     $event->start_date = $newDate;
-        //     $event->end_date = $newDate;
-        //     $event->save();
-        // }
-
-        // \Session::flash('Success', 'Events added successfully');
-        // return Redirect::to('/calendar');
-
     }
 
     /**
@@ -171,7 +122,6 @@ class EventsController extends Controller
      */
     public function create()
     {
-        $bank_accounts = \App\Bank_account::where('user_id', Auth::id())->get();
-        return View('create_calendar_event', ['bank_accounts' => $bank_accounts]);
+       
     }
 }
