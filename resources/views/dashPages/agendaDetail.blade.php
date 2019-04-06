@@ -13,7 +13,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <p>Dit is uw agenda detail pagina</p>
+                        <h1>{{$data['event']->eventname}}</h1>
+                        <p>{!!$data['event']->description!!}</p>
+                        <p>Aanvang: {{$data['event']->date}}</p>
+                        @if ($data['event']->applied)
+                            <p class="text-success">Je hebt je aangemeld</p>
+                            <a class="btn btn-danger" href="{{ url('/dashboard/agenda/item/' . $data['event']->id . '/cancel') }}">Afmelden</a>
+                            @else
+                            <a class="btn btn-primary" href="{{ url('/dashboard/agenda/item/' . $data['event']->id . '/apply') }}">Aanmelden</a>
+                        @endif
 
                 </div>
             </div>

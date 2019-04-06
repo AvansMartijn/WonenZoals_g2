@@ -19,7 +19,7 @@ class EventsSeeder extends Seeder
 
         $events = [
             ['id' => 1, 'eventname' => 'Lunch', 'description' => 'Brood met omelet', 'date' => now()],
-            ['id' => 2, 'eventname' => 'diner', 'description' => 'Groentensoep, wortelstamp met stoofvlees, vla', 'date' => now()],
+            ['id' => 2, 'eventname' => 'diner', 'description' => 'Vanavond is er een lekker diner geplanned. Kom gezellig mee eten, het menu is als volgt:<br><br>Groentensoep,<br>wortelstamp met stoofvlees,<br>vla<br>', 'date' => now()],
             ['id' => 3, 'eventname' => 'karaoke avond', 'description' => 'Kom gezellig meezingen tijdens de karaoke avond', 'date' => now()],
             ['id' => 4, 'eventname' => 'Filmavond', 'description' => 'The fast en the furious 6', 'date' => now()]
         ];

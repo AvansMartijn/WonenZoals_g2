@@ -58,6 +58,27 @@ class EventsController extends Controller
         return View('Dashpages.agendaOverview', compact('calendar_details'));
     }
 
+     /**
+     * Create a request
+     *
+     * @param int $id The id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function apply($id){
+        $event_user = new \App\UsersAgendaEvents;
+        $event_user->event_id = $id;
+        $event_user->user_id = Auth::id();
+        $event_user->save();
+        return back();
+    }
+
+    public function cancel($id){
+        $event_user = \App\UsersAgendaEvents::where('event_id', $id);
+        $event_user->delete();
+        return back();
+    }
+
     /**
      * Create a request
      *
@@ -68,6 +89,15 @@ class EventsController extends Controller
     public function detail($id)
     {
         $event = \App\AgendaEvent::find($id);
+        $user_events = Auth::user()->events()->get();
+        // echo '<pre>';
+        // var_dump($user_events);
+        // die;
+        if($user_events->contains($id)){
+            $event->applied = true;
+        }else{
+            $event->applied = false;
+        }
         $data = ['event' => $event];
         return View('Dashpages.agendaDetail', ["data" => $data]);
     }
@@ -81,53 +111,55 @@ class EventsController extends Controller
      */
     public function addEvents(Request $request)
     {
-        \App::setLocale('nl');
 
-        $validator = Validator::make(
-            $request->all(), [
-                'event_name' => 'required|between:3,50',
-                'start_date' => 'required',
-                'times' => 'required',
-                'interval' => 'required',
-                'payment_times' => 'required',
-                'payment_amount' => 'required|min:1',
-                'payment_times' => 'required|min:1',
-                'description' => 'required|between:3,200',
-                'bank_account' => 'required',
-            ]
-        );
+        // TODO add events
+        // \App::setLocale('nl');
 
-        if ($validator->fails()) {
-            \Session::flash('Warning', 'please enter valid details');
-            return back()->withInput()->withInput()->withErrors($validator);
-        }
+        // $validator = Validator::make(
+        //     $request->all(), [
+        //         'event_name' => 'required|between:3,50',
+        //         'start_date' => 'required',
+        //         'times' => 'required',
+        //         'interval' => 'required',
+        //         'payment_times' => 'required',
+        //         'payment_amount' => 'required|min:1',
+        //         'payment_times' => 'required|min:1',
+        //         'description' => 'required|between:3,200',
+        //         'bank_account' => 'required',
+        //     ]
+        // );
 
-        for ($i = 0; $i < $request['times']; $i++) {
-            $dt = Carbon::create($request['start_date']);
-            if ($request['interval'] == 'daily') {
-                $newDate = $dt->addDays($i);
-            } elseif ($request['interval'] == 'weekly') {
-                $newDate = $dt->addWeeks($i);
-            } elseif ($request['interval'] == 'monthly') {
-                $newDate = $dt->addMonths($i);
-            } elseif ($request['interval'] == 'yearly') {
-                $newDate = $dt->addYears($i);
-            }
-            $event = new Event;
-            $event->user_id = Auth::id();
-            $event->name = $request['event_name'];
-            $event->payment_amount = $request['payment_amount'];
-            $event->payment_times = $request['payment_times'];
-            $event->description = $request['description'];
-            $event->bank_account_id = $request['bank_account'];
-            $event->currency_code = $request['currency_code'];
-            $event->start_date = $newDate;
-            $event->end_date = $newDate;
-            $event->save();
-        }
+        // if ($validator->fails()) {
+        //     \Session::flash('Warning', 'please enter valid details');
+        //     return back()->withInput()->withInput()->withErrors($validator);
+        // }
 
-        \Session::flash('Success', 'Events added successfully');
-        return Redirect::to('/calendar');
+        // for ($i = 0; $i < $request['times']; $i++) {
+        //     $dt = Carbon::create($request['start_date']);
+        //     if ($request['interval'] == 'daily') {
+        //         $newDate = $dt->addDays($i);
+        //     } elseif ($request['interval'] == 'weekly') {
+        //         $newDate = $dt->addWeeks($i);
+        //     } elseif ($request['interval'] == 'monthly') {
+        //         $newDate = $dt->addMonths($i);
+        //     } elseif ($request['interval'] == 'yearly') {
+        //         $newDate = $dt->addYears($i);
+        //     }
+        //     $event = new Event;
+        //     $event->user_id = Auth::id();
+        //     $event->name = $request['event_name'];
+        //     $event->payment_amount = $request['payment_amount'];
+        //     $event->payment_times = $request['payment_times'];
+        //     $event->description = $request['description'];
+        //     $event->bank_account_id = $request['bank_account'];
+        //     $event->currency_code = $request['currency_code'];
+        //     $event->start_date = $newDate;
+        //     $event->end_date = $newDate;
+        //     $event->save();
+        // }
+
+        // \Session::flash('Success', 'Events added successfully');
+        // return Redirect::to('/calendar');
 
     }
 
