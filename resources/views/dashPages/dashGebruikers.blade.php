@@ -18,7 +18,7 @@
                 <td>{{$user->id}}</td>
                 <td><a href="/gebruiker/{{$user->id}}" class="btn btn-primary">Details</td>
                 <td>
-                        {!!Form::open(['action' => ['GebruikerBeheren@destroy', $user->id], 'method' => 'POST'])!!}
+                        {!!Form::open(['action' => ['ManageUsersController@destroy', $user->id], 'method' => 'POST'])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     {{Form::submit('Verwijderen', ['class' => 'btn btn-danger'])}}
                         {!!Form::close()!!}

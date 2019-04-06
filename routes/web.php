@@ -25,10 +25,10 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 //gebruikers en machtigingen
-Route::get('/gebruikers', 'GebruikerBeheren@showGebruikers');
-Route::get('/gebruiker/{id}', 'GebruikerBeheren@showGebruikersDetails')->name('gebruikers');
-Route::post('/gebruikers', 'GebruikerBeheren@store');
-Route::delete('/gebruiker/{id}', 'GebruikerBeheren@destroymachtiging')->middleware('auth');
-Route::delete('/gebruikers/{id}', 'GebruikerBeheren@destroy')->middleware('auth');
+Route::get('/gebruikers', 'ManageUsersController@showGebruikers');
+Route::get('/gebruiker/{id}', 'ManageUsersController@showGebruikersDetails')->name('gebruikers');
+Route::post('/gebruikers', 'ManageUsersController@store');
+Route::delete('/gebruiker/{id}', 'ManageUsersController@destroymachtiging')->middleware('auth');
+Route::delete('/gebruikers/{id}', 'ManageUsersController@destroy')->middleware('auth');
 
-Route::post('/gebruikersupdate', 'GebruikerBeheren@update');
+Route::post('/gebruikersupdate', 'ManageUsersController@update');

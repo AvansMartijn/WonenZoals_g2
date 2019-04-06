@@ -1,21 +1,55 @@
 <?php
+/**
+ * Main controller for user manage
+ *
+ * PHP version 7.3
+ *
+ * @category Controllers
+ * @package  Wonenzoals
+ * @author   Xandor Janssen <username@example.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link     https://wonenzoals.mardy.tk
+ */
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
 use App\authorization;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class GebruikerBeheren extends Controller
+/**
+ * DashboardController Class Doc Comment
+ *
+ * @category Class
+ * @package  DashboardController
+ * @author   Xandor Janssen <username@example.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link     https://wonenzoals.mardy.tk
+ */
+class ManageUsersController extends Controller
 {
-    function showGebruikers(){
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function showGebruikers()
+    {
 
         $users = User::all();
 
         return view('dashPages.dashGebruikers')->with('users', $users);
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @param id $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function showGebruikersDetails($id)
     {
 
@@ -26,8 +60,13 @@ class GebruikerBeheren extends Controller
         return view('dashPages.dashGebruikersDetails')->with(compact('user', 'authoriation'));
     }
 
-
-
+    /**
+     * Show the application dashboard.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
 
@@ -36,14 +75,11 @@ class GebruikerBeheren extends Controller
                 'machtiging' => 'required',
             ]
         );
-        
 
         $machti = authorization::where('user_id', $request->input('id'))->get();
-        
-        foreach($machti as $machting)
-        {
-            if($machting->authorization == $request->input('machtiging'))
-            {
+
+        foreach ($machti as $machting) {
+            if ($machting->authorization == $request->input('machtiging')) {
                 return redirect()->back()->with('error', "De gebruiker heeft deze machtiging al ");
             }
         }
@@ -58,6 +94,13 @@ class GebruikerBeheren extends Controller
         return redirect()->back()->with('success', 'De machtiging is toegevoegd');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @param id $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function destroymachtiging($id)
     {
 
@@ -65,13 +108,19 @@ class GebruikerBeheren extends Controller
 
         $authh->delete();
 
-        return redirect()->back()->with('success', 'De machtiging is verwijdert');
+        return redirect()->back()->with('success', 'De machtiging is verwijderd');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @param id $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        if(Auth::user()->id == $id)
-        {
+        if (Auth::user()->id == $id) {
             return redirect()->back()->with('error', 'Je kan de huidig gebruiker niet verwijderen');
         }
 
@@ -79,17 +128,22 @@ class GebruikerBeheren extends Controller
 
         $authh = $user->authorizations;
 
-        foreach($authh as $auth)
-        {
+        foreach ($authh as $auth) {
             $auth->delete();
         }
 
         $user->delete();
-    
 
         return redirect()->back()->with('success', 'De gebruiker is verwijdert');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request)
     {
         $this->validate(
@@ -102,12 +156,11 @@ class GebruikerBeheren extends Controller
         $user = User::find($request->id);
         $user->name = $request->input('naam');
         $user->email = $request->input('email');
-        if($request->wachtwoord != "")
-        {
+        if ($request->wachtwoord != "") {
             $user->password = bcrypt($request->input('wachtwoord'));
         }
         $user->save();
 
-        return redirect()->back()->with('success', 'Gebruiker is geupdate');
+        return redirect()->back()->with('success', 'Gebruiker is Geupdatet');
     }
 }
