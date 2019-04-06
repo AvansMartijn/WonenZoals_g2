@@ -40,8 +40,8 @@ class EventsController extends Controller
             $event_list[] = Calendar::event(
                 $event->eventname,
                 false,
-                new \DateTime($event->start_date),
-                new \DateTime($event->end_date),
+                new \DateTime($event->date),
+                new \DateTime($event->date),
                 $event->id,
                 [
                     'color' => $color,
