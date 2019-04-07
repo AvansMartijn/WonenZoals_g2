@@ -67,7 +67,7 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <!-- dashboard link in the dropdown-->
                             <a class="dropdown-item" href="/dashboard">Dashboard</a>
-
+                            
                             <a class="dropdown-item" href="/dashboard/agenda">Agenda</a>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"

@@ -6,15 +6,18 @@
 <div class="container">
         <div class="row justify-content-center">
                 <div class="col-md-12">
-                        <a href="/dashboard" class="btn btn-primary bottom-spacer">Terug</a>
+                        <div class="bottom-spacer">
+                                <a href="/dashboard" class="btn btn-primary">Terug</a>
+                                <a class="btn btn-primary" href="{{ route('register') }}">Nieuwe Gebruiker</a>
+                        </div>
                         <div class="card">
                                 <div class="card-header">Gebruikers beheren</div>
                                 <div class="card-body">                            
                                         <table class="table table-striped">
                                                 <tr>
                                                         <th>Naam</th>
-                                                        <th>id</th>
-                                                        <th class="text-right">acties</th>
+                                                        <th>ID</th>
+                                                        <th class="text-right">Acties</th>
                                                 </tr>
                                                 @foreach ($users as $user)
                                                         <tr>

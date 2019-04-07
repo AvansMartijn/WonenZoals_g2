@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/gebruikers" class="btn btn-primary bottom-spacer">Terug</a>
             <div class="card">
                 <div class="card-header">{{ __('Registreren') }}</div>
 
