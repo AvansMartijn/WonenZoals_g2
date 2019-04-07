@@ -33,8 +33,8 @@ class AuthorizationSeeder extends Seeder
         DB::table('authorizations')->delete();
 
         $authorizations = [
-            ['id' => 1, 'user_id' => 1, 'authorization' => "agenda"],
-            ['id' => 2, 'user_id' => 2, 'authorization' => "agenda"]
+            ['id' => 1, 'user_id' => 1, 'authorization' => "Agenda"],
+            ['id' => 2, 'user_id' => 2, 'authorization' => "Agenda"]
         ];
 
         foreach($authorizations as $authorization){

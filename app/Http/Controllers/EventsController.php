@@ -55,7 +55,7 @@ class EventsController extends Controller
                                         + event.id, "_blank"); return false;}}',
             ]
         );
-        return View('Dashpages.agendaOverview', compact('calendar_details'));
+        return View('dashPages.agendaOverview', compact('calendar_details'));
     }
 
      /**
@@ -100,7 +100,7 @@ class EventsController extends Controller
             $event->applied = false;
         }
         $data = ['event' => $event, 'users' => $users_applied];
-        return View('Dashpages.agendaDetail', ["data" => $data]);
+        return View('dashPages.agendaDetail', ["data" => $data]);
     }
 
     /**
