@@ -7,6 +7,7 @@ use Auth;
 use Calendar;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Jenssegers\Agent\Agent;
 
 class EventsController extends Controller
 {
@@ -55,6 +56,12 @@ class EventsController extends Controller
                                         + event.id, "_blank"); return false;}}',
             ]
         );
+        $agent = new Agent();
+        if ($agent->isMobile()) {
+            $calendar_details->setOptions(['aspectRatio' => 1]);
+        } else {
+            $calendar_details->setOptions(['aspectRatio' => 1.6]);
+        }
         return View('dashPages.agendaOverview', compact('calendar_details'));
     }
 
