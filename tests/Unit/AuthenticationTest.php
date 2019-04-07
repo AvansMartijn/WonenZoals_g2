@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\User;
+use Faker\Provider\DateTime;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
@@ -42,6 +43,7 @@ class AuthenticationTest extends TestCase
     {
         $user = factory(User::class)->create([
             'password' => bcrypt('i-love-laravel'),
+            'birthday' => new \DateTime('12-3-1999')
         ]);
 
         $response = $this->from('/login')->post('/login', [
@@ -66,6 +68,7 @@ class AuthenticationTest extends TestCase
     {
         $user = factory(User::class)->create([
             'password' => bcrypt($password = 'i-love-laravel'),
+            'birthday' => new \DateTime('12-3-1999')
         ]);
 
         $response = $this->post('/login', [
