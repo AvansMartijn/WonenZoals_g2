@@ -23,3 +23,7 @@ Route::post('/', ['as' => 'contactus.store', 'uses' => 'ContactUSController@cont
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard/agenda', 'EventsController@index')->name('agenda');
+Route::get('/dashboard/agenda/item/{id}', 'EventsController@detail')->name('agendaDetail');
+Route::get('/dashboard/agenda/item/{id}/apply', 'EventsController@apply')->name('agendaApply');
+Route::get('/dashboard/agenda/item/{id}/cancel', 'EventsController@cancel')->name('agendaCancel');

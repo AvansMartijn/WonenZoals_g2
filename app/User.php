@@ -36,4 +36,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function events()
+    {
+        return $this->belongsToMany('App\AgendaEvent', 'users_agenda_events', 'user_id', 'event_id');
+    }
 }
