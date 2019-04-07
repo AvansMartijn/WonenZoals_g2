@@ -60,7 +60,7 @@ class EventsController extends Controller
         if ($agent->isMobile()) {
             $calendar_details->setOptions(['aspectRatio' => 1]);
         } else {
-            $calendar_details->setOptions(['aspectRatio' => 1.6]);
+            $calendar_details->setOptions(['aspectRatio' => 1.8]);
         }
         return View('dashPages.agendaOverview', compact('calendar_details'));
     }

@@ -23,7 +23,7 @@
 
                                     {{ Form::hidden('id', $user->id) }}
 
-                                    {{Form::submit("Versturen", ['class' => 'btn btn-success'])}}
+                                    {{Form::submit("Toevoegen", ['class' => 'btn btn-success'])}}
 
                                 {!! Form::close() !!}
 
@@ -77,7 +77,7 @@
                                 
                                 <hr>
 
-                                {{Form::submit("Versturen", ['class' => 'btn btn-success'])}}
+                                {{Form::submit("Opslaan", ['class' => 'btn btn-success'])}}
 
                                 {!! Form::close() !!}
                             </div>

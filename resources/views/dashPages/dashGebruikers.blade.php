@@ -6,6 +6,7 @@
 <div class="container">
         <div class="row justify-content-center">
                 <div class="col-md-12">
+                        <a href="/dashboard" class="btn btn-primary bottom-spacer">Terug</a>
                         <div class="card">
                                 <div class="card-header">Gebruikers beheren</div>
                                 <div class="card-body">                            
