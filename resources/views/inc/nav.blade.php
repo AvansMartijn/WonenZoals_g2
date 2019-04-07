@@ -67,9 +67,29 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <!-- dashboard link in the dropdown-->
                             <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                            
-                            <a class="dropdown-item" href="/dashboard/agenda">Agenda</a>
 
+                        @php
+                                $userAuth = Auth::user();
+
+                                $userAuth =  $userAuth->authorizations;
+
+                                $toegang = false;
+
+                                foreach($userAuth as $userAuthh)
+                                {
+                                    if($userAuthh->authorization == "Agenda")
+                                    {
+                                        $toegang  = true;
+                                    }
+                                }
+                        @endphp
+                        
+                        @if ($toegang)
+                            <a class="dropdown-item" href="/dashboard/agenda">Agenda</a>
+                        @endif
+                            
+
+                            
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

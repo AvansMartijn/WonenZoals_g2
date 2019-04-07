@@ -20,7 +20,24 @@
                     <a class="nav-link text-dark font-weight-bold linkie" href="/dashboard">Dashboard</a>
                 </li>
                 <li>
+                    @php
+                        $userAuth = Auth::user();
+
+                        $userAuth =  $userAuth->authorizations;
+
+                        $toegang = false;
+
+                        foreach($userAuth as $userAuthh)
+                        {
+                            if($userAuthh->authorization == "Agenda")
+                            {
+                                $toegang  = true;
+                            }
+                        }
+                    @endphp
+                    @if ($toegang)
                     <a class="nav-link text-dark font-weight-bold linkie" href="/dashboard/agenda">Agenda</a>
+                    @endif
                 </li>
 
                 <li class="nav-item dropdown">
