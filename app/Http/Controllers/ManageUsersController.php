@@ -134,7 +134,7 @@ class ManageUsersController extends Controller
 
         $user->delete();
 
-        return redirect()->back()->with('success', 'De gebruiker is verwijdert');
+        return redirect()->back()->with('success', 'De gebruiker is verwijderd');
     }
 
     /**
