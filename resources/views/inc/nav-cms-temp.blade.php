@@ -16,6 +16,13 @@
                 @guest
 
                 @else
+                <li>
+                    <a class="nav-link text-dark font-weight-bold linkie" href="/dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark font-weight-bold linkie" href="/dashboard/agenda">Agenda</a>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
