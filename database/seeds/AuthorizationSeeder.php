@@ -11,6 +11,7 @@
  * @link     https://wonenzoals.mardy.tk
  */
 use Illuminate\Database\Seeder;
+use App\authorization;
 /**
  * User Table Seeder with one user of every type
  *
