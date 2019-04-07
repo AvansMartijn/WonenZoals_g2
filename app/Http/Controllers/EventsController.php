@@ -18,7 +18,32 @@ class EventsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
+
+        //fixed register login
+        $this->middleware(function ($request, $next) {
+
+            $userAuth = Auth::user();
+
+            $userAuth =  $userAuth->authorizations;
+
+            $toegang = false;
+
+            foreach($userAuth as $userAuthh)
+            {
+                if($userAuthh->authorization == "Agenda")
+                {
+                    $toegang  = true;
+                }
+            }
+
+            if(!$toegang)
+            {
+                return redirect('/dashboard');
+            }
+
+            return $next($request);
+        });
     }
 
     /**
