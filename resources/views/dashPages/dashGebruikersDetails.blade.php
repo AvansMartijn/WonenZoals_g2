@@ -45,7 +45,7 @@
         
     </table>        
     @else
-    <p>er zijn geen machtigingen voor deze Gebruiker</p>
+    <p>Er zijn geen machtigingen voor deze Gebruiker</p>
 
 @endif
 
