@@ -179,6 +179,10 @@ header > div > h1 {
     padding: 50px;
 }
 
+.fc-content-skeleton > table > tbody > tr:hover {
+    cursor: pointer;
+}
+
 /* curves */
 
 @media only screen and (max-width: 955px) {

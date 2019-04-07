@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Agenda</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,10 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-            
-                        <h1>Welkom {{Auth::user()->name}}</h1>
-                        <p>Dit is uw persoonlijke Bewoner pagina</p>
-                        <a class="btn btn-primary" href="{{ route('agenda') }}">Agenda</a>
+                        {!! $calendar_details->calendar() !!}
+                        {!! $calendar_details->script() !!}
 
                 </div>
             </div>
