@@ -5,9 +5,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require('./SmoothScroll');
 require('./bootstrap');
-require('./inc/SmoothScroll');
-
 window.Vue = require('vue');
 
 import Vue from 'vue';
