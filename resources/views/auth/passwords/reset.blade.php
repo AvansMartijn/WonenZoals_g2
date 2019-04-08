@@ -1,4 +1,4 @@
-@extends('layouts.cms')
+@extends('layouts.NoHeader')
 
 @section('content')
 <div class="container">

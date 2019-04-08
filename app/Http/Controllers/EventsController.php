@@ -53,16 +53,22 @@ class EventsController extends Controller
      */
     public function index()
     {
+        //get all events
         $events = AgendaEvent::all();
+        //get events that have a relation with this user
         $user_events = Auth::user()->events()->get();
         $event_list = [];
         $user_event_list = [];
         foreach ($events as $key => $event) {
+            //check if the user already has a relation with this event
             if (!$user_events->contains($event->id)) {
+                //no relation means he has NOT applied for this event
                 $color = "blue";
             }else{
+                //relation means he HAS applied for this event
                 $color = "green";
             }
+            //create a Calendar item for this event 
             $event_list[] = Calendar::event(
                 $event->eventname,
                 false,
@@ -74,6 +80,7 @@ class EventsController extends Controller
                 ]
             );
         }
+        //add all events to the calendar
         $calendar_details = Calendar::addEvents($event_list)->setCallbacks(
             [ //set fullcalendar callback options (will not be JSON encoded)
                 'eventClick' =>
@@ -81,6 +88,7 @@ class EventsController extends Controller
                                         + event.id, "_blank"); return false;}}',
             ]
         );
+        //check whether we have to adjust the scale of the calendar for mobile devices
         $agent = new Agent();
         if ($agent->isMobile()) {
             $calendar_details->setOptions(['aspectRatio' => 1]);
@@ -121,9 +129,8 @@ class EventsController extends Controller
         $event = \App\AgendaEvent::find($id);
         $user_events = Auth::user()->events()->get();
         $users_applied = $event->users()->get();
-        // echo '<pre>';
-        // var_dump($user_events);
-        // die;
+        //check wheter the user has applied to the event
+        //so we can show the correct information and buttons
         if($user_events->contains($id)){
             $event->applied = true;
         }else{
