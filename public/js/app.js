@@ -48844,6 +48844,55 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/SmoothScroll.js":
+/*!**************************************!*\
+  !*** ./resources/js/SmoothScroll.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  console.log('[SmoothScroll] Started Loading...');
+  var Doc = $(document),
+      Navigation = $('.navbar'),
+      ToTop = $('.ToTop'),
+      Link = $('.linkie');
+  Doc.on('scroll', function () {
+    if (Doc.scrollTop() > 60) {
+      ToTop.fadeIn();
+      Navigation.removeClass('navbar-custom');
+      Navigation.removeClass('navbar-custom-opacity');
+      Navigation.addClass('navbar-custom-solid');
+    } else {
+      ToTop.fadeOut();
+      Navigation.removeClass('navbar-custom');
+      Navigation.removeClass('navbar-custom-solid');
+      Navigation.addClass('navbar-custom-opacity');
+    }
+  });
+  Link.click(function (e) {
+    e.preventDefault();
+
+    if (Doc.width() < 769 && Doc.width() > 680) {
+      $('body, html').animate({
+        scrollTop: $(this.hash).offset().top - 80
+      }, 500);
+    } else if (Doc.width() < 680) {
+      console.log('eikel');
+      $('body, html').animate({
+        scrollTop: $(this.hash).offset().top - 320
+      }, 500);
+    } else {
+      $('body, html').animate({
+        scrollTop: $(this.hash).offset().top
+      }, 500);
+    }
+  });
+  console.log('[SmoothScroll] Finisehd Loading');
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -48862,6 +48911,8 @@ __webpack_require__.r(__webpack_exports__);
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+__webpack_require__(/*! ./SmoothScroll */ "./resources/js/SmoothScroll.js");
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
