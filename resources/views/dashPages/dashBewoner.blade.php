@@ -1,4 +1,4 @@
-@extends('layouts.cms')
+@extends('layouts.Back')
 
 @section('content')
 <div class="container">
@@ -16,6 +16,7 @@
             
                         <h1>Welkom {{Auth::user()->name}}</h1>
                         <p>Dit is uw persoonlijke Bewoner pagina</p>
+                        <a class="btn btn-primary" href="{{ route('agenda') }}">Agenda</a>
 
                 </div>
             </div>

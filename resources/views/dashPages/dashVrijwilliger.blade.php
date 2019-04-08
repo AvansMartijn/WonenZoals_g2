@@ -1,4 +1,4 @@
-@extends('layouts.cms')
+@extends('layouts.Back')
 
 @section('content')
 <div class="container">

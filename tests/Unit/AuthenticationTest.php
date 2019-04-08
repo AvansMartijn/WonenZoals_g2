@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\User;
+use Faker\Provider\DateTime;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
@@ -30,6 +31,7 @@ class AuthenticationTest extends TestCase
         $user = factory(User::class)->make();
         $response = $this->actingAs($user)->get('/login');
         $response->assertRedirect('/dashboard');
+        $user->delete();
     }
 
     /**
@@ -41,6 +43,7 @@ class AuthenticationTest extends TestCase
     {
         $user = factory(User::class)->create([
             'password' => bcrypt('i-love-laravel'),
+            'birthday' => new \DateTime('12-3-1999')
         ]);
 
         $response = $this->from('/login')->post('/login', [
@@ -53,6 +56,7 @@ class AuthenticationTest extends TestCase
         $this->assertTrue(session()->hasOldInput('email'));
         $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
+        $user->delete();
     }
 
     /**
@@ -63,8 +67,8 @@ class AuthenticationTest extends TestCase
     public function test_remember_me_functionality()
     {
         $user = factory(User::class)->create([
-            'id' => random_int(1, 100),
             'password' => bcrypt($password = 'i-love-laravel'),
+            'birthday' => new \DateTime('12-3-1999')
         ]);
 
         $response = $this->post('/login', [
@@ -80,5 +84,6 @@ class AuthenticationTest extends TestCase
             $user->password,
         ]));
         $this->assertAuthenticatedAs($user);
+        $user->delete();
     }
 }

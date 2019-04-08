@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.NoHeader')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <a href="/gebruikers" class="btn btn-primary bottom-spacer">Terug</a>
             <div class="card">
                 <div class="card-header">{{ __('Registreren') }}</div>
 
@@ -60,22 +61,6 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-
-                        {{-- <div class="form-group row">
-                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="role" type="text" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" value="{{ old('role') }}" required autofocus>
-
-                                @if ($errors->has('role'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('role') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div> --}}
-
-                        <!--///////////////////////////////////////-->
                         <div class="form-group row">
                                 <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
     
@@ -86,8 +71,7 @@
                                             <option>Vrijwilliger</option>
                                             <option>Ouder</option>
                                             <option>Beheerder</option>
-                                          </select>
-
+                                    </select>
                                     @if ($errors->has('role'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('role') }}</strong>
@@ -95,6 +79,21 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label for="birthday" class="col-md-4 col-form-label text-md-right">Geboortedatum</label>
+    
+                                <div class="col-md-6">
+                                    <input id="birthday" type="text" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}" name="birthday" value="{{ old('birthday') }}" placeholder="JJJJ-MM-DD" required autofocus>
+    
+                                    @if ($errors->has('birthday'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('birthday') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+    
 
                             <!--/////////////////////////////////-->
 
@@ -112,4 +111,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

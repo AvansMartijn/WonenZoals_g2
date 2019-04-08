@@ -1,6 +1,6 @@
 $(function(){
 
-console.log('[SmoothScroll] Started Loading...');
+console.log('[SmoothScroll] Started Loading');
 
 var Doc = $(document),
     Navigation = $('.navbar'),
