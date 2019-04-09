@@ -88,6 +88,87 @@
                 </div>
               </div>
 
+              <div class="modal fade" id="Luuk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+
+                        <h1 class="modal-Name font-weight-bold">Luuk</h5>
+
+                        <p class="text-readable">
+                            <img class="modal-picture" src="{{ asset('img/Luuk.jpg') }}">
+                            Ik ben Luuk, geboren op 6 mei 1996 in ’s-Hertogenbosch. Toen ik 5 maanden was ben ik heel erg ziek geweest, 
+                            een virus infectie in de hersenen, waaraan ik een meervoudige beperking heb overgehouden.
+                            <br><br>
+                            Mijn hobby’s zijn computeren, televisie kijken, toneel en dansen. Op vakantie gaan vind ik ook heel leuk. 
+                            Meestal doen we dan wel iets aparts zoals raften, parapenten kanoën of de vakantie afsluiten met een bezoek aan een 
+                            pretpark in het buitenland. Ik heb een hele mooie sportieve driewieler en vind het fijn om af en toe lekker te gaan fietsen.
+                            <br><br>
+                            Na de Mytylschool ben ik op 18 jarige leeftijd gaan werken op Werkboerderij Buiten Gewoon in Berlicum. Hier doe ik alle 
+                            voorkomende werkzaamheden die je op de boerderij kan tegen komen. Nu ben ik 20 en zou heel graag met mijn vrienden op 
+                            mijn zelf gaan wonen in een woongroep. Ik hoop dat we een mooi pand vinden op een mooie locatie waar ik en mijn 
+                            vrienden met veel plezier ga wonen.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Sluit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal fade" id="Sander" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+
+                        <h1 class="modal-Name font-weight-bold">Sander</h5>
+
+                        <p class="text-readable">
+                            <img class="modal-picture" src="{{ asset('img/Sander.jpg') }}">
+                            Ik ben Sander Peffer, geboren op 3 augustus 1995 en woonachtig in Kerkdriel. Ik ben een 
+                            sociale jongen en hou van vrienden om mij heen. Ik maak snel contact en ga al gauw een gesprek aan, 
+                            zeker als het om voelbal of muziek draait.
+                            <br><br>
+                            Negen weken ben ik te vroeg geboren en twee dagen na mijn geboorte heb ik een hersenbloeding gekregen. 
+                            Daardoor zit ik in een rolstoel. Ik kan nog wel kleine stukjes lopen met mijn looprek. Thuis verplaats 
+                            ik mij in een handbewogen rolstoel die ik met één hand bestuur en voor grotere afstanden gebruik ik mijn 
+                            elektrische rolstoel.
+                            <br><br>
+                            Mijn hobby’s zijn muziek en voetbal, dit doe ik regelmatig op de playstation en ik kijk vaak naar voetbal. 
+                            Mijn favoriete club is Ajax en daar ga ik ook regelmatig naar toe, samen met mijn stiefbroer Dirk en mijn 
+                            vriend Thom. Als ik op vakantie ben, fluit ik regelmatig een wedstrijd.
+                            <br><br>
+                            Muziek is erg belangrijk voor mij; ik heb eigenlijk altijd wel de radio aan of ik luister naar mijn iPod. 
+                            Ook heb ik momenteel een draaitafel en daar produceer ik de leukste mixen. Ik ben een grote fan van AfroJack 
+                            en die heb ik ook al eens in het echt mogen bewonderen samen met mijn stiefvader en mijn zus Mariëlle.
+                            <br><br>
+                            Ook ga ik regelmatig met mijn goede vriend Stijn een terrasje pakken, naar een wedstrijd toe of gewoon een 
+                            avondje kletsen. Laatst ben ik helemaal alleen bij hem op bezoek geweest in IJsland en dit was een feest! 
+                            Het alleen vliegen was vooral erg spannend, omdat ik dit nog nooit eerder gedaan had.
+                            <br><br>
+                            Mijn zus Mariëlle, met wie ik een hele goed band heb, woont in Breda en samen gaan we regelmatig uit eten, 
+                            terrasje pakken, naar concerten of gewoon gezellig bijkletsen.
+                            <br><br>
+                            Uitdagingen ga ik ook niet uit de weg, ik ga regelmatig een weekend of een dagje weg met Stichting Typisch 
+                            naar concerten, festivals, zelfstandig autorijden enz.
+                            <br><br>
+                            Ik werk 5 dagen in de week bij Cello in Vught en heb het daar goed naar mij zin. Ik zit daar achter de 
+                            receptie en doe daarnaast allerlei andere dingen. Ook ben ik hoofdredacteur van het blad de Babbelaar.
+                            <br><br>
+                            Door mijn beperkingen kan ik niet zelfstandig wonen en blijf ik afhankelijk van de zorg van anderen. Voor 
+                            mijn moeder en stiefvader is het daarom belangrijk dat dit in de buurt is zodat zij zo veel mogelijk mee 
+                            kunnen blijven zorgen. Ik hoop een leuke woonruimte met leuke medebewoners en fijne, goede begeleiding waar 
+                            we samen met veel plezier kunnen wonen en waar wij ons veilig en “thuis” voelen.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Sluit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="modal fade" id="nieuws" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">

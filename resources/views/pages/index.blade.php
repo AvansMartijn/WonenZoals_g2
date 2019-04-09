@@ -62,9 +62,9 @@
                     <slide :index="0" class="slidee">
                         <div>
                             <img class="person-picture" src="{{ asset('img/Auke.jpg') }}">
-                            <div class="wave -one"></div>
+                            {{-- <div class="wave -one"></div>
                             <div class="wave -two"></div>
-                            <div class="wave -three"></div>
+                            <div class="wave -three"></div> --}}
                         </div>
 
                         <div class="user">
@@ -80,9 +80,9 @@
                     <slide :index="1" class="slidee">
                         <div>
                             <img class="person-picture" src="{{ asset('img/Stef.jpg') }}">
-                            <div class="wave -one"></div>
+                            {{-- <div class="wave -one"></div>
                             <div class="wave -two"></div>
-                            <div class="wave -three"></div>
+                            <div class="wave -three"></div> --}}
                         </div>
                         
                         <div class="user">
@@ -98,9 +98,9 @@
                     <slide :index="2" class="slidee">
                         <div>
                             <img class="person-picture" src="{{ asset('img/Isabel.jpg') }}">
-                            <div class="wave -one"></div>
+                            {{-- <div class="wave -one"></div>
                             <div class="wave -two"></div>
-                            <div class="wave -three"></div>
+                            <div class="wave -three"></div> --}}
                         </div>
 
                         <div class="user">
@@ -112,6 +112,43 @@
                             </div>
                         </div>
                     </slide>
+
+                    <slide :index="3" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Luuk.jpg') }}">
+                            {{-- <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div> --}}
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Luuk</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Luuk">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="4" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Sander.jpg') }}">
+                            {{-- <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div> --}}
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Sander</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Sander">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
                 </carousel-3d>
             </div>
         </div>
