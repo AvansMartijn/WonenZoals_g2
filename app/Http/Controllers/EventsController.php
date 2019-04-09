@@ -85,7 +85,7 @@ class EventsController extends Controller
         $calendar_details = Calendar::addEvents($event_list)->setCallbacks(
             [ //set fullcalendar callback options (will not be JSON encoded)
                 'eventClick' =>
-                'function(event) { if(event.id) {window.open("/dashboard/agenda/item/"
+                'function(event) { if(event.id) {window.location.assign("/dashboard/agenda/item/"
                                         + event.id, "_blank"); return false;}}',
             ]
         );
