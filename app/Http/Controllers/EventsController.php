@@ -70,7 +70,7 @@ class EventsController extends Controller
                 $event->eventname,
                 false,
                 new \DateTime($event->date),
-                new \DateTime($event->date),
+                new \DateTime($event->enddate),
                 $event->id,
                 [
                     'color' => $color,
@@ -137,9 +137,28 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addEvents(Request $request)
+    public function addEvent(Request $request)
     {
+        //
+        $autoApply = 0;
+        if($request['auto_apply'] != null){
+            $autoApply = 1;
+        }
+        $event = new AgendaEvent;
+        $event->eventname = $request['eventname'];
+        $event->description = $request['description'];
+        $event->date = $request['date'];
+        $event->enddate = $request['enddate'];
+        $event->save();
 
+        foreach($request['role_check'] as $group){
+            $users = \App\User::where('role', $group)->get();
+            foreach($users as $user){
+                $user->events()->save($event, ['applied' => $autoApply]);
+                // App\User::find()->roles()->save($role, ['expires' => $expires]);
+            }
+        }
+        return redirect()->back()->with('success', 'activiteit is aangemaakt');
     }
 
     /**
@@ -147,8 +166,13 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createMeal()
     {
-       
+        return View('dashPages.agendaCreateMeal');
+    }
+
+    public function createActivity()
+    {
+        return View('dashPages.agendaCreateActivity');
     }
 }

@@ -33,6 +33,9 @@ Route::delete('/gebruikers/{id}', 'ManageUsersController@destroy')->middleware('
 
 Route::post('/gebruikersupdate', 'ManageUsersController@update')->middleware('auth');
 Route::get('/dashboard/agenda', 'EventsController@index')->name('agenda');
+Route::get('/dashboard/agenda/create/meal', 'EventsController@createMeal')->name('agendaCreateMeal');
+Route::get('/dashboard/agenda/create/activity', 'EventsController@createActivity')->name('agendaCreateActivity');
+Route::post('/dashboard/agenda/create/addEvent', 'EventsController@addEvent')->name('agendaAddEvent');
 Route::get('/dashboard/agenda/item/{id}', 'EventsController@detail')->name('agendaDetail');
 Route::get('/dashboard/agenda/item/{id}/apply', 'EventsController@apply')->name('agendaApply');
 Route::get('/dashboard/agenda/item/{id}/cancel', 'EventsController@cancel')->name('agendaCancel');
