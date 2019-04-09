@@ -25,6 +25,7 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('event_id');
+            $table->boolean('applied')->default(0);
 
             $table->foreign('user_id')
                 ->references('id')

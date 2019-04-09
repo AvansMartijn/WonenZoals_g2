@@ -53,15 +53,12 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //get all events
-        $events = AgendaEvent::all();
         //get events that have a relation with this user
-        $user_events = Auth::user()->events()->get();
+        $events = Auth::user()->events()->get();
         $event_list = [];
-        $user_event_list = [];
         foreach ($events as $key => $event) {
             //check if the user already has a relation with this event
-            if (!$user_events->contains($event->id)) {
+            if (!$event->pivot->applied) {
                 //no relation means he has NOT applied for this event
                 $color = "blue";
             }else{
@@ -104,16 +101,16 @@ class EventsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function apply($id){
-        $event_user = new \App\UsersAgendaEvents;
-        $event_user->event_id = $id;
-        $event_user->user_id = Auth::id();
-        $event_user->save();
+        $event = Auth::user()->events()->where('event_id', $id)->first();
+        $event->pivot->applied = 1; 
+        $event->pivot->update();
         return back();
     }
 
     public function cancel($id){
-        $event_user = \App\UsersAgendaEvents::where([['event_id', $id], ['user_id', Auth::id()]]);
-        $event_user->delete();
+        $event = Auth::user()->events()->where('event_id', $id)->first();
+        $event->pivot->applied = 0; 
+        $event->pivot->update();
         return back();
     }
 
@@ -126,16 +123,9 @@ class EventsController extends Controller
      */
     public function detail($id)
     {
-        $event = \App\AgendaEvent::find($id);
-        $user_events = Auth::user()->events()->get();
-        $users_applied = $event->users()->get();
-        //check wheter the user has applied to the event
-        //so we can show the correct information and buttons
-        if($user_events->contains($id)){
-            $event->applied = true;
-        }else{
-            $event->applied = false;
-        }
+        $event = Auth::user()->events()->where('event_id', $id)->first();
+        $users_applied = $event->users()->where('applied', 1)->get();
+        
         $data = ['event' => $event, 'users' => $users_applied];
         return View('dashPages.agendaDetail', ["data" => $data]);
     }
