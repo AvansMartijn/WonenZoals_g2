@@ -76,8 +76,9 @@ class EventsController extends Controller
                 new \DateTime($event->date),
                 $event->id,
                 [
-                    'color' => $color,
+                    'color' => $color, 
                 ]
+                
             );
         }
         //add all events to the calendar
@@ -92,7 +93,8 @@ class EventsController extends Controller
         $agent = new Agent();
         if ($agent->isMobile()) {
             $calendar_details->setOptions(['aspectRatio' => 1]);
-        }        
+        } 
+        $calendar_details->setOptions(['timeFormat' => 'H:mm']);      
         return View('dashPages.agendaOverview', compact('calendar_details'));
     }
 
