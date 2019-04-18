@@ -12,7 +12,7 @@
                     {!! Form::open(['action' => 'EventsController@addEvent', 'methode' => 'POST']) !!}
                                     
                                 <div class="form-group">
-                                    <label for="eventname">Email address</label>
+                                    <label for="eventname">Activiteit naam</label>
                                     <input type="text" class="form-control" name="eventname" placeholder="Activiteit naam">
                                 </div>
 
@@ -67,18 +67,7 @@
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">Wie heeft zich aangemeld?</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-             
-
-                </div>
-            </div>
+       
         </div>
     </div>
 </div>
