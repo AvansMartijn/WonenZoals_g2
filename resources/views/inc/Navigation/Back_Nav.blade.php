@@ -17,6 +17,7 @@
                     <li><i class="fas fa-desktop"></i>Dashboard</li>
                 </a>
 
+                {{-- check all auth witin a role --}}
                 @foreach (Auth::user()->authorizations as $userauthorization)
                     @if ($userauthorization->authorization == "Agenda")
 
@@ -27,10 +28,16 @@
                     @endif
                 @endforeach
 
-               
-                <a href="/gebruikers" class="Menu-Item">
-                    <li><i class="fas fa-users"></i>Gebruikers</li>
-                </a>
+                {{-- checkuser role --}}
+                @if (Auth::user()->role == "Beheerder")
+
+                    <a href="/gebruikers" class="Menu-Item">
+                        <li><i class="fas fa-users"></i>Gebruikers</li>
+                    </a>
+                
+                @endif
+
+                
                 <a href="{{ route('logout') }}" class="Menu-Item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <li><i class="fas fa-sign-out-alt"></i>Uitloggen</li>
                 </a>
