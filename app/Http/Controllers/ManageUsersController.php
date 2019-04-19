@@ -39,15 +39,17 @@ class ManageUsersController extends Controller
         $this->middleware('auth');
 
         //fixed register login
-        $this->middleware(function ($request, $next) {
-            $role = Auth::user()->role;
+        $this->middleware(
+            function ($request, $next) {
+                $role = Auth::user()->role;
 
-            if ($role !== 'Beheerder') {
-                return redirect('/dashboard');
+                if ($role !== 'Beheerder') {
+                    return redirect('/dashboard');
+                }
+
+                return $next($request);
             }
-
-            return $next($request);
-        });
+        );
     }
 
     /**

@@ -19,13 +19,24 @@
 
                 {{-- check all auth witin a role --}}
                 @foreach (Auth::user()->authorizations as $userauthorization)
+                    {{-- show agenda --}}
                     @if ($userauthorization->authorization == "Agenda")
 
                         <a href="/dashboard/agenda" class="Menu-Item">
                             <li><i class="fas fa-calendar"></i>Agenda</li>
                         </a>
-                        
+
                     @endif
+
+                    {{-- show newsletter archive --}}
+                    @if ($userauthorization->authorization == "Nieuwsbriefarchief")
+
+                        <a href="/dashboard/nieuwsbriefarchief" class="Menu-Item">
+                            <li><i class="fas fa-archive"></i>Nieuwsbrief archief</li>
+                        </a>
+
+                    @endif
+                    
                 @endforeach
 
                 {{-- checkuser role --}}
@@ -37,6 +48,7 @@
                 
                 @endif
 
+                
                 
                 <a href="{{ route('logout') }}" class="Menu-Item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <li><i class="fas fa-sign-out-alt"></i>Uitloggen</li>
