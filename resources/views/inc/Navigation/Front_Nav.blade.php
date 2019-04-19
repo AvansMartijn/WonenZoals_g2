@@ -67,8 +67,15 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <!-- dashboard link in the dropdown-->
                             <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                        
-                            <a class="dropdown-item" href="/dashboard/agenda">Agenda</a>
+                            
+                            @foreach (Auth::user()->authorizations as $userauthorization)
+                                @if ($userauthorization->authorization == "Agenda")
+            
+                                <a class="dropdown-item" href="/dashboard/agenda">Agenda</a>
+                                    
+                                @endif
+                            @endforeach
+                            
                             
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
