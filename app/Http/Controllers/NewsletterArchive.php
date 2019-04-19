@@ -13,6 +13,10 @@
 
 namespace App\Http\Controllers;
 
+use App\authorization;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 /**
  *  NewsletterArchive Class Doc Comment
  *
