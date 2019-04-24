@@ -15,7 +15,7 @@
 //route to webpage using a function in pagescontroler
 Route::get('/', 'PagesController@index');
 
-Route::get('/cmsHome', 'PagesController@cmsHome');
+Route::get('/cmsHome', 'CMSController@cmsHome');
 
 Route::post('/', ['as' => 'contactus.store', 'uses' => 'ContactUSController@contactUSPost']);
 

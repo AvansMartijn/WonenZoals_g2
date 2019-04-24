@@ -10,29 +10,39 @@
  * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
  * @link     https://wonenzoals.mardy.tk
  */
+
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 /**
- * PagesController Class Doc Comment
+ * CMSController Class Doc Comment
  *
  * @category Class
- * @package  PagesController
+ * @package  CMSController
  * @author   Xandor Janssen <username@example.com>
  * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
  * @link     https://wonenzoals.mardy.tk
  */
-class PagesController extends Controller
+class CMSController extends Controller
 {
-  
-    /**
-     * Open the index web page
+     /**
+     * Create a new controller instance.
      *
-     * @return pages.index
+     * @return void
      */
-    public function index()
+    public function __construct()
     {
-        return view('pages.index');
+        $this->middleware('auth');
+    }
+
+    /**
+     * Opening the CMS home page
+     *
+     * @return dashPages.cmsHome
+     */
+    public function cmsHome()
+    {
+        return view('dashPages.cmsHome');
     }
 }
