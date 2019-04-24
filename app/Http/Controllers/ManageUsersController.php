@@ -93,7 +93,8 @@ class ManageUsersController extends Controller
     {
 
         $this->validate(
-            $request, [
+            $request,
+            [
                 'machtiging' => 'required',
             ]
         );
@@ -169,7 +170,8 @@ class ManageUsersController extends Controller
     public function update(Request $request)
     {
         $this->validate(
-            $request, [
+            $request,
+            [
                 'naam' => 'required',
                 'email' => 'required',
             ]

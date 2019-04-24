@@ -43,55 +43,62 @@ class RegisterController extends Controller
         $this->middleware('auth');
 
         //fixed register login
-        $this->middleware(function ($request, $next) {
-            $role = Auth::user()->role;
+        $this->middleware(
+            function ($request, $next) {
+                $role = Auth::user()->role;
 
-            if ($role !== 'Beheerder') {
-                return redirect('/dashboard');
+                if ($role !== 'Beheerder') {
+                    return redirect('/dashboard');
+                }
+
+                return $next($request);
             }
-
-            return $next($request);
-        });
+        );
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return Validator::make(
+            $data,
+            [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             'role' => ['required', 'string', 'max:255'],
             'birthday' => ['required', 'date','before:today', 'max:255'],
-        ]);
+            ]
+        );
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
     {
-        return User::create([
+        return User::create(
+            [
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
             'birthday' => $data['birthday'],
-        ]);
+            ]
+        );
     }
 
     /**
      * Handle a registration request for the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
