@@ -1,4 +1,4 @@
-@extends('layouts.back')
+@extends('layouts.Back')
 
 @section('content')
 <div class="container">
@@ -9,9 +9,51 @@
                     <div class="card-header">Gebruiker details</div>
     
                     <div class="card-body">
-                        
+
+                        <h2>{{$user->id}}</h2>
+                        <h2>{{$user->name}}</h2>
+                        <h2>{{$user->Role}}</h2>
 
 
+                            {!! Form::open(['action' => 'ManageUsersController@store', 'methode' => 'POST']) !!}
+                                
+                                    <div class="from-group bottom-spacer">
+                                        {{Form::label('machtiging', 'Machtiging')}}
+                                        {{Form::select('machtiging', array('Agenda' => 'Agenda', 'Forum' => 'Forum' , 'Nieuwsbriefarchief' => 'Nieuwsbrief archief'), null, array('class'=>'form-control')) }}
+                                    </div>
+
+                                    {{ Form::hidden('id', $user->id) }}
+
+                                    {{Form::submit("Versturen", ['class' => 'btn btn-success'])}}
+
+                                {!! Form::close() !!}
+
+
+                            @if (count($authoriation)>0)
+                                                                
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>Naam</th>
+                                        <th>Verwijderen</th>
+                                    </tr>
+                                    @foreach ($authoriation as $authoriationn)
+                                    <tr>
+                                            <td>{{$authoriationn->authorization}}</td>
+                                            <td>
+                                            {!!Form::open(['action' => ['ManageUsersController@destroymachtiging', $authoriationn->id], 'method' => 'POST'])!!}
+                                                        {{Form::hidden('_method', 'DELETE')}}
+                                                        {{Form::submit('Verwijderen', ['class' => 'btn btn-danger'])}}
+                                            {!!Form::close()!!}
+                                            </td>
+                                    </tr>
+                                    @endforeach
+
+                                    
+                                </table>        
+                                @else
+                                <p>er zijn geen machtigingen voor deze Gebruiker</p>
+
+                            @endif
 
                                 {!! Form::open(['action' => 'ManageUsersController@update', 'methode' => 'POST']) !!}
                                     
