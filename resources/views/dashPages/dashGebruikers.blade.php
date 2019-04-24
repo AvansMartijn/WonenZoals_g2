@@ -16,13 +16,13 @@
                                         <table class="table table-striped">
                                                 <tr>
                                                         <th>Naam</th>
-                                                        <th>ID</th>
+                                                        <th>Email</th>
                                                         <th class="text-right">Acties</th>
                                                 </tr>
                                                 @foreach ($users as $user)
                                                         <tr>
                                                                 <td>{{$user->name}}</td>
-                                                                <td>{{$user->id}}</td>
+                                                                <td>{{$user->email}}</td>
                                                                 <td>
 
                                                                 {!!Form::open(['action' => ['ManageUsersController@destroy', $user->id], 'method' => 'POST'])!!}

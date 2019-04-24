@@ -37,3 +37,5 @@ Route::get('/dashboard/agenda/item/{id}', 'EventsController@detail')->name('agen
 Route::get('/dashboard/agenda/item/{id}/apply', 'EventsController@apply')->name('agendaApply');
 Route::get('/dashboard/agenda/item/{id}/cancel', 'EventsController@cancel')->name('agendaCancel');
 
+//niewsbrief archief
+Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchive@index');
