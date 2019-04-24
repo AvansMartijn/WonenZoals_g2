@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Registreren') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" autocomplete="off">
                         @csrf
 
                         <div class="form-group row">

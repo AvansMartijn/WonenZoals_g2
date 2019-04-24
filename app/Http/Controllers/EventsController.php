@@ -93,15 +93,16 @@ class EventsController extends Controller
                 new \DateTime($event->date),
                 $event->id,
                 [
-                    'color' => $color,
+                    'color' => $color, 
                 ]
+                
             );
         }
         //add all events to the calendar
         $calendar_details = Calendar::addEvents($event_list)->setCallbacks(
             [ //set fullcalendar callback options (will not be JSON encoded)
                 'eventClick' =>
-                'function(event) { if(event.id) {window.open("/dashboard/agenda/item/"
+                'function(event) { if(event.id) {window.location.assign("/dashboard/agenda/item/"
                                         + event.id, "_blank"); return false;}}',
             ]
         );
@@ -109,7 +110,8 @@ class EventsController extends Controller
         $agent = new Agent();
         if ($agent->isMobile()) {
             $calendar_details->setOptions(['aspectRatio' => 1]);
-        }
+        } 
+        $calendar_details->setOptions(['timeFormat' => 'H:mm']);      
         return View('dashPages.agendaOverview', compact('calendar_details'));
     }
 
