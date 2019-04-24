@@ -3,7 +3,7 @@
     <div class="NavCover">
 
         <div class="Brand">
-            <a href="/dashboard" class="simple-text">
+            <a href="/" class="simple-text">
                 Wonen Zoals
             </a>
         </div>
