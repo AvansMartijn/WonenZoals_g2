@@ -42,15 +42,14 @@ class DashboardController extends Controller
     {
         if (auth()->user()->role == 'Beheerder') {
             return view('dashPages.dashBeheerder');
-        } else if (auth()->user()->role == 'Bewoner') {
+        } elseif (auth()->user()->role == 'Bewoner') {
             return view('dashPages.dashBewoner');
-        } else if (auth()->user()->role == 'Vrijwilliger') {
+        } elseif (auth()->user()->role == 'Vrijwilliger') {
             return view('dashPages.dashVrijwilliger');
-        } else if (auth()->user()->role == 'Ouder') {
+        } elseif (auth()->user()->role == 'Ouder') {
             return view('dashPages.dashOuder');
         } else {
             return view('login');
         }
-
     }
 }

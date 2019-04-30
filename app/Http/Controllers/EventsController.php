@@ -1,14 +1,32 @@
 <?php
-
+/**
+ * Main controller for agenda
+ *
+ * PHP version 7.3
+ *
+ * @category Controllers
+ * @package  Wonenzoals
+ * @author   Chiel  <username@example.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link     https://wonenzoals.mardy.tk
+ */
 namespace App\Http\Controllers;
 
 use App\AgendaEvent;
 use Auth;
 use Calendar;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 
+/**
+ *  EventsController Class Doc Comment
+ *
+ * @category Class
+ * @package  EventsController
+ * @author   Chiel <username@example.com>
+ * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
+ * @link     https://wonenzoals.mardy.tk
+ */
 class EventsController extends Controller
 {
     /**
@@ -21,29 +39,28 @@ class EventsController extends Controller
         $this->middleware('auth');
 
         //fixed register login
-        $this->middleware(function ($request, $next) {
+        $this->middleware(
+            function ($request, $next) {
 
-            $userAuth = Auth::user();
+                $userAuth = Auth::user();
 
-            $userAuth =  $userAuth->authorizations;
+                $userAuth = $userAuth->authorizations;
 
-            $toegang = false;
+                $toegang = false;
 
-            foreach($userAuth as $userAuthh)
-            {
-                if($userAuthh->authorization == "Agenda")
-                {
-                    $toegang  = true;
+                foreach ($userAuth as $userAuthh) {
+                    if ($userAuthh->authorization == "Agenda") {
+                        $toegang = true;
+                    }
                 }
-            }
 
-            if(!$toegang)
-            {
-                return redirect('/dashboard');
-            }
+                if (!$toegang) {
+                    return redirect('/dashboard');
+                }
 
-            return $next($request);
-        });
+                return $next($request);
+            }
+        );
     }
 
     /**
@@ -61,11 +78,11 @@ class EventsController extends Controller
             if (!$event->pivot->applied) {
                 //no relation means he has NOT applied for this event
                 $color = "blue";
-            }else{
+            } else {
                 //relation means he HAS applied for this event
                 $color = "green";
             }
-            //create a Calendar item for this event 
+            //create a Calendar item for this event
             $event_list[] = Calendar::event(
                 $event->eventname,
                 false,
@@ -81,7 +98,7 @@ class EventsController extends Controller
         $calendar_details = Calendar::addEvents($event_list)->setCallbacks(
             [ //set fullcalendar callback options (will not be JSON encoded)
                 'eventClick' =>
-                'function(event) { if(event.id) {window.open("/dashboard/agenda/item/"
+                'function(event) { if(event.id) {window.location.assign("/dashboard/agenda/item/"
                                         + event.id, "_blank"); return false;}}',
             ]
         );
@@ -89,17 +106,19 @@ class EventsController extends Controller
         $agent = new Agent();
         if ($agent->isMobile()) {
             $calendar_details->setOptions(['aspectRatio' => 1]);
-        }        
+        }
+        $calendar_details->setOptions(['timeFormat' => 'H:mm']);
         return View('dashPages.agendaOverview', compact('calendar_details'));
     }
 
-     /**
+    /**
      * Create a request
      *
      * @param int $id The id
      *
      * @return \Illuminate\Http\Response
      */
+
     public function apply($id){
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->pivot->applied = 1; 
@@ -125,7 +144,6 @@ class EventsController extends Controller
     {
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $users_applied = $event->users()->where('applied', 1)->get();
-        
         $data = ['event' => $event, 'users' => $users_applied];
         return View('dashPages.agendaDetail', ["data" => $data]);
     }

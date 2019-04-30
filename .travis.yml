@@ -27,7 +27,8 @@ script:
 # - vendor/bin/phpunit --coverage-text
   - vendor/bin/phpunit --coverage-clover=coverage.xml
 # Run code analysis
-#  - vendor/bin/phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
+  - ./vendor/bin/phpcbf --standard=./ruleset.xml app/Http/Controllers/*
+  - ./vendor/bin/phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers --standard=./ruleset.xml
 # Rollback Database tests
   - php artisan migrate:rollback --env=testing --no-interaction -vvv
 # Run Mix tasks

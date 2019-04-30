@@ -2,6 +2,8 @@
 
 namespace Tests\Unit;
 
+
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -18,12 +20,5 @@ class PagesControllerTest extends TestCase
 
         $response->assertSuccessful();
         $response->assertViewIs('pages.index');
-    }
-
-    public function test_view_cmsHome_is_returned(){
-        $response = $this->get('/cmsHome');
-
-        $response->assertSuccessful();
-        $response->assertViewIs('dashPages.cmsHome');
     }
 }

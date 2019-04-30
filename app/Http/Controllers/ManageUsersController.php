@@ -29,6 +29,28 @@ use Illuminate\Support\Facades\Auth;
  */
 class ManageUsersController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        //fixed register login
+        $this->middleware(
+            function ($request, $next) {
+                $role = Auth::user()->role;
+
+                if ($role !== 'Beheerder') {
+                    return redirect('/dashboard');
+                }
+
+                return $next($request);
+            }
+        );
+    }
 
     /**
      * Create a new controller instance.
@@ -71,7 +93,8 @@ class ManageUsersController extends Controller
     {
 
         $this->validate(
-            $request, [
+            $request,
+            [
                 'machtiging' => 'required',
             ]
         );
@@ -147,7 +170,8 @@ class ManageUsersController extends Controller
     public function update(Request $request)
     {
         $this->validate(
-            $request, [
+            $request,
+            [
                 'naam' => 'required',
                 'email' => 'required',
             ]

@@ -15,7 +15,7 @@
 //route to webpage using a function in pagescontroler
 Route::get('/', 'PagesController@index');
 
-Route::get('/cmsHome', 'PagesController@cmsHome');
+Route::get('/cmsHome', 'CMSController@cmsHome');
 
 Route::post('/', ['as' => 'contactus.store', 'uses' => 'ContactUSController@contactUSPost']);
 
@@ -40,3 +40,5 @@ Route::get('/dashboard/agenda/item/{id}', 'EventsController@detail')->name('agen
 Route::get('/dashboard/agenda/item/{id}/apply', 'EventsController@apply')->name('agendaApply');
 Route::get('/dashboard/agenda/item/{id}/cancel', 'EventsController@cancel')->name('agendaCancel');
 
+//niewsbrief archief
+Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchive@index');
