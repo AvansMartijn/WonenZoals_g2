@@ -157,11 +157,21 @@ class EventsController extends Controller
      */
     public function addEvent(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'eventname' => 'required|max:255',
+            'description' => 'required|max:255',
+            'date' => 'date',
+            'role_check' => 'required',
+
+        ]);
         //
         $autoApply = 0;
         if($request['auto_apply'] != null){
             $autoApply = 1;
         }
+
+        
         $event = new AgendaEvent;
         $event->eventname = $request['eventname'];
         $event->description = $request['description'];
