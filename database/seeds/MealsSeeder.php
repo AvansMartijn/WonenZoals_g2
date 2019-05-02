@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Meal;
+use App\EventsMeals;
 
 class MealsSeeder extends Seeder
 {
@@ -33,7 +35,7 @@ class MealsSeeder extends Seeder
 
 
         foreach($events_meals as $events_meal){
-            UsersAgendaEvents::create($events_meal);
+            EventsMeals::create($events_meal);
         };
     }
 }
