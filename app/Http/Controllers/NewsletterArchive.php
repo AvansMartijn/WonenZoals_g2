@@ -15,6 +15,7 @@ namespace App\Http\Controllers;
 
 use App\authorization;
 use App\User;
+use App\Newsletter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 /**
@@ -70,6 +71,37 @@ class NewsletterArchive extends Controller
      */
     public function index()
     {
-        return view('dashPages.dashNieuwsbriefArchief');
+
+        $newsletters = Newsletter::all();
+
+        return view('dashPages.dashNieuwsbriefArchief')->with('newsletters', $newsletters);
     }
+
+
+    /**
+     * Show the application dashboard.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'Titel' => 'required',
+                'Link' => 'required'
+            ]
+        );
+
+        $newsletter = new Newsletter();
+        $newsletter->title = $request->input('Titel');
+        $newsletter->link = $request->input('Link');
+        $newsletter->save();
+
+        return redirect()->back()->with('success', 'Nieuwsbrief is toegevoegd aan het archief');
+    }
+
+    
 }
