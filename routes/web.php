@@ -42,7 +42,7 @@ Route::get('/dashboard/agenda/item/{id}/cancel', 'EventsController@cancel')->nam
 
 //niewsbrief archief
 Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchive@index');
-
+Route::post('/dashboard/nieuwsbriefarchief', 'NewsletterArchive@store')->middleware('auth');
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([
     'create' => 'meals.build',
 ]);

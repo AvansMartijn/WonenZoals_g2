@@ -33,5 +33,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EventsSeeder::class);
         $this->call(MealsSeeder::class);
         $this->call(AuthorizationSeeder::class);
+        $this->call(NewsletterSeeder::class);
     }
 }
