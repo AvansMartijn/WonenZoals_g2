@@ -70,15 +70,12 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //get all events
-        $events = AgendaEvent::all();
         //get events that have a relation with this user
-        $user_events = Auth::user()->events()->get();
+        $events = Auth::user()->events()->get();
         $event_list = [];
-        $user_event_list = [];
         foreach ($events as $key => $event) {
             //check if the user already has a relation with this event
-            if (!$user_events->contains($event->id)) {
+            if (!$event->pivot->applied) {
                 //no relation means he has NOT applied for this event
                 $color = "blue";
             } else {
@@ -90,7 +87,7 @@ class EventsController extends Controller
                 $event->eventname,
                 false,
                 new \DateTime($event->date),
-                new \DateTime($event->date),
+                new \DateTime($event->enddate),
                 $event->id,
                 [
                     'color' => $color,
@@ -121,26 +118,18 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function apply($id)
-    {
-        $event_user = new \App\UsersAgendaEvents;
-        $event_user->event_id = $id;
-        $event_user->user_id = Auth::id();
-        $event_user->save();
+
+    public function apply($id){
+        $event = Auth::user()->events()->where('event_id', $id)->first();
+        $event->pivot->applied = 1; 
+        $event->pivot->update();
         return back();
     }
 
-    /**
-     * Create a request
-     *
-     * @param int $id The id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function cancel($id)
-    {
-        $event_user = \App\UsersAgendaEvents::where([['event_id', $id], ['user_id', Auth::id()]]);
-        $event_user->delete();
+    public function cancel($id){
+        $event = Auth::user()->events()->where('event_id', $id)->first();
+        $event->pivot->applied = 0; 
+        $event->pivot->update();
         return back();
     }
 
@@ -153,16 +142,8 @@ class EventsController extends Controller
      */
     public function detail($id)
     {
-        $event = \App\AgendaEvent::find($id);
-        $user_events = Auth::user()->events()->get();
-        $users_applied = $event->users()->get();
-        //check wheter the user has applied to the event
-        //so we can show the correct information and buttons
-        if ($user_events->contains($id)) {
-            $event->applied = true;
-        } else {
-            $event->applied = false;
-        }
+        $event = Auth::user()->events()->where('event_id', $id)->first();
+        $users_applied = $event->users()->where('applied', 1)->get();
         $data = ['event' => $event, 'users' => $users_applied];
         return View('dashPages.agendaDetail', ["data" => $data]);
     }
@@ -174,8 +155,38 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addEvents(Request $request)
+    public function addEvent(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'eventname' => 'required|max:255',
+            'description' => 'required|max:255',
+            'date' => 'date',
+            'role_check' => 'required',
+
+        ]);
+        //
+        $autoApply = 0;
+        if($request['auto_apply'] != null){
+            $autoApply = 1;
+        }
+
+        
+        $event = new AgendaEvent;
+        $event->eventname = $request['eventname'];
+        $event->description = $request['description'];
+        $event->date = $request['date'];
+        $event->enddate = $request['enddate'];
+        $event->save();
+
+        foreach($request['role_check'] as $group){
+            $users = \App\User::where('role', $group)->get();
+            foreach($users as $user){
+                $user->events()->save($event, ['applied' => $autoApply]);
+                // App\User::find()->roles()->save($role, ['expires' => $expires]);
+            }
+        }
+        return redirect()->back()->with('success', 'activiteit is aangemaakt');
     }
 
     /**
@@ -183,7 +194,13 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createMeal()
     {
+        return View('dashPages.agendaCreateMeal');
+    }
+
+    public function createActivity()
+    {
+        return View('dashPages.agendaCreateActivity');
     }
 }

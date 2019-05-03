@@ -16,7 +16,7 @@
                         <h1>{{$data['event']->eventname}}</h1>
                         <p>{!!$data['event']->description!!}</p>
                         <p>Aanvang: {{$data['event']->date}}</p>
-                        @if ($data['event']->applied)
+                        @if ($data['event']->pivot->applied)
                             <p class="text-success">Je hebt je aangemeld</p>
                             <a class="btn btn-danger" href="{{ url('/dashboard/agenda/item/' . $data['event']->id . '/cancel') }}">Afmelden</a>
                             @else
