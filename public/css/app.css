@@ -10845,6 +10845,70 @@ header > div > h1 {
   cursor: pointer;
 }
 
+.LoginWrapper {
+  background-image: url(/../img/parallax.JPG);
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+.centerPage {
+  margin: 0 auto;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.Login {
+  width: 400px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.LoginHeader {
+  background-color: #9bbc59;
+  padding: 5px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.LoginContent {
+  padding: 25px;
+}
+
+.LoginContent > div {
+  margin: 15px;
+}
+
+.btnCustom {
+  width: 100%;
+  background-color: #9bbc59;
+  color: white;
+}
+
+.BackButton {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.BackButton > a {
+  color: white;
+  font-size: 50px;
+  background-color: #9bbc59;
+  padding: 15px;
+  border-radius: 10px 40px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
 /* curves */
 
 @media only screen and (max-width: 955px) {
@@ -10937,6 +11001,10 @@ header > div > h1 {
 
   .tablet-hide {
     display: none;
+  }
+
+  .centerPage {
+    width: 90%;
   }
 }
 
@@ -11223,6 +11291,7 @@ body {
   width: 100%;
   margin-top: 0;
   max-height: 600px;
+  min-height: 600px;
   position: relative;
   padding: 0 30px;
   box-sizing: border-box;
