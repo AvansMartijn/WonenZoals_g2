@@ -160,6 +160,8 @@ class EventsController extends Controller
 
         $validatedData = $request->validate([
             'eventname' => 'required|max:255',
+            'location' => 'required|max:255',
+            'eventname' => 'required|max:255',
             'description' => 'required|max:255',
             'date' => 'date',
             'role_check' => 'required',
@@ -174,6 +176,8 @@ class EventsController extends Controller
         
         $event = new AgendaEvent;
         $event->eventname = $request['eventname'];
+        $event->location = $request['location'];
+        $event->transport = $request['transport'];
         $event->description = $request['description'];
         $event->date = $request['date'];
         $event->enddate = $request['enddate'];

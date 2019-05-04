@@ -22,6 +22,16 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="location">Locatie</label>
+                                    <input type="text" class="form-control" name="location" placeholder="location">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="transport">Vervoer</label>
+                                    <input type="text" class="form-control" name="transport" placeholder="transport">
+                                </div>
+
+                                <div class="form-group">
                                         <label for="date">Aanvang</label>
                                         <input type="datetime-local" class="form-control" name="date" placeholder="dd-mm-yyyy h:i">
                                 </div>

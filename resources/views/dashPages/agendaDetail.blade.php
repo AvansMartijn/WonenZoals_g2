@@ -15,6 +15,8 @@
                     @endif
                         <h1>{{$data['event']->eventname}}</h1>
                         <p>{!!$data['event']->description!!}</p>
+                        <p>locatie: {!!$data['event']->location!!}</p>
+                        <p>vervoer: {!!$data['event']->transport!!}</p>
                         <p>Aanvang: {{$data['event']->date}}</p>
                         @if ($data['event']->pivot->applied)
                             <p class="text-success">Je hebt je aangemeld</p>
