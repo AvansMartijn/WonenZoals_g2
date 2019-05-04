@@ -15,9 +15,10 @@
                     @endif
                         <h1>{{$data['event']->eventname}}</h1>
                         <p>{!!$data['event']->description!!}</p>
-                        <p>locatie: {!!$data['event']->location!!}</p>
-                        <p>vervoer: {!!$data['event']->transport!!}</p>
+                        <p>Locatie: {!!$data['event']->location!!}</p>
+                        <p>Vervoer: {!!$data['event']->transport!!}</p>
                         <p>Aanvang: {{$data['event']->date}}</p>
+                        <p>Organisator: {!!$data['event']->organiser_name!!}</p>
                         @if ($data['event']->pivot->applied)
                             <p class="text-success">Je hebt je aangemeld</p>
                             <a class="btn btn-danger" href="{{ url('/dashboard/agenda/item/' . $data['event']->id . '/cancel') }}">Afmelden</a>

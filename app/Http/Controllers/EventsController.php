@@ -143,6 +143,7 @@ class EventsController extends Controller
     public function detail($id)
     {
         $event = Auth::user()->events()->where('event_id', $id)->first();
+        $event->organiser_name = \App\User::where('id', $event->organiser_id)->first()->name;
         $users_applied = $event->users()->where('applied', 1)->get();
         $data = ['event' => $event, 'users' => $users_applied];
         return View('dashPages.agendaDetail', ["data" => $data]);
@@ -178,6 +179,7 @@ class EventsController extends Controller
         $event->eventname = $request['eventname'];
         $event->location = $request['location'];
         $event->transport = $request['transport'];
+        $event->organiser_id = Auth::id();
         $event->description = $request['description'];
         $event->date = $request['date'];
         $event->enddate = $request['enddate'];
