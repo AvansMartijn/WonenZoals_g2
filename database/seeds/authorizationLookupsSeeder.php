@@ -1,6 +1,6 @@
 <?php
 /**
- * Main Seeder
+ * Authorizations Table Seeder
  *
  * PHP version 7.3
  *
@@ -11,29 +11,35 @@
  * @link     https://wonenzoals.mardy.tk
  */
 use Illuminate\Database\Seeder;
+use App\authorizationLookup;
 /**
  * User Table Seeder with one user of every type
  *
  * @category Class
- * @package  DatabaseSeeder
+ * @package  UserTableSeeder
  * @author   Martijn Hanegraaf <mfghaneg@avans.nl>
  * @license  https://www.gnu.org/licenses/gpl-3.0.txt GNU/GPLv3
  * @link     https://wonenzoals.mardy.tk
  */
-class DatabaseSeeder extends Seeder
+class authorizationLookupsSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
-        $this->call(EventsSeeder::class);
-        $this->call(MealsSeeder::class);
-        $this->call(AuthorizationSeeder::class);
-        $this->call(NewsletterSeeder::class);
-        $this->call(authorizationLookupsSeeder::class);
+        DB::table('authorization_lookups')->delete();
+
+        $authorizationLookups = [
+            ['id' => 1, 'name' => 'Agenda'],
+            ['id' => 2, 'name' => 'Nieuwsbriefarchief'],
+            ['id' => 3, 'name' => 'Forum']
+        ];
+
+        foreach($authorizationLookups as $authorizationLookup){
+            authorizationLookup::create($authorizationLookup);
+        };
     }
 }

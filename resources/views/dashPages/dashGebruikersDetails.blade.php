@@ -49,11 +49,17 @@
                                             {!! Form::open(['action' => 'ManageUsersController@store', 'methode' => 'POST']) !!}
                                                 
                                                     <div class="from-group bottom-spacer">
-                                                        {{Form::label('machtiging', 'Machtiging')}}
-                                                        {{Form::select('machtiging', array('Agenda' => 'Agenda', 'Forum' => 'Forum', 'Nieuwsbriefarchief' => 'Nieuwsbrief archief', 'Maaltijden' => 'Maaltijden', 'Activiteit' => 'Activiteit'), null, array('class'=>'form-control')) }}
+
+                                                        @foreach ($authoriationsAvailable as $authoriationnn)
+                                                        
+                                                            {{ Form::label($authoriationnn->name, $authoriationnn->name)}}
+                                                            {{ Form::checkbox($authoriationnn->name, $authoriationnn->id,false)}}
+                                                            
+                                                        
+                                                        @endforeach
+                                                       
                                                     </div>
-                                                    
-                
+
                                                     {{ Form::hidden('id', $user->id) }}
                 
                                                     {{Form::submit("Toevoegen", ['class' => 'btn btn-success bottom-spacer float-right'])}}
