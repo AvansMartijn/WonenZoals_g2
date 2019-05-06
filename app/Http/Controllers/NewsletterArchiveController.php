@@ -14,10 +14,11 @@
 namespace App\Http\Controllers;
 
 use App\authorization;
-use App\User;
 use App\Newsletter;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 /**
  *  NewsletterArchiveController Class Doc Comment
  *
@@ -77,7 +78,6 @@ class NewsletterArchiveController extends Controller
         return view('dashPages.dashNieuwsbriefArchief')->with('newsletters', $newsletters);
     }
 
-
     /**
      * Show the application dashboard.
      *
@@ -91,7 +91,7 @@ class NewsletterArchiveController extends Controller
             $request,
             [
                 'Titel' => 'required',
-                'Link' => 'required'
+                'Link' => 'required',
             ]
         );
 
@@ -100,19 +100,11 @@ class NewsletterArchiveController extends Controller
         $https = substr($link, 0, 8);
         $http = substr($link, 0, 7);
 
-        if($http !== "http://")
-        {
-
-            if($https !== "https://")
-            {
-                    $link = "https://".$link; 
+        if ($http !== "http://") {
+            if ($https !== "https://") {
+                $link = "https://" . $link;
             }
-
         }
-    
-
-
-
 
         $newsletter = new Newsletter();
         $newsletter->title = $request->input('Titel');
@@ -122,9 +114,7 @@ class NewsletterArchiveController extends Controller
         return redirect()->back()->with('success', 'Nieuwsbrief is toegevoegd aan het archief');
     }
 
-
-
-     /**
+    /**
      * Show the application dashboard.
      *
      * @param id $id id
@@ -136,9 +126,7 @@ class NewsletterArchiveController extends Controller
         $newsletter = Newsletter::where('id', $id)->first();
 
         $newsletter->delete();
-        
+
         return redirect()->back()->with('success', 'De nieuwsbrief is verwijderd uit het archief');
     }
-
-    
 }
