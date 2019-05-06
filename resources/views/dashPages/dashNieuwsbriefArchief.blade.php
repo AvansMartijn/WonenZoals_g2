@@ -13,7 +13,7 @@
                         
                         @if (Auth::user()->role == "Beheerder")
                             <h2>Nieuwsbrief toevoegen</h2>
-                            {!! Form::open(['action' => 'NewsletterArchive@store', 'methode' => 'POST']) !!}
+                            {!! Form::open(['action' => 'NewsletterArchiveController@store', 'methode' => 'POST']) !!}
                                         
                                 <div class="from-group">
                                     {{Form::label('Titel', 'Titel')}}
@@ -34,13 +34,28 @@
                         <table class="table table-striped">
                             <tr>
                                     <th>Datum</th>
-                                    <th class="text-right">Link</th>
+                                    <th>Link</th>
+                                        @if (Auth::user()->role == "Beheerder")
+                                            <th>Verwijderen</th>
+                                        @endif
+                                    
+                                    
                             </tr>
                             @foreach ($newsletters as $newsletter)
                                     <tr>
                                             <td>{{$newsletter->title}}</td>
 
                                             <td><a class="btn btn-primary" href="{{$newsletter->link}}" target="_blank">Bekijk</td>
+
+                                            @if (Auth::user()->role == "Beheerder")
+                                                <td>
+                                                    {!!Form::open(['action' => ['NewsletterArchiveController@destroy', $newsletter->id], 'method' => 'POST'])!!}
+                                                                            {{Form::hidden('_method', 'DELETE')}}
+                                                                            {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
+                                                    {!!Form::close()!!}
+                                                </td>
+                                            @endif
+                                            
                                     </tr>
                             @endforeach
 

@@ -29,7 +29,7 @@
                                                                         {{Form::hidden('_method', 'DELETE')}}
                                                                         {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
                                                                 {!!Form::close()!!}
-                                                                <a href="/gebruiker/{{$user->id}}" class="btn btn-primary float-right">Details</a>
+                                                                <a href="/dashboard/gebruikers/{{$user->id}}" class="btn btn-primary float-right">Details</a>
                                                                 </td>
                                                         </tr>
                                                 @endforeach
