@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <a href="dashboard/gebruikers" class="btn btn-primary bottom-spacer">Terug</a>
+    <a href="/dashboard/gebruikers" class="btn btn-primary bottom-spacer">Terug</a>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
