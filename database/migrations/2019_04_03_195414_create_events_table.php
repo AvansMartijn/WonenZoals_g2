@@ -19,7 +19,14 @@ class CreateEventsTable extends Migration
             $table->string('description');
             $table->datetime('date');
             $table->datetime('enddate');
+            $table->string('location');
+            $table->string('transport')->nullable();
+            $table->unsignedInteger('organiser_id');
             $table->timestamps();
+
+            $table->foreign('organiser_id')
+                ->references('id')
+                ->on('users')->onDelete('cascade');
         });
 
         Schema::create('users_agenda_events', function (Blueprint $table) {

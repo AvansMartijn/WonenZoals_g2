@@ -18,6 +18,6 @@ class AgendaEvent extends Model
 
     public function meals()
     {
-        return $this->belongsToMany('App\Meal', 'events_meals', 'meal_id');
+        return $this->belongsToMany('App\Meal', 'events_meals', 'event_id', 'meal_id');
     }
 }
