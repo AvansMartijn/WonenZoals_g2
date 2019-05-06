@@ -11254,6 +11254,23 @@ body {
   padding: 15px;
 }
 
+.BackHeader {
+  margin: 15px;
+  text-align: center;
+}
+
+.BackHeader > h3 {
+  color: #ff6464;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.BottomMargin {
+  margin-bottom: 50px;
+}
+
 .slidee {
   font-family: "Oxygen", sans-serif;
 }
