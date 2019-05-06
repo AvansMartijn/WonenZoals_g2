@@ -11429,6 +11429,11 @@ body {
   margin-right: 5px;
 }
 
+.alignpotjandriedubbeltjes {
+  position: absolute;
+  left: 5rem;
+}
+
 .slidee {
   font-family: "Oxygen", sans-serif;
 }

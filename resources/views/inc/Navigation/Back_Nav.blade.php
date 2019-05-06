@@ -14,7 +14,10 @@
             <ul>
                 
                 <a href="/dashboard" class="Menu-Item {{ (request()->is('dashboard')) ? 'Active' : '' }}">
-                    <li><i class="fas fa-desktop"></i>Dashboard</li>
+                    <li>
+                        <i class="fas fa-desktop"></i>
+                        <span class="alignpotjandriedubbeltjes">Dashboard</span>
+                    </li>
                 </a>
 
                 {{-- check all auth witin a role --}}
@@ -23,7 +26,10 @@
                     @if ($userauthorization->authorization == "Agenda")
 
                         <a href="/dashboard/agenda" class="Menu-Item {{ (request()->is('dashboard/agenda*')) ? 'Active' : '' }}">
-                            <li><i class="fas fa-calendar"></i>Agenda</li>
+                            <li>
+                                <i class="fas fa-calendar"></i>
+                                <span class="alignpotjandriedubbeltjes">Agenda</span>
+                            </li>
                         </a>
 
                     @endif
@@ -31,7 +37,10 @@
                     @if ($userauthorization->authorization == "Maaltijden")
 
                         <a href="/dashboard/maaltijden" class="Menu-Item">
-                            <li><i class="fas fa-calendar"></i>Maaltijden</li>
+                            <li>
+                                <i class="fas fa-utensils"></i>
+                                <span class="alignpotjandriedubbeltjes">Maaltijden</span>
+                            </li>
                         </a>
 
                     @endif
@@ -40,7 +49,10 @@
                     @if ($userauthorization->authorization == "Nieuwsbriefarchief")
 
                         <a href="/dashboard/nieuwsbriefarchief" class="Menu-Item {{ (request()->is('dashboard/nieuwsbriefarchief*')) ? 'Active' : '' }}">
-                            <li><i class="fas fa-archive"></i>Nieuwsbrief archief</li>
+                            <li>
+                                <i class="fas fa-archive"></i>
+                                <span class="alignpotjandriedubbeltjes">Nieuwsbrief archief</span>
+                            </li>
                         </a>
 
                     @endif
@@ -51,7 +63,10 @@
                 @if (Auth::user()->role == "Beheerder")
 
                     <a href="/dashboard/gebruikers" class="Menu-Item {{ (request()->is('dashboard/gebruikers*')) ? 'Active' : '' }}">
-                        <li><i class="fas fa-users"></i>Gebruikers</li>
+                        <li>
+                            <i class="fas fa-users"></i>
+                            <span class="alignpotjandriedubbeltjes">Gebruikers</span>
+                        </li>
                     </a>
                 
                 @endif
@@ -59,7 +74,10 @@
                 
                 
                 <a href="{{ route('logout') }}" class="Menu-Item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <li><i class="fas fa-sign-out-alt"></i>Uitloggen</li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="alignpotjandriedubbeltjes">Uitloggen</span>
+                    </li>
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
