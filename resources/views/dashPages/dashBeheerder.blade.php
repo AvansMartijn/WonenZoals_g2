@@ -16,9 +16,7 @@
 
                         <h1>Welkom {{Auth::user()->name}}</h1>
                         <p>Dit is uw persoonlijke Beheerder pagina</p>
-                        
-
-                        <a class="btn btn-primary" href="/gebruikers">Gebruikers beheren</a>
+                    
 
                 </div>
             </div>
