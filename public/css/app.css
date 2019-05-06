@@ -11263,6 +11263,10 @@ body {
   color: #ff6464;
 }
 
+.full-width {
+  width: 100% !important;
+}
+
 .slidee {
   font-family: "Oxygen", sans-serif;
 }
