@@ -7,7 +7,8 @@
                 <div class="col-md-12">
                         <div class="bottom-spacer">
                                 <a href="/dashboard" class="btn btn-primary">Terug</a>
-                                <a class="btn btn-primary" href="{{ route('meals.build') }}">Nieuw gerecht</a>
+                                <a class="btn btn-success" href="{{ route('meals.build') }}">Nieuw gerecht</a>
+                                <a href="/dashboard/agenda/create/meal" class="btn btn-success">Nieuwe maaltijd activiteit</a>
                         </div>
                         <div class="card">
                                 <div class="card-header">Gerechten beheren</div>

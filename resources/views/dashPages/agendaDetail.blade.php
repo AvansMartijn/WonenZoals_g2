@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+                <div class="bottom-spacer">
+                        <a href="/dashboard/agenda" class="btn btn-primary">Terug</a>
+                    </div>
             <div class="card bottom-spacer">
                 <div class="card-header">Dashboard</div>
 
