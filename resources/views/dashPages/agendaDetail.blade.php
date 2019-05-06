@@ -15,10 +15,21 @@
                     @endif
                         <h1>{{$data['event']->eventname}}</h1>
                         <p>{!!$data['event']->description!!}</p>
-                        <p>Locatie: {!!$data['event']->location!!}</p>
-                        <p>Vervoer: {!!$data['event']->transport!!}</p>
-                        <p>Aanvang: {{$data['event']->date}}</p>
-                        <p>Organisator: {!!$data['event']->organiser_name!!}</p>
+                        <p>
+                        @if ($data['meal']['voorgerecht'] != null)
+                            <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}<br> 
+                        @endif
+                        @if ($data['meal']['hoofdgerecht'] != null)
+                            <b>Hoofdgerecht:</b> {{$data['meal']['hoofdgerecht']->name}} <br> 
+                        @endif
+                        @if ($data['meal']['nagerecht'] != null)
+                            <b>Nagerecht:</b> {{$data['meal']['nagerecht']->name}} <br> 
+                        @endif
+                        </p>
+                        <p><b>Locatie:</b> {!!$data['event']->location!!}</p>
+                        <p><b>Vervoer:</b> {!!$data['event']->transport!!}</p>
+                        <p><b>Aanvang:</b> {{$data['event']->date}}</p>
+                        <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
                         @if ($data['event']->pivot->applied)
                             <p class="text-success">Je hebt je aangemeld</p>
                             <a class="btn btn-danger" href="{{ url('/dashboard/agenda/item/' . $data['event']->id . '/cancel') }}">Afmelden</a>

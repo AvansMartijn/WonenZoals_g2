@@ -145,7 +145,13 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->organiser_name = \App\User::where('id', $event->organiser_id)->first()->name;
         $users_applied = $event->users()->where('applied', 1)->get();
-        $data = ['event' => $event, 'users' => $users_applied];
+        
+        $voorgerecht = $event->meals()->where('type', 'voorgerecht')->get()->first();
+        $hoofdgerecht = $event->meals()->where('type', 'hoofdgerecht')->get()->first();
+        $nagerecht = $event->meals()->where('type', 'nagerecht')->get()->first();
+
+        $meal = ['voorgerecht' => $voorgerecht, 'hoofdgerecht' => $hoofdgerecht, 'nagerecht' => $nagerecht];
+        $data = ['event' => $event, 'users' => $users_applied, 'meal' => $meal];
         return View('dashPages.agendaDetail', ["data" => $data]);
     }
 
@@ -184,6 +190,24 @@ class EventsController extends Controller
         $event->date = $request['date'];
         $event->enddate = $request['enddate'];
         $event->save();
+        
+        if($request['voorgerecht'] != ""){
+            // die;
+            $meal = \App\Meal::where('id', $request['voorgerecht'])->first();
+            $event->meals()->save($meal);
+        }
+
+        if($request['hoofdgerecht'] != ""){
+            $meal = \App\Meal::where('id', $request['hoofdgerecht'])->first();
+            $event->meals()->save($meal);
+        }
+
+        if($request['nagerecht'] != ""){
+            $meal = \App\Meal::where('id', $request['nagerecht'])->first();
+            $event->meals()->save($meal);
+        }
+        // var_dump($request['voorgerecht']);
+        // die;
 
         foreach($request['role_check'] as $group){
             $users = \App\User::where('role', $group)->get();
@@ -202,7 +226,9 @@ class EventsController extends Controller
      */
     public function createMeal()
     {
-        return View('dashPages.agendaCreateMeal');
+        $meals = \App\Meal::all();
+        
+        return View('dashPages.agendaCreateMealActivity', ['meals' => $meals]);
     }
 
     public function createActivity()

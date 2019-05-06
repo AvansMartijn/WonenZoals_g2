@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card bottom-spacer">
-                <div class="card-header">Activiteit aanmaken</div>
+                <div class="card-header">Maaltijd activiteit aanmaken</div>
 
                 <div class="card-body">
                        
@@ -21,15 +21,51 @@
                                         <textarea class="form-control" name="description" rows="3" placeholder="beschrijving"></textarea>
                                 </div>
 
+                                    <div class="form-group bottom-spacer row">
+                                        <div class="col-sm-4">
+                                        <label for="voorgerecht">Voorgerecht: </label>
+                                        <select class="form-control" name="voorgerecht" id="voorgerecht">
+                                            <option value="">Geen voorgerecht</option>
+                                        @foreach ($meals as $meal)
+                                            @if ($meal->type == "voorgerecht")
+                                                <option value="{{$meal->id}}">{{$meal->name}}</option>
+                                            @endif
+                                        @endforeach
+                                        </select>
+                                        </div>
+                                    
+
+                                        <div class="col-sm-4">
+                                        <label for="hoofdgerecht">Hoofdgerecht: </label>
+                                        <select class="form-control" name="hoofdgerecht" id="hoofdgerecht">
+                                            <option value="">Geen hoofdgerecht</option>
+                                            @foreach ($meals as $meal)
+                                                @if ($meal->type == "hoofdgerecht")
+                                                    <option value="{{$meal->id}}">{{$meal->name}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                
+
+                                        <div class="col-sm-4">
+                                        <label for="nagerecht">Nagerecht: </label>
+                                        <select class="form-control" name="nagerecht" id="nagerecht">
+                                            <option value="">Geen nagerecht</option>
+                                            @foreach ($meals as $meal)
+                                                @if ($meal->type == "nagerecht")
+                                                    <option value="{{$meal->id}}">{{$meal->name}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        </div>
+                                    </div>
+
                                 <div class="form-group">
                                     <label for="location">Locatie</label>
                                     <input type="text" class="form-control" name="location" placeholder="location">
                                 </div>
 
-                                <input type="hidden" name="voorgerecht" value="">
-                                <input type="hidden" name="voorgerecht" value="">
-                                <input type="hidden" name="voorgerecht" value="">
-                                
                                 <div class="form-group">
                                     <label for="transport">Vervoer</label>
                                     <input type="text" class="form-control" name="transport" placeholder="transport">

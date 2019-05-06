@@ -37,6 +37,7 @@ class AuthorizationSeeder extends Seeder
             ['id' => 2, 'user_id' => 1, 'authorization' => "Nieuwsbriefarchief"],
             ['id' => 3, 'user_id' => 2, 'authorization' => "Agenda"],
             ['id' => 4, 'user_id' => 1, 'authorization' => "Maaltijden"],
+            ['id' => 5, 'user_id' => 1, 'authorization' => "Activiteit"]
         ];
 
         foreach($authorizations as $authorization){

@@ -18,9 +18,9 @@ class MealsSeeder extends Seeder
         DB::table('events_meals')->delete();
 
         $meals = [
-            ['id' => 1, 'type' => 'Voorgerecht', 'name' => 'Groentensoep', 'description' => 'Groentesoep met verse groenten'],
-            ['id' => 2, 'type' => 'Hoofdgerecht', 'name' => 'Wortelstamp met rookworst', 'description' => 'Wortelstamp van verse wortelen met een Unox rookworst'],
-            ['id' => 3, 'type' => 'Nagerecht', 'name' => 'Mona toetje', 'description' => 'Een dessert van een mini Mona toetje'],
+            ['id' => 1, 'type' => 'voorgerecht', 'name' => 'Groentensoep', 'description' => 'Groentesoep met verse groenten'],
+            ['id' => 2, 'type' => 'hoofdgerecht', 'name' => 'Wortelstamp met rookworst', 'description' => 'Wortelstamp van verse wortelen met een Unox rookworst'],
+            ['id' => 3, 'type' => 'nagerecht', 'name' => 'Mona toetje', 'description' => 'Een dessert van een mini Mona toetje'],
         ];
         
         foreach($meals as $meal){

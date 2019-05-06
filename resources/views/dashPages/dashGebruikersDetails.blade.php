@@ -50,8 +50,9 @@
                                                 
                                                     <div class="from-group bottom-spacer">
                                                         {{Form::label('machtiging', 'Machtiging')}}
-                                                        {{Form::select('machtiging', array('Agenda' => 'Agenda', 'Forum' => 'Forum', 'Nieuwsbriefarchief' => 'Nieuwsbrief archief', 'Maaltijden' => 'Maaltijden'), null, array('class'=>'form-control')) }}
+                                                        {{Form::select('machtiging', array('Agenda' => 'Agenda', 'Forum' => 'Forum', 'Nieuwsbriefarchief' => 'Nieuwsbrief archief', 'Maaltijden' => 'Maaltijden', 'Activiteit' => 'Activiteit'), null, array('class'=>'form-control')) }}
                                                     </div>
+                                                    
                 
                                                     {{ Form::hidden('id', $user->id) }}
                 
