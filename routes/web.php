@@ -43,7 +43,7 @@ Route::get('/dashboard/agenda/item/{id}/cancel', 'EventsController@cancel')->nam
 //niewsbrief archief
 Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@index')->middleware('auth');
 Route::post('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@store')->middleware('auth');
-Route::delete('/dashboard/nieuwsbriefarchief/verwijderen', 'NewsletterArchiveController@destroy')->middleware('auth');
+Route::delete('/dashboard/nieuwsbriefarchief/{id}', 'NewsletterArchiveController@destroy')->middleware('auth');
 
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([
