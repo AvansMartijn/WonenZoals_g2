@@ -1,7 +1,88 @@
-@extends('layouts.NoHeader')
+@extends('layouts.Back')
 
 @section('content')
-<div class="container">
+{{-- Page Header --}}
+<div class="BackHeader">
+    <a href="/dashboard/gebruikers" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
+    <h3>Gebruikers Aanmaken</h3>
+    <hr>
+</div>
+
+
+{{-- Content --}}
+<div class="row justify-content-center">
+        <div class="col-md-7">
+            <h1>Gegevens</h1>
+            <hr>
+
+            <form method="POST" action="{{ route('register') }}" autocomplete="off">
+                @csrf
+
+                <div class="form-group">
+                    <input id="name" placeholder="Naam" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                    @if ($errors->has('name'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif  
+                </div>
+
+                <div class="form-group">
+                    <input id="email" placeholder="Email Adres" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <input id="password" placeholder="Wachtwoord" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <input id="password-confirm" placeholder="Herhaal Wachtwoord" type="password" class="form-control" name="password_confirmation" required>
+                </div>
+
+                <div class="form-group">
+                    <select id="role" type="text" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" value="{{ old('role') }}" required autofocus>
+                            <option>Bewoner</option>
+                            <option>Vrijwilliger</option>
+                            <option>Ouder</option>
+                            <option>Beheerder</option>
+                    </select>
+                    @if ($errors->has('role'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('role') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <input id="birthday" type="text" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}" name="birthday" value="{{ old('birthday') }}" placeholder="Geboortedatum (Jaar-Maand-Dag)" required>
+                    @if ($errors->has('birthday'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('birthday') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success full-width">
+                        {{ __('Registreren') }}
+                    </button>
+                </div>
+
+            </form>  
+        </div>
+</div>
+
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <a href="/dashboard/gebruikers" class="btn btn-primary bottom-spacer">Terug</a>
@@ -110,7 +191,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 @endsection

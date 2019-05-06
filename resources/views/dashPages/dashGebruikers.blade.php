@@ -12,7 +12,7 @@
         <div class="col-md-7">
                 <div class="MealOptions clearfix">
                         <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
-                        <a class="btn btn-success" href="{{ route('meals.build') }}">Nieuwe Gebruiker</a>
+                        <a class="btn btn-success" href="{{ route('register') }}">Nieuwe Gebruiker</a>
                 </div>
 
                 <table class="table table-striped">
@@ -40,5 +40,7 @@
                         </tbody>
                 </table>
         </div>
+        
+
 </div>
 @endsection
