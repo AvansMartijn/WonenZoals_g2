@@ -3,7 +3,7 @@
 @section('content') 
 {{-- Page Header --}}
 <div class="BackHeader">
-    <a href="/dashboard" class="btn btn-primary">Terug</a>
+    <a href="/dashboard" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
     <h3>Agenda</h3>
     <hr>
 </div>
@@ -16,8 +16,8 @@
         @foreach (Auth::user()->authorizations as $userauthorization)
             @if ($userauthorization->authorization == "Activiteit")
                 <div class="center">
-                    <a href="/dashboard/agenda/create/activity" class="btn btn-success half-width">Nieuwe activiteit</a>
-                    <a href="/dashboard/agenda/create/meal" class="btn btn-success half-width">Nieuwe maaltijd activiteit</a>
+                    <a href="/dashboard/agenda/create/activity" class="btn btn-success half-width">Activiteit inplannen</a>
+                    <a href="/dashboard/agenda/create/meal" class="btn btn-success half-width">Maaltijd inplannen</a>
                 </div>
             @endif
         @endforeach

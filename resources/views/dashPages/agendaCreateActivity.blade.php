@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/agenda" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Activiteit aanmaken</h3>
+    <h3>Activiteit inplannen</h3>
     <hr>
 </div>
 
@@ -52,7 +52,7 @@
             <hr>
 
             <div class="funkyradio-success">
-                <input type="checkbox" name="role_check[]" value="beheerder" id="Beheerder">
+                <input type="checkbox" name="role_check[]" value="beheerder" id="Beheerder" checked>
                 <label for="Beheerder">Beheerders</label>
             </div>
     
@@ -82,8 +82,12 @@
     </div>
 
     <div class="col-md-7">
+        <input type="hidden" name="voorgerecht" value="">
+        <input type="hidden" name="voorgerecht" value="">
+        <input type="hidden" name="voorgerecht" value="">   
+
         <hr>
-        {{Form::submit("Activiteit aanmaken", ['class' => 'btn btn-success full-width'])}}
+        {{Form::submit("Activiteit inplannen", ['class' => 'btn btn-success full-width'])}}
 
         {!! Form::close() !!}
     </div>
