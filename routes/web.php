@@ -26,10 +26,10 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 //gebruikers en machtigingen
 Route::get('/dashboard/gebruikers', 'ManageUsersController@showGebruikers')->middleware('auth');
-Route::get('/dashboard/gebruiker/{id}', 'ManageUsersController@showGebruikersDetails')->name('gebruikers')->middleware('auth');
+Route::get('/dashboard/gebruikers/{id}', 'ManageUsersController@showGebruikersDetails')->name('gebruikers')->middleware('auth');
 Route::post('/dashboard/gebruikers', 'ManageUsersController@store')->middleware('auth');
-Route::delete('/dashboard/gebruiker/{id}', 'ManageUsersController@destroymachtiging')->middleware('auth');
-Route::delete('/dashboard/gebruikers/{id}', 'ManageUsersController@destroy')->middleware('auth');
+Route::delete('/dashboard/gebruikers/{id}', 'ManageUsersController@destroymachtiging')->middleware('auth');
+Route::delete('/dashboard/gebruikers/machtigingen/{id}', 'ManageUsersController@destroy')->middleware('auth');
 
 Route::post('/gebruikersupdate', 'ManageUsersController@update')->middleware('auth');
 Route::get('/dashboard/agenda', 'EventsController@index')->name('agenda');
