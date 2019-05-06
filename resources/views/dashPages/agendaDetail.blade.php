@@ -5,7 +5,7 @@
 <div class="BackItem">
     <div class="BackHeader">
         <h3><i class="fas fa-calendar"></i> Evenement</h3>
-        <hr>
+        <hr class="BottomMargin">
     </div>
 
     <div class="row justify-content-center">

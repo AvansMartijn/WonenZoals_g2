@@ -11267,6 +11267,10 @@ body {
   width: 100% !important;
 }
 
+.BottomMargin {
+  margin-bottom: 50px;
+}
+
 .slidee {
   font-family: "Oxygen", sans-serif;
 }
