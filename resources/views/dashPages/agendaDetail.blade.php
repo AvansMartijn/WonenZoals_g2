@@ -2,12 +2,13 @@
 
 @section('content')
 
+
 <div class="BackItem">
     <div class="BackHeader">
         <h3><i class="fas fa-calendar"></i> Evenement</h3>
         <hr class="BottomMargin">
     </div>
-
+<a href="/dashboard/agenda" class="btn btn-primary">Terug</a>
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="CustomCardContent">
@@ -20,6 +21,25 @@
                 <p>Aanvang: {{$data['event']->date}}</p>
                 <hr>
                 <p>{!!$data['event']->description!!}</p>
+
+                        <p>
+                        @if ($data['meal']['voorgerecht'] != null)
+                            <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}<br> 
+                        @endif
+                        @if ($data['meal']['hoofdgerecht'] != null)
+                            <b>Hoofdgerecht:</b> {{$data['meal']['hoofdgerecht']->name}} <br> 
+                        @endif
+                        @if ($data['meal']['nagerecht'] != null)
+                            <b>Nagerecht:</b> {{$data['meal']['nagerecht']->name}} <br> 
+                        @endif
+                        </p>
+                        <p><b>Locatie:</b> {!!$data['event']->location!!}</p>
+                        <p><b>Vervoer:</b> {!!$data['event']->transport!!}</p>
+                        <p><b>Aanvang:</b> {{$data['event']->date}}</p>
+                        <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
+                       
+
+              
             </div>
         </div>
 

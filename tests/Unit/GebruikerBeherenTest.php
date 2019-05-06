@@ -19,7 +19,7 @@ class GebruikerBeherenTest extends TestCase
             'role' => 'Beheerder'
         ]);
 
-        $response = $this->actingAs($user)->get('/gebruikers');
+        $response = $this->actingAs($user)->get('/dashboard/gebruikers');
         $response->assertViewIs('dashPages.dashGebruikers');
     }
 
@@ -28,7 +28,7 @@ class GebruikerBeherenTest extends TestCase
             'role' => 'Bewoner'
         ]);
 
-        $response = $this->actingAs($user)->get('/gebruikers');
+        $response = $this->actingAs($user)->get('/dashboard/gebruikers');
         $response->assertRedirect();
     }
 }

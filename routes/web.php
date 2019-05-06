@@ -25,11 +25,11 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 //gebruikers en machtigingen
-Route::get('/gebruikers', 'ManageUsersController@showGebruikers')->middleware('auth');
-Route::get('/gebruiker/{id}', 'ManageUsersController@showGebruikersDetails')->name('gebruikers')->middleware('auth');
-Route::post('/gebruikers', 'ManageUsersController@store')->middleware('auth');
-Route::delete('/gebruiker/{id}', 'ManageUsersController@destroymachtiging')->middleware('auth');
-Route::delete('/gebruikers/{id}', 'ManageUsersController@destroy')->middleware('auth');
+Route::get('/dashboard/gebruikers', 'ManageUsersController@showGebruikers')->middleware('auth');
+Route::get('/dashboard/gebruikers/{id}', 'ManageUsersController@showGebruikersDetails')->name('gebruikers')->middleware('auth');
+Route::post('/dashboard/gebruikers', 'ManageUsersController@store')->middleware('auth');
+Route::delete('/dashboard/gebruikers/{id}', 'ManageUsersController@destroymachtiging')->middleware('auth');
+Route::delete('/dashboard/gebruikers/machtigingen/{id}', 'ManageUsersController@destroy')->middleware('auth');
 
 Route::post('/gebruikersupdate', 'ManageUsersController@update')->middleware('auth');
 Route::get('/dashboard/agenda', 'EventsController@index')->name('agenda');
@@ -41,8 +41,11 @@ Route::get('/dashboard/agenda/item/{id}/apply', 'EventsController@apply')->name(
 Route::get('/dashboard/agenda/item/{id}/cancel', 'EventsController@cancel')->name('agendaCancel');
 
 //niewsbrief archief
-Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchive@index');
-Route::post('/dashboard/nieuwsbriefarchief', 'NewsletterArchive@store')->middleware('auth');
+Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@index')->middleware('auth');
+Route::post('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@store')->middleware('auth');
+Route::delete('/dashboard/nieuwsbriefarchief/{id}', 'NewsletterArchiveController@destroy')->middleware('auth');
+
+
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([
     'create' => 'meals.build',
 ]);

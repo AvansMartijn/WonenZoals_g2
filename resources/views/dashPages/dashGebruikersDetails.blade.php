@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <a href="/gebruikers" class="btn btn-primary bottom-spacer">Terug</a>
+    <a href="/dashboard/gebruikers" class="btn btn-primary bottom-spacer">Terug</a>
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -50,8 +50,9 @@
                                                 
                                                     <div class="from-group bottom-spacer">
                                                         {{Form::label('machtiging', 'Machtiging')}}
-                                                        {{Form::select('machtiging', array('Agenda' => 'Agenda', 'Forum' => 'Forum', 'Nieuwsbriefarchief' => 'Nieuwsbrief archief'), null, array('class'=>'form-control')) }}
+                                                        {{Form::select('machtiging', array('Agenda' => 'Agenda', 'Forum' => 'Forum', 'Nieuwsbriefarchief' => 'Nieuwsbrief archief', 'Maaltijden' => 'Maaltijden', 'Activiteit' => 'Activiteit'), null, array('class'=>'form-control')) }}
                                                     </div>
+                                                    
                 
                                                     {{ Form::hidden('id', $user->id) }}
                 
