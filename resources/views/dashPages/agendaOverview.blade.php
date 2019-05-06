@@ -1,6 +1,17 @@
 @extends('layouts.Back')
 
 @section('content')
+
+<div class="Calender">
+    <div class="BackHeader">
+        <h3>Agenda</h3>
+        <hr>
+    </div>
+    {!! $calendar_details->calendar() !!}
+    {!! $calendar_details->script() !!}
+</div>
+
+{{-- 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -20,5 +31,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
