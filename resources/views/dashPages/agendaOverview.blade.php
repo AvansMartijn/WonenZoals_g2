@@ -4,10 +4,10 @@
 
 <div class="Calender">
     <div class="BackHeader">
-        <h3>Agenda</h3>
+        <h3><i class="fas fa-calendar"></i> Agenda</h3>
         <hr>
     </div>
-    
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             @if (session('status'))
