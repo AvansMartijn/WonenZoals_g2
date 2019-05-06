@@ -36648,7 +36648,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\WonenZoals_g2\resources\js\cmsApp.js */"./resources/js/cmsApp.js");
+module.exports = __webpack_require__(/*! C:\Users\Xandor\Documents\AVANS\Blok7\Project\WonenZoals\WonenZoals_g2\resources\js\cmsApp.js */"./resources/js/cmsApp.js");
 
 
 /***/ })
