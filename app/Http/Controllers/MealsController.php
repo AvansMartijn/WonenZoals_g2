@@ -26,6 +26,7 @@ class MealsController extends Controller
      */
     public function create()
     {
+        return View('dashPages.mealCreate');
         //
     }
 
@@ -38,6 +39,18 @@ class MealsController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'mealname' => 'required|max:255',
+            'description' => 'required|max:255',
+        ]);
+
+        $meal = new \App\Meal;
+        $meal->name = $request['mealname'];
+        $meal->description = $request['description'];
+        $meal->type = $request['gerechttype'];
+        $meal->save();
+
+        return redirect()->back()->with('success', 'gerecht is aangemaakt');
     }
 
     /**
@@ -82,6 +95,9 @@ class MealsController extends Controller
      */
     public function destroy($id)
     {
+        $meal = \App\Meal::where('id', $id)->first();
+        $meal->delete();
+        return redirect()->back()->with('success', 'gerecht is verwijderd');
         //
     }
 }
