@@ -11261,6 +11261,14 @@ body {
 
 .BackHeader > h3 {
   color: #227dc7;
+  padding: 5px 0;
+  font-size: 28px;
+  white-space: nowrap;
+  font-weight: 400;
+  line-height: 30px;
+  overflow: hidden;
+  text-align: center;
+  display: block;
 }
 
 .full-width {
@@ -11391,6 +11399,34 @@ body {
 .funkyradio-info input[type=checkbox]:checked ~ label:before {
   color: #fff;
   background-color: #5bc0de;
+}
+
+.NewsbriefLink > i {
+  font-size: 10px;
+  position: relative;
+  top: -10px;
+}
+
+.NewsbriefLink:hover {
+  text-decoration: none;
+}
+
+.MealOptions {
+  margin-bottom: 25px;
+}
+
+.MealOptions > a {
+  float: left;
+  width: calc(30% - 6px);
+}
+
+.MealOptions > input {
+  float: left;
+  width: 70%;
+}
+
+.margin-right {
+  margin-right: 5px;
 }
 
 .slidee {

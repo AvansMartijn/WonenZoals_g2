@@ -3,7 +3,6 @@
 @section('content') 
 {{-- Page Header --}}
 <div class="BackHeader">
-    <a href="/dashboard" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
     <h3>Agenda</h3>
     <hr>
 </div>
