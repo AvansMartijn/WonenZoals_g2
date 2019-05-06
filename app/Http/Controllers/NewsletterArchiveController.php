@@ -95,9 +95,28 @@ class NewsletterArchiveController extends Controller
             ]
         );
 
+        $link = $request->input('Link');
+
+        $https = substr($link, 0, 8);
+        $http = substr($link, 0, 7);
+
+        if($http !== "http://")
+        {
+
+            if($https !== "https://")
+            {
+                    $link = "https://".$link; 
+            }
+
+        }
+    
+
+
+
+
         $newsletter = new Newsletter();
         $newsletter->title = $request->input('Titel');
-        $newsletter->link = $request->input('Link');
+        $newsletter->link = $link;
         $newsletter->save();
 
         return redirect()->back()->with('success', 'Nieuwsbrief is toegevoegd aan het archief');
