@@ -28,6 +28,14 @@
 
                     @endif
 
+                    @if ($userauthorization->authorization == "Maaltijden")
+
+                        <a href="/dashboard/maaltijden" class="Menu-Item">
+                            <li><i class="fas fa-calendar"></i>Maaltijden</li>
+                        </a>
+
+                    @endif
+
                     {{-- show newsletter archive --}}
                     @if ($userauthorization->authorization == "Nieuwsbriefarchief")
 

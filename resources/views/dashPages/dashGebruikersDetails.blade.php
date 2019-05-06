@@ -49,6 +49,7 @@
                                             {!! Form::open(['action' => 'ManageUsersController@store', 'methode' => 'POST']) !!}
                                                 
                                                     <div class="from-group bottom-spacer">
+
                                                         @foreach ($authoriationsAvailable as $authoriationnn)
                                                         
                                                             {{ Form::label($authoriationnn->name, $authoriationnn->name)}}
