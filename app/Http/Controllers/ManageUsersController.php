@@ -79,7 +79,8 @@ class ManageUsersController extends Controller
 
         $authoriation = $user->authorizations;
 
-        $authoriationsAvailable = authorizationLookup::all();
+        $authoriationsAvailable = authorizationLookup::all();    
+
 
         return view('dashPages.dashGebruikersDetails')->with(compact('user', 'authoriation','authoriationsAvailable'));
     }

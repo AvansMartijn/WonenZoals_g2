@@ -52,9 +52,11 @@
 
                                                         @foreach ($authoriationsAvailable as $authoriationnn)
                                                         
-                                                            {{ Form::label($authoriationnn->name, $authoriationnn->name)}}
-                                                            {{ Form::checkbox($authoriationnn->name, $authoriationnn->id,false)}}
                                                             
+                                                            {{ Form::checkbox($authoriationnn->name, $authoriationnn->id,false)}}
+                                                            {{ Form::label($authoriationnn->name, $authoriationnn->name)}}
+                                                            
+                                                            <br>
                                                         
                                                         @endforeach
                                                        
