@@ -62,9 +62,9 @@
                     <slide :index="0" class="slidee">
                         <div>
                             <img class="person-picture" src="{{ asset('img/Auke.jpg') }}">
-                            {{-- <div class="wave -one"></div>
+                            <div class="wave -one"></div>
                             <div class="wave -two"></div>
-                            <div class="wave -three"></div> --}}
+                            <div class="wave -three"></div>
                         </div>
 
                         <div class="user">
@@ -80,9 +80,9 @@
                     <slide :index="1" class="slidee">
                         <div>
                             <img class="person-picture" src="{{ asset('img/Stef.jpg') }}">
-                            {{-- <div class="wave -one"></div>
+                            <div class="wave -one"></div>
                             <div class="wave -two"></div>
-                            <div class="wave -three"></div> --}}
+                            <div class="wave -three"></div>
                         </div>
                         
                         <div class="user">
@@ -98,9 +98,9 @@
                     <slide :index="2" class="slidee">
                         <div>
                             <img class="person-picture" src="{{ asset('img/Isabel.jpg') }}">
-                            {{-- <div class="wave -one"></div>
+                            <div class="wave -one"></div>
                             <div class="wave -two"></div>
-                            <div class="wave -three"></div> --}}
+                            <div class="wave -three"></div>
                         </div>
 
                         <div class="user">
@@ -116,9 +116,9 @@
                     <slide :index="3" class="slidee">
                         <div>
                             <img class="person-picture" src="{{ asset('img/Luuk.jpg') }}">
-                            {{-- <div class="wave -one"></div>
+                            <div class="wave -one"></div>
                             <div class="wave -two"></div>
-                            <div class="wave -three"></div> --}}
+                            <div class="wave -three"></div>
                         </div>
 
                         <div class="user">
@@ -134,9 +134,9 @@
                     <slide :index="4" class="slidee">
                         <div>
                             <img class="person-picture" src="{{ asset('img/Sander.jpg') }}">
-                            {{-- <div class="wave -one"></div>
+                            <div class="wave -one"></div>
                             <div class="wave -two"></div>
-                            <div class="wave -three"></div> --}}
+                            <div class="wave -three"></div>
                         </div>
 
                         <div class="user">
@@ -145,6 +145,168 @@
 
                             <div align="center">
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#Sander">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="5" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/William.jpg') }}">
+                            <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">William</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#William">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="6" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Kelly.jpg') }}">
+                            <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Kelly</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Kelly">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="7" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Cyriel.jpg') }}">
+                            <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Cyriel</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Cyriel">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="8" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Rik.jpg') }}">
+                            <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Rik</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Rik">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="9" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Simon.jpg') }}">
+                            <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Simon</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Simon">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="10" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Chelsey.jpg') }}">
+                            <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Chelsey</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Chelsey">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="11" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Nick.jpg') }}">
+                            <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Nick</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Nick">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="12" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Isabel.jpg') }}">
+                            <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Isabel</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Isabel">Lees Meer</button></button>
+                            </div>
+                        </div>
+                    </slide>
+
+                    <slide :index="13" class="slidee">
+                        <div>
+                            <img class="person-picture" src="{{ asset('img/Jip.jpg') }}">
+                            <div class="wave -one"></div>
+                            <div class="wave -two"></div>
+                            <div class="wave -three"></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="profile--info"><span class="username">Jip</span><span></span><br/>
+                            <span style="color: black;" class="userquote"></span></div>
+
+                            <div align="center">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#Jip">Lees Meer</button></button>
                             </div>
                         </div>
                     </slide>

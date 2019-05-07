@@ -48844,6 +48844,31 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/Search.js":
+/*!********************************!*\
+  !*** ./resources/js/Search.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('#Search').keyup(function () {
+    var value = $(this).val();
+    var patt = new RegExp(value, "i");
+    $('.Searchable').find('tr').each(function () {
+      if (!($(this).find('td').text().search(patt) >= 0)) {
+        $(this).not('.myHead').hide();
+      }
+
+      if ($(this).find('td').text().search(patt) >= 0) {
+        $(this).show();
+      }
+    });
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/SmoothScroll.js":
 /*!**************************************!*\
   !*** ./resources/js/SmoothScroll.js ***!
@@ -48852,7 +48877,6 @@ module.exports = function(module) {
 /***/ (function(module, exports) {
 
 $(function () {
-  console.log('[SmoothScroll] Started Loading');
   var Doc = $(document),
       Navigation = $('.navbar'),
       ToTop = $('.ToTop'),
@@ -48888,7 +48912,6 @@ $(function () {
       }, 500);
     }
   });
-  console.log('[SmoothScroll] Finisehd Loading');
 });
 
 /***/ }),
@@ -48912,6 +48935,8 @@ __webpack_require__.r(__webpack_exports__);
  * building robust, powerful web applications using Vue and Laravel.
  */
 __webpack_require__(/*! ./SmoothScroll */ "./resources/js/SmoothScroll.js");
+
+__webpack_require__(/*! ./Search */ "./resources/js/Search.js");
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
@@ -49050,8 +49075,8 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Xandor\Documents\AVANS\Blok7\Project\WonenZoals\WonenZoals_g2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Xandor\Documents\AVANS\Blok7\Project\WonenZoals\WonenZoals_g2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\WonenZoals_g2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\WonenZoals_g2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

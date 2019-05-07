@@ -77,10 +77,10 @@ class EventsController extends Controller
             //check if the user already has a relation with this event
             if (!$event->pivot->applied) {
                 //no relation means he has NOT applied for this event
-                $color = "blue";
+                $color = "#227dc7";
             } else {
                 //relation means he HAS applied for this event
-                $color = "green";
+                $color = "#38c172";
             }
             if($event->cancelled == 1){
                 $color = "red";

@@ -2,6 +2,11 @@
 
 @section('content')
 
+<div class="BackHeader">
+    <a href="/dashboard/agenda" class="btn btn-primary">Terug</a>
+    <h3>Activiteit aanmaken</h3>
+    <hr>
+</div>
 
 <div class="BackItem">
     <div class="BackHeader">
