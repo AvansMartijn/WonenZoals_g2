@@ -2,13 +2,12 @@
 
 @section('content')
 
+<div class="BackHeader">
+    <a href="/dashboard/agenda" class="btn btn-primary">Terug</a>
+    <h3>Activiteit aanmaken</h3>
+    <hr>
+</div>
 
-<div class="BackItem">
-    <div class="BackHeader">
-        <h3><i class="fas fa-calendar"></i> Evenement</h3>
-        <hr class="BottomMargin">
-    </div>
-<a href="/dashboard/agenda" class="btn btn-primary">Terug</a>
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="CustomCardContent">

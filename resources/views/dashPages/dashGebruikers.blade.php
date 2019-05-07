@@ -1,46 +1,46 @@
 @extends('layouts.Back')
 
 @section('content')
-
-@if (count($users)>0)
-<div class="container">
-        <div class="row justify-content-center">
-                <div class="col-md-12">
-                        <div class="bottom-spacer">
-                                <a href="/dashboard" class="btn btn-primary">Terug</a>
-                                <a class="btn btn-primary" href="{{ route('register') }}">Nieuwe Gebruiker</a>
-                        </div>
-                        <div class="card">
-                                <div class="card-header">Gebruikers beheren</div>
-                                <div class="card-body">                            
-                                        <table class="table table-striped">
-                                                <tr>
-                                                        <th>Naam</th>
-                                                        <th>Email</th>
-                                                        <th class="text-right">Acties</th>
-                                                </tr>
-                                                @foreach ($users as $user)
-                                                        <tr>
-                                                                <td>{{$user->name}}</td>
-                                                                <td>{{$user->email}}</td>
-                                                                <td>
-
-                                                                {!!Form::open(['action' => ['ManageUsersController@destroy', $user->id], 'method' => 'POST'])!!}
-                                                                        {{Form::hidden('_method', 'DELETE')}}
-                                                                        {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
-                                                                {!!Form::close()!!}
-                                                                <a href="/dashboard/gebruikers/{{$user->id}}" class="btn btn-primary float-right">Details</a>
-                                                                </td>
-                                                        </tr>
-                                                @endforeach
-
-
-                                        </table>
-
-                                </div>
-                        </div>
-                </div>
-        </div>
+{{-- Page Header --}}
+<div class="BackHeader">
+        <h3>Gebruikers Overzicht</h3>
+        <hr>
 </div>
-@endif
+
+{{-- Content --}}
+<div class="row justify-content-center">
+        <div class="col-md-7">
+                <div class="MealOptions clearfix">
+                        <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
+                        <a class="btn btn-success" href="{{ route('register') }}">Nieuwe Gebruiker</a>
+                </div>
+
+                <table class="table table-striped">
+                        <thead>
+                                <tr>
+                                        <th>Naam</th>
+                                        <th>Soort</th>
+                                        <th>Acties</th>
+                                </tr>
+                        </thead>
+                        <tbody class="Searchable">
+                                @foreach ($users as $user)
+                                        <tr>
+                                                <td>{{$user->name}}</td>
+                                                <td>{{$user->role}}</td>
+                                                <td class="text-left">
+                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/gebruikers/{{$user->id}}">Details</a>
+                                                        {!!Form::open(['action' => ['ManageUsersController@destroy', $user->id], 'method' => 'POST'])!!}
+                                                                {{Form::hidden('_method', 'DELETE')}}
+                                                                {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-left'])}}
+                                                        {!!Form::close()!!}
+                                                </td>
+                                        </tr>
+                                @endforeach
+                        </tbody>
+                </table>
+        </div>
+        
+
+</div>
 @endsection

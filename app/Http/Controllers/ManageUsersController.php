@@ -60,7 +60,6 @@ class ManageUsersController extends Controller
      */
     public function showGebruikers()
     {
-
         $users = User::all();
 
         return view('dashPages.dashGebruikers')->with('users', $users);
