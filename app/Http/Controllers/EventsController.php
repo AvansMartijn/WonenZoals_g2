@@ -229,6 +229,14 @@ class EventsController extends Controller
     }
 
     public function deleteEvent($id){
+        $event = \App\AgendaEvent::where('id', $id)->first();
+        if($event->cancelled == 1){
+            $event->delete();
+            return redirect('dashboard/agenda')->with('success', 'activiteit is verwijderd');
+        }
+        if($event->cancelled == 0){
+            return redirect()->back()->with('warning', 'Een activiteit dient gecancelled te zijn om verwijderd te mogen.');
+        }
 
     }
     /**
