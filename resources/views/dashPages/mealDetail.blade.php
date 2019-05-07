@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="BackHeader">
-    <a href="/dashboard/agenda" class="btn btn-primary">Terug</a>
+    <a href="/dashboard/maaltijden" class="btn btn-primary">Terug</a>
     <h3>Gerecht details - {{$meal->name}}</h3>
     <hr>
 </div>
