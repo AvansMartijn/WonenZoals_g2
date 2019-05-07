@@ -36,7 +36,7 @@
 
                     @if ($userauthorization->authorization == "Maaltijden")
 
-                        <a href="/dashboard/maaltijden" class="Menu-Item">
+                        <a href="/dashboard/maaltijden" class="Menu-Item {{ (request()->is('dashboard/maaltijden*')) ? 'Active' : '' }}">
                             <li>
                                 <i class="fas fa-utensils"></i>
                                 <span class="alignpotjandriedubbeltjes">Maaltijden</span>
