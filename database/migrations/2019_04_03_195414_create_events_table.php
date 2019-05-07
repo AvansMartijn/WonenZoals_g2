@@ -22,8 +22,8 @@ class CreateEventsTable extends Migration
             $table->string('location');
             $table->string('transport')->nullable();
             $table->unsignedInteger('organiser_id');
+            $table->boolean('cancelled')->default(0);
             $table->timestamps();
-
             $table->foreign('organiser_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');

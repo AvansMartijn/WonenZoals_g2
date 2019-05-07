@@ -82,6 +82,9 @@ class EventsController extends Controller
                 //relation means he HAS applied for this event
                 $color = "green";
             }
+            if($event->cancelled == 1){
+                $color = "red";
+            }
             //create a Calendar item for this event
             $event_list[] = Calendar::event(
                 $event->eventname,
@@ -220,6 +223,14 @@ class EventsController extends Controller
         return redirect()->back()->with('success', 'activiteit is aangemaakt');
     }
 
+    public function cancelEvent($id){
+        $event = \App\AgendaEvent::where('id', $id)->update(['cancelled' => 1]);
+        return redirect()->back()->with('success', 'activiteit is gecannceled');
+    }
+
+    public function deleteEvent($id){
+
+    }
     /**
      * Create the view
      *
