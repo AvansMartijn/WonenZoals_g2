@@ -39,6 +39,8 @@ Route::post('/dashboard/agenda/create/addEvent', 'EventsController@addEvent')->n
 Route::get('/dashboard/agenda/item/{id}', 'EventsController@detail')->name('agendaDetail');
 Route::get('/dashboard/agenda/item/{id}/apply', 'EventsController@apply')->name('agendaApply');
 Route::get('/dashboard/agenda/item/{id}/cancel', 'EventsController@cancel')->name('agendaCancel');
+Route::get('/dashboard/agenda/item/{id}/cancelEvent', 'EventsController@cancelEvent')->name('agendaCancelActivity');
+Route::get('/dashboard/agenda/item/{id}/deleteEvent', 'EventsController@deleteEvent')->name('agendaDeleteActivity');
 
 //niewsbrief archief
 Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@index')->middleware('auth');
