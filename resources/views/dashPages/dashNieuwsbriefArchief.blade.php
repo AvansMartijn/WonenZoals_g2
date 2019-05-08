@@ -3,6 +3,7 @@
 @section('content')
 {{-- Page Header --}}
 <div class="BackHeader">
+    {{-- <a><i class="fas fa-bars"></i></a> --}}
     <h3>Nieuwsbrief Archief</h3>
     <hr>
 </div>

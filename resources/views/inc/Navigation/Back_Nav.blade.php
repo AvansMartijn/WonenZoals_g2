@@ -2,13 +2,12 @@
 
     <div class="NavCover">
 
-        <div class="Brand">
-            <a href="/" class="simple-text">
-                Wonen Zoals
-            </a>
-        </div>
+        <a class="brand" href="{{ url('/') }}">
+            <img src="{{ asset('img/logoFull.png') }}" class="LogoCenterPage clearfix" height="40px" alt="">
+            <hr>
+        </a>
 
-        <hr>
+        
 
         <div class="Menu-Items">
             <ul>
