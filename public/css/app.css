@@ -10676,7 +10676,7 @@ body {
   padding: 5px 0px 25px 0px;
   border-bottom-left-radius: 100% 90%;
   border-bottom-right-radius: 100% 90%;
-  background: rgba(245, 245, 245, 0.5);
+  background: rgba(245, 245, 245, 0.8);
 }
 
 .navbar-custom-opacity {
@@ -10684,7 +10684,7 @@ body {
   border-bottom-left-radius: 100% 90%;
   border-bottom-right-radius: 100% 90%;
   transition: background 0.5s;
-  background: rgba(245, 245, 245, 0.5);
+  background: rgba(245, 245, 245, 0.8);
 }
 
 .navbar-custom-solid {
