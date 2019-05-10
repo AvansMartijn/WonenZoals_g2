@@ -26,6 +26,9 @@ class CreateMealTable extends Migration
             $table->unsignedInteger('meal_id');
             $table->unsignedInteger('event_id');
             $table->timestamps();
+
+            $table->foreign('meal_id')->references('id')->on('meals')->onDelete('cascade');
+            $table->foreign('event_id')->references('id')->on('agenda_events')->onDelete('cascade');
         });
     }
 
