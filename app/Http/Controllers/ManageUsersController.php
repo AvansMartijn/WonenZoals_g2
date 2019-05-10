@@ -77,7 +77,7 @@ class ManageUsersController extends Controller
 
         $user = User::where('id', $id)->first();
 
-        $authoriation = $user->authorizations;
+        $authoriation = $user->authorizations()->get();
 
         $authoriationsAvailable = authorizationLookup::all()->keyBy('id'); 
 
@@ -87,7 +87,7 @@ class ManageUsersController extends Controller
         {
             foreach($authoriation as $authoriationn)
             {
-                if($authoriationsAvailablee->name == $authoriationn->authorization)
+                if($authoriationsAvailablee->id == $authoriationn->id)
                 {
                     
                     $authoriationsAvailable->forget($authoriationsAvailablee->id);
@@ -115,54 +115,20 @@ class ManageUsersController extends Controller
 
         $user = User::where('id', $request->input('id'))->first();
 
-        $authoriations = $user->authorizations;
-
-        $authoriationsAvailables = authorizationLookup::all();
-
-        foreach($authoriationsAvailables as $authoriationsAvailable)
-        {
-            $name = $authoriationsAvailable->name;
-
-            $value = $request->input($name);
-
-            $common = 0;
-
-            $commonn = 0;
-
-            if($value)
-            {
-                foreach($authoriations as $AUTH)
-                {
-                    if($AUTH->authorization == $name)
-                    {
-                        $common++;
-                        $commonn++;
-                    }
-                   
-                }
-
-                if($common == 0)
-                {
-                    //create the machtiging
-                    $macht = new authorization();
-                    $macht->user_id = $request->input('id');
-                    $macht->authorization = $name;
-                    $macht->save();
-                }
-                else
-                {
-                    $common = 0;
-                }
-                    
-            }
-
-
+        // return $request;
+        //create the machtiging
+        // $macht = new authorization();
+        var_dump($request['role_check']);
+        foreach ($request['role_check'] as $machtiging) {
+                // if($request['role_check'])'
+                $auth = AuthorizationLookup::where('id', $machtiging)->first();
+                $user->authorizations()->save($auth);
+                // App\User::find()->roles()->save($role, ['expires' => $expires]);
         }
-
-        if($commonn > 0)
-        {
-            return redirect()->back()->with('error', 'Niet al de machtigingen zijn toegevoegd, omdat de gebruiker sommige machtigingen al had');
-        }
+        // $macht->user_id = $request->input('id');
+        // $macht->authorization_id = $request->input('');
+        // $macht->save();
+        
         return redirect()->back()->with('success', 'De machtiging is toegevoegd');
     }
 
@@ -176,7 +142,7 @@ class ManageUsersController extends Controller
     public function destroymachtiging($id)
     {
 
-        $authh = authorization::where('id', $id)->first();
+        $authh = authorization::where('authorization_id', $id)->first();
 
         $authh->delete();
 

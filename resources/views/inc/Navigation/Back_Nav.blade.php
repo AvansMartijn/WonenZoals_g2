@@ -20,9 +20,9 @@
                 </a>
 
                 {{-- check all auth witin a role --}}
-                @foreach (Auth::user()->authorizations as $userauthorization)
+                @foreach (Auth::user()->authorizations()->get() as $userauthorization)
                     {{-- show agenda --}}
-                    @if ($userauthorization->authorization == "Agenda")
+                    @if ($userauthorization->id == 1)
 
                         <a href="/dashboard/agenda" class="Menu-Item {{ (request()->is('dashboard/agenda*')) ? 'Active' : '' }}">
                             <li>
@@ -33,7 +33,7 @@
 
                     @endif
 
-                    @if ($userauthorization->authorization == "Maaltijden")
+                    @if ($userauthorization->id == 3)
 
                         <a href="/dashboard/maaltijden" class="Menu-Item {{ (request()->is('dashboard/maaltijden*')) ? 'Active' : '' }}">
                             <li>
@@ -45,7 +45,7 @@
                     @endif
 
                     {{-- show newsletter archive --}}
-                    @if ($userauthorization->authorization == "Nieuwsbriefarchief")
+                    @if ($userauthorization->id == 2)
 
                         <a href="/dashboard/nieuwsbriefarchief" class="Menu-Item {{ (request()->is('dashboard/nieuwsbriefarchief*')) ? 'Active' : '' }}">
                             <li>

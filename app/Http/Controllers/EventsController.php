@@ -44,12 +44,12 @@ class EventsController extends Controller
 
                 $userAuth = Auth::user();
 
-                $userAuth = $userAuth->authorizations;
+                $userAuth = $userAuth->authorizations()->get();
 
                 $toegang = false;
 
                 foreach ($userAuth as $userAuthh) {
-                    if ($userAuthh->authorization == "Agenda") {
+                    if ($userAuthh->id == 1) {
                         $toegang = true;
                     }
                 }

@@ -69,13 +69,13 @@
                             <a class="dropdown-item" href="/dashboard">Dashboard</a>
 
                             {{-- show auth roles --}}
-                            @foreach (Auth::user()->authorizations as $userauthorization)
+                            @foreach (Auth::user()->authorizations()->get() as $userauthorization)
                                 {{-- show agenda --}}
-                                @if ($userauthorization->authorization == "Agenda")
+                                @if ($userauthorization->name == "Agenda")
                                     <a class="dropdown-item" href="/dashboard/agenda">Agenda</a> 
                                 @endif
                                  {{-- show newsletter archive --}}
-                                @if ($userauthorization->authorization == "Nieuwsbriefarchief")
+                                @if ($userauthorization->name == "Nieuwsbriefarchief")
                                     <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief archief</a> 
                                 @endif
                             @endforeach

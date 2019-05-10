@@ -48,15 +48,18 @@
                 
                                             {!! Form::open(['action' => 'ManageUsersController@store', 'methode' => 'POST']) !!}
                                                 
-                                                    <div class="from-group bottom-spacer">
-
+                                                    
+                                                    <div class="funkyradio">
                                                         @foreach ($authoriationsAvailable as $authoriationnn)
                                                         
                                                             
-                                                            {{ Form::checkbox($authoriationnn->name, $authoriationnn->id,false)}}
-                                                            {{ Form::label($authoriationnn->name, $authoriationnn->name)}}
                                                             
-                                                            <br>
+                                                            <div class="funkyradio-success">
+                                                                <input type="checkbox" name="role_check[]" value="{{$authoriationnn->id}}" id="{{$authoriationnn->id}}">
+                                                                <label for="{{$authoriationnn->id}}">{{$authoriationnn->name}}</label>
+                                                            </div>
+                                                            
+
                                                         
                                                         @endforeach
                                                        
@@ -78,7 +81,7 @@
                                                     </tr>
                                                     @foreach ($authoriation as $authoriationn)
                                                     <tr>
-                                                            <td>{{$authoriationn->authorization}}</td>
+                                                            <td>{{$authoriationn->name}}</td>
                                                             <td>
                                                             {!!Form::open(['action' => ['ManageUsersController@destroymachtiging', $authoriationn->id], 'method' => 'POST'])!!}
                                                                         {{Form::hidden('_method', 'DELETE')}}
