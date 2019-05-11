@@ -80,7 +80,7 @@
                                 @endif
                                  {{-- show newsletter archive --}}
                                 @if ($userauthorization->authorization == "Nieuwsbriefarchief")
-                                    <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief archief</a> 
+                                    <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief Archief</a> 
                                 @endif
                             @endforeach
                             

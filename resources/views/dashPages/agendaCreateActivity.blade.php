@@ -21,31 +21,36 @@
         <hr>
 
         <div class="form-group">
-            <input type="text" class="form-control" name="eventname" placeholder="Activiteit naam">
-        </div>
-
-        <div class="form-group">
-            <input type="text" class="form-control" name="location" placeholder="Locatie">
+            <label for="date">Titel*</label>
+            <input type="text" class="form-control" name="eventname">
         </div>
         
         <div class="form-group">
-            <input type="text" class="form-control" name="transport" placeholder="Vervoer">
+            <label for="description">Beschrijving*</label>
+            <textarea class="form-control" name="description" rows="4"></textarea>
         </div>
 
         <div class="form-group">
-            <textarea class="form-control" name="description" rows="4" placeholder="Beschrijving"></textarea>
+            <label for="location">Locatie*</label>
+            <input type="text" class="form-control" name="location">
         </div>
+        
+        <div class="form-group">
+            <label for="transport">Vervoer</label>
+            <input type="text" class="form-control" name="transport">
+        </div>
+
 
         <h3>Datum</h3>
         <hr>
         <div class="form-group">
-            <label for="date">Aanvang</label>
-            <input type="datetime-local" class="form-control" name="date" placeholder="Dag-Maand-Jaar Uur:Minuut">
+            <label for="date">Aanvang*</label>
+            <input type="datetime-local" class="form-control" name="date">
         </div>
 
         <div class="form-group">
-            <label for="enddate">Eind tijd</label>
-            <input type="datetime-local" class="form-control" name="enddate" placeholder="Dag-Maand-Jaar Uur:Minuut">
+            <label for="enddate">Eind Tijd*</label>
+            <input type="datetime-local" class="form-control" name="enddate">
         </div>
 
     </div>

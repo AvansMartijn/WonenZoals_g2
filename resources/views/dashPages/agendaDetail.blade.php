@@ -27,7 +27,7 @@
                     {{$data['event']->eventname}}
                     <span class="text-danger">
                         @if ($data['event']->cancelled == 1)
-                            (Gecancelled)
+                            (Geannuleerd)
                         @endif
                     </span>
                 </h1>
@@ -53,7 +53,7 @@
                     <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
                     
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role == "Beheerder" && $data['event']->cancelled == 0 )
-                    <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Cancellen</a>
+                    <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Annuleren</a>
                     @endif
 
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 1) || Auth::user()->role == "Beheerder" && $data['event']->cancelled == 1)

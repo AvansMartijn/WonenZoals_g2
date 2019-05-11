@@ -23,32 +23,32 @@
 
             <div class="form-group">
                 <label for="date">Titel*</label>
-                <input type="text" class="form-control" name="eventname" placeholder="Titel">
+                <input type="text" class="form-control" name="eventname">
             </div>
 
             <div class="form-group">
                 <label for="description">Beschrijving*</label>
-                <textarea class="form-control" name="description" rows="4" placeholder="Beschrijving"></textarea>
+                <textarea class="form-control" name="description" rows="4"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="date">Aanvang*</label>
-                <input type="datetime-local" class="form-control" name="date" placeholder="Dag-Maand-Jaar Uur:Minuut">
+                <input type="datetime-local" class="form-control" name="date">
             </div>
 
             <div class="form-group">
-                <label for="enddate">Eind tijd*</label>
-                <input type="datetime-local" class="form-control" name="enddate" placeholder="Dag-Maand-Jaar Uur:Minuut">
+                <label for="enddate">Eind Tijd*</label>
+                <input type="datetime-local" class="form-control" name="enddate">
             </div>
 
             <div class="form-group">
                 <label for="location">Locatie*</label>
-                <input type="text" class="form-control" name="location" placeholder="Locatie">
+                <input type="text" class="form-control" name="location">
             </div>
             
             <div class="form-group">
                 <label for="transport">Vervoer</label>
-                <input type="text" class="form-control" name="transport" placeholder="Vervoer">
+                <input type="text" class="form-control" name="transport">
             </div>
     
             

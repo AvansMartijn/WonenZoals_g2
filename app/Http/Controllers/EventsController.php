@@ -222,22 +222,22 @@ class EventsController extends Controller
                 // App\User::find()->roles()->save($role, ['expires' => $expires]);
             }
         }
-        return redirect('dashboard/agenda')->with('success', 'activiteit is aangemaakt');
+        return redirect('dashboard/agenda')->with('success', 'Activiteit is aangemaakt');
     }
 
     public function cancelEvent($id){
         $event = \App\AgendaEvent::where('id', $id)->update(['cancelled' => 1]);
-        return redirect()->back()->with('success', 'activiteit is gecannceled');
+        return redirect()->back()->with('success', 'Activiteit is geannuleerd');
     }
 
     public function deleteEvent($id){
         $event = \App\AgendaEvent::where('id', $id)->first();
         if($event->cancelled == 1){
             $event->delete();
-            return redirect('dashboard/agenda')->with('success', 'activiteit is verwijderd');
+            return redirect('dashboard/agenda')->with('success', 'Activiteit is verwijderd');
         }
         if($event->cancelled == 0){
-            return redirect()->back()->with('warning', 'Een activiteit dient gecancelled te zijn om verwijderd te mogen.');
+            return redirect()->back()->with('warning', 'Om de activiteit te verwijderen dient deze geannuleerd te zijn.');
         }
 
     }
