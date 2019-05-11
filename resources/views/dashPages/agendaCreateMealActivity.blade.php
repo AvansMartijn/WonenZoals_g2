@@ -96,10 +96,10 @@
                 <h1>Aanmelden</h1>
                 <hr>
                 
-                <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="beheerder" id="Beheerder" checked>
-                    <label for="Beheerder">Beheerders</label>
-                </div>
+                {{-- <div class="funkyradio-success"> --}}
+                    <input type="hidden" name="role_check[]" value="beheerder" id="Beheerder" checked>
+                    {{-- <label for="Beheerder">Beheerders</label> --}}
+                {{-- </div> --}}
         
                 <div class="funkyradio-success">
                     <input type="checkbox" name="role_check[]" value="bewoner" id="Bewoner">
@@ -119,7 +119,7 @@
                 <h3>Aanwezig melden</h3>
                 <hr>
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply" checked>
+                    <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">
                     <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
                 </div>
     
