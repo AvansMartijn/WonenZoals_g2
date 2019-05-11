@@ -8,12 +8,16 @@
     <hr>
 </div>
 
+<div class="HamburgerMenu">
+    <a><i class="fas fa-bars"></i> Menu</a>
+</div>
+
 {{-- Content --}}
 {!! Form::open(['action' => 'EventsController@addEvent', 'methode' => 'POST']) !!}
 
 
-    <div class="row justify-content-center">
-        <div class="col-md-4">
+    <div class="container">
+        <div class="MainContent">
             <h1>Gegevens</h1>
             <hr>
 
@@ -91,7 +95,7 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="SideContent">
             <div class="funkyradio">
                 <h1>Aanmelden</h1>
                 <hr>
@@ -126,7 +130,7 @@
             </div>
         </div>
 
-        <div class="col-md-7">
+        <div class="MainContent">
     
             <hr>
             {{Form::submit("Maaltijd inplannen", ['class' => 'btn btn-success full-width'])}}

@@ -8,11 +8,15 @@
     <hr>
 </div>
 
+<div class="HamburgerMenu">
+    <a><i class="fas fa-bars"></i> Menu</a>
+</div>
+
 {{-- Content --}}
 {!! Form::open(['action' => 'EventsController@addEvent', 'methode' => 'POST']) !!}
 
-<div class="row justify-content-center">
-    <div class="col-md-4">
+<div class="container">
+    <div class="MainContent">
         <h1>Gegevens</h1>
         <hr>
 
@@ -46,7 +50,7 @@
 
     </div>
     
-    <div class="col-md-3">
+    <div class="SideContent">
         <div class="funkyradio">
             <h1>Aanmelden</h1>
             <hr>
@@ -75,13 +79,13 @@
             <hr>
             <div class="funkyradio-success">
                 <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">
-                <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
+                <label for="Auto_apply">Gebruikers aanmelden</label>
             </div>
 
         </div>
     </div>
 
-    <div class="col-md-7">
+    <div class="MainContent">
         <input type="hidden" name="voorgerecht" value="">
         <input type="hidden" name="voorgerecht" value="">
         <input type="hidden" name="voorgerecht" value="">   

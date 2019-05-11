@@ -15,7 +15,7 @@ class MealsController extends Controller
     public function index()
     {
         //
-        $meals = Meal::all();
+        $meals = Meal::orderBy('type', 'DESC')->get();
         return View('dashPages.mealsOverview', compact('meals'));
     }
 
@@ -50,7 +50,12 @@ class MealsController extends Controller
         $meal->type = $request['gerechttype'];
         $meal->save();
 
-        return redirect()->back()->with('success', 'gerecht is aangemaakt');
+        $notification = array(
+            'message' => 'gerecht is aangemaakt', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard/maaltijden')->with($notification);
     }
 
     /**
@@ -99,7 +104,12 @@ class MealsController extends Controller
     {
         $meal = \App\Meal::where('id', $id)->first();
         $meal->delete();
-        return redirect()->back()->with('success', 'gerecht is verwijderd');
-        //
+
+        $notification = array(
+            'message' => 'gerecht is verwijderd', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard/maaltijden')->with($notification);
     }
 }

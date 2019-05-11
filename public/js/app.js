@@ -48844,6 +48844,34 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/MenuCollapse.js":
+/*!**************************************!*\
+  !*** ./resources/js/MenuCollapse.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  var Collapsed = true;
+  $('.HamburgerMenu > a').on('click', function () {
+    if (!Collapsed) {
+      $('.AppNav').css({
+        "left": "-100%",
+        "transition": "left .5s"
+      });
+      Collapsed = true;
+    } else if (Collapsed) {
+      $('.AppNav').css({
+        "left": "0px",
+        "transition": "left .5s"
+      });
+      Collapsed = false;
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/Search.js":
 /*!********************************!*\
   !*** ./resources/js/Search.js ***!
@@ -48937,6 +48965,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./SmoothScroll */ "./resources/js/SmoothScroll.js");
 
 __webpack_require__(/*! ./Search */ "./resources/js/Search.js");
+
+__webpack_require__(/*! ./MenuCollapse */ "./resources/js/MenuCollapse.js");
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
@@ -49075,8 +49105,8 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Xandor\Documents\AVANS\Blok7\Project\WonenZoals\WonenZoals_g2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Xandor\Documents\AVANS\Blok7\Project\WonenZoals\WonenZoals_g2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\WonenZoals_g2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\WonenZoals_g2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
