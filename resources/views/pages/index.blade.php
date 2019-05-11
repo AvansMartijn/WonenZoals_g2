@@ -97,7 +97,7 @@
 
                     <slide :index="2" class="slidee">
                         <div>
-                            <img class="person-picture" src="{{ asset('img/Isabel.jpg') }}">
+                            <img class="person-picture" src="{{ asset('img/Isabelle.jpg') }}">
                             <div class="wave -one"></div>
                             <div class="wave -two"></div>
                             <div class="wave -three"></div>
