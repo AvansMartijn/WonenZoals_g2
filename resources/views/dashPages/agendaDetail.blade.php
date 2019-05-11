@@ -4,7 +4,7 @@
 
 <div class="BackHeader">
     <a href="/dashboard/agenda" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Activiteit aanmaken</h3>
+    <h3>Activiteit Details</h3>
     <hr>
 </div>
 
