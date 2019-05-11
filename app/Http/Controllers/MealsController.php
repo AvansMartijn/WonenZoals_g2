@@ -66,7 +66,6 @@ class MealsController extends Controller
      */
     public function show($id)
     {
-        //
         $meal = Meal::where('id', $id)->first();
         return View('dashPages.mealDetail', compact('meal'));
     }
