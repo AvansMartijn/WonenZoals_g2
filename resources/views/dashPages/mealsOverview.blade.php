@@ -7,9 +7,13 @@
         <hr>
 </div>
 
+<div class="HamburgerMenu">
+        <a><i class="fas fa-bars"></i> Menu</a>
+</div>
+
 {{-- Content --}}
-<div class="row justify-content-center">
-        <div class="col-md-7">
+<div class="container">
+        <div class="MainContentFull">
                 <div class="MealOptions clearfix">
                         <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
                         <a class="btn btn-success" href="{{ route('meals.build') }}">Nieuw gerecht</a>

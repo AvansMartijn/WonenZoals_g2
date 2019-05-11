@@ -15,7 +15,7 @@ class MealsController extends Controller
     public function index()
     {
         //
-        $meals = Meal::all();
+        $meals = Meal::orderBy('type', 'DESC')->get();
         return View('dashPages.mealsOverview', compact('meals'));
     }
 
