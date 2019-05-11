@@ -23,6 +23,7 @@ class CreateEventsTable extends Migration
             $table->string('transport')->nullable();
             $table->unsignedInteger('organiser_id');
             $table->boolean('cancelled')->default(0);
+            $table->string('image_url')->nullable();
             $table->timestamps();
             $table->foreign('organiser_id')
                 ->references('id')
