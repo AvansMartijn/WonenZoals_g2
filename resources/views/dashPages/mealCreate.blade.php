@@ -36,7 +36,7 @@
         
         <div class="funkyradio">
             <div class="funkyradio-success">
-                <input type="radio" name="gerechttype" value="voorgerecht" id="voorgerecht" />
+                <input type="radio" name="gerechttype" value="voorgerecht" id="voorgerecht" checked/>
                 <label for="voorgerecht">Voorgerecht</label>
             </div>
 
