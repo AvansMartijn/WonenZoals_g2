@@ -52,10 +52,11 @@
                     <p><b>Aanvang:</b> {{$data['event']->date}}</p>
                     <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
                     
-                    @if ($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0)
+                    @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role == "Beheerder" && $data['event']->cancelled == 0 )
                     <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Cancellen</a>
                     @endif
-                    @if ($data['event']->cancelled == 1)
+
+                    @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 1) || Auth::user()->role == "Beheerder" && $data['event']->cancelled == 1)
                     <button class="btn btn-danger" data-toggle="modal" data-target="#vangnet">Verwijderen</button></button>
                     {{-- <a href="/dashboard/agenda/item/{{$data['event']->id}}/deleteEvent" class="btn btn-danger">Verwijderen</a> --}}
                     @endif
