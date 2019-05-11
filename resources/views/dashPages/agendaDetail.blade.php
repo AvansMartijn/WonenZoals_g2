@@ -51,6 +51,9 @@
                     <p><b>Vervoer:</b> {!!$data['event']->transport!!}</p>
                     <p><b>Aanvang:</b> {{$data['event']->date}}</p>
                     <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
+                    @if ($data['event']->image_url != null && $data['event']->image_url != "")
+                        <img src="{{$data['event']->image_url}}">
+                    @endif
                     
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role == "Beheerder" && $data['event']->cancelled == 0 )
                     <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Annuleren</a>

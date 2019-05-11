@@ -17,6 +17,7 @@ use Auth;
 use Calendar;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
+use Illuminate\Support\Facades\Input;
 
 /**
  *  EventsController Class Doc Comment
@@ -169,7 +170,8 @@ class EventsController extends Controller
      */
     public function addEvent(Request $request)
     {
-
+        
+      
         $validatedData = $request->validate([
             'eventname' => 'required|max:255',
             'location' => 'required|max:255',
@@ -179,12 +181,20 @@ class EventsController extends Controller
             'role_check' => 'required',
 
         ]);
-        //
         $autoApply = 0;
         if ($request['auto_apply'] != null) {
             $autoApply = 1;
         }
+       
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
 
+            request()->image->move($path, $imageName);
+        }
+        
         $event = new AgendaEvent;
         $event->eventname = $request['eventname'];
         $event->location = $request['location'];
@@ -193,6 +203,7 @@ class EventsController extends Controller
         $event->description = $request['description'];
         $event->date = $request['date'];
         $event->enddate = $request['enddate'];
+        $event->image_url = $imagePath;
         $event->save();
         
         if($request['voorgerecht'] != ""){
@@ -210,16 +221,16 @@ class EventsController extends Controller
             $meal = \App\Meal::where('id', $request['nagerecht'])->first();
             $event->meals()->save($meal);
         }
-        // var_dump($request['voorgerecht']);
-        // die;
+       
         $user = \App\User::where('id', Auth::id())->first();
         $user->events()->save($event, ['applied' => $autoApply]);
 
         foreach ($request['role_check'] as $group) {
             $users = \App\User::where('role', $group)->get();
             foreach ($users as $user) {
-                $user->events()->save($event, ['applied' => $autoApply]);
-                // App\User::find()->roles()->save($role, ['expires' => $expires]);
+                if($user->id != Auth::id()){
+                    $user->events()->save($event, ['applied' => $autoApply]);
+                }
             }
         }
         return redirect('dashboard/agenda')->with('success', 'Activiteit is aangemaakt');

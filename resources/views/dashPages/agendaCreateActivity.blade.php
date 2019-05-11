@@ -13,7 +13,7 @@
 </div>
 
 {{-- Content --}}
-{!! Form::open(['action' => 'EventsController@addEvent', 'methode' => 'POST']) !!}
+{!! Form::open(['action' => 'EventsController@addEvent', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
 <div class="container">
     <div class="MainContent">
@@ -86,6 +86,10 @@
                 <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">
                 <label for="Auto_apply">Gebruikers aanmelden</label>
             </div>
+            <div class="form-group">
+                    <label>Upload Image</label>
+                    <input type="file" name="image" id="image">
+                </div>
 
         </div>
     </div>

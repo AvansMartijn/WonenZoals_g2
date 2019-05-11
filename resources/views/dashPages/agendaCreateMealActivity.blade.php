@@ -126,7 +126,10 @@
                     <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">
                     <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
                 </div>
-    
+                <div class="form-group">
+                        <label>Upload Image</label>
+                        <input type="file" name="image" id="image">
+                    </div>
             </div>
         </div>
 

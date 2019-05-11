@@ -67,15 +67,6 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="birthday" type="text" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}" name="birthday" value="{{ old('birthday') }}" placeholder="Geboortedatum (Jaar-Maand-Dag)" required>
-                    @if ($errors->has('birthday'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('birthday') }}</strong>
-                        </span>
-                    @endif
-                </div>
-
-                <div class="form-group">
                     <button type="submit" class="btn btn-success full-width">
                         {{ __('Registreren') }}
                     </button>
