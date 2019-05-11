@@ -52,11 +52,13 @@
                     <p><b>Aanvang:</b> {{$data['event']->date}}</p>
                     <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
                     
-                    @if ($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0)
+                    @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role == "Beheerder" && $data['event']->cancelled == 0 )
                     <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Cancellen</a>
                     @endif
-                    @if ($data['event']->cancelled == 1)
-                    <a href="/dashboard/agenda/item/{{$data['event']->id}}/deleteEvent" class="btn btn-danger">Verwijderen</a>
+
+                    @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 1) || Auth::user()->role == "Beheerder" && $data['event']->cancelled == 1)
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#vangnet">Verwijderen</button></button>
+                    {{-- <a href="/dashboard/agenda/item/{{$data['event']->id}}/deleteEvent" class="btn btn-danger">Verwijderen</a> --}}
                     @endif
               
             </div>
@@ -96,6 +98,24 @@
 
             </div>
         </div>
+        <div class="modal fade lg" id="vangnet" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                        
+                        <h3 class="modal-Name font-weight-bold">Weet u zeker dat u deze activiteit wilt verwijderen?</h3>
+        
+                        <p class="text">
+                          Na het verwijderen van een activiteit is de activiteit niet meer zichtbaar in agenda's en overzichten.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Terug</button>
+                        <a href="/dashboard/agenda/item/{{$data['event']->id}}/deleteEvent" class="btn btn-danger">Verwijderen</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
     </div>
 
 </div>

@@ -55,10 +55,10 @@
             <h1>Aanmelden</h1>
             <hr>
 
-            <div class="funkyradio-success">
-                <input type="checkbox" name="role_check[]" value="beheerder" id="Beheerder" checked>
-                <label for="Beheerder">Beheerders</label>
-            </div>
+            {{-- <div class="funkyradio-success"> --}}
+                <input type="hidden" name="role_check[]" value="beheerder" id="Beheerder" checked>
+                {{-- <label for="Beheerder">Beheerders</label> --}}
+            {{-- </div> --}}
     
             <div class="funkyradio-success">
                 <input type="checkbox" name="role_check[]" value="bewoner" id="Bewoner">

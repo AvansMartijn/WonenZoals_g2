@@ -212,6 +212,8 @@ class EventsController extends Controller
         }
         // var_dump($request['voorgerecht']);
         // die;
+        $user = \App\User::where('id', Auth::id())->first();
+        $user->events()->save($event, ['applied' => $autoApply]);
 
         foreach ($request['role_check'] as $group) {
             $users = \App\User::where('role', $group)->get();
@@ -220,7 +222,7 @@ class EventsController extends Controller
                 // App\User::find()->roles()->save($role, ['expires' => $expires]);
             }
         }
-        return redirect()->back()->with('success', 'activiteit is aangemaakt');
+        return redirect('dashboard/agenda')->with('success', 'activiteit is aangemaakt');
     }
 
     public function cancelEvent($id){
