@@ -1,15 +1,13 @@
 $(function () {
-    let Collapsed = false;
+    let Collapsed = true;
 
-    $('.BackHeader > h3').on('click', function() {
+    $('.HamburgerMenu > a').on('click', function() {
 
         if (!Collapsed) {
-            $('.AppNav').toggle();
-            $('.Content').css({"width" : "100%", "left" : "0px"})
+            $('.AppNav').css({"left" : "-100%","transition":"left .5s"}); 
             Collapsed = true;
         } else if (Collapsed) {
-            $('.AppNav').toggle();
-            $('.Content').css({"width" : "calc(100% - 280px)", "left" : "280px"})
+            $('.AppNav').css({"left" : "0px","transition":"left .5s"});
             Collapsed = false;
         }
     });

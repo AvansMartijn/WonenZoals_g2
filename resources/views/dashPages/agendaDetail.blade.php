@@ -3,63 +3,66 @@
 @section('content')
 
 <div class="BackHeader">
-    <a href="/dashboard/agenda" class="btn btn-primary">Terug</a>
+    <a href="/dashboard/agenda" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
     <h3>Activiteit aanmaken</h3>
     <hr>
 </div>
 
-<div class="BackItem">
-    <div class="BackHeader">
-        <h3><i class="fas fa-calendar"></i> Evenement</h3>
-        <hr class="BottomMargin">
-    </div>
-<a href="/dashboard/agenda" class="btn btn-primary">Terug</a>
+<div class="HamburgerMenu">
+    <a><i class="fas fa-bars"></i> Menu</a>
+</div>
+
 <!--- delete button shown if owner of activity --->
-@if ($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0)
-<a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Cancellen</a>
-@endif
-@if ($data['event']->cancelled == 1)
-<a href="/dashboard/agenda/item/{{$data['event']->id}}/deleteEvent" class="btn btn-danger">Verwijderen</a>
-@endif
+
 <!--- end of delete button --->
-    <div class="row justify-content-center">
-        <div class="col-md-4">
+    <div class="container">
+        <div class="MainContent">
             <div class="CustomCardContent">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
-                <h1>{{$data['event']->eventname}}</h1>
-                @if ($data['event']->cancelled == 1)
-                    <h2 class="text-danger">Gecancelled</h2>
-                @endif
+                <h1>
+                    {{$data['event']->eventname}}
+                    <span class="text-danger">
+                        @if ($data['event']->cancelled == 1)
+                            (Gecancelled)
+                        @endif
+                    </span>
+                </h1>
+                
                 <p>Aanvang: {{$data['event']->date}}</p>
                 <hr>
                 <p>{!!$data['event']->description!!}</p>
 
-                        <p>
-                        @if ($data['meal']['voorgerecht'] != null)
-                            <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}<br> 
-                        @endif
-                        @if ($data['meal']['hoofdgerecht'] != null)
-                            <b>Hoofdgerecht:</b> {{$data['meal']['hoofdgerecht']->name}} <br> 
-                        @endif
-                        @if ($data['meal']['nagerecht'] != null)
-                            <b>Nagerecht:</b> {{$data['meal']['nagerecht']->name}} <br> 
-                        @endif
-                        </p>
-                        <p><b>Locatie:</b> {!!$data['event']->location!!}</p>
-                        <p><b>Vervoer:</b> {!!$data['event']->transport!!}</p>
-                        <p><b>Aanvang:</b> {{$data['event']->date}}</p>
-                        <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
-                       
-
+                    <p>
+                    @if ($data['meal']['voorgerecht'] != null)
+                        <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}<br> 
+                    @endif
+                    @if ($data['meal']['hoofdgerecht'] != null)
+                        <b>Hoofdgerecht:</b> {{$data['meal']['hoofdgerecht']->name}} <br> 
+                    @endif
+                    @if ($data['meal']['nagerecht'] != null)
+                        <b>Nagerecht:</b> {{$data['meal']['nagerecht']->name}} <br> 
+                    @endif
+                    </p>
+                    <p><b>Locatie:</b> {!!$data['event']->location!!}</p>
+                    <p><b>Vervoer:</b> {!!$data['event']->transport!!}</p>
+                    <p><b>Aanvang:</b> {{$data['event']->date}}</p>
+                    <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
+                    
+                    @if ($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0)
+                    <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Cancellen</a>
+                    @endif
+                    @if ($data['event']->cancelled == 1)
+                    <a href="/dashboard/agenda/item/{{$data['event']->id}}/deleteEvent" class="btn btn-danger">Verwijderen</a>
+                    @endif
               
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="SideContent">
             <div class="CustomCardContent">
                 <h1>Wie gaan er mee</h1>
                 <p class="text-success">
