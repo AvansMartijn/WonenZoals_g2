@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/agenda" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Activiteit inplannen</h3>
+    <h3>Activiteit Inplannen</h3>
     <hr>
 </div>
 
@@ -75,7 +75,7 @@
                 <label for="Vrijwilliger">Vrijwilligers</label>
             </div>
 
-            <h3>Aanwezig melden</h3>
+            <h3>Aanwezig Melden</h3>
             <hr>
             <div class="funkyradio-success">
                 <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">

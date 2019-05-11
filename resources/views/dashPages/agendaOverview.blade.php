@@ -19,8 +19,8 @@
         @foreach (Auth::user()->authorizations as $userauthorization)
             @if ($userauthorization->authorization == "Activiteit")
                 <div class="center">
-                    <a href="/dashboard/agenda/create/activity" class="btn btn-success half-width">Activiteit inplannen</a>
-                    <a href="/dashboard/agenda/create/meal" class="btn btn-success half-width">Maaltijd inplannen</a>
+                    <a href="/dashboard/agenda/create/activity" class="btn btn-success half-width">Activiteit Inplannen</a>
+                    <a href="/dashboard/agenda/create/meal" class="btn btn-success half-width">Maaltijd Inplannen</a>
                 </div>
             @endif
         @endforeach

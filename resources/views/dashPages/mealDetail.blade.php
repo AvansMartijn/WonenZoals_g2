@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/maaltijden" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Gerecht details</h3>
+    <h3>Gerecht Details</h3>
     <hr>
 </div>
 
@@ -20,7 +20,7 @@
             <hr>
 
             <p>
-                <b>Type gerecht:</b> {{$meal->type}}
+                <b>Type Gerecht:</b> {{$meal->type}}
             </p>
             <p>
                 <b>Beschrijving:</b><br> {{$meal->description}}

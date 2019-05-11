@@ -14,7 +14,7 @@
 <div class="container">
     <div class="ContentMainFull">
         <h1>Welkom {{Auth::user()->name}}</h1>
-        More Here Soon...
+        Binnenkort Beschikbaar...
     </div>
 </div>
 @endsection
