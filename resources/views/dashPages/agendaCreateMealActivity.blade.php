@@ -13,7 +13,7 @@
 </div>
 
 {{-- Content --}}
-{!! Form::open(['action' => 'EventsController@addEvent', 'methode' => 'POST']) !!}
+{!! Form::open(['action' => 'EventsController@addEvent', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
 
     <div class="container">

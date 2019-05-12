@@ -394,6 +394,12 @@ body {
     width: 100%;
 }
 
+.AgendaImage {
+    max-width: 100%;
+    margin-bottom: 25px;
+}
+
+
 @media only screen and (max-width: 1030px) { 
     .margin-right {
         margin-right: 0px;
@@ -401,6 +407,11 @@ body {
     }
 }
 @media only screen and (max-width: 955px) { 
+    .AgendaImage {
+        max-width: 100%;
+        margin-top: 25px;
+    }
+    
     .HamburgerMenu {
         display: block;
     }
