@@ -4,7 +4,7 @@
 
 <div class="BackHeader">
     <a href="/dashboard/agenda" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Activiteit aanmaken</h3>
+    <h3>Activiteit Details</h3>
     <hr>
 </div>
 
@@ -27,7 +27,7 @@
                     {{$data['event']->eventname}}
                     <span class="text-danger">
                         @if ($data['event']->cancelled == 1)
-                            (Gecancelled)
+                            (Geannuleerd)
                         @endif
                     </span>
                 </h1>
@@ -51,12 +51,9 @@
                     <p><b>Vervoer:</b> {!!$data['event']->transport!!}</p>
                     <p><b>Aanvang:</b> {{$data['event']->date}}</p>
                     <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
-                    @if ($data['event']->image_url != null && $data['event']->image_url != "")
-                        <img src="{{$data['event']->image_url}}">
-                    @endif
                     
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role == "Beheerder" && $data['event']->cancelled == 0 )
-                    <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Cancellen</a>
+                    <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Annuleren</a>
                     @endif
 
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 1) || Auth::user()->role == "Beheerder" && $data['event']->cancelled == 1)
@@ -69,6 +66,10 @@
 
         <div class="SideContent">
             <div class="CustomCardContent">
+                @if ($data['event']->image_url != null && $data['event']->image_url != "")
+                    <img class="AgendaImage" src="{{$data['event']->image_url}}">
+                @endif
+
                 <h1>Wie gaan er mee</h1>
                 <p class="text-success">
                     @if ($data['event']->pivot->applied)
@@ -85,11 +86,17 @@
                         </div>
                     @endif
                     <tbody>
-                        @foreach ($data['users'] as $user)
-                        <tr>
-                            <td>{{$user->name}}</td>
-                        </tr>
-                        @endforeach
+                        @if (count($data['users']) < 1)
+                            <tr>
+                                <td>Er gaat nog niemand mee.</td>
+                            </tr>
+                        @else
+                            @foreach ($data['users'] as $user)
+                                <tr>
+                                    <td>{{$user->name}}</td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
 

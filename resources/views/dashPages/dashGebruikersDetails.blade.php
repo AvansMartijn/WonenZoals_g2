@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/gebruikers" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Gebruiker details</h3>
+    <h3>Gebruiker Details</h3>
     <hr>
 </div>
 

@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/agenda" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Maaltijd inplannen</h3>
+    <h3>Maaltijd Inplannen</h3>
     <hr>
 </div>
 
@@ -13,7 +13,7 @@
 </div>
 
 {{-- Content --}}
-{!! Form::open(['action' => 'EventsController@addEvent', 'methode' => 'POST']) !!}
+{!! Form::open(['action' => 'EventsController@addEvent', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
 
     <div class="container">
@@ -23,32 +23,32 @@
 
             <div class="form-group">
                 <label for="date">Titel*</label>
-                <input type="text" class="form-control" name="eventname" placeholder="Titel">
+                <input type="text" class="form-control" name="eventname" value="{{ old('eventname') }}">
             </div>
 
             <div class="form-group">
                 <label for="description">Beschrijving*</label>
-                <textarea class="form-control" name="description" rows="4" placeholder="Beschrijving"></textarea>
+                <textarea class="form-control" name="description" rows="4"> {{ old('description') }}</textarea>
             </div>
 
             <div class="form-group">
                 <label for="date">Aanvang*</label>
-                <input type="datetime-local" class="form-control" name="date" placeholder="Dag-Maand-Jaar Uur:Minuut">
+                <input type="datetime-local" class="form-control" name="date" value="{{ old('date') }}">
             </div>
 
             <div class="form-group">
-                <label for="enddate">Eind tijd*</label>
-                <input type="datetime-local" class="form-control" name="enddate" placeholder="Dag-Maand-Jaar Uur:Minuut">
+                <label for="enddate">Eind Tijd*</label>
+                <input type="datetime-local" class="form-control" name="enddate" value="{{ old('enddate') }}">
             </div>
 
             <div class="form-group">
                 <label for="location">Locatie*</label>
-                <input type="text" class="form-control" name="location" placeholder="Locatie">
+                <input type="text" class="form-control" name="location" value="{{ old('location') }}">
             </div>
             
             <div class="form-group">
                 <label for="transport">Vervoer</label>
-                <input type="text" class="form-control" name="transport" placeholder="Vervoer">
+                <input type="text" class="form-control" name="transport"  value="{{ old('transport') }}">
             </div>
     
             
@@ -59,7 +59,7 @@
             <div class="form-group">
                 <div>
                     <label for="voorgerecht">Voorgerecht: </label>
-                    <select class="form-control" name="voorgerecht" id="voorgerecht">
+                    <select class="form-control" name="voorgerecht" id="voorgerecht" >
                         <option value="">Geen voorgerecht</option>
                     @foreach ($meals as $meal)
                         @if ($meal->type == "voorgerecht")
@@ -71,7 +71,7 @@
         
                 <div>
                     <label for="hoofdgerecht">Hoofdgerecht: </label>
-                    <select class="form-control" name="hoofdgerecht" id="hoofdgerecht">
+                    <select class="form-control" name="hoofdgerecht" id="hoofdgerecht" >
                         <option value="">Geen hoofdgerecht</option>
                         @foreach ($meals as $meal)
                             @if ($meal->type == "hoofdgerecht")
@@ -83,7 +83,7 @@
         
                 <div>
                     <label for="nagerecht">Nagerecht: </label>
-                    <select class="form-control" name="nagerecht" id="nagerecht">
+                    <select class="form-control" name="nagerecht" id="nagerecht" >
                         <option value="">Geen nagerecht</option>
                         @foreach ($meals as $meal)
                             @if ($meal->type == "nagerecht")
@@ -120,7 +120,7 @@
                     <label for="Vrijwilliger">Vrijwilligers</label>
                 </div>
     
-                <h3>Aanwezig melden</h3>
+                <h3>Aanwezig Melden</h3>
                 <hr>
                 <div class="funkyradio-success">
                     <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">

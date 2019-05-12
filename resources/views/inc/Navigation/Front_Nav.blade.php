@@ -74,8 +74,16 @@
                                 @if ($userauthorization->authorization == "Agenda")
                                     <a class="dropdown-item" href="/dashboard/agenda">Agenda</a> 
                                 @endif
+                                {{-- show maaltijden --}}
+                                @if ($userauthorization->authorization == "Maaltijden")
+                                    <a class="dropdown-item" href="/dashboard/maaltijden">Maaltijden</a> 
+                                @endif
                                  {{-- show newsletter archive --}}
                                 @if ($userauthorization->authorization == "Nieuwsbriefarchief")
+                                    <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief Archief</a> 
+                                @endif
+                                {{-- show newsletter archive --}}
+                                @if ($userauthorization->authorization == "Gebruikers")
                                     <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief archief</a> 
                                 @endif
                             @endforeach

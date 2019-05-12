@@ -50,7 +50,7 @@
                         <a href="/dashboard/nieuwsbriefarchief" class="Menu-Item {{ (request()->is('dashboard/nieuwsbriefarchief*')) ? 'Active' : '' }}">
                             <li>
                                 <i class="fas fa-archive"></i>
-                                <span class="alignpotjandriedubbeltjes">Nieuwsbrief archief</span>
+                                <span class="alignpotjandriedubbeltjes">Nieuwsbrief Archief</span>
                             </li>
                         </a>
 

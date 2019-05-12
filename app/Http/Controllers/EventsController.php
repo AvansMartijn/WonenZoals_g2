@@ -128,7 +128,14 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->pivot->applied = 1;
         $event->pivot->update();
-        return back();
+
+        $notification = array(
+            'message' => 'U bent aangemeld', 
+            'alert-type' => 'success'
+        );
+
+
+        return back()->with($notification);
     }
 
     public function cancel($id)
@@ -136,7 +143,13 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->pivot->applied = 0;
         $event->pivot->update();
-        return back();
+
+        $notification = array(
+            'message' => 'U bent afgemeld', 
+            'alert-type' => 'success'
+        );
+
+        return back()->with($notification);
     }
 
     /**
@@ -175,10 +188,10 @@ class EventsController extends Controller
         $validatedData = $request->validate([
             'eventname' => 'required|max:255',
             'location' => 'required|max:255',
-            'eventname' => 'required|max:255',
             'description' => 'required|max:255',
             'date' => 'date',
             'image' => 'required|image',
+            'enddate' => 'date|after:date',
             'role_check' => 'required',
 
         ]);
@@ -234,22 +247,22 @@ class EventsController extends Controller
                 }
             }
         }
-        return redirect('dashboard/agenda')->with('success', 'activiteit is aangemaakt');
+        return redirect('dashboard/agenda')->with('success', 'Activiteit is aangemaakt');
     }
 
     public function cancelEvent($id){
         $event = \App\AgendaEvent::where('id', $id)->update(['cancelled' => 1]);
-        return redirect()->back()->with('success', 'activiteit is gecannceled');
+        return redirect()->back()->with('success', 'Activiteit is geannuleerd');
     }
 
     public function deleteEvent($id){
         $event = \App\AgendaEvent::where('id', $id)->first();
         if($event->cancelled == 1){
             $event->delete();
-            return redirect('dashboard/agenda')->with('success', 'activiteit is verwijderd');
+            return redirect('dashboard/agenda')->with('success', 'Activiteit is verwijderd');
         }
         if($event->cancelled == 0){
-            return redirect()->back()->with('warning', 'Een activiteit dient gecancelled te zijn om verwijderd te mogen.');
+            return redirect()->back()->with('warning', 'Om de activiteit te verwijderen dient deze geannuleerd te zijn.');
         }
 
     }

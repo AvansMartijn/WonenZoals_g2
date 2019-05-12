@@ -42,12 +42,12 @@
 
             <div class="funkyradio-success">
                 <input type="radio" name="gerechttype" value="hoofdgerecht" id="hoofdgerecht" />
-                <label for="hoofdgerecht">hoofdgerecht</label>
+                <label for="hoofdgerecht">Hoofdgerecht</label>
             </div>
 
             <div class="funkyradio-success">
                 <input type="radio" name="gerechttype" value="nagerecht" id="nagerecht" />
-                <label for="nagerecht">nagerecht</label>
+                <label for="nagerecht">Nagerecht</label>
             </div>
         </div>
     </div>

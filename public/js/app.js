@@ -48866,18 +48866,54 @@ $(function () {
         "transistion": "top .5s"
       });
       Collapsed = false;
+    } else {
+      if (Width < 591) {
+        $('.AppNav').css({
+          "left": "-100%",
+          "transition": "left .5s"
+        });
+        $('.HamburgerMenu > a').css({
+          "top": "60px",
+          "transistion": "top .2s"
+        });
+      } else {
+        $('.AppNav').css({
+          "left": "-100%",
+          "transition": "left .5s"
+        });
+        $('.HamburgerMenu > a').css({
+          "top": "15px",
+          "transistion": "top .2s"
+        });
+      }
+
+      Collapsed = true;
     }
   });
   $('.HamburgerMenu > a').on('click', function () {
     if (!Collapsed) {
-      $('.AppNav').css({
-        "left": "-100%",
-        "transition": "left .5s"
-      });
-      $('.HamburgerMenu > a').css({
-        "top": "60px",
-        "transistion": "top .2s"
-      });
+      var Width = $(window).width();
+
+      if (Width < 591) {
+        $('.AppNav').css({
+          "left": "-100%",
+          "transition": "left .5s"
+        });
+        $('.HamburgerMenu > a').css({
+          "top": "60px",
+          "transistion": "top .2s"
+        });
+      } else {
+        $('.AppNav').css({
+          "left": "-100%",
+          "transition": "left .5s"
+        });
+        $('.HamburgerMenu > a').css({
+          "top": "15px",
+          "transistion": "top .2s"
+        });
+      }
+
       Collapsed = true;
     } else if (Collapsed) {
       $('.AppNav').css({
@@ -48905,15 +48941,8 @@ $(function () {
 $(function () {
   $('#Search').keyup(function () {
     var value = $(this).val();
-    var patt = new RegExp(value, "i");
-    $('.Searchable').find('tr').each(function () {
-      if (!($(this).find('td').text().search(patt) >= 0)) {
-        $(this).not('.myHead').hide();
-      }
-
-      if ($(this).find('td').text().search(patt) >= 0) {
-        $(this).show();
-      }
+    $(".Searchable tr").filter(function () {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
     });
   });
 });
@@ -49128,8 +49157,8 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\WonenZoals_g2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\WonenZoals_g2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Xandor\Documents\AVANS\Blok7\Project\WonenZoals\WonenZoals_g2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Xandor\Documents\AVANS\Blok7\Project\WonenZoals\WonenZoals_g2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
