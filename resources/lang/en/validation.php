@@ -169,5 +169,9 @@ return [
         'title'                 => 'titel',
         'username'              => 'gebruikersnaam',
         'year'                  => 'jaar',
+        'date'                  => 'Begindatum',
+        'enddate'               => 'einddatum',
+        'eventname'             => 'Titel',
+        'location'              => 'Locatie'
     ],
 ];

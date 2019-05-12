@@ -175,7 +175,6 @@ class EventsController extends Controller
         $validatedData = $request->validate([
             'eventname' => 'required|max:255',
             'location' => 'required|max:255',
-            'eventname' => 'required|max:255',
             'description' => 'required|max:255',
             'date' => 'date',
             'enddate' => 'date|after:date',
