@@ -31,8 +31,6 @@
                         @endif
                     </span>
                 </h1>
-                
-                <p>Aanvang: {{$data['event']->date}}</p>
                 <hr>
                 <p>{!!$data['event']->description!!}</p>
 
