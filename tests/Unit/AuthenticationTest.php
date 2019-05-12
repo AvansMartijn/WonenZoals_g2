@@ -42,8 +42,7 @@ class AuthenticationTest extends TestCase
     public function test_user_cannot_login_with_incorrect_password()
     {
         $user = factory(User::class)->create([
-            'password' => bcrypt('i-love-laravel'),
-            'birthday' => new \DateTime('12-3-1999')
+            'password' => bcrypt('i-love-laravel')
         ]);
 
         $response = $this->from('/login')->post('/login', [
@@ -67,8 +66,7 @@ class AuthenticationTest extends TestCase
     public function test_remember_me_functionality()
     {
         $user = factory(User::class)->create([
-            'password' => bcrypt($password = 'i-love-laravel'),
-            'birthday' => new \DateTime('12-3-1999')
+            'password' => bcrypt($password = 'i-love-laravel')
         ]);
 
         $response = $this->post('/login', [
