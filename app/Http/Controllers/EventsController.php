@@ -191,6 +191,7 @@ class EventsController extends Controller
             'eventname' => 'required|max:255',
             'description' => 'required|max:255',
             'date' => 'date',
+            'enddate' => 'date|after:date',
             'role_check' => 'required',
 
         ]);
