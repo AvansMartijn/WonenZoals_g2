@@ -30,8 +30,9 @@ Route::get('/dashboard/gebruikers/{id}', 'ManageUsersController@showGebruikersDe
 Route::post('/dashboard/gebruikers', 'ManageUsersController@store')->middleware('auth');
 Route::delete('/dashboard/gebruikers/{id}', 'ManageUsersController@destroymachtiging')->middleware('auth');
 Route::delete('/dashboard/gebruikers/machtigingen/{id}', 'ManageUsersController@destroy')->middleware('auth');
-
 Route::post('/gebruikersupdate', 'ManageUsersController@update')->middleware('auth');
+
+//agenda routes
 Route::get('/dashboard/agenda', 'EventsController@index')->name('agenda');
 Route::get('/dashboard/agenda/create/meal', 'EventsController@createMeal')->name('agendaCreateMeal');
 Route::get('/dashboard/agenda/create/activity', 'EventsController@createActivity')->name('agendaCreateActivity');

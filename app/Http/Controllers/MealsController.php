@@ -4,9 +4,47 @@ namespace App\Http\Controllers;
 
 use App\Meal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MealsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        //fixed register login
+        $this->middleware(
+            function ($request, $next) {
+
+                $userAuth = Auth::user();
+
+                $userAuth = $userAuth->authorizations;
+
+                $toegang = false;
+
+                foreach ($userAuth as $userAuthh) {
+                    if ($userAuthh->authorization == "Maaltijden") {
+                        $toegang = true;
+                    }
+                }
+
+                if (!$toegang) {
+                    return redirect('/dashboard');
+                }
+
+                return $next($request);
+            }
+        );
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
