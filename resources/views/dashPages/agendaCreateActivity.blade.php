@@ -22,22 +22,22 @@
 
         <div class="form-group">
             <label for="date">Titel*</label>
-            <input type="text" class="form-control" name="eventname">
+            <input type="text" class="form-control" name="eventname" value="{{ old('eventname') }}">
         </div>
         
         <div class="form-group">
             <label for="description">Beschrijving*</label>
-            <textarea class="form-control" name="description" rows="4"></textarea>
+            <textarea class="form-control" name="description"  rows="4" >{{ old('description') }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="location">Locatie*</label>
-            <input type="text" class="form-control" name="location">
+            <input type="text" class="form-control" name="location" value="{{ old('location') }}">
         </div>
         
         <div class="form-group">
             <label for="transport">Vervoer</label>
-            <input type="text" class="form-control" name="transport">
+            <input type="text" class="form-control" name="transport" value="{{ old('transport') }}">
         </div>
 
 
@@ -45,12 +45,12 @@
         <hr>
         <div class="form-group">
             <label for="date">Aanvang*</label>
-            <input type="datetime-local" class="form-control" name="date">
+            <input type="datetime-local" class="form-control" name="date" value="{{ old('date') }}">
         </div>
 
         <div class="form-group">
             <label for="enddate">Eind Tijd*</label>
-            <input type="datetime-local" class="form-control" name="enddate">
+            <input type="datetime-local" class="form-control" name="enddate" value="{{ old('enddate') }}">
         </div>
 
     </div>

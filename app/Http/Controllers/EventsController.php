@@ -128,7 +128,14 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->pivot->applied = 1;
         $event->pivot->update();
-        return back();
+
+        $notification = array(
+            'message' => 'U bent aangemeld', 
+            'alert-type' => 'success'
+        );
+
+
+        return back()->with($notification);
     }
 
     public function cancel($id)
@@ -136,7 +143,13 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->pivot->applied = 0;
         $event->pivot->update();
-        return back();
+
+        $notification = array(
+            'message' => 'U bent afgemeld', 
+            'alert-type' => 'success'
+        );
+
+        return back()->with($notification);
     }
 
     /**
