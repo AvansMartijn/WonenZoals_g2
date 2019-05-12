@@ -14,6 +14,7 @@
 namespace App\Http\Controllers;
 
 use App\authorization;
+use App\authorizationLookup;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,28 @@ use Illuminate\Support\Facades\Auth;
  */
 class ManageUsersController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        //fixed register login
+        $this->middleware(
+            function ($request, $next) {
+                $role = Auth::user()->role;
+
+                if ($role !== 'Beheerder') {
+                    return redirect('/dashboard');
+                }
+
+                return $next($request);
+            }
+        );
+    }
 
     /**
      * Create a new controller instance.
@@ -37,8 +60,7 @@ class ManageUsersController extends Controller
      */
     public function showGebruikers()
     {
-
-        $users = User::all();
+        $users = User::orderBy('role', 'DESC')->get();
 
         return view('dashPages.dashGebruikers')->with('users', $users);
     }
@@ -57,7 +79,27 @@ class ManageUsersController extends Controller
 
         $authoriation = $user->authorizations;
 
-        return view('dashPages.dashGebruikersDetails')->with(compact('user', 'authoriation'));
+        $authoriationsAvailable = authorizationLookup::all()->keyBy('id'); 
+
+        
+        
+        foreach($authoriationsAvailable as $authoriationsAvailablee)
+        {
+            foreach($authoriation as $authoriationn)
+            {
+                if($authoriationsAvailablee->name == $authoriationn->authorization)
+                {
+                    
+                    $authoriationsAvailable->forget($authoriationsAvailablee->id);
+                    
+                }
+
+            }
+
+        }
+
+        //return $authoriationsAvailable;
+        return view('dashPages.dashGebruikersDetails')->with(compact('user', 'authoriation','authoriationsAvailable'));
     }
 
     /**
@@ -70,27 +112,57 @@ class ManageUsersController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate(
-            $request, [
-                'machtiging' => 'required',
-            ]
-        );
 
-        $machti = authorization::where('user_id', $request->input('id'))->get();
+        $user = User::where('id', $request->input('id'))->first();
 
-        foreach ($machti as $machting) {
-            if ($machting->authorization == $request->input('machtiging')) {
-                return redirect()->back()->with('error', "De gebruiker heeft deze machtiging al ");
+        $authoriations = $user->authorizations;
+
+        $authoriationsAvailables = authorizationLookup::all();
+
+        foreach($authoriationsAvailables as $authoriationsAvailable)
+        {
+            $name = $authoriationsAvailable->name;
+
+            $value = $request->input($name);
+
+            $common = 0;
+
+            $commonn = 0;
+
+            if($value)
+            {
+                foreach($authoriations as $AUTH)
+                {
+                    if($AUTH->authorization == $name)
+                    {
+                        $common++;
+                        $commonn++;
+                    }
+                   
+                }
+
+                if($common == 0)
+                {
+                    //create the machtiging
+                    $macht = new authorization();
+                    $macht->user_id = $request->input('id');
+                    $macht->authorization = $name;
+                    $macht->save();
+                }
+                else
+                {
+                    $common = 0;
+                }
+                    
             }
+
+
         }
 
-        //create the machtiging
-        $macht = new authorization();
-        $macht->user_id = $request->input('id');
-        $macht->authorization = $request->input('machtiging');
-        $macht->save();
-
-        // redirect user back
+        if($commonn > 0)
+        {
+            return redirect()->back()->with('error', 'Niet al de machtigingen zijn toegevoegd, omdat de gebruiker sommige machtigingen al had');
+        }
         return redirect()->back()->with('success', 'De machtiging is toegevoegd');
     }
 
@@ -147,7 +219,8 @@ class ManageUsersController extends Controller
     public function update(Request $request)
     {
         $this->validate(
-            $request, [
+            $request,
+            [
                 'naam' => 'required',
                 'email' => 'required',
             ]

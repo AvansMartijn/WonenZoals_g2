@@ -40,7 +40,8 @@ class ContactUSController extends Controller
     {
 
         $validator = Validator::make(
-            $request->all(), [
+            $request->all(),
+            [
             'name' => 'required',
             'email' => 'required|email',
             'subject' => 'required',
@@ -66,10 +67,12 @@ class ContactUSController extends Controller
                 'email' => $request->get('email'),
                 'subject' => $request->get('subject'),
                 'user_message' => $request->get('message'),
-            ), function ($message) {
+            ),
+            function ($message) {
                 $message->from('wonentestzoals123@gmail.com');
                 $message->to(
-                    'wonentestzoals123@gmail.com', 'Admin'
+                    'wonentestzoals123@gmail.com',
+                    'Admin'
                 )->subject(
                     'Contact formulier:'
                 );
@@ -77,7 +80,8 @@ class ContactUSController extends Controller
         );
 
         return redirect("#Contact")->with(
-            'success', 'Uw contact formulier is succesvol verzonden!'
+            'success',
+            'Uw contact formulier is succesvol verzonden!'
         );
     }
 }

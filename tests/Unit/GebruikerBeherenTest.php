@@ -19,16 +19,16 @@ class GebruikerBeherenTest extends TestCase
             'role' => 'Beheerder'
         ]);
 
-        $response = $this->actingAs($user)->get('/gebruikers');
+        $response = $this->actingAs($user)->get('/dashboard/gebruikers');
         $response->assertViewIs('dashPages.dashGebruikers');
     }
 
-//    public function test_resident_cannot_view_users(){
-//        $user = new User([
-//            'role' => 'Bewonder'
-//        ]);
-//
-//        $response = $this->actingAs($user)->get('/gebruikers');
-//        $response->assertViewIs('dashPages.dashGebruikers');
-//    }
+    public function test_resident_cannot_view_users(){
+        $user = new User([
+            'role' => 'Bewoner'
+        ]);
+
+        $response = $this->actingAs($user)->get('/dashboard/gebruikers');
+        $response->assertRedirect();
+    }
 }

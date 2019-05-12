@@ -18,13 +18,23 @@ class CreateEventsTable extends Migration
             $table->string('eventname');
             $table->string('description');
             $table->datetime('date');
+            $table->datetime('enddate');
+            $table->string('location');
+            $table->string('transport')->nullable();
+            $table->unsignedInteger('organiser_id');
+            $table->boolean('cancelled')->default(0);
+            $table->string('image_url')->nullable();
             $table->timestamps();
+            $table->foreign('organiser_id')
+                ->references('id')
+                ->on('users')->onDelete('cascade');
         });
 
         Schema::create('users_agenda_events', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('event_id');
+            $table->boolean('applied')->default(0);
 
             $table->foreign('user_id')
                 ->references('id')

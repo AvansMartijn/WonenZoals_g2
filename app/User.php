@@ -41,10 +41,22 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\authorization');
     }
+    
+    //forum
+    public function topic()
+    {
+        return $this->hasMany('App\Topic');
+    }
+
+    public function forumpost()
+    {
+        return $this->hasMany('App\ForumPost');
+    }
+    //
 
     public function events()
     {
-        return $this->belongsToMany('App\AgendaEvent', 'users_agenda_events', 'user_id', 'event_id');
+        return $this->belongsToMany('App\AgendaEvent', 'users_agenda_events', 'user_id', 'event_id')->withPivot('applied');
     }
 
 }

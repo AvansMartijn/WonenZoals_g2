@@ -1,7 +1,5 @@
 $(function(){
 
-console.log('[SmoothScroll] Started Loading');
-
 var Doc = $(document),
     Navigation = $('.navbar'),
     ToTop = $('.ToTop'),
@@ -39,7 +37,5 @@ Link.click(function(e){
         }, 500);
     }
 });
-
-   console.log('[SmoothScroll] Finisehd Loading');
 
 });

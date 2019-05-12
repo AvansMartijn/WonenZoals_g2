@@ -67,8 +67,27 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <!-- dashboard link in the dropdown-->
                             <a class="dropdown-item" href="/dashboard">Dashboard</a>
-                        
-                            <a class="dropdown-item" href="/dashboard/agenda">Agenda</a>
+
+                            {{-- show auth roles --}}
+                            @foreach (Auth::user()->authorizations as $userauthorization)
+                                {{-- show agenda --}}
+                                @if ($userauthorization->authorization == "Agenda")
+                                    <a class="dropdown-item" href="/dashboard/agenda">Agenda</a> 
+                                @endif
+                                {{-- show maaltijden --}}
+                                @if ($userauthorization->authorization == "Maaltijden")
+                                    <a class="dropdown-item" href="/dashboard/maaltijden">Maaltijden</a> 
+                                @endif
+                                 {{-- show newsletter archive --}}
+                                @if ($userauthorization->authorization == "Nieuwsbriefarchief")
+                                    <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief Archief</a> 
+                                @endif
+                                {{-- show newsletter archive --}}
+                                @if ($userauthorization->authorization == "Gebruikers")
+                                    <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief archief</a> 
+                                @endif
+                            @endforeach
+                            
                             
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

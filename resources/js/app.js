@@ -6,6 +6,8 @@
  */
 
 require('./SmoothScroll');
+require('./Search');
+require('./MenuCollapse');
 require('./bootstrap');
 window.Vue = require('vue');
 

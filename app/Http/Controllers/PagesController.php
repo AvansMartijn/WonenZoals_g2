@@ -25,7 +25,7 @@ use App\Http\Controllers\Controller;
  */
 class PagesController extends Controller
 {
-
+  
     /**
      * Open the index web page
      *
@@ -34,15 +34,5 @@ class PagesController extends Controller
     public function index()
     {
         return view('pages.index');
-    }
-
-    /**
-     * Opening the CMS home page
-     *
-     * @return dashPages.cmsHome
-     */
-    public function cmsHome()
-    {
-        return view('dashPages.cmsHome');
     }
 }
