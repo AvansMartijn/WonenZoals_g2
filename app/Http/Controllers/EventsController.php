@@ -146,7 +146,7 @@ class EventsController extends Controller
 
         $notification = array(
             'message' => 'U bent afgemeld', 
-            'alert-type' => 'error'
+            'alert-type' => 'success'
         );
 
         return back()->with($notification);
