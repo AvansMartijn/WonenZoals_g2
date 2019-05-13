@@ -52,10 +52,10 @@
             </tbody>
         </table>
     </div>
+    @if (Auth::user()->role == "Beheerder")
     <div class="SideContent">
         <h1>Toevoegen</h1>
         <hr>
-        @if (Auth::user()->role == "Beheerder")
             {!! Form::open(['action' => 'NewsletterArchiveController@store', 'methode' => 'POST']) !!}
                         
                 <div class="form-group">
@@ -69,8 +69,8 @@
                 {{Form::submit("Toevoegen", ['class' => 'btn btn-success float-right'])}}
                 
             {!! Form::close() !!} 
-        @endif
-    </div>
+        </div>
+    @endif
 </div>
 
 @endsection
