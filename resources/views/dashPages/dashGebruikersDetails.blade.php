@@ -95,31 +95,6 @@
     </div>
 
 </div>
-{{-- <div class="container">
-    <a href="/dashboard/gebruikers" class="btn btn-primary bottom-spacer">Terug</a>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header"></div>
-    
-                    <div class="card-body">
 
-
-                                
-                            </div>
-                        </div>
-            </div>
-            <div class="col-md-6">
-                        <div class="card">
-                                <div class="card-header">Gebruiker details</div>
-                                <div class="card-body">
-                                        
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div> --}}
 
 @endsection

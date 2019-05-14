@@ -45,9 +45,9 @@ class RegisterController extends Controller
         //fixed register login
         $this->middleware(
             function ($request, $next) {
-                $role = Auth::user()->role;
+                $role = Auth::user()->role_id;
 
-                if ($role !== 'Beheerder') {
+                if ($role !== 1) {
                     return redirect('/dashboard');
                 }
 
@@ -70,7 +70,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'role' => ['required', 'string', 'max:255'],
+            'role' => ['required'],
             'birthday' => ['required', 'date','before:today', 'max:255'],
             ]
         );
@@ -89,7 +89,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => $data['role'],
+            'role_id' => $data['role'],
             'birthday' => $data['birthday'],
             ]
         );
@@ -106,8 +106,6 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
-
-        // $this->guard()->login($user);
 
         return $this->registered($request, $user)
         ?: redirect($this->redirectPath());

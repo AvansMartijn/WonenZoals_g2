@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class authorization extends Model
 {
 
-    public function user(){
-        return $this->belongsTo('App\user');
-    }
+    // public function user(){
+    //     return $this->belongsTo('App\user');
+    // }
+
+
 }
