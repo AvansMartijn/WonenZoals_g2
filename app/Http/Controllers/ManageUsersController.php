@@ -42,9 +42,9 @@ class ManageUsersController extends Controller
         //fixed register login
         $this->middleware(
             function ($request, $next) {
-                $role = Auth::user()->role;
+                $role = Auth::user()->role_id;
 
-                if ($role !== 'Beheerder') {
+                if ($role !== 1) {
                     return redirect('/dashboard');
                 }
 
@@ -115,20 +115,15 @@ class ManageUsersController extends Controller
 
         $user = User::where('id', $request->input('id'))->first();
 
-        // return $request;
-        //create the machtiging
-        // $macht = new authorization();
-        var_dump($request['role_check']);
+
+
         foreach ($request['role_check'] as $machtiging) {
-                // if($request['role_check'])'
+
                 $auth = AuthorizationLookup::where('id', $machtiging)->first();
                 $user->authorizations()->save($auth);
-                // App\User::find()->roles()->save($role, ['expires' => $expires]);
+
         }
-        // $macht->user_id = $request->input('id');
-        // $macht->authorization_id = $request->input('');
-        // $macht->save();
-        
+
         return redirect()->back()->with('success', 'De machtiging is toegevoegd');
     }
 

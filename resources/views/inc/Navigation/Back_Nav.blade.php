@@ -59,7 +59,7 @@
                 @endforeach
 
                 {{-- checkuser role --}}
-                @if (Auth::user()->role == "Beheerder")
+               @if (Auth::user()->role_id == 1)    {{-- beheerder--}}
 
                     <a href="/dashboard/gebruikers" class="Menu-Item {{ (request()->is('dashboard/gebruikers*')) ? 'Active' : '' }}">
                         <li>

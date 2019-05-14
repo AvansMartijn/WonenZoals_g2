@@ -43,7 +43,7 @@
                                 <div class="card-body">
                                         <h2 class="text-center">{{$user->name}}</h2> 
                                         <h4 class="text-center">({{$user->email}})</h4>
-                                        <h2>{{$user->Role}}</h2>
+                                        <h2>{{$user->role->role_name}}</h2>
                 
                 
                                             {!! Form::open(['action' => 'ManageUsersController@store', 'methode' => 'POST']) !!}

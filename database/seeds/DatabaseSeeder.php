@@ -29,12 +29,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(RoleSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(EventsSeeder::class);
         $this->call(MealsSeeder::class);
         $this->call(authorizationLookupsSeeder::class);
         $this->call(AuthorizationSeeder::class);
         $this->call(NewsletterSeeder::class);
+        
         
     }
 }
