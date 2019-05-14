@@ -72,6 +72,7 @@
             {!! Form::close() !!} 
         </div>
     @endif
+    @endif
 </div>
 
 @endsection
