@@ -48,6 +48,9 @@ Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@index')
 Route::post('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@store')->middleware('auth');
 Route::delete('/dashboard/nieuwsbriefarchief/{id}', 'NewsletterArchiveController@destroy')->middleware('auth');
 
+//sections
+Route::get('/dashboard/sections', 'SectionsController@index');
+
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([
     'create' => 'meals.build',
