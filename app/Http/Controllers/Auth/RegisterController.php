@@ -71,7 +71,6 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
             'role' => ['required'],
-            'birthday' => ['required', 'date','before:today', 'max:255'],
             ]
         );
     }
@@ -90,7 +89,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role_id' => $data['role'],
-            'birthday' => $data['birthday'],
             ]
         );
     }
