@@ -49,8 +49,11 @@ Route::post('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@store'
 Route::delete('/dashboard/nieuwsbriefarchief/{id}', 'NewsletterArchiveController@destroy')->middleware('auth');
 
 //sections
-Route::get('/dashboard/sections', 'SectionsController@index');
-Route::delete('/dashboard/gebruikers/sections/{id}', 'SectionsController@destroy')->middleware('auth');
+Route::get('/dashboard/sections', 'SectionsController@index')->name('sections');
+Route::get('/dashboard/sections/moveup/{id}', 'SectionsController@moveup');
+Route::get('/dashboard/sections/movedown/{id}', 'SectionsController@movedown');
+Route::delete('/dashboard/sections/{id}', 'SectionsController@destroy')->middleware('auth');
+
 
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([

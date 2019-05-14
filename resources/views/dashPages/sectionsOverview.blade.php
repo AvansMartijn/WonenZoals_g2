@@ -18,7 +18,7 @@
                         <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
                         <a class="btn btn-success" href="{{ route('meals.build') }}">Nieuw gerecht</a>
                 </div>
-
+                
                 <table class="table table-striped">
                         <thead>
                                 <tr>
@@ -37,13 +37,20 @@
                                                 <td>{{$section->default_section}}</td>
                                                 <td>{{$section->order}}</td>
                                                 <td class="text-left">
-                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/sections/moveup/{{$section->id}}"><span class="fas fa-arrow-up"></span></a>
-                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/sections/movedown/{{$section->id}}"><span class="fas fa-arrow-down"></span></a>
-                                                        <a class="btn btn-success float-left margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a>
                                                         {!!Form::open(['action' => ['SectionsController@destroy', $section->id], 'method' => 'POST'])!!}
-                                                                {{Form::hidden('_method', 'DELETE')}}
-                                                                {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-left'])}}
+                                                        {{Form::hidden('_method', 'DELETE')}}
+                                                        {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
                                                         {!!Form::close()!!}
+                                                        <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a>
+                                                        @if ($section->id != 1 && $section->type()->first()->type != 'leaf')
+                                                                @if ($section->order != $sections->maxOrder)
+                                                                
+                                                                        <a class="btn btn-primary float-right margin-right" href="/dashboard/sections/movedown/{{$section->id}}"><span class="fas fa-arrow-down"></span></a>
+                                                                @endif
+                                                                @if ($section->order != 2)
+                                                                        <a class="btn btn-primary float-right margin-right" href="/dashboard/sections/moveup/{{$section->id}}"><span class="fas fa-arrow-up"></span></a>
+                                                                @endif
+                                                        @endif
                                                 </td>
                                         </tr>
                                 @endforeach
