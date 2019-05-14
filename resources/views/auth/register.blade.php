@@ -54,10 +54,10 @@
 
                 <div class="form-group">
                     <select id="role" type="text" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" value="{{ old('role') }}" required autofocus>
-                            <option>Bewoner</option>
-                            <option>Vrijwilliger</option>
-                            <option>Ouder</option>
-                            <option>Beheerder</option>
+                            <option value="4">Bewoner</option>
+                            <option value="2">Vrijwilliger</option>
+                            <option value="3">Ouder</option>
+                            <option value="1">Beheerder</option>
                     </select>
                     @if ($errors->has('role'))
                         <span class="invalid-feedback" role="alert">

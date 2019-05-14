@@ -52,8 +52,10 @@
                 <div class="funkyradio">
                     @foreach ($authoriationsAvailable as $authoriationnn)
                         <div class="funkyradio-success">
-                            {{ Form::checkbox( $authoriationnn->name, $authoriationnn->id,false, array('id'=>$authoriationnn->name))}}
-                            {{ Form::label( $authoriationnn->name, $authoriationnn->name)}}
+
+
+                            <input type="checkbox" name="role_check[]" value="{{$authoriationnn->id}}" id="{{$authoriationnn->name}}">
+                            <label for="{{$authoriationnn->name}}">{{$authoriationnn->name}}</label>
                         </div>
                     @endforeach
                 </div>
@@ -74,7 +76,7 @@
                         </tr>
                         @foreach ($authoriation as $authoriationn)
                         <tr>
-                                <td>{{$authoriationn->authorization}}</td>
+                                <td>{{$authoriationn->name}}</td>
                                 <td>
                                 {!!Form::open(['action' => ['ManageUsersController@destroymachtiging', $authoriationn->id], 'method' => 'POST'])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
@@ -95,31 +97,6 @@
     </div>
 
 </div>
-{{-- <div class="container">
-    <a href="/dashboard/gebruikers" class="btn btn-primary bottom-spacer">Terug</a>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header"></div>
-    
-                    <div class="card-body">
 
-
-                                
-                            </div>
-                        </div>
-            </div>
-            <div class="col-md-6">
-                        <div class="card">
-                                <div class="card-header">Gebruiker details</div>
-                                <div class="card-body">
-                                        
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div> --}}
 
 @endsection
