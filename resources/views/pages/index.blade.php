@@ -506,7 +506,7 @@
                         <a href="https://www.yellenyonkers.nl/" target="_blank"><img class="img-fluid" src="{{ asset('img/LogoYY_2015.png') }}" alt=""></a>
                     </div>
                     <div class="col">
-                        <a href="https://www.mijneigenthuis.eu/"><img class="img-fluid" src="{{ asset('img/roodborstje.png') }}" alt=""></a>
+                        <a href="https://www.fra-pant.nl"><img class="img-fluid" src="{{ asset('img/roodborstje.png') }}" alt=""></a>
                     </div>
                 </div>
             </div>
