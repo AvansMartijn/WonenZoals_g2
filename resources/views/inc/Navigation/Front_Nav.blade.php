@@ -69,24 +69,27 @@
                             <a class="dropdown-item" href="/dashboard">Dashboard</a>
 
                             {{-- show auth roles --}}
-                            @foreach (Auth::user()->authorizations as $userauthorization)
+                            @foreach (Auth::user()->authorizations()->get() as $userauthorization)
                                 {{-- show agenda --}}
-                                @if ($userauthorization->authorization == "Agenda")
+                                @if ($userauthorization->name == "Agenda")
                                     <a class="dropdown-item" href="/dashboard/agenda">Agenda</a> 
                                 @endif
                                 {{-- show maaltijden --}}
-                                @if ($userauthorization->authorization == "Maaltijden")
+                                @if ($userauthorization->name == "Maaltijden")
                                     <a class="dropdown-item" href="/dashboard/maaltijden">Maaltijden</a> 
                                 @endif
                                  {{-- show newsletter archive --}}
-                                @if ($userauthorization->authorization == "Nieuwsbriefarchief")
+                                @if ($userauthorization->name == "Nieuwsbriefarchief")
                                     <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief Archief</a> 
                                 @endif
-                                {{-- show newsletter archive --}}
-                                @if ($userauthorization->authorization == "Gebruikers")
-                                    <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief archief</a> 
-                                @endif
                             @endforeach
+
+                            {{-- checkuser role --}}
+                            @if (Auth::user()->role_id == 1)    {{-- beheerder--}}
+
+                                        <a class="dropdown-item" href="/dashboard/gebruikers">Gebruikers</a> 
+                        
+                            @endif
                             
                             
                             <a class="dropdown-item" href="{{ route('logout') }}"

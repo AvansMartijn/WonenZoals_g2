@@ -25,7 +25,7 @@
             <thead>
                 <tr>
                     <th>Nieuwsbrief</th>
-                    @if (Auth::user()->role == "Beheerder")
+                    @if (Auth::user()->role_id == 1)
                         <th></th>
                     @endif 
                 </tr>
@@ -40,7 +40,7 @@
                         </td>
 
                         <td class="options">
-                            @if (Auth::user()->role == "Beheerder")
+                            @if (Auth::user()->role_id == 1)
                                 {!!Form::open(['action' => ['NewsletterArchiveController@destroy', $newsletter->id], 'method' => 'POST'])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
@@ -56,6 +56,7 @@
     <div class="SideContent">
         <h1>Toevoegen</h1>
         <hr>
+        @if (Auth::user()->role_id == 1)
             {!! Form::open(['action' => 'NewsletterArchiveController@store', 'methode' => 'POST']) !!}
                         
                 <div class="form-group">
