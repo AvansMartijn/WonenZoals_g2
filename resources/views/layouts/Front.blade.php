@@ -32,7 +32,7 @@
         @include('inc.Navigation.Front_Nav')
 
         <main class="py-4">
-            @include('inc.messages')
+            {{-- @include('inc.messages') --}}
             @yield('content')
 
         </main>

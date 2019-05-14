@@ -17,6 +17,7 @@ use Auth;
 use Calendar;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
+use Illuminate\Support\Facades\Input;
 
 /**
  *  EventsController Class Doc Comment
@@ -127,7 +128,14 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->pivot->applied = 1;
         $event->pivot->update();
-        return back();
+
+        $notification = array(
+            'message' => 'U bent aangemeld', 
+            'alert-type' => 'success'
+        );
+
+
+        return back()->with($notification);
     }
 
     public function cancel($id)
@@ -135,7 +143,13 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->pivot->applied = 0;
         $event->pivot->update();
-        return back();
+
+        $notification = array(
+            'message' => 'U bent afgemeld', 
+            'alert-type' => 'success'
+        );
+
+        return back()->with($notification);
     }
 
     /**
@@ -169,22 +183,32 @@ class EventsController extends Controller
      */
     public function addEvent(Request $request)
     {
-
+        
+      
         $validatedData = $request->validate([
             'eventname' => 'required|max:255',
             'location' => 'required|max:255',
-            'eventname' => 'required|max:255',
             'description' => 'required|max:255',
             'date' => 'date',
+            'image' => 'image',
+            'enddate' => 'date|after:date',
             'role_check' => 'required',
 
         ]);
-        //
         $autoApply = 0;
         if ($request['auto_apply'] != null) {
             $autoApply = 1;
         }
+       
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
 
+            request()->image->move($path, $imageName);
+        }
+        
         $event = new AgendaEvent;
         $event->eventname = $request['eventname'];
         $event->location = $request['location'];
@@ -193,6 +217,7 @@ class EventsController extends Controller
         $event->description = $request['description'];
         $event->date = $request['date'];
         $event->enddate = $request['enddate'];
+        $event->image_url = $imagePath;
         $event->save();
         
         if($request['voorgerecht'] != ""){
@@ -210,32 +235,34 @@ class EventsController extends Controller
             $meal = \App\Meal::where('id', $request['nagerecht'])->first();
             $event->meals()->save($meal);
         }
-        // var_dump($request['voorgerecht']);
-        // die;
+       
+        $user = \App\User::where('id', Auth::id())->first();
+        $user->events()->save($event, ['applied' => $autoApply]);
 
         foreach ($request['role_check'] as $group) {
             $users = \App\User::where('role', $group)->get();
             foreach ($users as $user) {
-                $user->events()->save($event, ['applied' => $autoApply]);
-                // App\User::find()->roles()->save($role, ['expires' => $expires]);
+                if($user->id != Auth::id()){
+                    $user->events()->save($event, ['applied' => $autoApply]);
+                }
             }
         }
-        return redirect()->back()->with('success', 'activiteit is aangemaakt');
+        return redirect('dashboard/agenda')->with('success', 'Activiteit is aangemaakt');
     }
 
     public function cancelEvent($id){
         $event = \App\AgendaEvent::where('id', $id)->update(['cancelled' => 1]);
-        return redirect()->back()->with('success', 'activiteit is gecannceled');
+        return redirect()->back()->with('success', 'Activiteit is geannuleerd');
     }
 
     public function deleteEvent($id){
         $event = \App\AgendaEvent::where('id', $id)->first();
         if($event->cancelled == 1){
             $event->delete();
-            return redirect('dashboard/agenda')->with('success', 'activiteit is verwijderd');
+            return redirect('dashboard/agenda')->with('success', 'Activiteit is verwijderd');
         }
         if($event->cancelled == 0){
-            return redirect()->back()->with('warning', 'Een activiteit dient gecancelled te zijn om verwijderd te mogen.');
+            return redirect()->back()->with('warning', 'Om de activiteit te verwijderen dient deze geannuleerd te zijn.');
         }
 
     }

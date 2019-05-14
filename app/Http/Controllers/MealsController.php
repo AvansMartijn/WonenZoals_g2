@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Meal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class MealsController extends Controller
 {
 
@@ -23,12 +24,16 @@ class MealsController extends Controller
 
                 $userAuth = Auth::user();
 
+
                 $userAuth = $userAuth->authorizations()->get();
+
 
                 $toegang = false;
 
                 foreach ($userAuth as $userAuthh) {
+
                     if ($userAuthh->id == 3) {
+
                         $toegang = true;
                     }
                 }
@@ -50,7 +55,7 @@ class MealsController extends Controller
     public function index()
     {
         //
-        $meals = Meal::all();
+        $meals = Meal::orderBy('type', 'DESC')->get();
         return View('dashPages.mealsOverview', compact('meals'));
     }
 
@@ -85,7 +90,12 @@ class MealsController extends Controller
         $meal->type = $request['gerechttype'];
         $meal->save();
 
-        return redirect()->back()->with('success', 'gerecht is aangemaakt');
+        $notification = array(
+            'message' => 'gerecht is aangemaakt', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard/maaltijden')->with($notification);
     }
 
     /**
@@ -96,7 +106,6 @@ class MealsController extends Controller
      */
     public function show($id)
     {
-        //
         $meal = Meal::where('id', $id)->first();
         return View('dashPages.mealDetail', compact('meal'));
     }
@@ -134,7 +143,12 @@ class MealsController extends Controller
     {
         $meal = \App\Meal::where('id', $id)->first();
         $meal->delete();
-        return redirect()->back()->with('success', 'gerecht is verwijderd');
-        //
+
+        $notification = array(
+            'message' => 'gerecht is verwijderd', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard/maaltijden')->with($notification);
     }
 }

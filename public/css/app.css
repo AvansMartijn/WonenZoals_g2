@@ -11259,6 +11259,17 @@ body {
   text-align: center;
 }
 
+.LogoCenterPage {
+  margin: 0 auto;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+}
+
+.brand > hr {
+  margin-top: 50px;
+}
+
 .BackHeader > h3 {
   color: #227dc7;
   padding: 5px 0;
@@ -11432,6 +11443,102 @@ body {
 .alignpotjandriedubbeltjes {
   position: absolute;
   left: 5rem;
+}
+
+.HamburgerMenu {
+  display: none;
+}
+
+.HamburgerMenu > a {
+  font-size: 25px;
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  padding: 0px 10px;
+  z-index: 500;
+}
+
+.HamburgerMenu > a:hover {
+  cursor: pointer;
+  border: 1.5px solid #212529;
+  box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.MainContent {
+  width: 50%;
+  margin-right: 25px;
+  float: left;
+}
+
+.SideContent {
+  width: 29%;
+  float: left;
+}
+
+.MainContentFull {
+  width: 100%;
+}
+
+.AgendaImage {
+  max-width: 100%;
+  margin-bottom: 25px;
+}
+
+@media only screen and (max-width: 1030px) {
+  .margin-right {
+    margin-right: 0px;
+    margin-bottom: 5px;
+  }
+}
+
+@media only screen and (max-width: 955px) {
+  .AgendaImage {
+    max-width: 100%;
+    margin-top: 25px;
+  }
+
+  .HamburgerMenu {
+    display: block;
+  }
+
+  .AppNav {
+    width: 100%;
+    left: -100%;
+    z-index: 100;
+  }
+
+  .Content {
+    width: 100%;
+    left: 0px;
+  }
+
+  .MainContent {
+    width: 100%;
+    margin-right: 0px;
+    float: left;
+  }
+
+  .SideContent {
+    width: 100%;
+    float: left;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .BackHeader > a {
+    top: 60px;
+    padding: 8px 10px;
+  }
+
+  .BackHeader > hr {
+    margin-top: 60px;
+  }
+
+  .HamburgerMenu > a {
+    top: 60px;
+  }
 }
 
 .slidee {

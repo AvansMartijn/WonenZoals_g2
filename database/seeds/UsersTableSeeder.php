@@ -34,13 +34,15 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete();
 
         $users = [
-            ['id' => 1, 'name' => 'Beheerder', 'email' => 'beheerder@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 1, 'birthday' => now(), 'remember_token' => Str::random(15)],
-            ['id' => 2, 'name' => 'Bewoner', 'email' => 'bewoner@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 4, 'birthday' => now(), 'remember_token' => Str::random(15)],
-            ['id' => 3, 'name' => 'Vrijwilliger', 'email' => 'vrijwilliger@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 2, 'birthday' => now(), 'remember_token' => Str::random(15)],
-            ['id' => 4, 'name' => 'Ouder', 'email' => 'ouder@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 3, 'birthday' => now(), 'remember_token' => Str::random(15)],
-            ['id' => 5, 'name' => 'Pieter', 'email' => 'pieter@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 4, 'birthday' => now(), 'remember_token' => Str::random(15)],
-            ['id' => 6, 'name' => 'Truus', 'email' => 'truus@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 4, 'birthday' => now(), 'remember_token' => Str::random(15)],
-            ['id' => 7, 'name' => 'Jan', 'email' => 'jan@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 4, 'birthday' => now(), 'remember_token' => Str::random(15)]
+
+            ['id' => 1, 'name' => 'Beheerder', 'email' => 'beheerder@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 1, 'remember_token' => Str::random(15)],
+            ['id' => 2, 'name' => 'Bewoner', 'email' => 'bewoner@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 4, 'remember_token' => Str::random(15)],
+            ['id' => 3, 'name' => 'Vrijwilliger', 'email' => 'vrijwilliger@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 2,  'remember_token' => Str::random(15)],
+            ['id' => 4, 'name' => 'Ouder', 'email' => 'ouder@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 3, 'remember_token' => Str::random(15)],
+            ['id' => 5, 'name' => 'Pieter', 'email' => 'pieter@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 4, 'remember_token' => Str::random(15)],
+            ['id' => 6, 'name' => 'Truus', 'email' => 'truus@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 4, 'remember_token' => Str::random(15)],
+            ['id' => 7, 'name' => 'Jan', 'email' => 'jan@wza.nl', 'email_verified_at' => now(), 'password' => bcrypt('123456'), 'role_id' => 4, 'remember_token' => Str::random(15)]
+
         ];
 
         foreach($users as $user){

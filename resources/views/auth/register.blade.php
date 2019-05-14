@@ -8,10 +8,13 @@
     <hr>
 </div>
 
+<div class="HamburgerMenu">
+    <a><i class="fas fa-bars"></i> Menu</a>
+</div>
 
 {{-- Content --}}
-<div class="row justify-content-center">
-        <div class="col-md-7">
+<div class="container">
+        <div class="MainContentFull">
             <h1>Gegevens</h1>
             <hr>
 
@@ -59,15 +62,6 @@
                     @if ($errors->has('role'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('role') }}</strong>
-                        </span>
-                    @endif
-                </div>
-
-                <div class="form-group">
-                    <input id="birthday" type="text" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}" name="birthday" value="{{ old('birthday') }}" placeholder="Geboortedatum (Jaar-Maand-Dag)" required>
-                    @if ($errors->has('birthday'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('birthday') }}</strong>
                         </span>
                     @endif
                 </div>

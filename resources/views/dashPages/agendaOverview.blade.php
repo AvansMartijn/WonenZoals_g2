@@ -7,6 +7,10 @@
     <hr>
 </div>
 
+<div class="HamburgerMenu">
+    <a><i class="fas fa-bars"></i> Menu</a>
+</div>
+
 {{-- Content --}}
 <div class="row justify-content-center">
     <div class="col-md-7">
@@ -15,8 +19,8 @@
         @foreach (Auth::user()->authorizations()->get() as $userauthorization)
             @if ($userauthorization->id == 5)
                 <div class="center">
-                    <a href="/dashboard/agenda/create/activity" class="btn btn-success half-width">Activiteit inplannen</a>
-                    <a href="/dashboard/agenda/create/meal" class="btn btn-success half-width">Maaltijd inplannen</a>
+                    <a href="/dashboard/agenda/create/activity" class="btn btn-success half-width">Activiteit Inplannen</a>
+                    <a href="/dashboard/agenda/create/meal" class="btn btn-success half-width">Maaltijd Inplannen</a>
                 </div>
             @endif
         @endforeach

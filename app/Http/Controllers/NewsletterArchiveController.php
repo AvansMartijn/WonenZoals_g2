@@ -111,7 +111,12 @@ class NewsletterArchiveController extends Controller
         $newsletter->link = $link;
         $newsletter->save();
 
-        return redirect()->back()->with('success', 'Nieuwsbrief is toegevoegd aan het archief');
+        $notification = array(
+            'message' => 'Nieuwsbrief is toegevoegd aan het archief', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard/nieuwsbriefarchief')->with($notification);
     }
 
     /**
@@ -127,6 +132,11 @@ class NewsletterArchiveController extends Controller
 
         $newsletter->delete();
 
-        return redirect()->back()->with('success', 'De nieuwsbrief is verwijderd uit het archief');
+        $notification = array(
+            'message' => 'De nieuwsbrief is verwijderd uit het archief', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard/nieuwsbriefarchief')->with($notification);
     }
 }

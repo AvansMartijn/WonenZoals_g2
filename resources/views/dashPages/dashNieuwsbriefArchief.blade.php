@@ -3,14 +3,17 @@
 @section('content')
 {{-- Page Header --}}
 <div class="BackHeader">
-    {{-- <a><i class="fas fa-bars"></i></a> --}}
     <h3>Nieuwsbrief Archief</h3>
     <hr>
 </div>
 
+<div class="HamburgerMenu">
+    <a><i class="fas fa-bars"></i> Menu</a>
+</div>
+
 {{-- Content --}}
-<div class="row justify-content-center">
-    <div class="col-md-5">
+<div class="container">
+    <div class="MainContent">
         <h1>Overzicht</h1>
         <hr>
 
@@ -49,7 +52,7 @@
             </tbody>
         </table>
     </div>
-    <div class="col-md-2">
+    <div class="SideContent">
         <h1>Toevoegen</h1>
         <hr>
         @if (Auth::user()->role_id == 1)

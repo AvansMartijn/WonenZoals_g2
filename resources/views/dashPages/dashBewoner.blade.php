@@ -1,26 +1,20 @@
 @extends('layouts.Back')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-            
-                        <h1>Welkom {{Auth::user()->name}}</h1>
-                        <p>Dit is uw persoonlijke Bewoner pagina</p>
-                        
-
-                </div>
-            </div>
+{{-- Page Header --}}
+<div class="BackHeader">
+        <h3>Dashboard</h3>
+        <hr>
+    </div>
+    
+    <div class="HamburgerMenu">
+        <a><i class="fas fa-bars"></i> Menu</a>
+    </div>
+    
+    <div class="container">
+        <div class="ContentMainFull">
+            <h1>Welkom {{Auth::user()->name}}</h1>
+            Binnenkort Beschikbaar...
         </div>
     </div>
-</div>
 @endsection
