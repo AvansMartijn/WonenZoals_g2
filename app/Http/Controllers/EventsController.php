@@ -240,7 +240,7 @@ class EventsController extends Controller
         $user->events()->save($event, ['applied' => $autoApply]);
 
         foreach ($request['role_check'] as $group) {
-            $users = \App\User::where('role', $group)->get();
+            $users = \App\User::where('role_id', $group)->get();
             foreach ($users as $user) {
                 if($user->id != Auth::id()){
                     $user->events()->save($event, ['applied' => $autoApply]);

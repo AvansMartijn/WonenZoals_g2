@@ -60,7 +60,7 @@ class ManageUsersController extends Controller
      */
     public function showGebruikers()
     {
-        $users = User::orderBy('role', 'DESC')->get();
+        $users = User::orderBy('role_id', 'DESC')->get();
 
         return view('dashPages.dashGebruikers')->with('users', $users);
     }
