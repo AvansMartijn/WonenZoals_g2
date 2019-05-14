@@ -30,15 +30,17 @@
                                 </tr>
                         </thead>
                         <tbody class="Searchable">
-                                @foreach ($section as $section)
+                                @foreach ($sections as $section)
                                         <tr>
                                                 <td>{{$section->name}}</td>
-                                                <td>{{$section->type}}</td>
+                                                <td>{{$section->type()->first()->type}}</td>
                                                 <td>{{$section->default_section}}</td>
                                                 <td>{{$section->order}}</td>
                                                 <td class="text-left">
-                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/maaltijden/{{$meal->id}}">Aanpassen</a>
-                                                        {!!Form::open(['action' => ['SectionController@destroy', $section->id], 'method' => 'POST'])!!}
+                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/sections/moveup/{{$section->id}}"><span class="fas fa-arrow-up"></span></a>
+                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/sections/movedown/{{$section->id}}"><span class="fas fa-arrow-down"></span></a>
+                                                        <a class="btn btn-success float-left margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a>
+                                                        {!!Form::open(['action' => ['SectionsController@destroy', $section->id], 'method' => 'POST'])!!}
                                                                 {{Form::hidden('_method', 'DELETE')}}
                                                                 {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-left'])}}
                                                         {!!Form::close()!!}

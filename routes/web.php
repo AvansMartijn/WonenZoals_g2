@@ -50,6 +50,7 @@ Route::delete('/dashboard/nieuwsbriefarchief/{id}', 'NewsletterArchiveController
 
 //sections
 Route::get('/dashboard/sections', 'SectionsController@index');
+Route::delete('/dashboard/gebruikers/sections/{id}', 'SectionsController@destroy')->middleware('auth');
 
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([

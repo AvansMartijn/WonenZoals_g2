@@ -27,12 +27,12 @@ class CreateSectionsTable extends Migration
             $table->integer('type_id')->unsigned();
             $table->boolean('default_section');
             $table->string('img_url')->nullable();
+            $table->timestamps();
 
             $table->foreign('type_id')
             ->references('id')
             ->on('section_types')->onDelete('cascade');
 
-            $table->timestamps();
         });
 
         Schema::create('default_sections', function (Blueprint $table) {
@@ -42,12 +42,12 @@ class CreateSectionsTable extends Migration
             $table->string('content');
             $table->integer('type_id')->unsigned();
             $table->boolean('default_section');
+            $table->timestamps();
 
             $table->foreign('type_id')
             ->references('id')
             ->on('section_types')->onDelete('cascade');
 
-            $table->timestamps();
         });
 
         

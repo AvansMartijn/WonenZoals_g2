@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use \App\Newsitem;
+use \App\Location;
+use \App\ContactSubject;
+use \App\Sponsor;
 
 class FrontEndSeeder extends Seeder
 {
@@ -38,13 +42,13 @@ class FrontEndSeeder extends Seeder
 
         $subjects = [
             ['id' => 1, 'subject' => 'vraag'],
-            ['id' => 1, 'subject' => 'afmelden nieuwsbrief'],
-            ['id' => 1, 'subject' => 'aanmelden woningzoekende'],
-            ['id' => 1, 'subject' => 'ouderaccount aanvragen'],
+            ['id' => 2, 'subject' => 'afmelden nieuwsbrief'],
+            ['id' => 3, 'subject' => 'aanmelden woningzoekende'],
+            ['id' => 4, 'subject' => 'ouderaccount aanvragen'],
         ];
 
         foreach($subjects as $subject){
-            ContactSubject::create($subjects);
+            ContactSubject::create($subject);
         };
 
         $sponsors = [

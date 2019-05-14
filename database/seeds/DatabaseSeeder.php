@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
         $this->call(authorizationLookupsSeeder::class);
         $this->call(AuthorizationSeeder::class);
         $this->call(NewsletterSeeder::class);
+        $this->call(SectionsSeeder::class);
+        $this->call(FrontEndSeeder::class);
         
         
     }
