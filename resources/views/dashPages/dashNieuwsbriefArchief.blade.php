@@ -52,7 +52,7 @@
             </tbody>
         </table>
     </div>
-    @if (Auth::user()->role == "Beheerder")
+    @if (Auth::user()->role_id == 1)
     <div class="SideContent">
         <h1>Toevoegen</h1>
         <hr>
