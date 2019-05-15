@@ -18,7 +18,8 @@
                         <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
                         <a class="btn btn-success bottom-spacer" href="{{ route('contactsubjectCreate') }}">Nieuw onderwerp</a>
                 </div>
-                
+                <div class="row">
+                <div class="col-md-8">
                 <table class="table table-striped">
                         <thead>
                                 <tr>
@@ -43,6 +44,18 @@
                                 @endforeach
                         </tbody>
                 </table>
+                </div>
+                <div class="col-md-4">
+                        <h3>Adres</h3>
+                        <hr>
+                        <b>Straat</b> {{$data['location']->street}}<br>
+                        <b>Nummer</b> {{$data['location']->number}}<br>
+                        <b>Postcode</b> {{$data['location']->postal}}<br>
+                        <b>Plaats</b> {{$data['location']->city}}<br>
+                        <a class="btn btn-success float-right margin-right" href="/dashboard/location/">Aanpassen</a>
+
+                </div>
+                </div>
                 
         </div>
 </div>
