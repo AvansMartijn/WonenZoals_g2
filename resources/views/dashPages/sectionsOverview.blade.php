@@ -42,7 +42,31 @@
                                                         {{Form::hidden('_method', 'DELETE')}}
                                                         {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
                                                         {!!Form::close()!!}
-                                                        <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a>
+                                                        @switch($section->type_id)
+                                                            @case(1)
+                                                                {{-- <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a> --}}
+                                                                @break
+                                                            @case(2)
+                                                                {{-- <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a> --}}
+                                                                @break
+                                                            @case(3)
+                                                                {{-- <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a> --}}
+                                                                @break
+                                                            @case(4)
+                                                                {{-- <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a> --}}
+                                                                @break
+                                                            @case(5)
+                                                                {{-- <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a> --}}
+                                                                @break
+                                                            @case(6)
+                                                                <a class="btn btn-success float-right margin-right" href="/dashboard/contact/">Aanpassen</a>
+                                                                @break
+                                                            @case(7)
+                                                                <a class="btn btn-success float-right margin-right" href="/dashboard/sponsors/">Aanpassen</a>
+                                                                @break
+                                                            @default
+                                                                
+                                                        @endswitch     
                                                         @if ($section->type_id != 1 && $section->type()->first()->type != 'leaf')
                                                                 @if ($section->order != $sections->maxOrder)
                                                                 
