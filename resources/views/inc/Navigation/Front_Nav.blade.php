@@ -82,6 +82,11 @@
                                 @if ($userauthorization->name == "Nieuwsbriefarchief")
                                     <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief Archief</a> 
                                 @endif
+
+                                {{-- show newsletter archive --}}
+                                @if ($userauthorization->name == "Forum")
+                                    <a class="dropdown-item" href="/dashboard/forum">Nieuwsbrief Archief</a> 
+                                @endif
                             @endforeach
 
                             {{-- checkuser role --}}
