@@ -154,4 +154,24 @@ class ContactUSController extends Controller
 
         return redirect('/dashboard/contact')->with($notification);
     }
+
+    public function editLocation(){
+        $location = Location::first();
+        return View('dashPages.contactLocationEdit', compact('location'));
+    }
+
+    public function updateLocation(Request $request){
+        $location = Location::first();
+        $location->street = $request['street'];
+        $location->number = $request['number'];
+        $location->postal = $request['postal'];
+        $location->city = $request['city'];
+        $location->save();
+
+        $notification = array(
+            'message' => 'Locatie is gewijzigd', 
+            'alert-type' => 'success');
+
+        return redirect('/dashboard/contact')->with($notification);
+    }
 }
