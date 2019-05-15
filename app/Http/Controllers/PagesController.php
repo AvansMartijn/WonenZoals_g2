@@ -13,6 +13,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use \App\Section;
 
 /**
  * PagesController Class Doc Comment
@@ -33,6 +34,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
+        $leaf = Section::where('type_id', 1)->first();
+        return view('pages.index', compact('leaf'));
     }
 }

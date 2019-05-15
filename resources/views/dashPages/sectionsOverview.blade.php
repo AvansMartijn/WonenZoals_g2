@@ -44,7 +44,7 @@
                                                         {!!Form::close()!!}
                                                         @switch($section->type_id)
                                                             @case(1)
-                                                                {{-- <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a> --}}
+                                                                <a class="btn btn-success float-right margin-right" href="/dashboard/sections/leaf">Aanpassen</a>
                                                                 @break
                                                             @case(2)
                                                                 {{-- <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a> --}}

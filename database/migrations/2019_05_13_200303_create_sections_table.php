@@ -23,7 +23,7 @@ class CreateSectionsTable extends Migration
             $table->increments('id');
             $table->integer('order')->unsigned();
             $table->string('name');
-            $table->string('content')->nullable();
+            $table->text('content')->nullable();
             $table->integer('type_id')->unsigned();
             $table->boolean('default_section');
             $table->string('img_url')->nullable();

@@ -7,7 +7,7 @@
         <div class="leaf-wrapper mx-auto">
             <div class="mx-auto leaf text-center">
                 <h1 class="text-custom-heading-shadow display-1">Wonen Zoals</h1>
-                <p class="text-white">Een groepje ouders heeft zich in 2011 verenigd <br>om gezamenlijk een initiatief op te starten voor hun kinderen.<br>Met als doel om vanaf ongeveer 2019 een gezamenlijk wooninitiatief gerealiseerd te hebben</p>
+                <p class="text-white">{!!$leaf->content!!}</p>
                 <a class="btn text-white btn-custom-shadow linkie" href="{{url('/')}}/#OverOns">Lees Meer</a>
             </div>
         </div>
