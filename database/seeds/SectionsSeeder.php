@@ -27,7 +27,6 @@ class SectionsSeeder extends Seeder
             ['id' => 5, 'type' => 'news'],
             ['id' => 6, 'type' => 'contact'],
             ['id' => 7, 'type' => 'sponsors']
-            
         ];
 
         foreach($section_types as $type){

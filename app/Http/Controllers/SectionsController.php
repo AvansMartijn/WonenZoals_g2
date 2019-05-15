@@ -51,6 +51,15 @@ class SectionsController extends Controller
         return redirect('dashboard/sections')->with('success', 'Sectie is verplaatst');
     }
 
+    public function factorysettings(){
+        $factorySections = DefaultSection::all();
+        Section::truncate();
+
+        foreach($factorySections as $section){
+            Section::create($section);
+        }
+    }
+
     public function destroy(){
         //
     }
