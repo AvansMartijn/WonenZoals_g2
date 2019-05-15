@@ -52,7 +52,12 @@ class FrontEndSeeder extends Seeder
         };
 
         $sponsors = [
-            ['id' => 1, 'name' => 'vraag', 'hyperlink' => '', 'img_url' => ''],
+            ['id' => 1, 'name' => 'Stichting eigen huis', 'hyperlink' => 'https://www.mijneigenthuis.eu/', 'img_url' => 'imgurl.com'],
+            ['id' => 2, 'name' => 'NSGK', 'hyperlink' => 'https://www.nsgk.nl/', 'img_url' => ''],
+            ['id' => 3, 'name' => 'PLATO', 'hyperlink' => 'https://www.tsvplato.nl/', 'img_url' => ''],
+            ['id' => 4, 'name' => 'Yell&Yonkers', 'hyperlink' => 'https://www.yellenyonkers.nl/', 'img_url' => ''],
+            ['id' => 5, 'name' => 'Fra-pant', 'hyperlink' => 'www.fra-pant.nl/', 'img_url' => ''],
+
         ];
 
         foreach($sponsors as $sponsor){
