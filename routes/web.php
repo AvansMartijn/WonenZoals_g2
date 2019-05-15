@@ -71,6 +71,10 @@ Route::post('/dashboard/contact/updateSubject', 'ContactUSController@updateSubje
 Route::post('/dashboard/location', 'ContactUSController@updateLocation');
 Route::delete('/dashboard/contact/{id}', 'ContactUSController@destroy')->middleware('auth');
 
+//leaf
+Route::get('/dashboard/sections/leaf', 'SectionsController@editLeaf')->name('leaf');
+Route::post('/dashboard/sections/leaf', 'SectionsController@updateLeaf');
+
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([
     'create' => 'meals.build',

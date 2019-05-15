@@ -66,4 +66,18 @@ class SectionsController extends Controller
     public function destroy(){
         //
     }
+
+
+    //sections funcitons below
+    public function editLeaf(){
+        $leaf = Section::where('type_id', 1)->first();
+        return View('dashPages.leafEdit', compact('leaf'));
+    }
+
+    public function updateLeaf(Request $request){
+        $leaf = Section::where('type_id', 1)->first();
+        $leaf->content = $request['content'];
+        $leaf->save();
+        return redirect('dashboard/sections')->with('success', 'Sectie is aangepast');
+    }
 }

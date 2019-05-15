@@ -34,7 +34,7 @@ class SectionsSeeder extends Seeder
         };
 
         $sections = [
-            ['id' => 1, 'order' => 1, 'name' => 'leaf', 'content' => '', 'type_id' => 1, 'default_section' => 1],
+            ['id' => 1, 'order' => 1, 'name' => 'leaf', 'content' => 'test', 'type_id' => 1, 'default_section' => 1],
             ['id' => 2, 'order' => 2, 'name' => 'stichting zoals', 'content' => '', 'type_id' => 3, 'default_section' => 1],
             ['id' => 3, 'order' => 3, 'name' => 'scheiding', 'content' => '', 'type_id' => 2, 'default_section' => 1],
             ['id' => 4, 'order' => 4, 'name' => 'bewoners', 'content' => '', 'type_id' => 4, 'default_section' => 1],

@@ -3,7 +3,8 @@
 @section('content')
 {{-- Page Header --}}
 <div class="BackHeader">
-        <h3>Secties overzicht</h3>
+        <a href="/dashboard/sections" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
+        <h3>Contact overzicht</h3>
         <hr>
 </div>
 
