@@ -53,9 +53,17 @@ Route::get('/dashboard/sections', 'SectionsController@index')->name('sections');
 Route::get('/dashboard/sections/moveup/{id}', 'SectionsController@moveup');
 Route::get('/dashboard/sections/movedown/{id}', 'SectionsController@movedown');
 Route::delete('/dashboard/sections/{id}', 'SectionsController@destroy')->middleware('auth');
+Route::get('/dashboard/sections/factorysettings', 'SectionsController@factorysettings')->name('factorysettings');
 
 //sponsors
 Route::get('/dashboard/sponsors', 'SponsorsController@index')->name('sponsors');
+//contact
+Route::get('/dashboard/contact', 'ContactUSController@index')->name('contact');
+Route::get('/dashboard/contact/{id}', 'ContactUSController@editSubject')->name('contactsubjectEdit');
+Route::get('/dashboard/contact/createsubject', 'ContactUSController@createSubject')->name('contactsubjectCreate');
+Route::post('/dashboard/contact/storeSubject', 'ContactUSController@storeSubject');
+Route::post('/dashboard/contact/updateSubject', 'ContactUSController@updateSubject');
+Route::delete('/dashboard/contact/{id}', 'ContactUSController@destroy')->middleware('auth');
 
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([

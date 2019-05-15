@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Section;
+use \App\DefaultSection;
 
 class SectionsController extends Controller
 {
@@ -19,12 +20,12 @@ class SectionsController extends Controller
 
     public function moveup($id){
         $section = Section::where('id', $id)->first();
-        if($id == 1 || $section->type()->first()->type == 'leaf'){
+        if($section->type_id == 1 || $section->type()->first()->type == 'leaf'){
             return redirect('dashboard/sections')->with('error', 'Deze sectie mag niet verplaatst worden');
         }
         $sectionOrder = $section->order;
         $switchSection = Section::where('order', $sectionOrder-1)->first();
-        if($switchSection->id == 1 || $switchSection->type()->first()->type == 'leaf'){
+        if($switchSection->type_id == 1 || $switchSection->type()->first()->type == 'leaf'){
             return redirect('dashboard/sections')->with('error', 'Deze sectie mag niet omhoog verplaatst worden');
         }
         $section->order = $section->order-1;
@@ -37,7 +38,7 @@ class SectionsController extends Controller
 
     public function movedown($id){
         $section = Section::where('id', $id)->first();
-        if($id == 1 || $section->type()->first()->type == 'leaf'){
+        if($section->type_id == 1 || $section->type()->first()->type == 'leaf'){
             return redirect('dashboard/sections')->with('error', 'Deze sectie mag niet verplaatst worden');
         }
         $sectionOrder = $section->order;
@@ -56,8 +57,10 @@ class SectionsController extends Controller
         Section::truncate();
 
         foreach($factorySections as $section){
-            Section::create($section);
+            $sectionArr = $section->toArray();
+            Section::create($sectionArr);
         }
+        return redirect('dashboard/sections')->with('success', 'Secties zijn terug gezet naar fabrieks instellingen');
     }
 
     public function destroy(){
