@@ -42,6 +42,8 @@ class CreateSectionsTable extends Migration
             $table->string('content');
             $table->integer('type_id')->unsigned();
             $table->boolean('default_section');
+            $table->string('img_url')->nullable();
+
             $table->timestamps();
 
             $table->foreign('type_id')

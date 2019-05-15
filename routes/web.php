@@ -53,6 +53,7 @@ Route::get('/dashboard/sections', 'SectionsController@index')->name('sections');
 Route::get('/dashboard/sections/moveup/{id}', 'SectionsController@moveup');
 Route::get('/dashboard/sections/movedown/{id}', 'SectionsController@movedown');
 Route::delete('/dashboard/sections/{id}', 'SectionsController@destroy')->middleware('auth');
+Route::get('/dashboard/sections/factorysettings', 'SectionsController@factorysettings')->name('factorysettings');
 
 
 

@@ -16,7 +16,8 @@
         <div class="MainContentFull">
                 <div class="MealOptions clearfix">
                         <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
-                        <a class="btn btn-success" href="{{ route('meals.build') }}">Nieuw gerecht</a>
+                        <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a>
+                        <a class="btn btn-primary" href="{{ route('factorysettings') }}">Fabrieksinstellingen</a>
                 </div>
                 
                 <table class="table table-striped">
@@ -42,7 +43,7 @@
                                                         {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
                                                         {!!Form::close()!!}
                                                         <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a>
-                                                        @if ($section->id != 1 && $section->type()->first()->type != 'leaf')
+                                                        @if ($section->type_id != 1 && $section->type()->first()->type != 'leaf')
                                                                 @if ($section->order != $sections->maxOrder)
                                                                 
                                                                         <a class="btn btn-primary float-right margin-right" href="/dashboard/sections/movedown/{{$section->id}}"><span class="fas fa-arrow-down"></span></a>

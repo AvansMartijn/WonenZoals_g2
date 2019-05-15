@@ -8,7 +8,7 @@ class Section extends Model
 {
     //
     protected $fillable = [
-        'name', 'order', 'content', 'img_url'
+        'name', 'type_id', 'default_section', 'order', 'content', 'img_url'
     ];
 
     public function type()
