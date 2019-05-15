@@ -32,6 +32,12 @@
                         <td>{{$sponsor->name}}</td>
                         <td>{{$sponsor->hyperlink}}</td>
                         <td>{{$sponsor->img_url}}</td>
+                        <td class="text-left">
+                            {!! Form::open(['action' => ['SponsorsController@destroy', $sponsor->id], 'method' => 'POST']) !!}
+                            {{Form::hidden('_method', 'DELETE')}}
+                            {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
+                            {!! Form::close() !!}
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
