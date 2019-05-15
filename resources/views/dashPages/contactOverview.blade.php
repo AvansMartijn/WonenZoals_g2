@@ -48,10 +48,10 @@
                 <div class="col-md-4">
                         <h3>Adres</h3>
                         <hr>
-                        <b>Straat</b> {{$data['location']->street}}<br>
-                        <b>Nummer</b> {{$data['location']->number}}<br>
-                        <b>Postcode</b> {{$data['location']->postal}}<br>
-                        <b>Plaats</b> {{$data['location']->city}}<br>
+                        <b>Straat:</b> {{$data['location']->street}}<br>
+                        <b>Nummer:</b> {{$data['location']->number}}<br>
+                        <b>Postcode:</b> {{$data['location']->postal}}<br>
+                        <b>Plaats:</b> {{$data['location']->city}}<br>
                         <a class="btn btn-success float-right margin-right" href="/dashboard/location/">Aanpassen</a>
 
                 </div>
