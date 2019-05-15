@@ -55,6 +55,8 @@ Route::get('/dashboard/sections/movedown/{id}', 'SectionsController@movedown');
 Route::delete('/dashboard/sections/{id}', 'SectionsController@destroy')->middleware('auth');
 Route::get('/dashboard/sections/factorysettings', 'SectionsController@factorysettings')->name('factorysettings');
 
+//sponsors
+Route::get('/dashboard/sponsors', 'SponsorsController@index')->name('sponsors');
 //contact
 Route::get('/dashboard/contact', 'ContactUSController@index')->name('contact');
 Route::get('/dashboard/contact/{id}', 'ContactUSController@editSubject')->name('contactsubjectEdit');
