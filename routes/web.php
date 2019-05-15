@@ -57,6 +57,8 @@ Route::get('/dashboard/sections/factorysettings', 'SectionsController@factoryset
 
 //sponsors
 Route::get('/dashboard/sponsors', 'SponsorsController@index')->name('sponsors');
+Route::delete('/dashboard/sponsors/delete/{id}', 'SponsorsController@destroy');
+
 //contact
 Route::get('/dashboard/contact', 'ContactUSController@index')->name('contact');
 Route::get('/dashboard/contact/{id}', 'ContactUSController@editSubject')->name('contactsubjectEdit');

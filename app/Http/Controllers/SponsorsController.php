@@ -11,4 +11,16 @@ class SponsorsController extends Controller
         $sponsors = Sponsor::orderBy('id', 'ASC')->get();
         return view('dashPages.sponsorsOverview', compact('sponsors'));
     }
+
+    public function destroy($id){
+        $sponsor = \App\Sponsor::where('id', $id)->first();
+        $sponsor->delete();
+
+        $notification = array(
+            'message' => 'sponsor is verwijderd',
+            'alert-type' => 'success'
+        );
+
+        return redirect('dashboard/sponsors')->with($notification);
+    }
 }
