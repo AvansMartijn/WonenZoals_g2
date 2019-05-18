@@ -57,6 +57,8 @@ Route::get('/dashboard/sections/factorysettings', 'SectionsController@factoryset
 
 //sponsors
 Route::get('/dashboard/sponsors', 'SponsorsController@index')->name('sponsors');
+Route::get('/dashboard/sponsors/{id}', 'SponsorsController@showSponsorDetails')->name('sponsorDetails');
+Route::post('/dashboard/sponsors/update', 'SponsorsController@update');
 Route::get('dashboard/sponsors/create', 'SponsorsController@create')->name('sponsors.build');
 Route::post('dashboard/sponsors/create', 'SponsorsController@store');
 Route::delete('/dashboard/sponsors/delete/{id}', 'SponsorsController@destroy');

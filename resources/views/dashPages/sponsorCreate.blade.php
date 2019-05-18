@@ -20,8 +20,8 @@
         <hr>
 
         <div class="form-group">
-            <label for="sponsorName">Sponsor naam</label>
-            <input type="text" class="form-control" name="sponsorName" placeholder="naam sponsor">
+            <label for="sponsorNaam">Sponsor naam</label>
+            <input type="text" class="form-control" name="sponsorNaam" placeholder="naam sponsor">
         </div>
 
         <div class="form-group">
