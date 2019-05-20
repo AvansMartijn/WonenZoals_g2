@@ -11502,6 +11502,10 @@ body {
   background-color: #cacaca !important;
 }
 
+.tox-statusbar__branding {
+  display: none;
+}
+
 @media only screen and (max-width: 1030px) {
   .margin-right {
     margin-right: 0px;

@@ -42,6 +42,7 @@
         tinymce.init({
             selector: 'textarea',
             toolbar: 'undo redo | forecolor backcolor | bold italic | styleselect'
+            // language: 'nl'
         })
 });
  </script>
