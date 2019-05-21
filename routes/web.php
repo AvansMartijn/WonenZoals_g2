@@ -83,6 +83,11 @@ Route::get('/dashboard/sections/seperator/create', 'SectionsController@createSep
 Route::post('/dashboard/sections/seperator', 'SectionsController@storeSeperator');
 Route::post('/dashboard/sections/seperator/edit/', 'SectionsController@updateSeperator');
 
+//textsection
+Route::get('/dashboard/sections/text/edit/{id}', 'SectionsController@editTextSection')->name('sepEdit');
+Route::get('/dashboard/sections/text/create', 'SectionsController@createTextSection')->name('setCreate');
+Route::post('/dashboard/sections/text', 'SectionsController@storeTextSection');
+Route::post('/dashboard/sections/text/edit/', 'SectionsController@updateTextSection');
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([
     'create' => 'meals.build',

@@ -109,7 +109,36 @@ class SectionsController extends Controller
 
         $section->save();
         return redirect('dashboard/sections')->with('success', 'Sectie is opgeslagen');
-
-
     }
+
+    //textsection
+    public function editTextSection($id){
+        $section = Section::where('id', $id)->first();
+        return View('dashPages.textsectionEdit', compact('section'));
+    }
+
+    public function updateTextSection(Request $request){
+        $section = Section::where('id', $request['id'])->first();
+        $section->name = $request['name'];
+        $section->content = $request['content'];
+        $section->save();
+        return redirect('dashboard/sections')->with('success', 'Sectie is aangepast');
+    }
+
+    public function createTextSection(){
+        return View('dashPages.textsectionCreate');
+    }
+
+    public function storeTextSection(Request $request){
+        $section = new Section();
+        $section->order = Section::max('order') + 1;
+        $section->name = $request['name'];
+        $section->content = $request['content'];
+        $section->default_section = 0;
+        $section->type_id = 2;
+
+        $section->save();
+        return redirect('dashboard/sections')->with('success', 'Sectie is opgeslagen');
+    }
+
 }
