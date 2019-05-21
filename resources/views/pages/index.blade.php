@@ -36,7 +36,7 @@
                                 <h1 class="display-3 MarginBottom-40 Mobile-center">{{$section->name}}</h1>
             
                                 <span class="text-readable float-left">
-                                    <img class="img-fluid float-right ImageMargin image-shadow" src="{{ asset('img/wz_1.jpg') }}" alt="">
+                                    <img class="img-fluid float-right ImageMargin image-shadow" src="{{$section->img_url}}" alt="">
                                     {!!$section->content!!}
                                 </span>
                             </div>
