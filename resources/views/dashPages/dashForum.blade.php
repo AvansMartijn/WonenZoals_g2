@@ -30,15 +30,17 @@
                         {{Form::submit("Toevoegen", ['class' => 'btn btn-success float-right'])}}
                         
                     {!! Form::close() !!} 
+                    
                 </div>
-    
+
     <table class="table table-striped">
+
         <thead>
             <tr>
                 <th>Forum topics</th>
                 <th>Gemaakt op</th>
                 <th>Aantal reacties</th>
-                <th>Naar topic</th>
+                <th>Topic options</th>
             </tr>
         </thead>
         <tbody class="Searchable">
@@ -52,16 +54,24 @@
 
 
                     <td>
-                        {{$topic->created_at}}
+                        {{$topic->created_at->format('d-m-Y H:i')}}
                     </td>
 
 
                     <td>
-
+                        {{$topic->forumpost->count()}}
                     </td>
 
                     <td>
                         <a class="btn btn-primary float-left margin-right" href="/dashboard/forum/topic/{{$topic->id}}">Topic</a>
+                        
+                        @if (Auth::user()->role_id == 1 ||$topic->user_id == Auth::user()->id)
+                            {!!Form::open(['action' => ['ForumController@deleteTopic', $topic->id], 'method' => 'POST'])!!}
+                                {{Form::hidden('_method', 'DELETE')}}
+                                {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-left'])}}
+                            {!!Form::close()!!}
+                        @endif
+
                     </td>
                 </tr>
 

@@ -59,3 +59,8 @@ Route::resource('/dashboard/maaltijden', 'MealsController')->names([
 Route::get('/dashboard/forum', 'ForumController@index')->middleware('auth')->name('forum');
 Route::post('/dashboard/forum', 'ForumController@store')->middleware('auth');
 Route::get('/dashboard/forum/topic/{id}', 'ForumController@showTopic')->name('topics')->middleware('auth');
+Route::delete('/dashboard/forum/{id}', 'ForumController@deleteTopic')->middleware('auth');
+
+    //reaction
+    Route::post('/dashboard/forum/topic', 'ForumController@storeReaction')->middleware('auth');
+    Route::delete('/dashboard/forum/topic/{id}', 'ForumController@deleteReaction')->middleware('auth');

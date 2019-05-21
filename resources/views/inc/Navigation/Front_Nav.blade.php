@@ -85,7 +85,7 @@
 
                                 {{-- show newsletter archive --}}
                                 @if ($userauthorization->name == "Forum")
-                                    <a class="dropdown-item" href="/dashboard/forum">Nieuwsbrief Archief</a> 
+                                    <a class="dropdown-item" href="/dashboard/forum">Forum</a> 
                                 @endif
                             @endforeach
 
