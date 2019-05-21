@@ -78,8 +78,10 @@ Route::get('/dashboard/sections/leaf', 'SectionsController@editLeaf')->name('lea
 Route::post('/dashboard/sections/leaf', 'SectionsController@updateLeaf');
 
 //seperator
-Route::get('/dashboard/sections/seperator/{id}', 'SectionsController@editSeperator')->name('sepEdit');
-Route::post('/dashboard/sections/seperator', 'SectionsController@updateSeperator');
+Route::get('/dashboard/sections/seperator/edit/{id}', 'SectionsController@editSeperator')->name('sepEdit');
+Route::get('/dashboard/sections/seperator/create', 'SectionsController@createSeperator')->name('setCreate');
+Route::post('/dashboard/sections/seperator', 'SectionsController@storeSeperator');
+Route::post('/dashboard/sections/seperator/edit/', 'SectionsController@updateSeperator');
 
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([
