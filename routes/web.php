@@ -77,6 +77,10 @@ Route::delete('/dashboard/contact/{id}', 'ContactUSController@destroy')->middlew
 Route::get('/dashboard/sections/leaf', 'SectionsController@editLeaf')->name('leaf');
 Route::post('/dashboard/sections/leaf', 'SectionsController@updateLeaf');
 
+//seperator
+Route::get('/dashboard/sections/seperator/{id}', 'SectionsController@editSeperator')->name('sepEdit');
+Route::post('/dashboard/sections/seperator', 'SectionsController@updateSeperator');
+
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([
     'create' => 'meals.build',

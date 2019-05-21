@@ -80,4 +80,16 @@ class SectionsController extends Controller
         $leaf->save();
         return redirect('dashboard/sections')->with('success', 'Sectie is aangepast');
     }
+
+    public function editSeperator($id){
+        $section = Section::where('id', $id)->first();
+        return View('dashPages.seperatorEdit', compact('section'));
+    }
+
+    public function updateSeperator(Request $request){
+        $section = Section::where('id', $request['id'])->first();
+        $section->content = $request['content'];
+        $section->save();
+        return redirect('dashboard/sections')->with('success', 'Sectie is aangepast');
+    }
 }
