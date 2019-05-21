@@ -22,6 +22,9 @@
        
 
         <div class="form-group">
+            <label for="name">Naam: </label>
+            <input type="text" class="form-control" name="name" placeholder="Sectie naam" value="{{$section->name}}">
+
             <label for="content">Tekst</label>
             <input type="hidden" value="{{$section->id}}" name="id">
             <textarea type="textarea" class="form-control" name="content" placeholder="onderwerp" value="{{$section->content}}" rows="4">{{$section->content}}</textarea>

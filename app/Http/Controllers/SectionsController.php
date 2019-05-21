@@ -89,6 +89,7 @@ class SectionsController extends Controller
 
     public function updateSeperator(Request $request){
         $section = Section::where('id', $request['id'])->first();
+        $section->name = $request['name'];
         $section->content = $request['content'];
         $section->save();
         return redirect('dashboard/sections')->with('success', 'Sectie is aangepast');
