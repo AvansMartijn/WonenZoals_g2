@@ -124,6 +124,7 @@ class ManageUsersController extends Controller
 
     }
 
+    
     /**
      * Show the application dashboard.
      *
