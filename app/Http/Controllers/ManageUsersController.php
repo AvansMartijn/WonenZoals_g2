@@ -79,19 +79,14 @@ class ManageUsersController extends Controller
 
         $authoriation = $user->authorizations()->get();
 
-        $authoriationsAvailable = authorizationLookup::all()->keyBy('id'); 
+        $authoriationsAvailable = authorizationLookup::all()->keyBy('id');
 
-        
-        
-        foreach($authoriationsAvailable as $authoriationsAvailablee)
-        {
-            foreach($authoriation as $authoriationn)
-            {
-                if($authoriationsAvailablee->id == $authoriationn->id)
-                {
-                    
+        foreach ($authoriationsAvailable as $authoriationsAvailablee) {
+            foreach ($authoriation as $authoriationn) {
+                if ($authoriationsAvailablee->id == $authoriationn->id) {
+
                     $authoriationsAvailable->forget($authoriationsAvailablee->id);
-                    
+
                 }
 
             }
@@ -99,7 +94,7 @@ class ManageUsersController extends Controller
         }
 
         //return $authoriationsAvailable;
-        return view('dashPages.dashGebruikersDetails')->with(compact('user', 'authoriation','authoriationsAvailable'));
+        return view('dashPages.dashGebruikersDetails')->with(compact('user', 'authoriation', 'authoriationsAvailable'));
     }
 
     /**
@@ -112,27 +107,21 @@ class ManageUsersController extends Controller
     public function store(Request $request)
     {
 
-
         $user = User::where('id', $request->input('id'))->first();
-        
-        if($request['role_check'] != null)
-        {
+
+        if ($request['role_check'] != null) {
 
             foreach ($request['role_check'] as $machtiging) {
-                
+
                 $auth = AuthorizationLookup::where('id', $machtiging)->first();
                 $user->authorizations()->save($auth);
 
-               
             }
             return redirect()->back()->with('success', 'De machtiging is toegevoegd');
-        }
-        else{
+        } else {
             return redirect()->back()->with('error', 'Er is geen machtiging geselecteerd');
         }
-        
 
-        
     }
 
     /**
