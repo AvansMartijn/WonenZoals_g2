@@ -64,7 +64,11 @@ Route::post('/dashboard/sponsors/create', 'SponsorsController@store');
 Route::delete('/dashboard/sponsors/delete/{id}', 'SponsorsController@destroy');
 
 //news
-Route::get('/dashboard/nieuws', 'NewsController@index')->name('news');
+Route::get('/dashboard/nieuws', 'NewsController@index');
+Route::get('/dashboard/nieuws/create', 'NewsController@create');
+Route::post('/dashboard/nieuws/create', 'NewsController@store');
+Route::get('/dashboard/nieuws/edit/{id}', 'NewsController@edit');
+Route::post('dashboard/nieuws/update', 'NewsController@update');
 Route::delete('/dashboard/nieuws/delete/{id}', 'NewsController@destroy');
 
 //contact
