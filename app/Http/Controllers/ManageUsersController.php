@@ -114,17 +114,25 @@ class ManageUsersController extends Controller
 
 
         $user = User::where('id', $request->input('id'))->first();
+        
+        if($request['role_check'] != null)
+        {
 
-
-
-        foreach ($request['role_check'] as $machtiging) {
-
+            foreach ($request['role_check'] as $machtiging) {
+                
                 $auth = AuthorizationLookup::where('id', $machtiging)->first();
                 $user->authorizations()->save($auth);
 
+               
+            }
+            return redirect()->back()->with('success', 'De machtiging is toegevoegd');
         }
+        else{
+            return redirect()->back()->with('error', 'Er is geen machtiging geselecteerd');
+        }
+        
 
-        return redirect()->back()->with('success', 'De machtiging is toegevoegd');
+        
     }
 
     /**
