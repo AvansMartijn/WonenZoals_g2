@@ -16,7 +16,7 @@
     <div class="MainContentFull">
         <div class="MealOptions clearfix">
             <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
-            <a class="btn btn-success" href='/dashboa   rd/nieuws/create'>Nieuw</a>
+            <a class="btn btn-success" href='/dashboard/nieuws/create'>Nieuw</a>
         </div>
 
         <table class="table table-striped">
@@ -25,20 +25,21 @@
                     <th>Titel</th>
                     <th>Inhoud</th>
                     <th>Afbeelding</th>
+                    <th class="text-right">Acties</th>
                 </tr>
             </thead>
             <tbody class="Searchable">
                 @foreach ($newsItems as $newsitem)
                     <tr>
                         <td>{{$newsitem->title}}</td>
-                        <td>{{$newsitem->content}}</td>
+                        <td>{!! $newsitem->content !!}</td>
                         <td>{{$newsitem->img_url}}</td>
                         <td class="text-left">
-                            <a class="btn btn-primary float-left margin-right" href="/dashboard/nieuws/edit/{{$newsitem->id}}">Aanpassen</a>
                             {!! Form::open(['action' => ['NewsController@destroy', $newsitem->id], 'method' => 'POST']) !!}
                             {{Form::hidden('_method', 'DELETE')}}
                             {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
                             {!! Form::close() !!}
+                            <a class="btn btn-primary float-right margin-right" href="/dashboard/nieuws/edit/{{$newsitem->id}}">Aanpassen</a>
                         </td>
                     </tr>
                 @endforeach
