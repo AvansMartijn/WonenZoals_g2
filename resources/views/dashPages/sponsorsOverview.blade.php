@@ -34,7 +34,7 @@
                         <td>{{$sponsor->hyperlink}}</td>
                         <td>{{$sponsor->img_url}}</td>
                         <td class="text-left">
-                            <a class="btn btn-primary float-left margin-right" href="/dashboard/sponsors/{{$sponsor->id}}">Aanpassen</a>
+                            <a class="btn btn-primary float-left margin-right" href="/dashboard/sponsors/edit/{{$sponsor->id}}">Aanpassen</a>
                             {!! Form::open(['action' => ['SponsorsController@destroy', $sponsor->id], 'method' => 'POST']) !!}
                             {{Form::hidden('_method', 'DELETE')}}
                             {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}

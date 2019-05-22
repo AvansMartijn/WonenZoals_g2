@@ -16,22 +16,17 @@ class NewsController extends Controller
         return view('dashPages.newsCreate');
     }
 
-    public function edit($id){
-        $newsitem = Newsitem::where('id', $id)->first();
-        return view('dashPages.newsEdit', compact('newsitem'));
-    }
-
-    public function update(Request $request){
+    public function store(Request $request){
         $validatedData = $request->validate([
             'Titel' => 'required|max:255',
             'Inhoud' => 'required|max:255',
-            'afbeeldingUrl' => 'required|max:255',
+            'imageUrl' => 'required|max:255',
         ]);
 
-        $newsitem = new Newsitem();
+        $newsitem = new Newsitem;
         $newsitem->title = $request['Titel'];
         $newsitem->content = $request['Inhoud'];
-        $newsitem->img_url = $request['afbeeldingUrl'];
+        $newsitem->img_url = $request['imageUrl'];
         $newsitem->save();
 
         $notification = array(
@@ -40,6 +35,31 @@ class NewsController extends Controller
         );
 
         return redirect('/dashboard/nieuws')->with($notification);
+    }
+
+    public function edit($id){
+        $newsitem = Newsitem::where('id', $id)->first();
+        return view('dashPages.newsEdit', compact('newsitem'));
+    }
+
+    public function update(Request $request){
+        $this->validate(
+            $request,
+            [
+                'Titel' => 'required',
+                'Inhoud' => 'required',
+                'afbeeldingUrl' => 'required',
+            ]
+        );
+
+        $newsitem = Newsitem::find($request->id);
+        $newsitem->title = $request->input('Titel');
+        $newsitem->content = $request->input('Inhoud');
+        $newsitem->img_url = $request->input('afbeeldingUrl');
+
+        $newsitem->save();
+
+        return redirect('/dashboard/nieuws')->with('success', 'Nieuwsitem is geupdatet');
     }
 
     public function destroy($id){
