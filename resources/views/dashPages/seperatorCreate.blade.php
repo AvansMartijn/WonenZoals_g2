@@ -22,14 +22,16 @@
        
 
         <div class="form-group">
-            <label for="name">Naam: </label>
+            <label for="name">Titel: </label>
             <input type="text" class="form-control" name="name" placeholder="Sectie naam">
-
-
-            <label for="content">Tekst: </label>
-            {{-- <input type="hidden" value="{{$section->id}}" name="id"> --}}
-            <textarea type="textarea" class="form-control" name="content" placeholder="onderwerp" value="" rows="4"></textarea>
         </div>
+        <div class="form-group">
+                <label for="name">Subtitel: </label>
+                <input type="text" class="form-control" name="content" placeholder="Subtitel">
+        </div>
+        
+
+         
     </div>
     <div class="MainContent">
         <hr>
@@ -37,17 +39,5 @@
     </div>
     {!! Form::close() !!}
 </div>
-<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=z07h4dl3oc9tag6mxdjw1fwuvnu7s4c6d6wu425l6k3vdl44"></script>
 
- <script>
-     $( document ).ready(function() {
-    // console.log( "ready!" );
-    //  console.log('test');
-        tinymce.init({
-            selector: 'textarea',
-            toolbar: 'undo redo | forecolor backcolor | bold italic | styleselect'
-            // language: 'nl'
-        })
-});
- </script>
 @endsection
