@@ -71,6 +71,14 @@ Route::get('/dashboard/nieuws/edit/{id}', 'NewsController@edit');
 Route::post('dashboard/nieuws/update', 'NewsController@update');
 Route::delete('/dashboard/nieuws/delete/{id}', 'NewsController@destroy');
 
+//Residents
+Route::get('/dashboard/bewoners', 'ResidentsController@index');
+Route::get('/dashboard/bewoners/create', 'ResidentsController@create');
+Route::post('/dashboard/bewoners/create', 'ResidentsController@store');
+Route::get('/dashboard/bewoners/edit/{id}', 'ResidentsController@edit');
+Route::post('/dashboard/bewoners/update', 'ResidentsController@update');
+Route::delete('/dashboard/bewoners/delete/{id}', 'ResidentsController@destroy');
+
 //contact
 Route::get('/dashboard/contact', 'ContactUSController@index')->name('contact');
 Route::get('/dashboard/contact/subject/{id}', 'ContactUSController@editSubject')->name('contactsubjectEdit');

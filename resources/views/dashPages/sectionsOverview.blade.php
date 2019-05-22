@@ -53,7 +53,7 @@
                                                                 <a class="btn btn-success float-right margin-right" href="/dashboard/sections/text/edit/{{$section->id}}">Aanpassen</a>
                                                                 @break
                                                             @case(4)
-                                                                {{-- <a class="btn btn-success float-right margin-right" href="/dashboard/sections/{{$section->id}}">Aanpassen</a> --}}
+                                                                 <a class="btn btn-success float-right margin-right" href="/dashboard/bewoners">Aanpassen</a>
                                                                 @break
                                                             @case(5)
                                                                  <a class="btn btn-success float-right margin-right" href="/dashboard/nieuws/">Aanpassen</a>

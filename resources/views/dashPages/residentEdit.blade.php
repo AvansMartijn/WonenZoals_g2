@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="BackHeader">
-    <a href="/dashboard/nieuws" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Nieuwsitem Aanpassen</h3>
+    <a href="/dashboard/bewoners" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
+    <h3>Bewoner Aanpassen</h3>
     <hr>
 </div>
 
@@ -17,31 +17,29 @@
         <h1>Gegevens</h1>
         <hr>
 
-        {!! Form::open(['action' => 'NewsController@update', 'methode' => 'POST']) !!}
+        {!! Form::open(['action' => 'ResidentsController@update', 'methode' => 'POST']) !!}
 
         <div class="form-group">
-            {{ Form::label('Titel', 'Titel') }}
-            {{ Form::text('Titel', $newsitem->title, ['class' => 'form-control', 'placeholder' => 'Titel'])}}
+            {{ Form::label('Naam', 'Naam') }}
+            {{ Form::text('Naam', $resident->name, ['class' => 'form-control', 'placeholder' => 'Naam'])}}
         </div>
 
         <div class="from-group">
-            <label for="Inhoud">Inhoud</label>
-            <input type="hidden" value="{{$newsitem->id}}" name="id">
-            <textarea type="textarea" class="form-control" name="Inhoud" placeholder="inhoud" value="{{$newsitem->content}}" rows="4">{{$newsitem->content}}</textarea>
+            <label for="Beschrijving">Beschrijving</label>
+            <input type="hidden" value="{{$resident->id}}" name="id">
+            <textarea type="textarea" class="form-control" name="Beschrijving" placeholder="beschrijving" value="{{$resident->description}}" rows="4">{{$resident->description}}</textarea>
         </div>
 
         <div class="from-group bottom-spacer">
             {{Form::label('afbeeldingUrl', 'Afbeelding URL')}}
-            {{Form::text('afbeeldingUrl',$newsitem->img_url,['class' => 'form-control', 'placeholder' => 'url'])}}
+            {{Form::text('afbeeldingUrl',$resident->img_url,['class' => 'form-control', 'placeholder' => 'url'])}}
         </div>
 
-        {{ Form::hidden('id', $newsitem->id) }}
-
+        {{ Form::hidden('id', $resident->id) }}
 
         {{Form::submit("Opslaan", ['class' => 'btn btn-success full-width'])}}
 
         {!! Form::close() !!}
-
 
     </div>
 </div>

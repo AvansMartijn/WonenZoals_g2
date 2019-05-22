@@ -29,7 +29,7 @@ class SponsorsController extends Controller
             'imageUrl' => 'required|max:255',
         ]);
 
-        $sponsor = new \App\Sponsor;
+        $sponsor = new Sponsor;
         $sponsor->name = $request['sponsorNaam'];
         $sponsor->hyperlink = $request['sponsorLink'];
         $sponsor->img_url = $request['imageUrl'];
