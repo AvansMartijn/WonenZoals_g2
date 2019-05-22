@@ -29,10 +29,19 @@ class SponsorsController extends Controller
             'imageUrl' => 'required|max:255',
         ]);
 
+        $imagePath = null;
+        if(isset($request->imageUrl) && $request->imageUrl != null){
+            $imageName = uniqid() . '-' . $request->imageUrl->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->imageUrl->move($path, $imageName);
+        }
+
         $sponsor = new \App\Sponsor;
         $sponsor->name = $request['sponsorNaam'];
         $sponsor->hyperlink = $request['sponsorLink'];
-        $sponsor->img_url = $request['imageUrl'];
+        $sponsor->img_url = $imagePath;
         $sponsor->save();
 
         $notification = array(
@@ -49,14 +58,22 @@ class SponsorsController extends Controller
             [
                 'naam' => 'required',
                 'link' => 'required',
-                'afbeeldingUrl' => 'required',
+                'imageUrl' => 'required',
             ]
         );
+        $imagePath = null;
+        if(isset($request->imageUrl) && $request->imageUrl != null){
+            $imageName = uniqid() . '-' . $request->imageUrl->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->imageUrl->move($path, $imageName);
+        }
 
         $sponsor = Sponsor::find($request->id);
         $sponsor->name = $request->input('naam');
         $sponsor->hyperlink = $request->input('link');
-        $sponsor->img_url = $request->input('afbeeldingUrl');
+        $sponsor->img_url = $imagePath;
 
         $sponsor->save();
 
