@@ -14,6 +14,7 @@
 <div class="container">
     <div class="ContentMainFull">
         <h1>Welkom {{Auth::user()->name}}</h1>
+        <small>{{Auth::user()->role->role_name}}</small>
         Binnenkort Beschikbaar...
     </div>
 </div>
