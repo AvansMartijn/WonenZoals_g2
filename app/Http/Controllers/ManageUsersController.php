@@ -83,10 +83,9 @@ class ManageUsersController extends Controller
 
         foreach ($authoriationsAvailable as $authoriationsAvailablee) {
             foreach ($authoriation as $authoriationn) {
-                if ($authoriationsAvailablee->id == $authoriationn->id) {
-
+                if ($authoriationsAvailablee->id == $authoriationn->id) 
+                {
                     $authoriationsAvailable->forget($authoriationsAvailablee->id);
-
                 }
 
             }
@@ -124,7 +123,7 @@ class ManageUsersController extends Controller
 
     }
 
-    
+
     /**
      * Show the application dashboard.
      *
@@ -137,9 +136,12 @@ class ManageUsersController extends Controller
 
         $authh = authorization::where('authorization_id', $id)->first();
 
-        $authh->delete();
+        $user = User::where('id', $authh->user_id)->first();
+
+        $user->authorizations()->detach($id);
 
         return redirect()->back()->with('success', 'De machtiging is verwijderd');
+
     }
 
     /**

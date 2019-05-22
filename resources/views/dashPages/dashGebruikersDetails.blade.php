@@ -61,8 +61,11 @@
                 </div>
             
                 {{ Form::hidden('id', $user->id) }}
-           
-                {{Form::submit("Toevoegen", ['class' => 'btn btn-success bottom-spacer full-width'])}}
+                
+           @if (count($authoriationsAvailable))
+            {{Form::submit("Toevoegen", ['class' => 'btn btn-success bottom-spacer full-width'])}}
+           @endif
+                
 
             {!! Form::close() !!}
 
@@ -78,9 +81,12 @@
                         <tr>
                                 <td>{{$authoriationn->name}}</td>
                                 <td>
-                                {!!Form::open(['action' => ['ManageUsersController@destroymachtiging', $authoriationn->id], 'method' => 'POST'])!!}
+                                {!!Form::open(['action' => ['ManageUsersController@destroymachtiging', $authoriationn->id,], 'method' => 'POST'])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
+
+
+
                                 {!!Form::close()!!}
                                 </td>
                         </tr>
