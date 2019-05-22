@@ -405,13 +405,12 @@
                                     </div>
                                     <div class="form-group {{ $errors->has('subject') ? 'has-error' : '' }}">
                                             {!! Form::label('Onderwerp') !!}
-                                            {!! Form::select('subject', [
-                                            'Vraag' => 'Vraag',
-                                            'Afmelden nieuwsbrief' => 'Afmelden nieuwsbrief', 
-                                            'Aanmelden woningzoekende' => 'Aanmelden woningzoekende',
-                                            'Ouderaccount aanvragen' => 'Ouderaccount aanvragen'], 
-                                            null,
-                                            ['class'=>'form-control']) !!}
+                                            <select name="subject" class="form-control">
+                                            @foreach ($data['contactSubjects'] as $subject)
+                                                <option value="{{$subject->subject}}">{{$subject->subject}}</option>
+                                                
+                                            @endforeach
+                                            </select>
                                     </div>
                                     <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
                                             {!! Form::label('Bericht') !!}

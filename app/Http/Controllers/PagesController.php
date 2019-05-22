@@ -14,6 +14,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use \App\Section;
+use \App\ContactSubject;
+use \App\Location;
 
 /**
  * PagesController Class Doc Comment
@@ -35,8 +37,10 @@ class PagesController extends Controller
     public function index()
     {
         $leaf = Section::where('type_id', 1)->first();
-        $sections = Section::all();
-        $data = ['sections' => $sections, 'leaf' => $leaf];
+        $sections = Section::orderBy('order', 'asc')->get();
+        $contactSubjects = ContactSubject::all();
+        $location = Location::first();
+        $data = ['sections' => $sections, 'leaf' => $leaf, 'contactSubjects' => $contactSubjects, 'location' => $location];
         return view('pages.index', compact('data'));
     }
 }
