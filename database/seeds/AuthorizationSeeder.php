@@ -37,7 +37,8 @@ class AuthorizationSeeder extends Seeder
             ['id' => 2, 'user_id' => 1, 'authorization_id' => 2],
             ['id' => 3, 'user_id' => 2, 'authorization_id' => 1],
             ['id' => 4, 'user_id' => 1, 'authorization_id' => 3],
-            ['id' => 5, 'user_id' => 1, 'authorization_id' => 5]
+            ['id' => 5, 'user_id' => 1, 'authorization_id' => 5],
+            ['id' => 6, 'user_id' => 1, 'authorization_id' => 6]
         ];
 
         foreach($authorizations as $authorization){

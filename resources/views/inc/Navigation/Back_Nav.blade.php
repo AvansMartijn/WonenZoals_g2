@@ -55,6 +55,18 @@
                         </a>
 
                     @endif
+
+                    {{-- show page builder --}}
+                    @if ($userauthorization->id == 6)
+
+                        <a href="/dashboard/sections" class="Menu-Item {{ (request()->is('dashboard/sections*')) ? 'Active' : '' }}">
+                            <li>
+                                <i class="fas fa-scroll"></i>
+                                <span class="alignpotjandriedubbeltjes">Page builder</span>
+                            </li>
+                        </a>
+
+                    @endif
                     
                 @endforeach
 
