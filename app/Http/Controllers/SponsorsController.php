@@ -23,7 +23,6 @@ class SponsorsController extends Controller
     }
 
     public function store(Request $request){
-
         $validatedData = $request->validate([
             'sponsorNaam' => 'required|max:255',
             'sponsorLink' => 'required|max:255',

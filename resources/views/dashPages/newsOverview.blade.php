@@ -34,7 +34,7 @@
                         <td>{{$newsitem->content}}</td>
                         <td>{{$newsitem->img_url}}</td>
                         <td class="text-left">
-                            <a class="btn btn-primary float-left margin-right" href="/dashboard/nieuws/{{$newsitem->id}}">Aanpassen</a>
+                            <a class="btn btn-primary float-left margin-right" href="/dashboard/nieuws/edit/{{$newsitem->id}}">Aanpassen</a>
                             {!! Form::open(['action' => ['NewsController@destroy', $newsitem->id], 'method' => 'POST']) !!}
                             {{Form::hidden('_method', 'DELETE')}}
                             {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
