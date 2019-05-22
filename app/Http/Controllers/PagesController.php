@@ -35,7 +35,7 @@ class PagesController extends Controller
     public function index()
     {
         $leaf = Section::where('type_id', 1)->first();
-        $sections = Section::all();
+        $sections = Section::orderBy('order', 'asc')->get();
         $data = ['sections' => $sections, 'leaf' => $leaf];
         return view('pages.index', compact('data'));
     }
