@@ -29,7 +29,7 @@
                 @break
             @case(3)
                 {{-- text --}}
-                <section id="OverOns" class="container">
+                <section id="{{$section->id}}" class="container">
                     <div class="ContentPadding extraMarginBottom">
                         <div class="row">
                             <div class="col">
@@ -47,7 +47,7 @@
             @case(4)
                 {{-- residents --}}
                 @include('modal.modals')
-                <section id="Bewoners" class="container">
+                <section id="{{$section->id}}" class="container">
                     <div class="ContentPadding">
                         <div class="row">
                             <div class="col">
@@ -316,7 +316,7 @@
                 @break
             @case(5)
                 {{-- news --}}
-                <section id="Nieuws" class="container">
+                <section id="{{$section->id}}" class="container">
                     <div class="ContentPadding">
                         <div class="row">
                             <div class="col">
@@ -368,7 +368,7 @@
                 @break
             @case(6)
                 {{-- contact --}}
-                <section id="Contact" class="container">
+                <section id="{{$section->id}}" class="container">
 
                     <!-- Section: new contact -->
                     
