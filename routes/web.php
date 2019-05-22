@@ -69,13 +69,13 @@ Route::delete('/dashboard/nieuws/delete/{id}', 'NewsController@destroy');
 
 //contact
 Route::get('/dashboard/contact', 'ContactUSController@index')->name('contact');
-Route::get('/dashboard/contact/{id}', 'ContactUSController@editSubject')->name('contactsubjectEdit');
+Route::get('/dashboard/contact/subject/{id}', 'ContactUSController@editSubject')->name('contactsubjectEdit');
 Route::get('/dashboard/contact/createsubject', 'ContactUSController@createSubject')->name('contactsubjectCreate');
 Route::get('/dashboard/location', 'ContactUSController@editLocation')->name('locationEdit');
 Route::post('/dashboard/contact/storeSubject', 'ContactUSController@storeSubject');
 Route::post('/dashboard/contact/updateSubject', 'ContactUSController@updateSubject');
 Route::post('/dashboard/location', 'ContactUSController@updateLocation');
-Route::delete('/dashboard/contact/{id}', 'ContactUSController@destroy')->middleware('auth');
+Route::delete('/dashboard/contact/subject/{id}', 'ContactUSController@destroy')->middleware('auth');
 
 //leaf
 Route::get('/dashboard/sections/leaf', 'SectionsController@editLeaf')->name('leaf');

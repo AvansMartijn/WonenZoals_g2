@@ -38,7 +38,7 @@
                                                         {{Form::hidden('_method', 'DELETE')}}
                                                         {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
                                                         {!!Form::close()!!}
-                                                        <a class="btn btn-success float-right margin-right" href="/dashboard/contact/{{$subject->id}}">Aanpassen</a>
+                                                        <a class="btn btn-success float-right margin-right" href="/dashboard/contact/subject/{{$subject->id}}">Aanpassen</a>
                                                        
                                                 </td>
                                         </tr>
