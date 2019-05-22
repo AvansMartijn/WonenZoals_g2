@@ -65,6 +65,7 @@ Route::delete('/dashboard/sponsors/delete/{id}', 'SponsorsController@destroy');
 
 //news
 Route::get('/dashboard/nieuws', 'NewsController@index')->name('news');
+Route::delete('/dashboard/nieuws/delete/{id}', 'NewsController@destroy');
 
 //contact
 Route::get('/dashboard/contact', 'ContactUSController@index')->name('contact');

@@ -28,20 +28,20 @@
                 </tr>
                 </thead>
                 <tbody class="Searchable">
-{{--                @foreach ($sponsors as $sponsor)--}}
-{{--                    <tr>--}}
-{{--                        <td>{{$sponsor->name}}</td>--}}
-{{--                        <td>{{$sponsor->hyperlink}}</td>--}}
-{{--                        <td>{{$sponsor->img_url}}</td>--}}
-{{--                        <td class="text-left">--}}
-{{--                            <a class="btn btn-primary float-left margin-right" href="/dashboard/sponsors/{{$sponsor->id}}">TODOAanpassen</a>--}}
-{{--                            {!! Form::open(['action' => ['TODOSponsorsController@destroy', $sponsor->id], 'method' => 'POST']) !!}--}}
-{{--                            {{Form::hidden('_method', 'DELETE')}}--}}
-{{--                            {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}--}}
-{{--                            {!! Form::close() !!}--}}
-{{--                        </td>--}}
-{{--                    </tr>--}}
-{{--                @endforeach--}}
+                @foreach ($newsItems as $newsitem)
+                    <tr>
+                        <td>{{$newsitem->title}}</td>
+                        <td>{{$newsitem->content}}</td>
+                        <td>{{$newsitem->img_url}}</td>
+                        <td class="text-left">
+                            <a class="btn btn-primary float-left margin-right" href="/dashboard/nieuws/{{$newsitem->id}}">Aanpassen</a>
+                            {!! Form::open(['action' => ['NewsController@destroy', $newsitem->id], 'method' => 'POST']) !!}
+                            {{Form::hidden('_method', 'DELETE')}}
+                            {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
+                            {!! Form::close() !!}
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
