@@ -13,7 +13,7 @@
 </div>
 
 <div class="container">
-    {!! Form::open(['action' => 'SponsorsController@store', 'methode' => 'POST']) !!}
+    {!! Form::open(['action' => 'SponsorsController@store', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
     <div class="MainContent">
         <h1>Sponsor</h1>
@@ -28,11 +28,14 @@
             <label for="sponsorLink">Sponsor link</label>
             <input type="text" class="form-control" name="sponsorLink" placeholder="link sponsor">
         </div>
-
         <div class="form-group">
+                <label for="name">afbeelding: </label>
+                    <input type="file" name="imageUrl" id="image">
+            </div>
+        {{-- <div class="form-group">
             <label for="imageUrl">TODO: img upload</label>
             <input type="text" class="form-control" name="imageUrl" placeholder="url image">
-        </div>
+        </div> --}}
     </div>
 
     <div class="MainContent">

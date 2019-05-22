@@ -16,7 +16,7 @@
 </div>
 
 <div class="container">
-    {!! Form::open(['action' => 'SectionsController@storeTextSection', 'methode' => 'POST']) !!}
+    {!! Form::open(['action' => 'SectionsController@storeTextSection', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
     <div class="MainContent">
        
@@ -24,8 +24,12 @@
         <div class="form-group">
             <label for="name">Naam: </label>
             <input type="text" class="form-control" name="name" placeholder="Sectie naam">
-
-
+        </div>
+        <div class="form-group">
+                <label for="name">afbeelding: </label>
+                    <input type="file" name="image" id="image">
+            </div>
+        <div class="form-group">
             <label for="content">Tekst: </label>
             {{-- <input type="hidden" value="{{$section->id}}" name="id"> --}}
             <textarea type="textarea" class="form-control" name="content" placeholder="onderwerp" value="" rows="4"></textarea>

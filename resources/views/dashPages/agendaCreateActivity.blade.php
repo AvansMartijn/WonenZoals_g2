@@ -89,7 +89,7 @@
             <div class="form-group">
                     <label>Upload Image</label>
                     <input type="file" name="image" id="image">
-                </div>
+            </div>
 
         </div>
     </div>

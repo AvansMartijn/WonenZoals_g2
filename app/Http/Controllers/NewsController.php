@@ -20,13 +20,22 @@ class NewsController extends Controller
         $validatedData = $request->validate([
             'Titel' => 'required|max:255',
             'Inhoud' => 'required|max:255',
-            'imageUrl' => 'required|max:255',
+            'image' => 'required',
         ]);
+
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->image->move($path, $imageName);
+        }
 
         $newsitem = new Newsitem;
         $newsitem->title = $request['Titel'];
         $newsitem->content = $request['Inhoud'];
-        $newsitem->img_url = $request['imageUrl'];
+        $newsitem->img_url = $imagePath;
         $newsitem->save();
 
         $notification = array(
@@ -48,14 +57,23 @@ class NewsController extends Controller
             [
                 'Titel' => 'required',
                 'Inhoud' => 'required',
-                'afbeeldingUrl' => 'required',
+                'image' => 'required',
             ]
         );
+
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->image->move($path, $imageName);
+        }
 
         $newsitem = Newsitem::find($request->id);
         $newsitem->title = $request->input('Titel');
         $newsitem->content = $request->input('Inhoud');
-        $newsitem->img_url = $request->input('afbeeldingUrl');
+        $newsitem->img_url = $imagePath;
 
         $newsitem->save();
 

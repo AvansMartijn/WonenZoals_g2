@@ -118,9 +118,20 @@ class SectionsController extends Controller
     }
 
     public function updateTextSection(Request $request){
+
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->image->move($path, $imageName);
+        }
+
         $section = Section::where('id', $request['id'])->first();
         $section->name = $request['name'];
         $section->content = $request['content'];
+        $section->img_url = $imagePath;
         $section->save();
         return redirect('dashboard/sections')->with('success', 'Sectie is aangepast');
     }
@@ -130,12 +141,24 @@ class SectionsController extends Controller
     }
 
     public function storeTextSection(Request $request){
+
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->image->move($path, $imageName);
+        }
+        // var_dump($imagePath);
+        // die;
         $section = new Section();
         $section->order = Section::max('order') + 1;
         $section->name = $request['name'];
         $section->content = $request['content'];
+        $section->img_url = $imagePath;
         $section->default_section = 0;
-        $section->type_id = 2;
+        $section->type_id = 3;
 
         $section->save();
         return redirect('dashboard/sections')->with('success', 'Sectie is opgeslagen');

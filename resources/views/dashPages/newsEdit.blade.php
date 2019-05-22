@@ -17,7 +17,7 @@
         <h1>Gegevens</h1>
         <hr>
 
-        {!! Form::open(['action' => 'NewsController@update', 'methode' => 'POST']) !!}
+        {!! Form::open(['action' => 'NewsController@update', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
         <div class="form-group">
             {{ Form::label('Titel', 'Titel') }}
@@ -30,9 +30,10 @@
             <textarea type="textarea" class="form-control" name="Inhoud" placeholder="inhoud" value="{{$newsitem->content}}" rows="4">{{$newsitem->content}}</textarea>
         </div>
 
-        <div class="from-group bottom-spacer">
-            {{Form::label('afbeeldingUrl', 'Afbeelding URL')}}
-            {{Form::text('afbeeldingUrl',$newsitem->img_url,['class' => 'form-control', 'placeholder' => 'url'])}}
+       
+        <div class="form-group">
+                <label for="name">afbeelding: </label>
+                <input type="file" name="image" id="image">
         </div>
 
         {{ Form::hidden('id', $newsitem->id) }}
