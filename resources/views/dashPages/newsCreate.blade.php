@@ -13,7 +13,7 @@
 </div>
 
 <div class="container">
-    {!! Form::open(['action' => 'NewsController@store', 'methode' => 'POST']) !!}
+    {!! Form::open(['action' => 'NewsController@store', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
     <div class="MainContent">
         <h1>Nieuwsitem</h1>
@@ -28,11 +28,14 @@
             <label for="Inhoud">Inhoud: </label>
             <textarea type="textarea" class="form-control" name="Inhoud" placeholder="inhoud" value="" rows="4"></textarea>
         </div>
-
         <div class="form-group">
+                <label for="name">afbeelding: </label>
+                <input type="file" name="image" id="image">
+        </div>
+        {{-- <div class="form-group">
             <label for="imageUrl">TODO: img upload</label>
             <input type="text" class="form-control" name="imageUrl" placeholder="url image">
-        </div>
+        </div> --}}
     </div>
 
     <div class="MainContent">
