@@ -31,7 +31,7 @@
         <div class="form-group">
                 <label for="name">afbeelding: </label>
                 <input type="file" name="image" id="image">
-        </div>
+        </div> 
         {{-- <div class="form-group">
             <label for="imageUrl">TODO: img upload</label>
             <input type="text" class="form-control" name="imageUrl" placeholder="url image">

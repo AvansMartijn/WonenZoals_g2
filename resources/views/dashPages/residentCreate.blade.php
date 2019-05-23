@@ -13,7 +13,7 @@
 </div>
 
 <div class="container">
-    {!! Form::open(['action' => 'ResidentsController@store', 'methode' => 'POST']) !!}
+    {!! Form::open(['action' => 'ResidentsController@store', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
     <div class="MainContent">
         <h1>Bewoner</h1>
@@ -30,8 +30,8 @@
         </div>
 
         <div class="form-group">
-            <label for="imageUrl">TODO: img upload</label>
-            <input type="text" class="form-control" name="imageUrl" placeholder="url image">
+            <label for="name">afbeelding: </label>
+                <input type="file" name="image" id="image">
         </div>
     </div>
 

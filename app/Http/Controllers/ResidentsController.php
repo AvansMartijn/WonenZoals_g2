@@ -20,13 +20,22 @@ class ResidentsController extends Controller
         $validatedData = $request->validate([
             'Naam' => 'required|max:255',
             'Beschrijving' => 'required|max:255',
-            'imageUrl' => 'required|max:255',
+            'image' => 'required',
         ]);
+
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->image->move($path, $imageName);
+        }
 
         $resident = new Resident;
         $resident->name = $request['Naam'];
         $resident->description = $request['Beschrijving'];
-        $resident->img_url = $request['imageUrl'];
+        $resident->img_url = $imagePath;
         $resident->save();
 
         $notification = array(
@@ -48,14 +57,23 @@ class ResidentsController extends Controller
             [
                 'Naam' => 'required',
                 'Beschrijving' => 'required',
-                'afbeeldingUrl' => 'required',
+                'image' => 'required',
             ]
         );
+
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->image->move($path, $imageName);
+        }
 
         $resident = Resident::find($request->id);
         $resident->name = $request->input('Naam');
         $resident->description = $request->input('Beschrijving');
-        $resident->img_url = $request->input('afbeeldingUrl');
+        $resident->img_url = $imagePath;
 
         $resident->save();
 

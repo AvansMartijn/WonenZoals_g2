@@ -35,6 +35,9 @@
                 <label for="name">afbeelding: </label>
                 <input type="file" name="image" id="image">
         </div>
+        @if ($newsitem->img_url != null && $newsitem->img_url != "")
+        <img class="img-fluid float-right ImageMargin image-shadow" src="{{$newsitem->img_url}}" alt="">
+        @endif
 
         {{ Form::hidden('id', $newsitem->id) }}
 

@@ -17,7 +17,7 @@
         <h1>Gegevens</h1>
         <hr>
 
-        {!! Form::open(['action' => 'ResidentsController@update', 'methode' => 'POST']) !!}
+        {!! Form::open(['action' => 'ResidentsController@update', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
         <div class="form-group">
             {{ Form::label('Naam', 'Naam') }}
@@ -30,10 +30,14 @@
             <textarea type="textarea" class="form-control" name="Beschrijving" placeholder="beschrijving" value="{{$resident->description}}" rows="4">{{$resident->description}}</textarea>
         </div>
 
-        <div class="from-group bottom-spacer">
-            {{Form::label('afbeeldingUrl', 'Afbeelding URL')}}
-            {{Form::text('afbeeldingUrl',$resident->img_url,['class' => 'form-control', 'placeholder' => 'url'])}}
+        <div class="form-group">
+            <label for="name">afbeelding: </label>
+                <input type="file" name="image" id="image">
         </div>
+
+        @if ($resident->img_url != null && $resident->img_url != "")
+        <img class="img-fluid float-right ImageMargin image-shadow" src="{{$resident->img_url}}" alt="">
+        @endif
 
         {{ Form::hidden('id', $resident->id) }}
 

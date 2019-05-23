@@ -23,7 +23,6 @@
             <thead>
                 <tr>
                     <th>Titel</th>
-                    <th>Inhoud</th>
                     <th>Afbeelding</th>
                     <th class="text-right">Acties</th>
                 </tr>
@@ -32,7 +31,6 @@
                 @foreach ($newsItems as $newsitem)
                     <tr>
                         <td>{{$newsitem->title}}</td>
-                        <td>{!! $newsitem->content !!}</td>
                         <td>{{$newsitem->img_url}}</td>
                         <td class="text-left">
                             {!! Form::open(['action' => ['NewsController@destroy', $newsitem->id], 'method' => 'POST']) !!}
