@@ -15,7 +15,7 @@
 <div class="container">
         <div class="MainContentFull">
                 <div class="MealOptions clearfix">
-                        <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
+                        <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
                         <a class="btn btn-success" href="{{ route('register') }}">Nieuwe Gebruiker</a>
                 </div>
 
@@ -23,7 +23,7 @@
                         <thead>
                                 <tr>
                                         <th>Naam</th>
-                                        <th>Soort</th>
+                                        <th>Rol</th>
                                         <th>Acties</th>
                                 </tr>
                         </thead>

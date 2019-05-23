@@ -23,7 +23,7 @@
             <div class="form-group">
                 <label for="date">Titel*</label>
                 <input type="text" class="form-control" name="eventname" value="{{ old('eventname') }}"
-                data-toggle="tooltip" data-placement="top" title="Typ hier naam van de maaltijd">
+                data-toggle="tooltip" data-placement="top" title="Typ hier naam van de maaltijd" autofocus>
             </div>
             
             <div class="form-group">
