@@ -183,21 +183,11 @@
                                 </div>
                             </div>
                             <div class="row">
+                                @foreach ($sponsors as $sponsor)
                                 <div class="col">
-                                    <a href="https://www.mijneigenthuis.eu/" target="_blank"><img class="img-fluid" src="{{ asset('img/mijneigenthuis.png') }}" alt=""></a>
+                                    <a href="{{$sponsor->link}}" target="_blank"><img class="img-fluid" src="{{$sponsor->img_url}}" alt=""></a>
                                 </div>
-                                <div class="col">
-                                    <a href="https://www.nsgk.nl/" target="_blank"><img class="img-fluid" src="{{ asset('img/nsgk.png') }}" alt=""></a>
-                                </div>
-                                <div class="col">
-                                    <a href="https://www.tsvplato.nl/" target="_blank"><img class="img-fluid" src="{{ asset('img/plato.png') }}" alt=""></a>
-                                </div>
-                                <div class="col">
-                                    <a href="https://www.yellenyonkers.nl/" target="_blank"><img class="img-fluid" src="{{ asset('img/LogoYY_2015.png') }}" alt=""></a>
-                                </div>
-                                <div class="col">
-                                    <a href="https://www.fra-pant.nl"><img class="img-fluid" src="{{ asset('img/roodborstje.png') }}" alt=""></a>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

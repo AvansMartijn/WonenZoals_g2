@@ -18,6 +18,7 @@ use \App\ContactSubject;
 use \App\Location;
 use \App\Newsitem;
 use \App\Resident;
+use \App\Sponsor;
 
 /**
  * PagesController Class Doc Comment
@@ -44,7 +45,8 @@ class PagesController extends Controller
         $location = Location::first();
         $newsitems = Newsitem::orderby('id', 'desc')->take('4')->get();
         $residents = Resident::all();
+        $sponsors = Sponsor::orderby('id', 'desc')->take('5')->get();
         // $data = ['sections' => $sections, 'leaf' => $leaf, 'contactSubjects' => $contactSubjects, 'location' => $location];
-        return view('pages.index', compact('leaf', 'sections', 'contactSubjects', 'location', 'newsitems', 'residents'));
+        return view('pages.index', compact('leaf', 'sections', 'contactSubjects', 'location', 'newsitems', 'residents', 'sponsors'));
     }
 }
