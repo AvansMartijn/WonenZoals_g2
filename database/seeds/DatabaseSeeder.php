@@ -39,6 +39,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SectionsSeeder::class);
         $this->call(FrontEndSeeder::class);
         $this->call(ResidentsSeeder::class);
+        $this->call(ContactFormSeeder::class);
+        $this->call(ForumSeeder::class);
+
         
         
     }

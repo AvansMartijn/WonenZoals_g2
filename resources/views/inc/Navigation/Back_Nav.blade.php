@@ -63,6 +63,16 @@
                             <li>
                                 <i class="fas fa-scroll"></i>
                                 <span class="alignpotjandriedubbeltjes">Page builder</span>
+                             </li>
+                        </a>
+
+                    {{-- show forum --}}
+                    @if ($userauthorization->id == 4)
+
+                        <a href="/dashboard/forum" class="Menu-Item {{ (request()->is('/dashboard/forum*')) ? 'Active' : '' }}">
+                            <li>
+                                <i class="fas fa-book-reader"></i>
+                                <span class="alignpotjandriedubbeltjes">Forum</span>
                             </li>
                         </a>
 

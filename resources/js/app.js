@@ -9,6 +9,7 @@ require('./SmoothScroll');
 require('./Search');
 require('./MenuCollapse');
 require('./bootstrap');
+require('./tooltip');
 window.Vue = require('vue');
 
 import Vue from 'vue';

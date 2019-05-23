@@ -12,6 +12,14 @@
  */
 namespace App\Http\Controllers;
 
+use App\AgendaEvent;
+use App\ContactUS;
+use App\ForumPost;
+use App\Topic;
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+
 /**
  * DashboardController Class Doc Comment
  *
@@ -40,16 +48,131 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role_id == 1) { //beheerder
-            return view('dashPages.dashBeheerder');
-        } elseif (auth()->user()->role_id == 4) { //bewoner
-            return view('dashPages.dashBewoner');
-        } elseif (auth()->user()->role_id == 2) { //vrijwilliger
-            return view('dashPages.dashVrijwilliger');
-        } elseif (auth()->user()->role_id == 3) { //ouder
-            return view('dashPages.dashOuder');
+        if (auth()->user()->role_id == 1) {
+            return $this->dashBeheerder();
+        } elseif (auth()->user()->role_id == 4 || auth()->user()->role_id == 2 || auth()->user()->role_id == 3) {
+            return $this->dashGebruiker();
         } else {
             return view('login');
         }
+    }
+
+    public function dashBeheerder()
+    {
+        //al de events uit de database
+        $events = AgendaEvent::get()->keyBy('id');
+
+        $request = 0;
+
+        $applied = 0;
+
+        foreach ($events as $event) {
+            //kijken of de gebruiker zich heeft aangemeld voor het event
+
+            foreach($event->users as $eve)
+            {
+                //return $eve->pivot;
+                if (!$eve->pivot->applied) {
+
+                    $request++;
+    
+                } elseif($eve->pivot->applied) {
+    
+                    $applied++;
+                    $request++;
+    
+                }
+            }
+
+
+            if($applied != 0)
+            {
+                $percent = round(($applied / $request) * 100);
+            }
+            else
+            {
+                $percent = 0;
+            }
+
+
+            
+
+            $event->setAttribute('request', $request);
+            $event->setAttribute('applied', $applied);
+
+            $event->setAttribute('percent', $percent);
+
+            $request = 0;
+            $applied = 0;
+
+        }
+
+
+        // //al de gebuikers
+        // $numberOfBewoners = User::where('role_id', 3)->count();
+        // $numberOfVrijwilliger = User::where('role_id', 2)->count();
+        // $numberOfOuder = User::where('role_id', 4)->count();
+
+        //al de contact formulier berichten
+        $contacts = ContactUS::all();
+
+        $date = Carbon::today()->subDays(30);
+        $contacts30 = ContactUS::where('created_at', '>=', $date)->get();
+
+        return view('dashPages.dashBeheerder')->with(compact('events', 'contacts', 'contacts30'));
+    }
+
+    public function dashGebruiker()
+    {
+        //al de events van de gebruiker
+        $events = Auth::user()->events()->get()->keyBy('id');
+
+        foreach ($events as $event) {
+            //kijken of de gebruiker zich heeft aangemeld voor het event
+            if (!$event->pivot->applied) {
+
+                $events->forget($event->id);
+            } else {
+
+                //kijken of het een toekomstig event is
+                $date = new Carbon;
+
+                if ($date > $event->date) {
+                    $events->forget($event->id);
+                }
+
+            }
+
+        }
+
+        //al de topics van de gebruiker
+        $topics = Topic::where('user_id', Auth::user()->id)->get();
+
+        //pak al de topics waar op gereageerd is door de ingelogde gebruiker
+        $reactiontopics = Topic::all()->keyBy('id');
+       
+        $counter = 0;
+
+        foreach($reactiontopics as $reactiontopic)
+        {
+            $testerloop =  $reactiontopic->forumpost;
+
+            foreach( $testerloop as $reaction)
+            {
+                if($reaction->user_id == Auth::user()->id)
+                {
+                    $counter++;
+                }
+            }
+
+            if($counter == 0)
+            {
+                $reactiontopics->forget($reactiontopic->id);
+            }
+
+            $counter = 0;
+        }
+    
+        return view('dashPages.dashGebruikersDashboard')->with(compact('events', 'topics', 'reactiontopics'));
     }
 }
