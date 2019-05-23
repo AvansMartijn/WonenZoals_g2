@@ -11,16 +11,14 @@
  * @link     https://wonenzoals.mardy.tk
  */
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
-use App\UsersAgendaEvents;
+
 use App\AgendaEvent;
-use App\User;
 use App\ContactUS;
-use App\Topic;
 use App\ForumPost;
-use Carbon\Carbon;   
-
-
+use App\Topic;
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * DashboardController Class Doc Comment
@@ -50,54 +48,63 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role_id == 1) 
-        { 
+        if (auth()->user()->role_id == 1) {
             return $this->dashBeheerder();
-        } 
-        elseif (auth()->user()->role_id == 4 || auth()->user()->role_id == 2 || auth()->user()->role_id == 3) 
-        { 
+        } elseif (auth()->user()->role_id == 4 || auth()->user()->role_id == 2 || auth()->user()->role_id == 3) {
             return $this->dashGebruiker();
-        } 
-        else 
-        {
+        } else {
             return view('login');
         }
     }
-
 
     public function dashBeheerder()
     {
         //al de events uit de database
         $events = AgendaEvent::all();
 
-
         //al de gebuikers
         $numberOfBewoners = User::where('role_id', 3)->count();
         $numberOfVrijwilliger = User::where('role_id', 2)->count();
         $numberOfOuder = User::where('role_id', 4)->count();
 
-
-        //al de contact formulier berichten 
+        //al de contact formulier berichten
         $contacts = ContactUS::all();
 
-
-        $date = \Carbon\Carbon::today()->subDays(30);
+        $date = Carbon::today()->subDays(30);
         $contacts30 = ContactUS::where('created_at', '>=', $date)->get();
 
-        return view('dashPages.dashBeheerder')->with(compact('events','numberOfBewoners','numberOfVrijwilliger','numberOfOuder','contacts','contacts30'));
+        return view('dashPages.dashBeheerder')->with(compact('events', 'numberOfBewoners', 'numberOfVrijwilliger', 'numberOfOuder', 'contacts', 'contacts30'));
     }
 
     public function dashGebruiker()
     {
         //al de events van de gebruiker
-        $events = UsersAgendaEvents::where('user_id', Auth::user()->id)->get();
+        $events = Auth::user()->events()->get()->keyBy('id');
+
+        foreach ($events as $event) {
+            //kijken of de gebruiker zich heeft aangemeld voor het event
+            if (!$event->pivot->applied) {
+
+                $events->forget($event->id);
+            } else {
+
+                //kijken of het een toekomstig event is
+                $date = new Carbon;
+
+                if ($date > $event->date) {
+                    $events->forget($event->id);
+                }
+
+            }
+
+        }
 
         //al de topics van de gebruiker
-        $topics = Topic::where('user_id',Auth::user()->id)->get();
+        $topics = Topic::where('user_id', Auth::user()->id)->get();
 
         //al de gebruiker zijn reacties
-        $topicReactionOns = ForumPost::where('user_id',Auth::user()->id)->get();
+        $topicReactionOns = ForumPost::where('user_id', Auth::user()->id)->get();
 
-        return view('dashPages.dashGebruikersDashboard')->with(compact('events','topics','topicReactionOns'));
+        return view('dashPages.dashGebruikersDashboard')->with(compact('events', 'topics', 'topicReactionOns'));
     }
 }
