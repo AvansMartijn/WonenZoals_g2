@@ -60,12 +60,39 @@ class DashboardController extends Controller
     public function dashBeheerder()
     {
         //al de events uit de database
-        $events = AgendaEvent::all();
+        $events = AgendaEvent::get()->keyBy('id');
 
-        //al de gebuikers
-        $numberOfBewoners = User::where('role_id', 3)->count();
-        $numberOfVrijwilliger = User::where('role_id', 2)->count();
-        $numberOfOuder = User::where('role_id', 4)->count();
+        $request = 0;
+
+        $applied = 0;
+
+        foreach ($events as $event) {
+            //kijken of de gebruiker zich heeft aangemeld voor het event
+
+            foreach($event->users as $eve)
+            {
+                //return $eve->pivot;
+                if (!$eve->pivot->applied) {
+
+                    $request++;
+    
+                } elseif($eve->pivot->applied) {
+    
+                    $applied++;
+    
+                }
+            }
+            $event->setAttribute('request', $request);
+            $event->setAttribute('applied', $applied);
+
+
+        }
+
+
+        // //al de gebuikers
+        // $numberOfBewoners = User::where('role_id', 3)->count();
+        // $numberOfVrijwilliger = User::where('role_id', 2)->count();
+        // $numberOfOuder = User::where('role_id', 4)->count();
 
         //al de contact formulier berichten
         $contacts = ContactUS::all();
@@ -73,7 +100,7 @@ class DashboardController extends Controller
         $date = Carbon::today()->subDays(30);
         $contacts30 = ContactUS::where('created_at', '>=', $date)->get();
 
-        return view('dashPages.dashBeheerder')->with(compact('events', 'numberOfBewoners', 'numberOfVrijwilliger', 'numberOfOuder', 'contacts', 'contacts30'));
+        return view('dashPages.dashBeheerder')->with(compact('events', 'contacts', 'contacts30'));
     }
 
     public function dashGebruiker()
@@ -102,11 +129,7 @@ class DashboardController extends Controller
         //al de topics van de gebruiker
         $topics = Topic::where('user_id', Auth::user()->id)->get();
 
-        //al de gebruiker zijn reacties
-        //$topicReactionOns = ForumPost::where('user_id', Auth::user()->id)->get();
-
-        //
-
+        //pak al de topics waar op gereageerd is door de ingelogde gebruiker
         $reactiontopics = Topic::all()->keyBy('id');
        
         $counter = 0;
