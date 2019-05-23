@@ -16,6 +16,7 @@
     <div class="ContentMainFull">
 
         <div class="DashboardItem">
+            
             <h2>Contact formulier KPI</h2>
 
             <p>Aantal ingevulde contact formulieren: {{count($contacts)}} </p>
@@ -86,7 +87,7 @@
                 @endif
             </table>  
         </div>
-        
+
     </div>
 </div>
 

@@ -411,6 +411,10 @@ body {
     color: #227dc7;
 }
 
+.TopicContent > hr {
+    margin-bottom: 0rem;
+}
+
 @media only screen and (max-width: 1030px) { 
     .margin-right {
         margin-right: 0px;
