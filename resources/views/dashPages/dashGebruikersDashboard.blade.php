@@ -65,6 +65,7 @@
                 @if (count($topics)>0)
                                                 
                         @foreach ($topics as $topic)
+                        <tr>
                         <td>
                                 {{$topic->title}}
                             </td>
@@ -78,7 +79,49 @@
                             <td>
                                 {{$topic->forumpost->count()}}
                             </td>
+                        </tr>
+                        @endforeach
+                    @else
+                    <tr>
+                        <td colspan="4">je hebt nog geen forum topics</td>
+                    </tr>
+                @endif
+            </table>  
+
+
+
+            <br>
+            <hr>
+        <h2>forum topics waarop ik heb gereageerd</h2>
+
+        <p>Aantal: {{count($reactiontopics)}}</p>
         
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Forum topics</th>
+                    <th>Gemaakt op</th>
+                    <th>Aantal reacties</th>
+                </tr>
+            <thead>
+                @if (count($reactiontopics)>0)
+                                                
+                        @foreach ($reactiontopics as $reactiontopic)
+                        <tr>
+                        <td>
+                                {{$reactiontopic->title}}
+                            </td>
+        
+        
+                            <td>
+                                {{$reactiontopic->created_at->format('d-m-Y H:i')}}
+                            </td>
+        
+        
+                            <td>
+                                {{$reactiontopic->forumpost->count()}}
+                            </td>
+                        </tr>
                         @endforeach
                     @else
                     <tr>

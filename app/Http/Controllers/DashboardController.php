@@ -103,8 +103,34 @@ class DashboardController extends Controller
         $topics = Topic::where('user_id', Auth::user()->id)->get();
 
         //al de gebruiker zijn reacties
-        $topicReactionOns = ForumPost::where('user_id', Auth::user()->id)->get();
+        //$topicReactionOns = ForumPost::where('user_id', Auth::user()->id)->get();
 
-        return view('dashPages.dashGebruikersDashboard')->with(compact('events', 'topics', 'topicReactionOns'));
+        //
+
+        $reactiontopics = Topic::all()->keyBy('id');
+       
+        $counter = 0;
+
+        foreach($reactiontopics as $reactiontopic)
+        {
+            $testerloop =  $reactiontopic->forumpost;
+
+            foreach( $testerloop as $reaction)
+            {
+                if($reaction->user_id == Auth::user()->id)
+                {
+                    $counter++;
+                }
+            }
+
+            if($counter == 0)
+            {
+                $reactiontopics->forget($reactiontopic->id);
+            }
+
+            $counter = 0;
+        }
+    
+        return view('dashPages.dashGebruikersDashboard')->with(compact('events', 'topics', 'reactiontopics'));
     }
 }
