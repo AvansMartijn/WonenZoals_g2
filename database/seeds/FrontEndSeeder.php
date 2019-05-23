@@ -64,11 +64,11 @@ class FrontEndSeeder extends Seeder
         };
 
         $sponsors = [
-            ['id' => 1, 'name' => 'Stichting eigen huis', 'hyperlink' => 'https://www.mijneigenthuis.eu/', 'img_url' => 'imgurl.com'],
-            ['id' => 2, 'name' => 'NSGK', 'hyperlink' => 'https://www.nsgk.nl/', 'img_url' => ''],
-            ['id' => 3, 'name' => 'PLATO', 'hyperlink' => 'https://www.tsvplato.nl/', 'img_url' => ''],
-            ['id' => 4, 'name' => 'Yell&Yonkers', 'hyperlink' => 'https://www.yellenyonkers.nl/', 'img_url' => ''],
-            ['id' => 5, 'name' => 'Fra-pant', 'hyperlink' => 'www.fra-pant.nl/', 'img_url' => ''],
+            ['id' => 1, 'name' => 'Stichting eigen huis', 'hyperlink' => 'https://www.mijneigenthuis.eu/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6ad987dac0-mijneigenthuis.png'],
+            ['id' => 2, 'name' => 'NSGK', 'hyperlink' => 'https://www.nsgk.nl/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6ada41c6be-nsgk.png'],
+            ['id' => 3, 'name' => 'PLATO', 'hyperlink' => 'https://www.tsvplato.nl/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6adafa846c-plato.png'],
+            ['id' => 4, 'name' => 'Yell&Yonkers', 'hyperlink' => 'https://www.yellenyonkers.nl/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6adc0d3863-LogoYY_2015.png'],
+            ['id' => 5, 'name' => 'Fra-pant', 'hyperlink' => 'www.fra-pant.nl/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6adcd2720c-roodborstje.png'],
 
         ];
 
