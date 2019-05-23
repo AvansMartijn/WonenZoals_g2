@@ -21,9 +21,10 @@
         <hr>
 
         <div class="form-group">
-            <label for="date"><button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-                    Tooltip on top
-                  </button>Titel*</label>
+            <label for="date">
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+                Titel*
+            </label>
             <input type="text" class="form-control" name="eventname" value="{{ old('eventname') }}">
         </div>
         
