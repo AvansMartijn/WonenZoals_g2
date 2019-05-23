@@ -13,52 +13,20 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
+               @foreach ($sections as $section)
+                  @if ($section->type_id != 1 && $section->type_id != 2 && $section->type_id != 7)
+                    <li>
+                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#{{$section->id}}">{{$section->name}}</a>
+                    </li>
+                  @endif
+               @endforeach
                 @guest
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#OverOns">Over Ons</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Bewoners">Bewoners</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Ondersteuning">Ondersteuning</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Nieuws">Nieuws</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Contact">Contact</a>
-                    </li>
 
                     <li>
                         <a class="nav-link btn btn-custom text-white font-weight-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
 
                 @else
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#OverOns">Over Ons</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Bewoners">Bewoners</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Ondersteuning">Ondersteuning</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Nieuws">Nieuws</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Contact">Contact</a>
-                    </li>
-
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>

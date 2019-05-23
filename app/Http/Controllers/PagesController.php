@@ -13,6 +13,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use \App\Section;
+use \App\ContactSubject;
+use \App\Location;
+use \App\Newsitem;
+use \App\Resident;
+use \App\Sponsor;
 
 /**
  * PagesController Class Doc Comment
@@ -33,6 +39,14 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
+        $leaf = Section::where('type_id', 1)->first();
+        $sections = Section::orderBy('order', 'asc')->get();
+        $contactSubjects = ContactSubject::all();
+        $location = Location::first();
+        $newsitems = Newsitem::orderby('id', 'desc')->take('4')->get();
+        $residents = Resident::all();
+        $sponsors = Sponsor::orderby('id', 'desc')->take('5')->get();
+        // $data = ['sections' => $sections, 'leaf' => $leaf, 'contactSubjects' => $contactSubjects, 'location' => $location];
+        return view('pages.index', compact('leaf', 'sections', 'contactSubjects', 'location', 'newsitems', 'residents', 'sponsors'));
     }
 }

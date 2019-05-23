@@ -48,6 +48,62 @@ Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@index')
 Route::post('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@store')->middleware('auth');
 Route::delete('/dashboard/nieuwsbriefarchief/{id}', 'NewsletterArchiveController@destroy')->middleware('auth');
 
+//sections
+Route::get('/dashboard/sections', 'SectionsController@index')->name('sections');
+Route::get('/dashboard/sections/moveup/{id}', 'SectionsController@moveup');
+Route::get('/dashboard/sections/movedown/{id}', 'SectionsController@movedown');
+Route::delete('/dashboard/sections/{id}', 'SectionsController@destroy')->middleware('auth');
+Route::get('/dashboard/sections/factorysettings', 'SectionsController@factorysettings')->name('factorysettings');
+
+//sponsors
+Route::get('/dashboard/sponsors', 'SponsorsController@index')->name('sponsors');
+Route::get('/dashboard/sponsors/edit/{id}', 'SponsorsController@showSponsorDetails')->name('sponsorDetails');
+Route::post('/dashboard/sponsors/update', 'SponsorsController@update');
+Route::get('/dashboard/sponsors/create', 'SponsorsController@create')->name('sponsors.build');
+Route::post('/dashboard/sponsors/create', 'SponsorsController@store');
+Route::delete('/dashboard/sponsors/delete/{id}', 'SponsorsController@destroy');
+
+//news
+Route::get('/dashboard/nieuws', 'NewsController@index');
+Route::get('/dashboard/nieuws/create', 'NewsController@create');
+Route::post('/dashboard/nieuws/create', 'NewsController@store');
+Route::get('/dashboard/nieuws/edit/{id}', 'NewsController@edit');
+Route::post('dashboard/nieuws/update', 'NewsController@update');
+Route::delete('/dashboard/nieuws/delete/{id}', 'NewsController@destroy');
+
+//Residents
+Route::get('/dashboard/bewoners', 'ResidentsController@index');
+Route::get('/dashboard/bewoners/create', 'ResidentsController@create');
+Route::post('/dashboard/bewoners/create', 'ResidentsController@store');
+Route::get('/dashboard/bewoners/edit/{id}', 'ResidentsController@edit');
+Route::post('/dashboard/bewoners/update', 'ResidentsController@update');
+Route::delete('/dashboard/bewoners/delete/{id}', 'ResidentsController@destroy');
+
+//contact
+Route::get('/dashboard/contact', 'ContactUSController@index')->name('contact');
+Route::get('/dashboard/contact/subject/{id}', 'ContactUSController@editSubject')->name('contactsubjectEdit');
+Route::get('/dashboard/contact/createsubject', 'ContactUSController@createSubject')->name('contactsubjectCreate');
+Route::get('/dashboard/location', 'ContactUSController@editLocation')->name('locationEdit');
+Route::post('/dashboard/contact/storeSubject', 'ContactUSController@storeSubject');
+Route::post('/dashboard/contact/updateSubject', 'ContactUSController@updateSubject');
+Route::post('/dashboard/location', 'ContactUSController@updateLocation');
+Route::delete('/dashboard/contact/subject/{id}', 'ContactUSController@destroy')->middleware('auth');
+
+//leaf
+Route::get('/dashboard/sections/leaf', 'SectionsController@editLeaf')->name('leaf');
+Route::post('/dashboard/sections/leaf', 'SectionsController@updateLeaf');
+
+//seperator
+Route::get('/dashboard/sections/seperator/edit/{id}', 'SectionsController@editSeperator')->name('sepEdit');
+Route::get('/dashboard/sections/seperator/create', 'SectionsController@createSeperator')->name('setCreate');
+Route::post('/dashboard/sections/seperator', 'SectionsController@storeSeperator');
+Route::post('/dashboard/sections/seperator/edit/', 'SectionsController@updateSeperator');
+
+//textsection
+Route::get('/dashboard/sections/text/edit/{id}', 'SectionsController@editTextSection')->name('sepEdit');
+Route::get('/dashboard/sections/text/create', 'SectionsController@createTextSection')->name('setCreate');
+Route::post('/dashboard/sections/text', 'SectionsController@storeTextSection');
+Route::post('/dashboard/sections/text/edit/', 'SectionsController@updateTextSection');
 
 Route::resource('/dashboard/maaltijden', 'MealsController')->names([
     'create' => 'meals.build',
