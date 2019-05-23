@@ -21,13 +21,15 @@
         <hr>
 
         <div class="form-group">
-            <label for="date">Titel*</label>
+            <label for="date"><button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                    Tooltip on top
+                  </button>Titel*</label>
             <input type="text" class="form-control" name="eventname" value="{{ old('eventname') }}">
         </div>
         
         <div class="form-group">
             <label for="description">Beschrijving*</label>
-            <textarea class="form-control" name="description"  rows="4" >{{ old('description') }}</textarea>
+            <textarea class="form-control" autocomplete="off" name="description"  rows="4" >{{ old('description') }}</textarea>
         </div>
 
         <div class="form-group">
@@ -57,7 +59,7 @@
     
     <div class="SideContent">
         <div class="funkyradio">
-            <h1>Aanmelden</h1>
+            <h1>Delen Met</h1>
             <hr>
 
             {{-- <div class="funkyradio-success"> --}}
@@ -87,7 +89,7 @@
                 <label for="Auto_apply">Gebruikers aanmelden</label>
             </div>
             <div class="form-group">
-                    <label>Upload Image</label>
+                    <label>Upload Afbeelding</label>
                     <input type="file" name="image" id="image">
                 </div>
 

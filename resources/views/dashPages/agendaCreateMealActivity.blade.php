@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <label for="description">Beschrijving*</label>
-                <textarea class="form-control" name="description" rows="4"> {{ old('description') }}</textarea>
+                <textarea class="form-control" autocomplete="off" name="description" rows="4"> {{ old('description') }}</textarea>
             </div>
 
             <div class="form-group">
@@ -97,7 +97,7 @@
 
         <div class="SideContent">
             <div class="funkyradio">
-                <h1>Aanmelden</h1>
+                <h1>Delen Met</h1>
                 <hr>
                 
                 {{-- <div class="funkyradio-success"> --}}
@@ -127,9 +127,9 @@
                     <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
                 </div>
                 <div class="form-group">
-                        <label>Upload Image</label>
-                        <input type="file" name="image" id="image">
-                    </div>
+                    <label>Upload Afbeelding</label>
+                    <input type="file" name="image" id="image">
+                </div>
             </div>
         </div>
 
