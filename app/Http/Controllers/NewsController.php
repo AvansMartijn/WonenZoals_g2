@@ -21,6 +21,7 @@ class NewsController extends Controller
             'Titel' => 'required|max:255',
             'Inhoud' => 'required|max:255',
             'image' => 'required',
+            'Summary' => 'required'
         ]);
 
         $imagePath = null;
@@ -35,6 +36,7 @@ class NewsController extends Controller
         $newsitem = new Newsitem;
         $newsitem->title = $request['Titel'];
         $newsitem->content = $request['Inhoud'];
+        $newsitem->summary = $request->input('Summary');
         $newsitem->img_url = $imagePath;
         $newsitem->save();
 
@@ -58,6 +60,7 @@ class NewsController extends Controller
                 'Titel' => 'required',
                 'Inhoud' => 'required',
                 'image' => 'required',
+                'Summary' => 'required'
             ]
         );
 
@@ -73,6 +76,7 @@ class NewsController extends Controller
         $newsitem = Newsitem::find($request->id);
         $newsitem->title = $request->input('Titel');
         $newsitem->content = $request->input('Inhoud');
+        $newsitem->summary = $request->input('Summary');
         $newsitem->img_url = $imagePath;
 
         $newsitem->save();

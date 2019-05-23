@@ -25,10 +25,16 @@
         </div>
 
         <div class="from-group">
+                <label for="Summary">korte beschrijving</label>
+                <textarea type="textarea" class="form-control" name="Summary" placeholder="inhoud" value="{{$newsitem->summary}}" rows="4">{{$newsitem->summary}}</textarea>
+        </div>
+
+        <div class="from-group">
             <label for="Inhoud">Inhoud</label>
             <input type="hidden" value="{{$newsitem->id}}" name="id">
             <textarea type="textarea" class="form-control" name="Inhoud" placeholder="inhoud" value="{{$newsitem->content}}" rows="4">{{$newsitem->content}}</textarea>
         </div>
+
 
        
         <div class="form-group">

@@ -13,7 +13,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
-               @foreach ($data['sections'] as $section)
+               @foreach ($sections as $section)
                   @if ($section->type_id != 1 && $section->type_id != 2 && $section->type_id != 7)
                     <li>
                         <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#{{$section->id}}">{{$section->name}}</a>

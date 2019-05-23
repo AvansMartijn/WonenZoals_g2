@@ -16,6 +16,7 @@ use App\Http\Controllers\Controller;
 use \App\Section;
 use \App\ContactSubject;
 use \App\Location;
+use \App\Newsitem;
 
 /**
  * PagesController Class Doc Comment
@@ -40,7 +41,8 @@ class PagesController extends Controller
         $sections = Section::orderBy('order', 'asc')->get();
         $contactSubjects = ContactSubject::all();
         $location = Location::first();
-        $data = ['sections' => $sections, 'leaf' => $leaf, 'contactSubjects' => $contactSubjects, 'location' => $location];
-        return view('pages.index', compact('data'));
+        $newsitems = Newsitem::orderby('id', 'desc')->take('4')->get();
+        // $data = ['sections' => $sections, 'leaf' => $leaf, 'contactSubjects' => $contactSubjects, 'location' => $location];
+        return view('pages.index', compact('leaf', 'sections', 'contactSubjects', 'location', 'newsitems'));
     }
 }

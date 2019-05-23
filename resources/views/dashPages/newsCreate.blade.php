@@ -23,6 +23,10 @@
             <label for="Titel">Titel</label>
             <input type="text" class="form-control" name="Titel" placeholder="titel">
         </div>
+        <div class="from-group">
+                <label for="Inhoud">korte beschrijving</label>
+                <textarea type="textarea" class="form-control" name="Summary" placeholder="inhoud" rows="4"></textarea>
+        </div>
 
         <div class="form-group">
             <label for="Inhoud">Inhoud: </label>

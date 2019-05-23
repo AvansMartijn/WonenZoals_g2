@@ -16,6 +16,7 @@ class CreateFrontFillTables extends Migration
         Schema::create('newsitems', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->text('summary');
             $table->text('content');
             $table->string('img_url')->nullable();
             $table->timestamps();

@@ -7,12 +7,13 @@
         <div class="leaf-wrapper mx-auto">
             <div class="mx-auto leaf text-center">
                 <h1 class="text-custom-heading-shadow display-1">Wonen Zoals</h1>
-                <p class="text-white">{!!$data['leaf']->content!!}</p>
+                <p class="text-white">{!!$leaf->content!!}</p>
                 <a class="btn text-white btn-custom-shadow linkie" href="{{url('/')}}/#OverOns">Lees Meer</a>
             </div>
         </div>
     </header>
-    @foreach ($data['sections'] as $section)
+    @include('modal.modals')
+    @foreach ($sections as $section)
         @switch($section->type_id)
             @case(1)
                 {{-- leaf, do nothing --}}
@@ -48,7 +49,6 @@
                 @break
             @case(4)
                 {{-- residents --}}
-                @include('modal.modals')
                 <section id="{{$section->id}}" class="container">
                     <div class="ContentPadding">
                         <div class="row">
@@ -326,42 +326,16 @@
                             </div>
                         </div>
                         <div class="row">
+                            @foreach ($newsitems as $item)
                             <div class="NieuwsBericht">
-                                <img class="img-fluid" src="{{ asset('img/News.jpeg') }}" alt="">
-                                <span class="newsDate text-muted">29 nov 2018</span>
+                                <img class="img-fluid" src="{{$item->img_url}}" alt="">
                                 <br>
-                                <p class="newsTitle font-weight-bold">Brabants Dagblad 29 november 2018</p>
-                                <p class="newsText">Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jon...</p>
+                                <p class="newsTitle font-weight-bold">{{$item->title}}</p>
+                                <p class="newsText">{!!$item->summary!!}</p>
                                 <hr>
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#nieuws">Lees meer</button>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#nieuws{{$item->id}}">Lees meer</button>
                             </div>
-                            <div class="NieuwsBericht">
-                                <img class="img-fluid" src="{{ asset('img/News.jpeg') }}" alt="">
-                                <span class="newsDate text-muted">29 nov 2018</span>
-                                <br>
-                                <p class="newsTitle font-weight-bold">Brabants Dagblad 29 november 2018</p>
-                                <p class="newsText">Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jon...</p>
-                                <hr>
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#nieuws">Lees meer</button>
-                            </div>
-                            <div class="NieuwsBericht">
-                                <img class="img-fluid" src="{{ asset('img/News.jpeg') }}" alt="">
-                                <span class="newsDate text-muted">29 nov 2018</span>
-                                <br>
-                                <p class="newsTitle font-weight-bold">Brabants Dagblad 29 november 2018</p>
-                                <p class="newsText">Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jon...</p>
-                                <hr>
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#nieuws">Lees meer</button>
-                            </div>
-                            <div class="NieuwsBericht">
-                                <img class="img-fluid" src="{{ asset('img/News.jpeg') }}" alt="">
-                                <span class="newsDate text-muted">29 nov 2018</span>
-                                <br>
-                                <p class="newsTitle font-weight-bold">Brabants Dagblad 29 november 2018</p>
-                                <p class="newsText">Woonzorgappartementen voor jongeren op plaats oude school Mozartsingel DEN BOSCH – De oude nutsschool aan de Mozartsingel in Den Bosch gaat plaats maken voor maximaal 18 woonzorgappartementen voor jon...</p>
-                                <hr>
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#nieuws">Lees meer</button>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <hr>
@@ -408,7 +382,7 @@
                                     <div class="form-group {{ $errors->has('subject') ? 'has-error' : '' }}">
                                             {!! Form::label('Onderwerp') !!}
                                             <select name="subject" class="form-control">
-                                            @foreach ($data['contactSubjects'] as $subject)
+                                            @foreach ($contactSubjects as $subject)
                                                 <option value="{{$subject->subject}}">{{$subject->subject}}</option>
                                                 
                                             @endforeach
