@@ -26,7 +26,10 @@
     <div class="TopicReactions">
         
         {{-- TODO: reacties kopje alleen laten zien als er daadwerkelijk reacties zijn, dmv count??? --}}
+        @if (count($reactions) != 0)
         <h3>Reacties</h3>
+        @endif
+        
 
         <div class="list-group">
 
