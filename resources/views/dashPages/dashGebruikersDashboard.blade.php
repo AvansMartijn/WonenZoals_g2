@@ -13,72 +13,71 @@
 
 <div class="container">
     <div class="ContentMainFull">
-        <h1>Welkom {{Auth::user()->name}}</h1>
-        <small>{{Auth::user()->role->role_name}}</small>
-        <br>
-        <hr>
-        {{-- check all auth witin a role --}}
-        @foreach (Auth::user()->authorizations()->get() as $userauthorization)
+
+    {{-- check all auth witin a role --}}
+    @foreach (Auth::user()->authorizations()->get() as $userauthorization)
+
         {{-- show agenda --}}
         @if ($userauthorization->id == 1)
 
-        <h2>Aankomende events waarvoor ik aangemeld ben</h2>
+        <div class="DashboardItem">
 
-        <p>Aantal: {{count($events)}}</p>
-        
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>naam</th>
-                    <th>datum</th>
-                </tr>
-            <thead>
+            <h2>Aankomende events waarvoor ik aangemeld ben</h2>
+
+            <p>Aantal: {{count($events)}}</p>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>naam</th>
+                        <th>datum</th>
+                    </tr>
+                <thead>
                 @if (count($events)>0)
                                                 
-                        @foreach ($events as $event)
+                    @foreach ($events as $event)
                         <tr>
-                                <td>{{$event->eventname}}</td>
-                                <td>{{$event->date}}</td>
+                            <td>{{$event->eventname}}</td>
+                            <td>{{$event->date}}</td>
                         </tr>
-                        @endforeach
-                    @else
+                    @endforeach
+
+                @else
                     <tr>
                         <td colspan="4">Er zijn aankomende activiteiten</td>
                     </tr>
                 @endif
             </table>  
-
-
-
-            <br>
-            <hr>
+        </div>
 
         @endif
 
         {{-- show forum --}}
         @if ($userauthorization->id == 4)
 
-        <h2>Mijn forum topics</h2>
+        <div class="DashboardItem">
 
-        <p>Aantal: {{count($topics)}}</p>
-        
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Forum topics</th>
-                    <th>Gemaakt op</th>
-                    <th>Aantal reacties</th>
-                </tr>
-            <thead>
-                @if (count($topics)>0)
-                                                
+            <h2>Mijn forum topics</h2>
+
+            <p>Aantal: {{count($topics)}}</p>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Forum topics</th>
+                        <th>Gemaakt op</th>
+                        <th>Aantal reacties</th>
+                    </tr>
+                <thead>
+                    @if (count($topics)>0)
+                                                    
                         @foreach ($topics as $topic)
                         <tr>
-                        <td>
+                            <td>
                                 {{$topic->title}}
                             </td>
-        
-        
+            
+            
                             <td>
                                 {{$topic->created_at->format('d-m-Y H:i')}}
                             </td>
@@ -90,64 +89,59 @@
                         </tr>
                         @endforeach
                     @else
-                    <tr>
-                        <td colspan="4">je hebt nog geen forum topics</td>
-                    </tr>
+                        <tr>
+                            <td colspan="4">je hebt nog geen forum topics</td>
+                        </tr>
                 @endif
             </table>  
 
+        </div>
 
+        <div class="DashboardItem">
 
-            <br>
-            <hr>
-        <h2>forum topics waarop ik heb gereageerd</h2>
+            <h2>Forum topics waarop ik heb gereageerd</h2>
 
-        <p>Aantal: {{count($reactiontopics)}}</p>
+            <p>Aantal: {{count($reactiontopics)}}</p>
         
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Forum topics</th>
-                    <th>Gemaakt op</th>
-                    <th>Aantal reacties</th>
-                </tr>
-            <thead>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Forum topics</th>
+                        <th>Gemaakt op</th>
+                        <th>Aantal reacties</th>
+                    </tr>
+                <thead>
                 @if (count($reactiontopics)>0)
                                                 
-                        @foreach ($reactiontopics as $reactiontopic)
-                        <tr>
+                    @foreach ($reactiontopics as $reactiontopic)
+                    <tr>
                         <td>
-                                {{$reactiontopic->title}}
-                            </td>
+                            {{$reactiontopic->title}}
+                        </td>
         
         
-                            <td>
-                                {{$reactiontopic->created_at->format('d-m-Y H:i')}}
-                            </td>
+                        <td>
+                            {{$reactiontopic->created_at->format('d-m-Y H:i')}}
+                        </td>
         
-        
-                            <td>
-                                {{$reactiontopic->forumpost->count()}}
-                            </td>
-                        </tr>
-                        @endforeach
-                    @else
+    
+                        <td>
+                            {{$reactiontopic->forumpost->count()}}
+                        </td>
+                    </tr>
+                    @endforeach
+                @else
                     <tr>
                         <td colspan="4">je hebt nog geen forum topics</td>
                     </tr>
                 @endif
             </table>  
+        </div>
 
         @endif
-
-        
         
     @endforeach
 
-       
-
-            
-        
     </div>
 </div>
 @endsection
