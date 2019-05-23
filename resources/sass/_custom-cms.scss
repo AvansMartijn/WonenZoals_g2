@@ -399,6 +399,21 @@ body {
     margin-bottom: 25px;
 }
 
+.DashboardItem {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.15);
+    padding: 15px;
+    border-radius: 15px;
+    margin: 50px 0px;
+    background-color: rgb(233, 233, 233);
+    text-align:center;
+}
+.DashboardItem > h2 {
+    color: #227dc7;
+}
+
+.TopicContent > hr {
+    margin-bottom: 0rem;
+}
 
 @media only screen and (max-width: 1030px) { 
     .margin-right {
