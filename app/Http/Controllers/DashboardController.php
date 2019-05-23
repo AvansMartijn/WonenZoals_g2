@@ -79,12 +79,31 @@ class DashboardController extends Controller
                 } elseif($eve->pivot->applied) {
     
                     $applied++;
+                    $request++;
     
                 }
             }
+
+
+            if($applied != 0)
+            {
+                $percent = round(($applied / $request) * 100);
+            }
+            else
+            {
+                $percent = 0;
+            }
+
+
+            
+
             $event->setAttribute('request', $request);
             $event->setAttribute('applied', $applied);
 
+            $event->setAttribute('percent', $percent);
+
+            $request = 0;
+            $applied = 0;
 
         }
 
