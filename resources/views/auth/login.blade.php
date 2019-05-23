@@ -16,7 +16,8 @@
             @csrf
 
                 <div>
-                    <input placeholder="email" id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" autofocus>
+                    <input placeholder="Emailadres" id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" autofocus
+                    data-toggle="tooltip" data-placement="top" title="Typ hier het emailadres" autofocus>
 
                     @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
@@ -26,7 +27,8 @@
                 </div>
 
                 <div>
-                    <input placeholder="wachtwoord" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    <input placeholder="Wachtwoord" id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required
+                    data-toggle="tooltip" data-placement="top" title="Typ hier het wachtwoord">
 
                     @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
@@ -36,7 +38,7 @@
                 </div>
 
                 <div>
-                    <div class="form-check">
+                    <div class="form-check" data-toggle="tooltip" data-placement="top" title="Selecteer om minder vaak in te loggen">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Blijf ingelogd') }}
                     </div>
                 </div>
