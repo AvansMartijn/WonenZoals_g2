@@ -65,7 +65,8 @@
                                 <span class="alignpotjandriedubbeltjes">Page builder</span>
                              </li>
                         </a>
-
+                    @endif
+                    
                     {{-- show forum --}}
                     @if ($userauthorization->id == 4)
 
@@ -75,7 +76,6 @@
                                 <span class="alignpotjandriedubbeltjes">Forum</span>
                             </li>
                         </a>
-
                     @endif
                     
                 @endforeach

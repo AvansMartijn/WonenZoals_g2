@@ -11498,13 +11498,6 @@ body {
   background-color: #cacaca;
 }
 
-.tox .tox-edit-area__iframe {
-  background-color: #cacaca !important;
-}
-
-.tox-statusbar__branding {
-  display: none;
-  
 .DashboardItem {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.15);
   padding: 15px;
@@ -11520,6 +11513,14 @@ body {
 
 .TopicContent > hr {
   margin-bottom: 0rem;
+}
+
+.tox .tox-edit-area__iframe {
+  background-color: #cacaca !important;
+}
+
+.tox-statusbar__branding {
+  display: none;
 }
 
 @media only screen and (max-width: 1030px) {
