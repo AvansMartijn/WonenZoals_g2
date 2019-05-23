@@ -23,7 +23,6 @@
             <thead>
             <tr>
                 <th>Naam</th>
-                <th>Beschrijving</th>
                 <th>Afbeelding</th>
                 <th class="text-right">Acties</th>
             </tr>
@@ -32,7 +31,6 @@
             @foreach ($residents as $resident)
                 <tr>
                     <td>{{$resident->name}}</td>
-                    <td>{!! $resident->description !!}</td>
                     <td>{{$resident->img_url}}</td>
                     <td class="text-left">
                         {!! Form::open(['action' => ['ResidentsController@destroy', $resident->id], 'method' => 'POST']) !!}

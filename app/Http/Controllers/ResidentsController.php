@@ -19,7 +19,7 @@ class ResidentsController extends Controller
     public function store(Request $request){
         $validatedData = $request->validate([
             'Naam' => 'required|max:255',
-            'Beschrijving' => 'required|max:255',
+            'Beschrijving' => 'required',
             'image' => 'required',
         ]);
 

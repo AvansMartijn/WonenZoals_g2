@@ -1,27 +1,14 @@
-<div class="modal fade lg" id="auke" tabindex="-1" role="dialog" aria-hidden="true">
+@foreach ($residents as $resident)
+<div class="modal fade lg" id="{{$resident->name}}{{$resident->id}}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body">
                 
-                <h1 class="modal-Name font-weight-bold">Auke</h5>
+                <h1 class="modal-Name font-weight-bold">{{$resident->name}}</h5>
 
                 <p class="text-readable">
-                  <img class="modal-picture" src="{{ asset('img/Auke.jpg') }}">
-                    Ik ben Auke, geboren op 24 november 1995. Ik woon momenteel met mijn vader en moeder in ’s-Hertogenbosch. Verder heb ik nog een oudere zus die net zoals wij ook in 's-Hertogenbosch woont.
-                    <br><br>
-                    Ik heb al sinds mijn geboorte een lichamelijke beperking, cerebrale parese. Cerebrale parese (CP) is een houding- en bewegingsstoornis die veroorzaakt wordt door beschadiging van de hersenen.
-                    <br><br>
-                    Ik ben een sportieve jongen en mijn favoriete sporten zijn hockey, voetballen, atletiek en fitnessen. Ik speel LG-hockey bij HC Den Bosch, zie foto. Iedere woensdag trainen we en twee keer in de maand spelen we een competitiewedstrijd. In het seizoen 2013-2014 en 2014-2015 zijn we Landskampioen geworden.
-                    <br><br>
-                    Ook vind ik het leuk om met vrienden af te spreken, gezellig samen iets drinken en kletsen over voetbal. Ik heb een seizoenskaart van FC Den Bosch zodat ik alle thuiswedstrijden kan bekijken.
-                    <br><br>
-                    Verder luister ik veel naar muziek en speel ik graag Playstation. Ook ben ik regelmatig op Facebook te vinden. Lekker chatten met mijn vrienden.
-                    <br><br>
-                    Verder ben ik dol op onze hond Nelis. Nelis is een hele lieve zwarte Labradoodle. 
-                    <br><br>
-                    In 2015 heb ik de mytylschool Gabriel in ’s-Hertogenbosch verlaten. Momenteel werk ik 4 dagen in de week bij de buurtsuper in Maliskamp. Ik heb het daar heel goed naar m'n zin, veel afwisseling in werkzaamheden en veel contact met klanten.
-                    <br><br>
-                    Daarna wil ik graag begeleid gaan wonen in of rondom ’s-Hertogenbosch. Als het maar in een straal van 5 km rond de Sint Jan is. Gezellig samen chillen met mijn vrienden. Ik ken de meeste al jaren via school en het lijkt me erg gezellig om samen met nog meer vriend(inn)en een woonvoorziening op te richten.
+                  <img class="modal-picture" src="{{$resident->img_url}}">
+                  {!!$resident->description!!}
                 </p>
             </div>
             <div class="modal-footer">
@@ -30,6 +17,8 @@
           </div>
         </div>
       </div>
+    
+@endforeach
 
       <div class="modal fade" id="stef" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
