@@ -16,9 +16,11 @@
         <h1>Welkom {{Auth::user()->name}}</h1>
         <small>{{Auth::user()->role->role_name}}</small>
         <br>
-        Underconstruction
-        <br>
         <hr>
+        {{-- check all auth witin a role --}}
+        @foreach (Auth::user()->authorizations()->get() as $userauthorization)
+        {{-- show agenda --}}
+        @if ($userauthorization->id == 1)
 
         <h2>Aankomende events waarvoor ik aangemeld ben</h2>
 
@@ -50,6 +52,12 @@
 
             <br>
             <hr>
+
+        @endif
+
+        {{-- show forum --}}
+        @if ($userauthorization->id == 4)
+
         <h2>Mijn forum topics</h2>
 
         <p>Aantal: {{count($topics)}}</p>
@@ -129,6 +137,17 @@
                     </tr>
                 @endif
             </table>  
+
+        @endif
+
+        
+        
+    @endforeach
+
+       
+
+            
+        
     </div>
 </div>
 @endsection
