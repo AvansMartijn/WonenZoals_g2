@@ -18,14 +18,14 @@
         <hr>
 
         <div class="form-group">
-            <input type="text" class="form-control" name="Search" placeholder="Zoeken..." id="Search">
+            <input type="text" class="form-control" name="Search" placeholder="Zoeken..." id="Search" autofocus>
         </div>
 
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Nieuwsbrief</th>
-                    @if (Auth::user()->role == "Beheerder")
+                    @if (Auth::user()->role_id == 1)
                         <th></th>
                     @endif 
                 </tr>
@@ -40,7 +40,7 @@
                         </td>
 
                         <td class="options">
-                            @if (Auth::user()->role == "Beheerder")
+                            @if (Auth::user()->role_id == 1)
                                 {!!Form::open(['action' => ['NewsletterArchiveController@destroy', $newsletter->id], 'method' => 'POST'])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
@@ -52,25 +52,29 @@
             </tbody>
         </table>
     </div>
+    @if (Auth::user()->role_id == 1)
     <div class="SideContent">
         <h1>Toevoegen</h1>
         <hr>
-        @if (Auth::user()->role == "Beheerder")
+        @if (Auth::user()->role_id == 1)
             {!! Form::open(['action' => 'NewsletterArchiveController@store', 'methode' => 'POST']) !!}
                         
-                <div class="form-group">
-                    {{Form::text('Titel','',['class' => 'form-control', 'placeholder' => 'Titel'])}}
+                <div class="form-group" 
+                data-toggle="tooltip" data-placement="top" title="Typ hier de titel van de nieuwsbrief">
+                    {{Form::text('Titel','',['class' => 'form-control', 'placeholder' => 'Titel', 'autocomplete' => 'off'])}}
                 </div>
 
-                <div class="form-group">
-                    {{Form::text('Link','',['class' => 'form-control', 'placeholder' => 'Link'])}}
+                <div class="form-group"
+                data-toggle="tooltip" data-placement="top" title="Plak hier de link van de nieuwsbrief">
+                    {{Form::text('Link','',['class' => 'form-control', 'placeholder' => 'Link', 'autocomplete' => 'off'])}}
                 </div>
             
                 {{Form::submit("Toevoegen", ['class' => 'btn btn-success float-right'])}}
                 
             {!! Form::close() !!} 
-        @endif
-    </div>
+        </div>
+    @endif
+    @endif
 </div>
 
 @endsection

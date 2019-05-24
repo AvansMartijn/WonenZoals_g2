@@ -17,6 +17,8 @@ use App\ContactUS;
 use Validator;
 use Illuminate\Http\Request;
 use Mail;
+use \App\ContactSubject;
+use \App\Location;
 
 /**
  * PagesController Class Doc Comment
@@ -83,5 +85,93 @@ class ContactUSController extends Controller
             'success',
             'Uw contact formulier is succesvol verzonden!'
         );
+    }
+
+    public function storeSubject(Request $request){
+        $validatedData = $request->validate([
+            'subject' => 'required|max:255',
+        ]);
+
+        $subject = new \App\ContactSubject;
+        $subject->subject = $request['subject'];
+        $subject->save();
+
+        $notification = array(
+            'message' => 'onderwerp is aangemaakt', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard/contact')->with($notification);
+    }
+
+    public function index(){
+        $subjects = ContactSubject::all();
+        $location = Location::first();
+        $data = ['contactSubjects' => $subjects, 'location' => $location] ;
+        return View('dashPages.contactOverview', compact('data'));
+    }
+
+    public function createSubject(){
+        return View('dashPages.contactSubjectCreate');
+    }
+
+    public function editSubject($id){
+        $subject = \App\ContactSubject::where('id', $id)->first();
+        return View('dashPages.contactSubjectEdit', compact('subject'));
+    }
+
+    public function updateSubject(Request $request){
+        $subject = ContactSubject::where('id', $request['id'])->first();
+        $subject->subject = $request['subject'];
+        $subject->save();
+
+        $notification = array(
+            'message' => 'Onderwerp is aangepast', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard/contact')->with($notification);
+
+    }
+
+    public function destroy($id){
+        //
+        if(\App\ContactSubject::count() > 1){
+
+            $subject = \App\ContactSubject::where('id', $id)->first();
+            $subject->delete();
+            $notification = array(
+                'message' => 'Onderwerp is verwijderd', 
+                'alert-type' => 'success'
+            );
+        }else{
+            $notification = array(
+                'message' => 'Er moet minimaal 1 onderwerp zijn', 
+                'alert-type' => 'error');
+        }
+
+
+
+        return redirect('/dashboard/contact')->with($notification);
+    }
+
+    public function editLocation(){
+        $location = Location::first();
+        return View('dashPages.contactLocationEdit', compact('location'));
+    }
+
+    public function updateLocation(Request $request){
+        $location = Location::first();
+        $location->street = $request['street'];
+        $location->number = $request['number'];
+        $location->postal = $request['postal'];
+        $location->city = $request['city'];
+        $location->save();
+
+        $notification = array(
+            'message' => 'Locatie is gewijzigd', 
+            'alert-type' => 'success');
+
+        return redirect('/dashboard/contact')->with($notification);
     }
 }

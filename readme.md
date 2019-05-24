@@ -91,12 +91,13 @@ crtl + C
 <h2>PHP Code Sniffer</h2>
 
 ```
-./vendor/bin/phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
+./vendor/bin/phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers --standard=./ruleset.xml
+
 ```
 Automatisch fixen:
 
 ```
-./vendor/bin/phpcbf app/Http/Controllers/<ControllerNaam>.php
+./vendor/bin/phpcbf --standard=./ruleset.xml app/Http/Controllers/*
 ```
 
 <h2>Useful Info</h2>

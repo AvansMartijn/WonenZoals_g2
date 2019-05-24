@@ -45,12 +45,12 @@ class EventsController extends Controller
 
                 $userAuth = Auth::user();
 
-                $userAuth = $userAuth->authorizations;
+                $userAuth = $userAuth->authorizations()->get();
 
                 $toegang = false;
 
                 foreach ($userAuth as $userAuthh) {
-                    if ($userAuthh->authorization == "Agenda") {
+                    if ($userAuthh->id == 1) {
                         $toegang = true;
                     }
                 }
@@ -128,7 +128,14 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->pivot->applied = 1;
         $event->pivot->update();
-        return back();
+
+        $notification = array(
+            'message' => 'U bent aangemeld', 
+            'alert-type' => 'success'
+        );
+
+
+        return back()->with($notification);
     }
 
     public function cancel($id)
@@ -136,7 +143,13 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->pivot->applied = 0;
         $event->pivot->update();
-        return back();
+
+        $notification = array(
+            'message' => 'U bent afgemeld', 
+            'alert-type' => 'success'
+        );
+
+        return back()->with($notification);
     }
 
     /**
@@ -175,9 +188,10 @@ class EventsController extends Controller
         $validatedData = $request->validate([
             'eventname' => 'required|max:255',
             'location' => 'required|max:255',
-            'eventname' => 'required|max:255',
             'description' => 'required|max:255',
             'date' => 'date',
+            'image' => 'image',
+            'enddate' => 'date|after:date',
             'role_check' => 'required',
 
         ]);
@@ -226,7 +240,7 @@ class EventsController extends Controller
         $user->events()->save($event, ['applied' => $autoApply]);
 
         foreach ($request['role_check'] as $group) {
-            $users = \App\User::where('role', $group)->get();
+            $users = \App\User::where('role_id', $group)->get();
             foreach ($users as $user) {
                 if($user->id != Auth::id()){
                     $user->events()->save($event, ['applied' => $autoApply]);

@@ -13,52 +13,20 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
+               @foreach ($sections as $section)
+                  @if ($section->type_id != 1 && $section->type_id != 2 && $section->type_id != 7)
+                    <li>
+                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#{{$section->id}}">{{$section->name}}</a>
+                    </li>
+                  @endif
+               @endforeach
                 @guest
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#OverOns">Over Ons</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Bewoners">Bewoners</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Ondersteuning">Ondersteuning</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Nieuws">Nieuws</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Contact">Contact</a>
-                    </li>
 
                     <li>
                         <a class="nav-link btn btn-custom text-white font-weight-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
 
                 @else
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#OverOns">Over Ons</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Bewoners">Bewoners</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Ondersteuning">Ondersteuning</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Nieuws">Nieuws</a>
-                    </li>
-
-                    <li>
-                        <a class="nav-link text-dark font-weight-bold linkie" href="{{url('/')}}/#Contact">Contact</a>
-                    </li>
-
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle text-dark font-weight-bold" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -69,24 +37,32 @@
                             <a class="dropdown-item" href="/dashboard">Dashboard</a>
 
                             {{-- show auth roles --}}
-                            @foreach (Auth::user()->authorizations as $userauthorization)
+                            @foreach (Auth::user()->authorizations()->get() as $userauthorization)
                                 {{-- show agenda --}}
-                                @if ($userauthorization->authorization == "Agenda")
+                                @if ($userauthorization->name == "Agenda")
                                     <a class="dropdown-item" href="/dashboard/agenda">Agenda</a> 
                                 @endif
                                 {{-- show maaltijden --}}
-                                @if ($userauthorization->authorization == "Maaltijden")
+                                @if ($userauthorization->name == "Maaltijden")
                                     <a class="dropdown-item" href="/dashboard/maaltijden">Maaltijden</a> 
                                 @endif
                                  {{-- show newsletter archive --}}
-                                @if ($userauthorization->authorization == "Nieuwsbriefarchief")
+                                @if ($userauthorization->name == "Nieuwsbriefarchief")
                                     <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief Archief</a> 
                                 @endif
+
                                 {{-- show newsletter archive --}}
-                                @if ($userauthorization->authorization == "Gebruikers")
-                                    <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief archief</a> 
+                                @if ($userauthorization->name == "Forum")
+                                    <a class="dropdown-item" href="/dashboard/forum">Forum</a> 
                                 @endif
                             @endforeach
+
+                            {{-- checkuser role --}}
+                            @if (Auth::user()->role_id == 1)    {{-- beheerder--}}
+
+                                        <a class="dropdown-item" href="/dashboard/gebruikers">Gebruikers</a> 
+                        
+                            @endif
                             
                             
                             <a class="dropdown-item" href="{{ route('logout') }}"

@@ -42,9 +42,9 @@ class ManageUsersController extends Controller
         //fixed register login
         $this->middleware(
             function ($request, $next) {
-                $role = Auth::user()->role;
+                $role = Auth::user()->role_id;
 
-                if ($role !== 'Beheerder') {
+                if ($role !== 1) {
                     return redirect('/dashboard');
                 }
 
@@ -60,7 +60,7 @@ class ManageUsersController extends Controller
      */
     public function showGebruikers()
     {
-        $users = User::orderBy('role', 'DESC')->get();
+        $users = User::orderBy('role_id', 'DESC')->get();
 
         return view('dashPages.dashGebruikers')->with('users', $users);
     }
@@ -77,21 +77,15 @@ class ManageUsersController extends Controller
 
         $user = User::where('id', $id)->first();
 
-        $authoriation = $user->authorizations;
+        $authoriation = $user->authorizations()->get();
 
-        $authoriationsAvailable = authorizationLookup::all()->keyBy('id'); 
+        $authoriationsAvailable = authorizationLookup::all()->keyBy('id');
 
-        
-        
-        foreach($authoriationsAvailable as $authoriationsAvailablee)
-        {
-            foreach($authoriation as $authoriationn)
-            {
-                if($authoriationsAvailablee->name == $authoriationn->authorization)
+        foreach ($authoriationsAvailable as $authoriationsAvailablee) {
+            foreach ($authoriation as $authoriationn) {
+                if ($authoriationsAvailablee->id == $authoriationn->id) 
                 {
-                    
                     $authoriationsAvailable->forget($authoriationsAvailablee->id);
-                    
                 }
 
             }
@@ -99,7 +93,7 @@ class ManageUsersController extends Controller
         }
 
         //return $authoriationsAvailable;
-        return view('dashPages.dashGebruikersDetails')->with(compact('user', 'authoriation','authoriationsAvailable'));
+        return view('dashPages.dashGebruikersDetails')->with(compact('user', 'authoriation', 'authoriationsAvailable'));
     }
 
     /**
@@ -112,59 +106,23 @@ class ManageUsersController extends Controller
     public function store(Request $request)
     {
 
-
         $user = User::where('id', $request->input('id'))->first();
 
-        $authoriations = $user->authorizations;
+        if ($request['role_check'] != null) {
 
-        $authoriationsAvailables = authorizationLookup::all();
+            foreach ($request['role_check'] as $machtiging) {
 
-        foreach($authoriationsAvailables as $authoriationsAvailable)
-        {
-            $name = $authoriationsAvailable->name;
+                $auth = AuthorizationLookup::where('id', $machtiging)->first();
+                $user->authorizations()->save($auth);
 
-            $value = $request->input($name);
-
-            $common = 0;
-
-            $commonn = 0;
-
-            if($value)
-            {
-                foreach($authoriations as $AUTH)
-                {
-                    if($AUTH->authorization == $name)
-                    {
-                        $common++;
-                        $commonn++;
-                    }
-                   
-                }
-
-                if($common == 0)
-                {
-                    //create the machtiging
-                    $macht = new authorization();
-                    $macht->user_id = $request->input('id');
-                    $macht->authorization = $name;
-                    $macht->save();
-                }
-                else
-                {
-                    $common = 0;
-                }
-                    
             }
-
-
+            return redirect()->back()->with('success', 'De machtiging is toegevoegd');
+        } else {
+            return redirect()->back()->with('error', 'Er is geen machtiging geselecteerd');
         }
 
-        if($commonn > 0)
-        {
-            return redirect()->back()->with('error', 'Niet al de machtigingen zijn toegevoegd, omdat de gebruiker sommige machtigingen al had');
-        }
-        return redirect()->back()->with('success', 'De machtiging is toegevoegd');
     }
+
 
     /**
      * Show the application dashboard.
@@ -176,11 +134,14 @@ class ManageUsersController extends Controller
     public function destroymachtiging($id)
     {
 
-        $authh = authorization::where('id', $id)->first();
+        $authh = authorization::where('authorization_id', $id)->first();
 
-        $authh->delete();
+        $user = User::where('id', $authh->user_id)->first();
+
+        $user->authorizations()->detach($id);
 
         return redirect()->back()->with('success', 'De machtiging is verwijderd');
+
     }
 
     /**

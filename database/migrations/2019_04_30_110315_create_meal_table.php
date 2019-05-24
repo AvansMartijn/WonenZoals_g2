@@ -39,7 +39,8 @@ class CreateMealTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meals');
         Schema::dropIfExists('events_meals');
+        Schema::dropIfExists('meals');
+        
     }
 }
