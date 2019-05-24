@@ -65,7 +65,8 @@
                         
             <div class="form-group">
                 {{Form::textarea('Reactie','',['class' => 'form-control','rows' => '5', 'placeholder' => 'Reactie',
-                "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de reactie"])}}
+                "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de reactie",
+                'autocomplete' => 'off'])}}
             </div>
 
             {{ Form::hidden('id', $topic->id) }}

@@ -3,7 +3,7 @@
 @section('content')
 {{-- Page Header --}}
 <div class="BackHeader">
-        <h3>Secties overzicht</h3>
+        <h3>Secties Overzicht</h3>
         <hr>
 </div>
 
@@ -15,12 +15,15 @@
 <div class="container">
         <div class="MainContentFull">
                 <div class="MealOptions clearfix">
-                        <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
                         {{-- <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a> --}}
                         <button class="btn btn-success" data-toggle="modal" data-target="#vangnet">Nieuwe sectie</button>
-
-                        <a class="btn btn-primary" href="{{ route('factorysettings') }}">Fabrieksinstellingen</a>
+                        
+                        <a class="btn btn-primary" href="{{ route('factorysettings') }}" data-toggle="tooltip" data-placement="top" 
+                        title="Pas op! Alle wijzigingen zullen worden verwijderd!"
+                        >Fabrieksinstellingen</a>
                 </div>
+                <hr>
+                <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
                 
                 <table class="table table-striped">
                         <thead>
@@ -29,7 +32,7 @@
                                         <th>Type</th>
                                         <th>Standaard sectie</th>
                                         <th>Volgorde</th>
-                                        <th>acties</th>
+                                        <th>Acties</th>
                                 </tr>
                         </thead>
                         <tbody class="Searchable">
@@ -93,7 +96,7 @@
     
                                 <div class="form-group">
                                         <label for="name">Naam</label>
-                                        <input type="text" class="form-control" name="name" placeholder="naam">
+                                        <input type="text" class="form-control" name="name" autocomplete="off">
                                 </div>
                                 <hr>
                                 <label for="name">Type</label>

@@ -59,10 +59,10 @@
                     {{-- show page builder --}}
                     @if ($userauthorization->id == 6)
 
-                        <a href="/dashboard/sections" class="Menu-Item {{ (request()->is('dashboard/sections*')) ? 'Active' : '' }}">
+                        <a href="/dashboard/sections" class="Menu-Item {{ (request()->is('dashboard/sections*', 'dashboard/nieuws*', 'dashboard/sponsors*', 'dashboard/bewoners*', 'dashboard/contact*')) ? 'Active' : '' }}">
                             <li>
                                 <i class="fas fa-scroll"></i>
-                                <span class="alignpotjandriedubbeltjes">Page builder</span>
+                                <span class="alignpotjandriedubbeltjes">Pagina Bouwer</span>
                              </li>
                         </a>
                     @endif

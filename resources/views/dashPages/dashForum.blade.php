@@ -22,12 +22,14 @@
                     
             <div class="form-group">
                 {{Form::text('Titel','',['class' => 'form-control', 'placeholder' => 'Titel',
-                "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de titel van het topic"])}}
+                "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de titel van het topic",
+                'autocomplete' => 'off'])}}
             </div>
 
             <div class="form-group">
                 {{Form::text('Vraag','',['class' => 'form-control', 'placeholder' => 'Vraag',
-                "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de vraag"])}}
+                "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de vraag",
+                'autocomplete' => 'off'])}}
             </div>
         
             {{Form::submit("Toevoegen", ['class' => 'btn btn-success float-right'])}}
