@@ -16,7 +16,9 @@
         <div class="MainContentFull">
                 <div class="MealOptions clearfix">
                         <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
-                        <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a>
+                        {{-- <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a> --}}
+                        <button class="btn btn-success" data-toggle="modal" data-target="#vangnet">Nieuwe sectie</button>
+
                         <a class="btn btn-primary" href="{{ route('factorysettings') }}">Fabrieksinstellingen</a>
                 </div>
                 
@@ -81,7 +83,49 @@
                                 @endforeach
                         </tbody>
                 </table>
+                <div class="modal fade lg" id="vangnet" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                                <h3 class="modal-Name font-weight-bold">Nieuwe sectie</h3>
+                                {!! Form::open(['action' => 'SectionsController@storeSection', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
+
+    
+                                <div class="form-group">
+                                        <label for="name">Naam</label>
+                                        <input type="text" class="form-control" name="name" placeholder="naam">
+                                </div>
+                                <hr>
+                                <label for="name">Type</label>
+
+                                <div class="funkyradio">
+                                        <div class="funkyradio-success">
+                                                <input type="radio" name="type" value="3" id="voorgerecht" checked/>
+                                                <label for="voorgerecht">Tekst Sectie</label>
+                                        </div>
+                                
+                                        <div class="funkyradio-success">
+                                                <input type="radio" name="type" value="2" id="hoofdgerecht" />
+                                                <label for="hoofdgerecht">Scheiding</label>
+                                        </div>
+                                
+                                        
+                                </div>
+
+                                <p class="text">
+                                  Na het aanmaken van een sectie kunt u de volgorde en inhoude wijzigen in het sectieoverzicht.
+                                </p>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Terug</button>
+                                  {{Form::submit("Toevoegen", ['class' => 'btn btn-success full-width'])}}
+                                </div>
+                        </div>
+                        {!! Form::close() !!}
                 
+                            </div>
+                          </div>
+                        </div>
+                      </div>
         </div>
 </div>
 @endsection

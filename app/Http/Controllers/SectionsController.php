@@ -164,4 +164,18 @@ class SectionsController extends Controller
         return redirect('dashboard/sections')->with('success', 'Sectie is opgeslagen');
     }
 
+    public function storeSection(Request $request){
+        //
+        $section = new Section();
+        $section->order = Section::max('order') + 1;
+        $section->name = $request['name'];
+        $section->default_section = 0;
+        $section->type_id = $request['type'];
+
+        $section->save();
+
+        return redirect('dashboard/sections')->with('success', 'Sectie is opgeslagen');
+
+    }
+
 }
