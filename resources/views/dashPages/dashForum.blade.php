@@ -15,17 +15,19 @@
 <div class="container">
 
     <div class="MainContentFull">
-        <h1>Toevoegen</h1>
+        <h1>Nieuw Topic</h1>
         <hr>
         
         {!! Form::open(['action' => 'ForumController@store', 'methode' => 'POST']) !!}
                     
             <div class="form-group">
-                {{Form::text('Titel','',['class' => 'form-control', 'placeholder' => 'Titel'])}}
+                {{Form::text('Titel','',['class' => 'form-control', 'placeholder' => 'Titel',
+                "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de titel van het topic"])}}
             </div>
 
             <div class="form-group">
-                {{Form::text('Vraag','',['class' => 'form-control', 'placeholder' => 'Vraag'])}}
+                {{Form::text('Vraag','',['class' => 'form-control', 'placeholder' => 'Vraag',
+                "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de vraag"])}}
             </div>
         
             {{Form::submit("Toevoegen", ['class' => 'btn btn-success float-right'])}}
@@ -33,9 +35,9 @@
         {!! Form::close() !!} 
                 
     </div>
-
     <br>
-
+    <hr>
+    <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
     <div class="MainContentFull">
         <table class="table table-striped">
 
