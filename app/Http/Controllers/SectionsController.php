@@ -178,4 +178,14 @@ class SectionsController extends Controller
 
     }
 
+    public function deleteSection($id){
+        $section = Section::where('id', $id)->first();
+        if($section->type_id != 1){
+            $section->delete();
+            return redirect('dashboard/sections')->with('success', 'Sectie is verwijderd');
+        }
+        return redirect('dashboard/sections')->with('error', 'Sectie is niet verwijderd');
+        
+    }
+
 }

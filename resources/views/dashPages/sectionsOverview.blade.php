@@ -40,9 +40,15 @@
                                                 <td>{{$section->default_section}}</td>
                                                 <td>{{$section->order}}</td>
                                                 <td class="text-left">
-                                                        {!!Form::open(['action' => ['SectionsController@destroy', $section->id], 'method' => 'POST'])!!}
+                                                        {!!Form::open(['action' => ['SectionsController@deleteSection', $section->id], 'method' => 'POST'])!!}
                                                         {{Form::hidden('_method', 'DELETE')}}
+                                                        
+                                                        @if ($section->type_id == 1)
+                                                        {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right disabled', 'disabled' => 'disabled'])}}
+                                                        @else
                                                         {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
+                                                        @endif
+
                                                         {!!Form::close()!!}
                                                         @switch($section->type_id)
                                                             @case(1)
@@ -100,14 +106,30 @@
 
                                 <div class="funkyradio">
                                         <div class="funkyradio-success">
-                                                <input type="radio" name="type" value="3" id="voorgerecht" checked/>
-                                                <label for="voorgerecht">Tekst Sectie</label>
+                                                <input type="radio" name="type" value="3" id="text" checked/>
+                                                <label for="text">Tekst Sectie</label>
                                         </div>
                                 
                                         <div class="funkyradio-success">
-                                                <input type="radio" name="type" value="2" id="hoofdgerecht" />
-                                                <label for="hoofdgerecht">Scheiding</label>
+                                                <input type="radio" name="type" value="2" id="sep" />
+                                                <label for="sep">Scheiding</label>
                                         </div>
+                                        <div class="funkyradio-success">
+                                                <input type="radio" name="type" value="5" id="news" />
+                                                <label for="news">Nieuws</label>
+                                        </div>
+                                        <div class="funkyradio-success">
+                                                <input type="radio" name="type" value="4" id="residents" />
+                                                <label for="residents">Onze bewoners</label>
+                                        </div>
+                                        <div class="funkyradio-success">
+                                                <input type="radio" name="type" value="7" id="sponsors" />
+                                                <label for="sponsors">Sponsoren</label>
+                                        </div> 
+                                        <div class="funkyradio-success">
+                                                <input type="radio" name="type" value="6" id="contact" />
+                                                <label for="contact">Contact</label>
+                                        </div>       
                                 
                                         
                                 </div>
