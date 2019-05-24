@@ -11498,6 +11498,11 @@ body {
   background-color: #cacaca;
 }
 
+.ScrollableTable {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
 .DashboardItem {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.15);
   padding: 15px;

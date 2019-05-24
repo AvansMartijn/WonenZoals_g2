@@ -21,8 +21,11 @@
 
             <p>Totaal Ingevuld: {{count($contacts)}} </p>
             <p>Ingevuld Afgelopen 30 Dagen: {{count($contacts30)}}</p>
-
-            <table class="table table-striped">
+            <hr>
+            <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
+            <br>
+            <div class="ScrollableTable">
+                <table class="table table-striped">
                 <tr>
                     <th>Naam</th>
                     <th>Emailadres</th>
@@ -33,6 +36,7 @@
                 @if (count($contacts)>0)
                                                 
                     @foreach ($contacts as $contact)
+
                     <tr>
                         <td>{{$contact->name}}</td>
                         <td>{{$contact->email}}</td>
@@ -57,15 +61,19 @@
                     </tr>
 
                 @endif
-            </table>  
+            </table>
+            </div>  
         </div>
 
         <div class="DashboardItem">
 
             <h2>Activiteiten KPI</h2>
 
-            <p>Aantal activiteiten : {{count($events)}} </p>
-    
+            <p>Totaal Aantal Activiteiten: {{count($events)}} </p>
+            <hr>
+            <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
+            <br>
+            <div class="ScrollableTable">
             <table class="table table-striped">
                 <tr>
                     <th>Naam</th>
@@ -94,7 +102,8 @@
                     </tr>
 
                 @endif
-            </table>  
+            </table>
+            </div>  
         </div>
 
     </div>
