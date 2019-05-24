@@ -14,17 +14,15 @@
 {{-- Content --}}
 <div class="container">
         <div class="MainContentFull">
-                <div class="MealOptions clearfix">
+                <div class="center">
                         {{-- <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a> --}}
-                        <button class="btn btn-success" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
+                        <button class="btn btn-success half-width" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
                         
-                        <a class="btn btn-primary" href="{{ route('factorysettings') }}" data-toggle="tooltip" data-placement="top" 
-                        title="Pas op! Alle wijzigingen zullen worden verwijderd!"
-                        >Fabrieksinstellingen</a>
+                        <a class="btn btn-danger half-width" href="{{ route('factorysettings') }}" data-toggle="tooltip" data-placement="top" title="Pas op! Alle wijzigingen zullen worden verwijderd!">Fabrieksinstellingen</a>
                 </div>
-                <hr>
+                <br>
                 <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
-                
+                <br>
                 <table class="table table-striped">
                         <thead>
                                 <tr>
@@ -140,10 +138,8 @@
                                 <p class="text">
                                   Na het aanmaken van een sectie kunt u de volgorde en inhoude wijzigen in het sectieoverzicht.
                                 </p>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Terug</button>
-                                  {{Form::submit("Toevoegen", ['class' => 'btn btn-success full-width'])}}
-                                </div>
+                                <hr>
+                                {{Form::submit("Toevoegen", ['class' => 'btn btn-success full-width'])}}
                         </div>
                         {!! Form::close() !!}
                 

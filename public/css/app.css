@@ -11062,6 +11062,19 @@ body {
   top: 56px;
 }
 
+.hidden {
+  display: none;
+}
+
+.table-stripedCustom > thead {
+  background-color: #dddddd;
+}
+
+.table-stripedCustom > tbody > tr:nth-child(4n-1),
+.table-stripedCustom > tbody > tr:nth-child(4n) {
+  background-color: #dddddd;
+}
+
 #body-row {
   margin-left: 0;
   margin-right: 0;
@@ -11494,10 +11507,6 @@ body {
   margin-bottom: 25px;
 }
 
-#content_ifr {
-  background-color: #cacaca;
-}
-
 .DashboardItem {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.15);
   padding: 15px;
@@ -11516,7 +11525,7 @@ body {
 }
 
 .tox .tox-edit-area__iframe {
-  background-color: #cacaca !important;
+  background-color: #fff !important;
 }
 
 .tox-statusbar__branding {

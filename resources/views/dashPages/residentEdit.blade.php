@@ -13,7 +13,7 @@
 
 {{-- Content --}}
 <div class="container">
-    <div class="MainContentFull">
+    <div class="MainContent">
         <h1>Gegevens</h1>
         <hr>
 
@@ -27,25 +27,35 @@
         <div class="from-group">
             <label for="Beschrijving">Beschrijving</label>
             <input type="hidden" value="{{$resident->id}}" name="id">
-            <textarea type="textarea" class="form-control" name="Beschrijving" placeholder="beschrijving" value="{{$resident->description}}" rows="4">{{$resident->description}}</textarea>
+            <textarea type="textarea" rows="10" class="form-control" name="Beschrijving" placeholder="beschrijving" value="{{$resident->description}}" rows="4">{{$resident->description}}</textarea>
         </div>
+
+        {{ Form::hidden('id', $resident->id) }}
+        
+    </div>
+
+    <div class="SideContent">
+        @if ($resident->img_url != null && $resident->img_url != "")
+            
+            <img class="img-fluid float-right ImageMargin image-shadow" src="{{$resident->img_url}}" alt="">
+        @else 
+            <p>{{$$resident->name}} heeft nog geen afbeelding</p>
+        @endif 
+
+        <br>
 
         <div class="form-group">
             <label for="name">afbeelding: </label>
-                <input type="file" name="image" id="image">
-        </div>
+            <input type="file" name="image" id="image">
+        </div>  
+    </div>   
 
-        @if ($resident->img_url != null && $resident->img_url != "")
-        <img class="img-fluid float-right ImageMargin image-shadow" src="{{$resident->img_url}}" alt="">
-        @endif
-
-        {{ Form::hidden('id', $resident->id) }}
-
+    <div class="MainContent">
+        <hr>
         {{Form::submit("Opslaan", ['class' => 'btn btn-success full-width'])}}
 
         {!! Form::close() !!}
-
-    </div>
+    </div>  
 </div>
 
 <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=z07h4dl3oc9tag6mxdjw1fwuvnu7s4c6d6wu425l6k3vdl44"></script>

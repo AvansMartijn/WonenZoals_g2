@@ -15,8 +15,7 @@
 <div class="container">
     {!! Form::open(['action' => 'ContactUSController@updateLocation', 'methode' => 'POST']) !!}
 
-    <div class="MainContent">
-       
+    <div class="MainContentFull">
 
         <div class="form-group">
             <label for="street">Straat</label>
@@ -39,7 +38,7 @@
             <input type="text" class="form-control" name="city" placeholder="Plaats" value="{{$location->city}}">
         </div>
     </div>
-    <div class="MainContent">
+    <div class="MainContentFull">
         <hr>
         {{Form::submit("Versturen", ['class' => 'btn btn-success full-width'])}}
     </div>
