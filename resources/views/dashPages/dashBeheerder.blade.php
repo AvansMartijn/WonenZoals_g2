@@ -22,13 +22,16 @@
             <p>Totaal Ingevuld: {{count($contacts)}} </p>
             <p>Ingevuld Afgelopen 30 Dagen: {{count($contacts30)}}</p>
 
-            <table class="table table-striped">
-                <tr>
-                    <th>Naam</th>
-                    <th>Emailadres</th>
-                    <th>Onderwerp</th>
-                    <th>Bericht</th>
-                </tr>
+            <table class="table table-stripedCustom">
+                <thead>
+                    <tr>
+                        <th>Naam</th>
+                        <th>Emailadres</th>
+                        <th>Onderwerp</th>
+                        <th>Bericht</th>
+                    </tr>
+                </thead>
+                
 
                 @if (count($contacts)>0)
                                                 
@@ -38,12 +41,12 @@
                         <td>{{$contact->email}}</td>
                         <td>{{$contact->subject}}</td>
                         <td>
-                            <button class="btn btn-primary" data-toggle="collapse" href="#{{$contact->id}}">
+                            <button class="CollapseButton btn btn-primary" data-target="Message_{{$contact->id}}">
                                 <i class="fas fa-sort-down"></i>
-                            </button> 
+                            </button>
                         </td>
                     </tr>
-                    <tr id="{{$contact->id}}" class="collapse">
+                    <tr id="Message_{{$contact->id}}" class="hidden">
                         <td colspan="4">
                             {{$contact->message}}
                         </td>

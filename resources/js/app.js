@@ -10,6 +10,7 @@ require('./Search');
 require('./MenuCollapse');
 require('./bootstrap');
 require('./tooltip');
+require('./Collapse');
 window.Vue = require('vue');
 
 import Vue from 'vue';

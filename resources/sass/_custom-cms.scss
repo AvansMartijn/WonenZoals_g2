@@ -8,6 +8,15 @@ body {
     top: 56px;
 }
 
+.hidden {
+    display: none;
+}
+.table-stripedCustom > thead {
+    background-color: #dddddd
+}
+.table-stripedCustom > tbody > tr:nth-child(4n-1), .table-stripedCustom > tbody > tr:nth-child(4n) {
+    background-color: #dddddd
+}
 #body-row {
     margin-left:0;
     margin-right:0;
