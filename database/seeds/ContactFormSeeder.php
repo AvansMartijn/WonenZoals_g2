@@ -33,8 +33,8 @@ class ContactFormSeeder extends Seeder
         DB::table('contactus')->delete();
 
         $contactuss = [
-            ['id' => 1, 'name' => "Jan Janssen", 'email' => "jan.janssen@gmail.nl", 'subject' => "Aanmelden woningzoekende", 'message' => "beste wonenzoals, graag zou ik meer informatie ontvangen willen ontvangen over deze instelling. mvg Jan Janssen"],
-            ['id' => 2, 'name' => "Gerrit verbeek", 'email' => "gekke.gerrit@hotmail.com", 'subject' => "Afmelden nieuwsbrief", 'message' => "beste wonenzoals, ik wel me graag afmelden voor de neuwsbrief. mvg Gerrit verbeek"]
+            ['id' => 1, 'name' => "Jan Janssen", 'email' => "jan.janssen@gmail.nl", 'subject' => "Aanmelden woningzoekende", 'message' => "Beste wonenzoals, graag zou ik meer informatie willen ontvangen over de woongroep. Mvg Jan Janssen"],
+            ['id' => 2, 'name' => "Gerrit verbeek", 'email' => "gekke.gerrit@hotmail.com", 'subject' => "Afmelden nieuwsbrief", 'message' => "Beste wonenzoals, ik wil me graag afmelden voor de nieuwsbrief. Mvg Gerrit Verbeek"]
         ];
 
         foreach($contactuss as $contactus){
