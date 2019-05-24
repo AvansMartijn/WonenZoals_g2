@@ -29,8 +29,8 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>naam</th>
-                        <th>datum</th>
+                        <th>Naam</th>
+                        <th>Datum</th>
                     </tr>
                 <thead>
                 @if (count($events)>0)

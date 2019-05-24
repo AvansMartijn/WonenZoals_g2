@@ -25,11 +25,9 @@
 
     <div class="TopicReactions">
         
-        {{-- TODO: reacties kopje alleen laten zien als er daadwerkelijk reacties zijn, dmv count??? --}}
         @if (count($reactions) != 0)
         <h3>Reacties</h3>
         @endif
-        
 
         <div class="list-group">
 
@@ -66,7 +64,9 @@
         {!! Form::open(['action' => 'ForumController@storeReaction', 'methode' => 'POST']) !!}
                         
             <div class="form-group">
-                {{Form::textarea('Reactie','',['class' => 'form-control','rows' => '5', 'placeholder' => 'Reactie'])}}
+                {{Form::textarea('Reactie','',['class' => 'form-control','rows' => '5', 'placeholder' => 'Reactie',
+                "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de reactie",
+                'autocomplete' => 'off'])}}
             </div>
 
             {{ Form::hidden('id', $topic->id) }}

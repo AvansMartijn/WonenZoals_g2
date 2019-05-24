@@ -9,7 +9,7 @@
 </div>
 
 <div class="HamburgerMenu">
-    <a><i class="fas fa-bars"></i>Menu</a>
+    <a><i class="fas fa-bars"></i> Menu</a>
 </div>
 
 

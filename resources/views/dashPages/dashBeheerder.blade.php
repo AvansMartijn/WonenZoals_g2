@@ -17,17 +17,17 @@
 
         <div class="DashboardItem">
             
-            <h2>Contact formulier KPI</h2>
+            <h2>Contact KPI</h2>
 
-            <p>Aantal ingevulde contact formulieren: {{count($contacts)}} </p>
-            <p>Aantal ingevulde contact formulieren afgelopen 30 dagen: {{count($contacts30)}}</p>
+            <p>Totaal Ingevuld: {{count($contacts)}} </p>
+            <p>Ingevuld Afgelopen 30 Dagen: {{count($contacts30)}}</p>
 
             <table class="table table-striped">
                 <tr>
-                    <th>naam</th>
-                    <th>email</th>
-                    <th>onderwerp</th>
-                    <th>bericht</th>
+                    <th>Naam</th>
+                    <th>Emailadres</th>
+                    <th>Onderwerp</th>
+                    <th>Bericht</th>
                 </tr>
 
                 @if (count($contacts)>0)
@@ -44,7 +44,7 @@
                 @else
 
                     <tr>
-                        <td colspan="4">Er zijn ingevulde contactformulieren</td>
+                        <td colspan="4">Er zijn geen ingevulde contactformulieren</td>
                     </tr>
 
                 @endif
@@ -59,11 +59,11 @@
     
             <table class="table table-striped">
                 <tr>
-                    <th>naam</th>
-                    <th>datum</th>
-                    <th>uitgenodigd</th>
-                    <th>aangemeld</th>
-                    <th>percentage aangemeld</th>
+                    <th>Naam</th>
+                    <th>Datum</th>
+                    <th>Uitgenodigd</th>
+                    <th>Aangemeld</th>
+                    <th>Aangemeld % </th>
                 </tr>
 
                 @if (count($events)>0)
@@ -71,7 +71,7 @@
                     @foreach ($events as $event)
                     <tr>
                         <td>{{$event->eventname}}</td>
-                        <td>{{$event->date}}</td>
+                        <td>{{date('d-m-Y H:i', strtotime($event->date))}}</td>
                         <td>{{$event->request}}</td>
                         <td>{{$event->applied}}</td>
                         <td>{{$event->percent}}%</td>
