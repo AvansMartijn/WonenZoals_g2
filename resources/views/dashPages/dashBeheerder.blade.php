@@ -37,7 +37,16 @@
                         <td>{{$contact->name}}</td>
                         <td>{{$contact->email}}</td>
                         <td>{{$contact->subject}}</td>
-                        <td>{{$contact->message}}</td>
+                        <td>
+                            <button class="btn btn-primary" data-toggle="collapse" href="#{{$contact->id}}">
+                                <i class="fas fa-sort-down"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr id="{{$contact->id}}" class="collapse">
+                        <td colspan="4">
+                            {{$contact->message}}
+                        </td>
                     </tr>
                     @endforeach
       
