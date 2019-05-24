@@ -25,7 +25,7 @@
             <hr>
             <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
             <br>
-            <div class="ScrollableTable">
+            <div class="ScrollableTable ">
                 <table class="table table-stripedCustom">
                 <thead>
                     <tr>
@@ -35,35 +35,37 @@
                         <th>Bericht</th>
                     </tr>
                 </thead>
-
-                @if (count($contacts)>0)
+                <tbody class="Searchable">
+                    @if (count($contacts)>0)
                                                 
-                    @foreach ($contacts as $contact)
-
-                    <tr>
-                        <td>{{$contact->name}}</td>
-                        <td>{{$contact->email}}</td>
-                        <td>{{$contact->subject}}</td>
-                        <td>
-                            <button class="CollapseButton btn btn-primary" data-target="Message_{{$contact->id}}">
-                                <i class="fas fa-sort-down"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr id="Message_{{$contact->id}}" class="hidden">
-                        <td colspan="4">
-                            {{$contact->message}}
-                        </td>
-                    </tr>
-                    @endforeach
-      
-                @else
-
-                    <tr>
-                        <td colspan="4">Er zijn geen ingevulde contactformulieren</td>
-                    </tr>
-
-                @endif
+                        @foreach ($contacts as $contact)
+    
+                        <tr>
+                            <td>{{$contact->name}}</td>
+                            <td>{{$contact->email}}</td>
+                            <td>{{$contact->subject}}</td>
+                            <td>
+                                <button class="CollapseButton btn btn-primary" data-target="Message_{{$contact->id}}">
+                                    <i class="fas fa-sort-down"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr id="Message_{{$contact->id}}" class="hidden">
+                            <td colspan="4">
+                                {{$contact->message}}
+                            </td>
+                        </tr>
+                        @endforeach
+          
+                    @else
+    
+                        <tr>
+                            <td colspan="4">Er zijn geen ingevulde contactformulieren</td>
+                        </tr>
+    
+                    @endif
+                </tbody>
+                
             </table>
             </div>  
         </div>
