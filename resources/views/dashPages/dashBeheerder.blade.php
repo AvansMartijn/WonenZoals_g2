@@ -40,7 +40,7 @@
                         <td>
                             <button class="btn btn-primary" data-toggle="collapse" href="#{{$contact->id}}">
                                 <i class="fas fa-sort-down"></i>
-                            </button>
+                            </button> 
                         </td>
                     </tr>
                     <tr id="{{$contact->id}}" class="collapse">

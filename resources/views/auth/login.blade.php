@@ -38,7 +38,7 @@
                 </div>
 
                 <div>
-                    <div class="form-check" data-toggle="tooltip" data-placement="top" title="Selecteer om minder vaak in te loggen">
+                    <div class="form-check" data-toggle="tooltip" data-placement="top" title="Doe dit om het aantal keer dat u wordt gevraagd om u aan te melden, te verminderen">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Blijf ingelogd') }}
                     </div>
                 </div>

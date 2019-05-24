@@ -16,7 +16,7 @@
         <div class="MainContentFull">
                 <div class="MealOptions clearfix">
                         {{-- <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a> --}}
-                        <button class="btn btn-success" data-toggle="modal" data-target="#vangnet">Nieuwe sectie</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
                         
                         <a class="btn btn-primary" href="{{ route('factorysettings') }}" data-toggle="tooltip" data-placement="top" 
                         title="Pas op! Alle wijzigingen zullen worden verwijderd!"
@@ -30,7 +30,7 @@
                                 <tr>
                                         <th>Naam</th>
                                         <th>Type</th>
-                                        <th>Standaard sectie</th>
+                                        <th>Standaard Sectie</th>
                                         <th>Volgorde</th>
                                         <th>Acties</th>
                                 </tr>
@@ -39,7 +39,7 @@
                                 @foreach ($sections as $section)
                                         <tr>
                                                 <td>{{$section->name}}</td>
-                                                <td>{{$section->type()->first()->type}}</td>
+                                                <td>{{ __('back.' . $section->type()->first()->type) }}</td>
                                                 <td>{{$section->default_section}}</td>
                                                 <td>{{$section->order}}</td>
                                                 <td class="text-left">
@@ -96,7 +96,7 @@
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-body">
-                                <h3 class="modal-Name font-weight-bold">Nieuwe sectie</h3>
+                                <h3 class="modal-Name font-weight-bold">Nieuwe Sectie</h3>
                                 {!! Form::open(['action' => 'SectionsController@storeSection', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
     
@@ -118,21 +118,21 @@
                                                 <label for="sep">Scheiding</label>
                                         </div>
                                         <div class="funkyradio-success">
+                                                <input type="radio" name="type" value="4" id="residents" />
+                                                <label for="residents">Onze Bewoners</label>
+                                        </div>
+                                        <div class="funkyradio-success">
                                                 <input type="radio" name="type" value="5" id="news" />
                                                 <label for="news">Nieuws</label>
                                         </div>
                                         <div class="funkyradio-success">
-                                                <input type="radio" name="type" value="4" id="residents" />
-                                                <label for="residents">Onze bewoners</label>
-                                        </div>
+                                                <input type="radio" name="type" value="6" id="contact" />
+                                                <label for="contact">Contact</label>
+                                        </div>       
                                         <div class="funkyradio-success">
                                                 <input type="radio" name="type" value="7" id="sponsors" />
                                                 <label for="sponsors">Sponsoren</label>
                                         </div> 
-                                        <div class="funkyradio-success">
-                                                <input type="radio" name="type" value="6" id="contact" />
-                                                <label for="contact">Contact</label>
-                                        </div>       
                                 
                                         
                                 </div>
