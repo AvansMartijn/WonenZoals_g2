@@ -15,11 +15,16 @@
 <div class="container">
         <div class="MainContentFull">
                 <div class="center">
-                        {{-- <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a> --}}
-                        <button class="btn btn-success half-width" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
-                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#factory">Fabrieksinstellingen</button>
-                        <a class="btn btn-success half-width" href="{{ route('saveProfile') }}" data-toggle="tooltip" data-placement="top" title="Opgelsagen profiel wordt ingeladen. andere wijzigingen gaan verloren">Profiel opslaan</a>
-                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#profileload">Profiel terugzetten</button>
+                        <div class="btn-group btn-group-lg half-width" role="group" aria-label="...">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
+                                <button class="btn btn-success" href="{{ route('saveProfile') }}"
+                                data-toggle="tooltip" data-placement="top" title="De huidige website wordt opgeslagen">Website Opslaan</a>
+                        </div>
+                        <div class="btn-group btn-group-lg half-width" role="group" aria-label="...">
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#profileload"
+                                data-toggle="tooltip" data-placement="top" title="">Wijzigingen Verwijderen</button>
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#factory">Fabrieksinstellingen</button>
+                        </div>
                         
                 </div>
                 <br>
@@ -30,9 +35,8 @@
                                 <tr>
                                         <th>Naam</th>
                                         <th>Type</th>
-                                        <th>Standaard Sectie</th>
                                         <th>Volgorde</th>
-                                        <th>Acties</th>
+                                        <th class="text-center">Acties</th>
                                 </tr>
                         </thead>
                         <tbody class="Searchable">
@@ -40,7 +44,6 @@
                                         <tr>
                                                 <td>{{$section->name}}</td>
                                                 <td>{{ __('back.' . $section->type()->first()->type) }}</td>
-                                                <td>{{$section->default_section}}</td>
                                                 <td>{{$section->order}}</td>
                                                 <td class="text-left">
                                                         {!!Form::open(['action' => ['SectionsController@deleteSection', $section->id], 'method' => 'POST'])!!}
@@ -152,14 +155,16 @@
                         <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-body">
-                                <h3 class="modal-Name font-weight-bold">Fabrieksinstellingen terugzetten</h3>
-                                <p>
-                                        <b>Let op! alle Onopgeslagen wijzigingen gaan verloren met het terugzetten van de Fabrieksinstellingen.</b>
+                                <h3 class="modal-Name font-weight-bold text-center">Fabrieksinstellingen Terugzetten</h3>
+                                <p class="text-center">
+                                        <b>Let op! Alle wijzigingen gaan verloren met het terugzetten naar de Fabrieksinstellingen.</b>
                                 </p>
-                                <p>
-                                        MARTIJN FIX DEZE TECT FF!!! GEEN IDEE WAT IK HIER NEER MOET ZETTEN :D
+                                <p class="text-center">
+                                        De website gaat terug naar hoe deze was op 27-5-2019. Weet u het zeker?
                                 </p>
-                                        <a class="btn btn-primary half-width" href="{{ route('factorysettings') }}" data-toggle="tooltip" data-placement="top" title="Pas op! Alle wijzigingen zullen worden verwijderd!">Fabrieksinstellingen</a>
+                                        <div class="text-center">
+                                                <a class="btn btn-danger half-width" href="{{ route('factorysettings') }}" data-toggle="tooltip" data-placement="top" title="Pas op! Alle wijzigingen zullen worden verwijderd!">Fabrieksinstellingen</a>
+                                        </div>
                                 </div>
                 
                                 </div>
@@ -169,14 +174,16 @@
                         <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                 <div class="modal-body">
-                                <h3 class="modal-Name font-weight-bold">Profiel terugzetten</h3>
-                                <p>
-                                        <b>Let op! alle Onopgeslagen wijzigingen gaan verloren met het terugzetten van een profiel.</b>
+                                <h3 class="modal-Name font-weight-bold text-center">Wijzigingen Verwijderen</h3>
+                                <p class="text-center">
+                                        <b>Let op! Alle onopgeslagen wijzigingen gaan verloren en de website gaat terug naar de laatst opgeslagen staat.</b>
                                 </p>
-                                <p>
-                                        MARTIJN FIX DEZE TECT FF!!! GEEN IDEE WAT IK HIER NEER MOET ZETTEN :D
+                                <p class="text-center">
+                                        Huidige onopgeslagen wijzigingen gaan verloren en de website gaat gaat terug naar de laatst opgeslagen staat.
                                 </p>
-                                        <a class="btn btn-primary half-width" href="{{ route('loadProfile') }}" data-toggle="tooltip" data-placement="top" title="Pas op! Alle wijzigingen zullen worden verwijderd!">Fabrieksinstellingen</a>
+                                        <div class="text-center">
+                                                <a class="btn btn-danger half-width" href="{{ route('loadProfile') }}" data-toggle="tooltip" data-placement="top" title="Pas op! Alle huidige onopgeslagen wijzigingen zullen worden verwijderd!">Profiel Terugzetten</a>
+                                        </div>
                                 </div>
                 
                                 </div>
