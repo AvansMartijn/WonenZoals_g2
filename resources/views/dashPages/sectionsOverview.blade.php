@@ -17,8 +17,10 @@
                 <div class="center">
                         {{-- <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a> --}}
                         <button class="btn btn-success half-width" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
+                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#factory">Fabrieksinstellingen</button>
+                        <a class="btn btn-success half-width" href="{{ route('saveProfile') }}" data-toggle="tooltip" data-placement="top" title="Opgelsagen profiel wordt ingeladen. andere wijzigingen gaan verloren">Profiel opslaan</a>
+                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#profileload">Profiel terugzetten</button>
                         
-                        <a class="btn btn-danger half-width" href="{{ route('factorysettings') }}" data-toggle="tooltip" data-placement="top" title="Pas op! Alle wijzigingen zullen worden verwijderd!">Fabrieksinstellingen</a>
                 </div>
                 <br>
                 <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
@@ -145,6 +147,40 @@
                 
                             </div>
                           </div>
+                        </div>
+                        <div class="modal fade lg" id="factory" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-body">
+                                <h3 class="modal-Name font-weight-bold">Fabrieksinstellingen terugzetten</h3>
+                                <p>
+                                        <b>Let op! alle Onopgeslagen wijzigingen gaan verloren met het terugzetten van de Fabrieksinstellingen.</b>
+                                </p>
+                                <p>
+                                        MARTIJN FIX DEZE TECT FF!!! GEEN IDEE WAT IK HIER NEER MOET ZETTEN :D
+                                </p>
+                                        <a class="btn btn-primary half-width" href="{{ route('factorysettings') }}" data-toggle="tooltip" data-placement="top" title="Pas op! Alle wijzigingen zullen worden verwijderd!">Fabrieksinstellingen</a>
+                                </div>
+                
+                                </div>
+                                </div>
+                        </div>
+                        <div class="modal fade lg" id="profileload" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                <div class="modal-body">
+                                <h3 class="modal-Name font-weight-bold">Profiel terugzetten</h3>
+                                <p>
+                                        <b>Let op! alle Onopgeslagen wijzigingen gaan verloren met het terugzetten van een profiel.</b>
+                                </p>
+                                <p>
+                                        MARTIJN FIX DEZE TECT FF!!! GEEN IDEE WAT IK HIER NEER MOET ZETTEN :D
+                                </p>
+                                        <a class="btn btn-primary half-width" href="{{ route('loadProfile') }}" data-toggle="tooltip" data-placement="top" title="Pas op! Alle wijzigingen zullen worden verwijderd!">Fabrieksinstellingen</a>
+                                </div>
+                
+                                </div>
+                                </div>
                         </div>
                       </div>
         </div>
