@@ -48844,6 +48844,23 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/Collapse.js":
+/*!**********************************!*\
+  !*** ./resources/js/Collapse.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.CollapseButton').on('click', function () {
+    var TargetDiv = $(this).data("target");
+    TargetDiv = "#" + TargetDiv;
+    $(TargetDiv).toggle("fast");
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/MenuCollapse.js":
 /*!**************************************!*\
   !*** ./resources/js/MenuCollapse.js ***!
@@ -49023,6 +49040,8 @@ __webpack_require__(/*! ./MenuCollapse */ "./resources/js/MenuCollapse.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./tooltip */ "./resources/js/tooltip.js");
+
+__webpack_require__(/*! ./Collapse */ "./resources/js/Collapse.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 

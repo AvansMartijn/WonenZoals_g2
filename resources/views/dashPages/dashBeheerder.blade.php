@@ -23,7 +23,6 @@
             <p>Ingevuld Afgelopen 30 Dagen: {{count($contacts30)}}</p>
 
             <hr>
-            <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
             <br>
             <div class="ScrollableTable">
                 <table class="table table-stripedCustom">
@@ -74,7 +73,6 @@
 
             <p>Totaal Aantal Activiteiten: {{count($events)}} </p>
             <hr>
-            <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
             <br>
             <div class="ScrollableTable">
             <table class="table table-striped">
@@ -98,6 +96,46 @@
                     </tr>
                     @endforeach
       
+                @else
+
+                    <tr>
+                        <td colspan="4">Er zijn geen activiteiten</td>
+                    </tr>
+
+                @endif
+            </table>
+            </div>  
+        </div>
+
+        <div class="DashboardItem">
+
+            <h2>Maaltijden KPI</h2>
+
+            <p>Totaal Aantal Maaltijden: {{count($events)}} </p>
+            <hr>
+            <br>
+            <div class="ScrollableTable">
+            <table class="table table-striped">
+                <tr>
+                    <th>Naam</th>
+                    <th>Datum</th>
+                    <th>Uitgenodigd</th>
+                    <th>Aangemeld</th>
+                    <th>Aangemeld % </th>
+                </tr>
+
+                @if (count($events)>0)
+                                                
+                    @foreach ($events as $event)
+                    <tr>
+                        <td>{{$event->eventname}}</td>
+                        <td>{{date('d-m-Y H:i', strtotime($event->date))}}</td>
+                        <td>{{$event->request}}</td>
+                        <td>{{$event->applied}}</td>
+                        <td>{{$event->percent}}%</td>
+                    </tr>
+                    @endforeach
+        
                 @else
 
                     <tr>
