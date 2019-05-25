@@ -76,7 +76,7 @@ class SectionsController extends Controller
     }
 
     public function factorysettings(){
-        $factorySections = DefaultSection::all();
+        $factorySections = DefaultSection::where('default_section', 1)->get();
         Section::truncate();
 
         foreach($factorySections as $section){
@@ -208,6 +208,39 @@ class SectionsController extends Controller
         }
         return redirect('dashboard/sections')->with('error', 'Sectie is niet verwijderd');
         
+    }
+
+    public function saveProfile(){
+        $sections = Section::all();
+
+        foreach($sections as $section){
+            $profile = new DefaultSection();
+
+            $profile->order = $section->order;
+            $profile->name = $section->name;
+            $profile->content = $section->content;
+            $profile->type_id = $section->type_id;
+            $profile->default_section = 0;
+
+            $profile->save();
+        }
+        return redirect('dashboard/sections')->with('success', 'Profiel is opgeslagen.');
+
+    }
+
+
+
+    public function loadProfile(){
+        $factorySections = DefaultSection::where('default_section', 0)->get();
+        // var_dump($factorySections);
+        // die;
+        Section::truncate();
+
+        foreach($factorySections as $section){
+            $sectionArr = $section->toArray();
+            Section::create($sectionArr);
+        }
+        return redirect('dashboard/sections')->with('success', 'Profiel is teruggezet.');
     }
 
 }
