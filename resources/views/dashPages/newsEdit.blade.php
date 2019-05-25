@@ -13,10 +13,7 @@
 
 {{-- Content --}}
 <div class="container">
-    <div class="MainContentFull">
-        <h1>Gegevens</h1>
-        <hr>
-
+    <div class="MainContent">
         {!! Form::open(['action' => 'NewsController@update', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
         <div class="form-group">
@@ -25,34 +22,38 @@
         </div>
 
         <div class="from-group">
-                <label for="Summary">korte beschrijving</label>
-                <textarea type="textarea" class="form-control" name="Summary" placeholder="inhoud" value="{{$newsitem->summary}}" rows="4">{{$newsitem->summary}}</textarea>
+            <label for="Summary">korte beschrijving</label>
+            <textarea type="textarea" class="form-control" rows="10" name="Summary" placeholder="inhoud" value="{{$newsitem->summary}}" rows="4">{{$newsitem->summary}}</textarea>
         </div>
 
         <div class="from-group">
             <label for="Inhoud">Inhoud</label>
             <input type="hidden" value="{{$newsitem->id}}" name="id">
-            <textarea type="textarea" class="form-control" name="Inhoud" placeholder="inhoud" value="{{$newsitem->content}}" rows="4">{{$newsitem->content}}</textarea>
+            <textarea type="textarea" class="form-control" rows="10" name="Inhoud" placeholder="inhoud" value="{{$newsitem->content}}" rows="4">{{$newsitem->content}}</textarea>
         </div>
+    </div>
 
-
-       
-        <div class="form-group">
-                <label for="name">afbeelding: </label>
-                <input type="file" name="image" id="image">
-        </div>
+    <div class="SideContent">
         @if ($newsitem->img_url != null && $newsitem->img_url != "")
-        <img class="img-fluid float-right ImageMargin image-shadow" src="{{$newsitem->img_url}}" alt="">
+            <img class="img-fluid float-right ImageMargin image-shadow" src="{{$newsitem->img_url}}" alt="">
+        @else
+            <p>nog geen foto</p>            
         @endif
 
-        {{ Form::hidden('id', $newsitem->id) }}
+        <div class="form-group">
+            <label for="name">afbeelding: </label>
+            <input type="file" name="image" id="image">
+        </div>
+    </div>
 
+
+    <div class="MainContent">
+        <hr>
+        {{ Form::hidden('id', $newsitem->id) }}
 
         {{Form::submit("Opslaan", ['class' => 'btn btn-success full-width'])}}
 
         {!! Form::close() !!}
-
-
     </div>
 </div>
 

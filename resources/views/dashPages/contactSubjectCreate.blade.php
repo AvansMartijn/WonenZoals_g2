@@ -15,15 +15,14 @@
 <div class="container">
     {!! Form::open(['action' => 'ContactUSController@storeSubject', 'methode' => 'POST']) !!}
 
-    <div class="MainContent">
+    <div class="MainContentFull">
        
-
         <div class="form-group">
             <label for="subject">Onderwerp</label>
             <input type="text" class="form-control" name="subject" placeholder="onderwerp">
         </div>
     </div>
-    <div class="MainContent">
+    <div class="MainContentFull">
         <hr>
         {{Form::submit("Versturen", ['class' => 'btn btn-success full-width'])}}
     </div>

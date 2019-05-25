@@ -39,7 +39,6 @@
                                                         {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
                                                         {!!Form::close()!!}
                                                         <a class="btn btn-success float-right margin-right" href="/dashboard/contact/subject/{{$subject->id}}">Aanpassen</a>
-                                                       
                                                 </td>
                                         </tr>
                                 @endforeach
