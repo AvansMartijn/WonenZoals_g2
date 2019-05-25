@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use Mail;
 use \App\ContactSubject;
 use \App\Location;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * PagesController Class Doc Comment
@@ -31,6 +32,8 @@ use \App\Location;
  */
 class ContactUSController extends Controller
 {
+
+    
     /**
      * Show the application dashboard.
      *
@@ -88,6 +91,7 @@ class ContactUSController extends Controller
     }
 
     public function storeSubject(Request $request){
+
         $validatedData = $request->validate([
             'subject' => 'required|max:255',
         ]);
@@ -105,6 +109,18 @@ class ContactUSController extends Controller
     }
 
     public function index(){
+
+        if($user = !Auth::user())
+        {
+            return redirect('/dashboard');
+        }
+
+        $role = Auth::user()->role_id;
+
+        if ($role !== 1) {
+            return redirect('/dashboard');
+        }
+
         $subjects = ContactSubject::all();
         $location = Location::first();
         $data = ['contactSubjects' => $subjects, 'location' => $location] ;
