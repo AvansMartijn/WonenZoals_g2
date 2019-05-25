@@ -19,27 +19,33 @@
     {!! Form::open(['action' => 'SectionsController@updateTextSection', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
     <div class="MainContent">
-       
 
         <div class="form-group">
             <label for="name">Naam: </label>
             <input type="text" class="form-control" name="name" placeholder="Sectie naam" value="{{$section->name}}">
         </div>
 
-        @if ($section->img_url != null && $section->img_url != "")
-        <img class="img-fluid float-right ImageMargin image-shadow" src="{{$section->img_url}}" alt="">
-        @endif
-
-            <div class="form-group">
-            <label for="name">afbeelding: </label>
-                <input type="file" name="image" id="image">
-            </div>
         <div class="form-group">
             <label for="content">Tekst</label>
             <input type="hidden" value="{{$section->id}}" name="id">
-            <textarea type="textarea" class="form-control" name="content" placeholder="onderwerp" value="{{$section->content}}" rows="4">{{$section->content}}</textarea>
+            <textarea type="textarea" class="form-control" rows="10" name="content" placeholder="onderwerp" value="{{$section->content}}" rows="4">{{$section->content}}</textarea>
         </div>
     </div>
+
+    <div class="SideContent">
+        @if ($section->img_url != null && $section->img_url != "")
+            <img class="img-fluid float-right ImageMargin image-shadow" src="{{$section->img_url}}" alt="">
+        @else
+            <p>Nog geen foto</p>
+        @endif
+
+        <div class="form-group">
+            <label for="name">afbeelding: </label>
+            <input type="file" name="image" id="image">
+        </div>
+
+    </div>
+
     <div class="MainContent">
         <hr>
         {{Form::submit("Versturen", ['class' => 'btn btn-success full-width'])}}

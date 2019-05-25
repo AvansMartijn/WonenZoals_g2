@@ -16,8 +16,6 @@
     {!! Form::open(['action' => 'ResidentsController@store', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
     <div class="MainContent">
-        <h1>Bewoner</h1>
-        <hr>
 
         <div class="form-group">
             <label for="Naam">Bewoner naam</label>
@@ -29,9 +27,12 @@
             <textarea type="textarea" class="form-control" name="Beschrijving" placeholder="beschrijving" value="" rows="4"></textarea>
         </div>
 
+    </div>
+
+    <div class="SideContent">
         <div class="form-group">
             <label for="name">afbeelding: </label>
-                <input type="file" name="image" id="image">
+            <input type="file" name="image" id="image">
         </div>
     </div>
 

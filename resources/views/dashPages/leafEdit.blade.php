@@ -18,16 +18,15 @@
 <div class="container">
     {!! Form::open(['action' => 'SectionsController@updateLeaf', 'methode' => 'POST']) !!}
 
-    <div class="MainContent">
-       
+    <div class="MainContentFull">
 
         <div class="form-group">
             <label for="content">Tekst</label>
             <input type="hidden" value="{{$leaf->id}}" name="id">
-        <textarea type="textarea" class="form-control" name="content" placeholder="onderwerp" value="{{$leaf->content}}" rows="4">{{$leaf->content}}</textarea>
+        <textarea type="textarea" class="form-control" name="content" rows="20" placeholder="onderwerp" value="{{$leaf->content}}" rows="4">{{$leaf->content}}</textarea>
         </div>
     </div>
-    <div class="MainContent">
+    <div class="MainContentFull">
         <hr>
         {{Form::submit("Versturen", ['class' => 'btn btn-success full-width'])}}
     </div>

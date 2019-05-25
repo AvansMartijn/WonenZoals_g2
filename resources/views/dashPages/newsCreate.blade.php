@@ -16,8 +16,6 @@
     {!! Form::open(['action' => 'NewsController@store', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
     <div class="MainContent">
-        <h1>Nieuwsitem</h1>
-        <hr>
 
         <div class="form-group">
             <label for="Titel">Titel</label>
@@ -27,19 +25,19 @@
                 <label for="Inhoud">korte beschrijving</label>
                 <textarea type="textarea" class="form-control" name="Summary" placeholder="inhoud" rows="4"></textarea>
         </div>
-
+        <br>
         <div class="form-group">
             <label for="Inhoud">Inhoud: </label>
             <textarea type="textarea" class="form-control" name="Inhoud" placeholder="inhoud" value="" rows="4"></textarea>
         </div>
+        
+    </div>
+
+    <div class="SideContent">
         <div class="form-group">
-                <label for="name">afbeelding: </label>
-                <input type="file" name="image" id="image">
-        </div> 
-        {{-- <div class="form-group">
-            <label for="imageUrl">TODO: img upload</label>
-            <input type="text" class="form-control" name="imageUrl" placeholder="url image">
-        </div> --}}
+            <label for="name">afbeelding: </label>
+            <input type="file" name="image" id="image">
+        </div>
     </div>
 
     <div class="MainContent">

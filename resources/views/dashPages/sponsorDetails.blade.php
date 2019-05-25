@@ -13,10 +13,7 @@
 
 {{-- Content --}}
 <div class="container">
-    <div class="MainContentFull">
-        <h1>Gegevens</h1>
-        <hr>
-
+    <div class="MainContent">
         {!! Form::open(['action' => 'SponsorsController@update', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
         <div class="form-group">
@@ -29,27 +26,29 @@
             {{Form::text('link', $sponsor->hyperlink,['class' => 'form-control', 'placeholder' => 'Link'])}}
         </div>
 
-        {{-- <div class="from-group bottom-spacer">
-            {{Form::label('afbeeldingUrl', 'Afbeelding URL')}}
-            {{Form::text('afbeeldingUrl',$sponsor->img_url,['class' => 'form-control', 'placeholder' => 'url'])}}
-        </div> --}}
+    </div>
 
-        <div class="form-group">
-                <label for="name">afbeelding: </label>
-                <input type="file" name="imageUrl" id="image">
-        </div>
+    <div class="SideContent">
         @if ($sponsor->img_url != null && $sponsor->img_url != "")
-        <img class="img-fluid float-right ImageMargin image-shadow" src="{{$sponsor->img_url}}" alt="">
+            <img class="img-fluid ImageMargin image-shadow" src="{{$sponsor->img_url}}" alt="">
+        @else
+            <p>Nog geen logo</p>
         @endif
 
-        {{ Form::hidden('id', $sponsor->id) }}
+        <div class="form-group">
+            <label for="name">afbeelding: </label>
+            <input type="file" name="imageUrl" id="image">
+        </div>
+    </div>
 
+    <div class="MainContent">
+        <hr>
+
+        {{ Form::hidden('id', $sponsor->id) }}
 
         {{Form::submit("Opslaan", ['class' => 'btn btn-success full-width'])}}
 
         {!! Form::close() !!}
-
-
     </div>
 </div>
 
