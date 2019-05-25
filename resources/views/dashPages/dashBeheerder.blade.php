@@ -73,7 +73,22 @@
 
             <h2>Activiteiten KPI</h2>
 
-            <p>Totaal Aantal Activiteiten: {{count($events)}} </p>
+            <p>Totaal Aantal Activiteiten: 
+            
+                    @php
+                    $counter = 0;
+                    
+                    foreach ($events as $event) {
+                        if (count($event->meals)==0)
+                        {
+                            $counter++;
+                        }
+                    }
+                
+                @endphp 
+            {{$counter}}
+            
+            </p>
             <hr>
             <br>
             <div class="ScrollableTable">
@@ -89,13 +104,17 @@
                 @if (count($events)>0)
                                                 
                     @foreach ($events as $event)
-                    <tr>
-                        <td>{{$event->eventname}}</td>
-                        <td>{{date('d-m-Y H:i', strtotime($event->date))}}</td>
-                        <td>{{$event->request}}</td>
-                        <td>{{$event->applied}}</td>
-                        <td>{{$event->percent}}%</td>
-                    </tr>
+                   
+                                @if (count($event->meals) == 0)
+                                <tr>
+                                    <td>{{$event->eventname}}</td>
+                                    <td>{{date('d-m-Y H:i', strtotime($event->date))}}</td>
+                                    <td>{{$event->request}}</td>
+                                    <td>{{$event->applied}}</td>
+                                    <td>{{$event->percent}}%</td>
+                                </tr>
+                                @endif
+                        
                     @endforeach
       
                 @else
@@ -113,7 +132,21 @@
 
             <h2>Maaltijden KPI</h2>
 
-            <p>Totaal Aantal Maaltijden: {{count($events)}} </p>
+            <p>Totaal Aantal Maaltijden: 
+                @php
+                    $counter = 0;
+                    
+                    foreach ($events as $event) {
+                        if (count($event->meals)!=0)
+                        {
+                            $counter++;
+                        }
+                    }
+                
+                @endphp 
+            {{$counter}}
+            
+        </p>
             <hr>
             <br>
             <div class="ScrollableTable">
@@ -129,6 +162,7 @@
                 @if (count($events)>0)
                                                 
                     @foreach ($events as $event)
+                    @if (count($event->meals) != 0)
                     <tr>
                         <td>{{$event->eventname}}</td>
                         <td>{{date('d-m-Y H:i', strtotime($event->date))}}</td>
@@ -136,6 +170,7 @@
                         <td>{{$event->applied}}</td>
                         <td>{{$event->percent}}%</td>
                     </tr>
+                    @endif
                     @endforeach
         
                 @else
