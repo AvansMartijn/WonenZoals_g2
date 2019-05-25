@@ -4,9 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Resident;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ResidentsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        //fixed register login
+        $this->middleware(
+            function ($request, $next) {
+                $role = Auth::user()->role_id;
+
+                if ($role !== 1) {
+                    return redirect('/dashboard');
+                }
+
+                return $next($request);
+            }
+        );
+    }
     public function index(){
         $residents = Resident::orderBy('id', 'ASC')->get();
         return view('dashPages.residentsView', compact('residents'));

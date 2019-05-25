@@ -4,9 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Newsitem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        //fixed register login
+        $this->middleware(
+            function ($request, $next) {
+                $role = Auth::user()->role_id;
+
+                if ($role !== 1) {
+                    return redirect('/dashboard');
+                }
+
+                return $next($request);
+            }
+        );
+    }
     public function index(){
         $newsItems = Newsitem::orderBy('id', 'ASC')->get();
         return view('dashPages.newsOverview', compact('newsItems'));
