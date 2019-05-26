@@ -229,6 +229,7 @@ class SectionsController extends Controller
     }
 
     public function saveProfile(){
+        $sectionsToDelete =  DefaultSection::where('default_section', 0)->delete();
         $sections = Section::all();
 
         foreach($sections as $section){
