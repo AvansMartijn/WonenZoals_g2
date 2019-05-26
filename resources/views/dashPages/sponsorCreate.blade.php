@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="sponsorNaam">Sponsor Naam</label>
             <input type="text" class="form-control" name="sponsorNaam"
-            data-toggle="tooltip" data-placement="top" title="Typ hier de naam van de sponsor">
+            data-toggle="tooltip" data-placement="top" title="Typ hier de naam van de sponsor" autofocus>
         </div>
 
         <div class="form-group">

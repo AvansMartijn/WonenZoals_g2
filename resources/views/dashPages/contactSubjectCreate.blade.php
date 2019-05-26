@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="subject">Onderwerp</label>
             <input type="text" class="form-control" name="subject"
-            data-toggle="tooltip" data-placement="top" title="Typ hier het onderwerp">
+            data-toggle="tooltip" data-placement="top" title="Typ hier het onderwerp" autofocus>
         </div>
     </div>
     <div class="MainContentFull">
