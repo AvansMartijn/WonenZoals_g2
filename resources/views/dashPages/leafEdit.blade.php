@@ -15,7 +15,7 @@
     <a><i class="fas fa-bars"></i> Menu</a>
 </div>
 
-<div class="container">
+<div class="container leafedit">
     {!! Form::open(['action' => 'SectionsController@updateLeaf', 'methode' => 'POST']) !!}
 
     <div class="MainContentFull">
