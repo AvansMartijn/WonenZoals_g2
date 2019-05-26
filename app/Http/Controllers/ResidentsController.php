@@ -75,6 +75,15 @@ class ResidentsController extends Controller
     }
 
     public function update(Request $request){
+        $resident = Resident::find($request->id);
+
+        if($resident->img_url != null && $resident->img_url != ""){
+            $request['image'] = 'filled';
+            $imagePath = $resident->img_url;
+        }else{
+            $imagePath = null;
+        }
+
         $this->validate(
             $request,
             [
@@ -84,16 +93,16 @@ class ResidentsController extends Controller
             ]
         );
 
-        $imagePath = null;
-        if(isset($request->image) && $request->image != null){
-            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
-            $path = public_path('img/uploads');
-            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+        if($request->image != 'filled'){ 
+            if(isset($request->image) && $request->image != null){
+                $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+                $path = public_path('img/uploads');
+                $imagePath = url('/') . '/img/uploads/' . $imageName; 
 
-            request()->image->move($path, $imageName);
+                request()->image->move($path, $imageName);
+            }
         }
 
-        $resident = Resident::find($request->id);
         $resident->name = $request->input('Naam');
         $resident->description = $request->input('Beschrijving');
         $resident->img_url = $imagePath;
