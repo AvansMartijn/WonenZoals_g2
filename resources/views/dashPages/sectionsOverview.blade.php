@@ -15,17 +15,19 @@
 <div class="container">
         <div class="MainContentFull">
                 <div class="center">
-                        <div class="btn-group btn-group-lg half-width" role="group" aria-label="...">
-                                <button class="btn btn-success" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
-                                <button class="btn btn-success" href="{{ route('saveProfile') }}"
-                                data-toggle="tooltip" data-placement="top" title="De huidige website wordt opgeslagen">Website Opslaan</a>
+                        {{-- <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a> --}}
+                        <div class="row">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                        <button class="btn btn-success half-width bottom-spacer" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
+                                
+                                        <button class="btn btn-danger half-width bottom-spacer" data-toggle="modal" data-target="#factory">Fabrieksinstellingen</button>
+                               
+                                        <a class="btn btn-success half-width" href="{{ route('saveProfile') }}" data-toggle="tooltip" data-placement="top" title="Opgelsagen profiel wordt ingeladen. andere wijzigingen gaan verloren">Profiel opslaan</a>
+                                
+                                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#profileload">Profiel terugzetten</button>
+                                </div>
                         </div>
-                        <div class="btn-group btn-group-lg half-width" role="group" aria-label="...">
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#profileload"
-                                data-toggle="tooltip" data-placement="top" title="">Wijzigingen Verwijderen</button>
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#factory">Fabrieksinstellingen</button>
-                        </div>
-                        
                 </div>
                 <br>
                 <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
