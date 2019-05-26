@@ -47,10 +47,12 @@
                                     <a class="dropdown-item" href="/dashboard/maaltijden">Maaltijden</a> 
                                 @endif
                                  {{-- show newsletter archive --}}
-                                @if ($userauthorization->name == "Nieuwsbriefarchief")
+                                @if ($userauthorization->name == "Pagina Bouwer")
+                                    <a class="dropdown-item" href="/dashboard/sections">Pagina Bouwer</a> 
+                                @endif
+                                @if ($userauthorization->name == "Nieuwsbrief Archief")
                                     <a class="dropdown-item" href="/dashboard/nieuwsbriefarchief">Nieuwsbrief Archief</a> 
                                 @endif
-
                                 {{-- show newsletter archive --}}
                                 @if ($userauthorization->name == "Forum")
                                     <a class="dropdown-item" href="/dashboard/forum">Forum</a> 
