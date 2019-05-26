@@ -95,7 +95,9 @@
                         <div class="row">
                             @foreach ($newsitems as $item)
                             <div class="NieuwsBericht">
-                                <img class="img-fluid" src="{{$item->img_url}}" alt="">
+                                <div class="newsimagecontainer">
+                                    <img class="img-fluid" style="height:100%;" src="{{$item->img_url}}" alt="">
+                                </div>
                                 <br>
                                 <p class="newsTitle font-weight-bold">{{$item->title}}</p>
                                 <p class="newsText">{!!$item->summary!!}</p>
