@@ -8,7 +8,7 @@
             <div class="mx-auto leaf text-center">
                 <h1 class="text-custom-heading-shadow display-1">Wonen Zoals</h1>
                 <p class="text-white">{!!$leaf->content!!}</p>
-                <a class="btn text-white btn-custom-shadow linkie" href="{{url('/')}}/#OverOns">Lees Meer</a>
+                {{-- <a class="btn text-white btn-custom-shadow linkie" href="{{url('/')}}/#OverOns">Lees Meer</a> --}}
             </div>
         </div>
     </header>
