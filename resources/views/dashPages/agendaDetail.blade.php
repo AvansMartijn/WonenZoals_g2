@@ -52,9 +52,9 @@
                     <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role_id == 1 && $data['event']->cancelled == 0 )
                         @if ($data['meal']['hoofdgerecht'] != null)
-                             <a href="/dashboard/agenda/item/{{$data['event']->id}}/editMeal" class="btn btn-succes">Bewerken</a>
+                             <a href="/dashboard/agenda/item/{{$data['event']->id}}/editMeal" class="btn btn-primary">Bewerken</a>
                         @else
-                            <a href="/dashboard/agenda/item/{{$data['event']->id}}/editActivity" class="btn btn-succes">Bewerken</a>
+                            <a href="/dashboard/agenda/item/{{$data['event']->id}}/editActivity" class="btn btn-primary">Bewerken</a>
                         @endif
                     @endif
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role_id == 1 && $data['event']->cancelled == 0 )
