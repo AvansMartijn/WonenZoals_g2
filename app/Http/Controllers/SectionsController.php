@@ -98,6 +98,9 @@ class SectionsController extends Controller
     }
 
     public function updateLeaf(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+        ]);
         $leaf = Section::where('type_id', 1)->first();
         $leaf->content = $request['content'];
         $leaf->save();
@@ -110,6 +113,10 @@ class SectionsController extends Controller
     }
 
     public function updateSeperator(Request $request){
+        
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+        ]);
         $section = Section::where('id', $request['id'])->first();
         $section->name = $request['name'];
         $section->content = $request['content'];
@@ -122,6 +129,9 @@ class SectionsController extends Controller
     }
 
     public function storeSeperator(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+        ]);
         $section = new Section();
         $section->order = Section::max('order') + 1;
         $section->name = $request['name'];
@@ -140,6 +150,9 @@ class SectionsController extends Controller
     }
 
     public function updateTextSection(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+        ]);
 
         $imagePath = null;
         if(isset($request->image) && $request->image != null){
@@ -163,7 +176,9 @@ class SectionsController extends Controller
     }
 
     public function storeTextSection(Request $request){
-
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+        ]);
         $imagePath = null;
         if(isset($request->image) && $request->image != null){
             $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
@@ -188,6 +203,9 @@ class SectionsController extends Controller
 
     public function storeSection(Request $request){
         //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+        ]);
         $section = new Section();
         $section->order = Section::max('order') + 1;
         $section->name = $request['name'];
@@ -232,8 +250,6 @@ class SectionsController extends Controller
 
     public function loadProfile(){
         $factorySections = DefaultSection::where('default_section', 0)->get();
-        // var_dump($factorySections);
-        // die;
         Section::truncate();
 
         foreach($factorySections as $section){

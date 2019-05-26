@@ -431,8 +431,12 @@ body {
     margin-bottom: 0rem;
 }
 
+
 .tox .tox-edit-area__iframe{
     background-color:#fff!important;
+}
+.leafedit .tox .tox-edit-area__iframe{
+    background-color:#cacaca!important;
 }
 .tox-statusbar__branding{
     display:none;
