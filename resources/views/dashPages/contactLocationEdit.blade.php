@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/contact" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Locatie aanpassen</h3>
+    <h3>Locatie Aanpassen</h3>
     <hr>
 </div>
 

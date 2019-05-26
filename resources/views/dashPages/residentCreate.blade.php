@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/bewoners" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Bewoner toevoegen</h3>
+    <h3>Bewoner Aanmaken</h3>
     <hr>
 </div>
 
@@ -18,20 +18,21 @@
     <div class="MainContent">
 
         <div class="form-group">
-            <label for="Naam">Bewoner naam</label>
-            <input type="text" class="form-control" name="Naam" placeholder="naam">
+            <label for="Naam">Bewoner Naam</label>
+            <input type="text" class="form-control" name="Naam" 
+            data-toggle="tooltip" data-placement="top" title="Typ hier de naam van de bewoner">
         </div>
 
         <div class="form-group">
             <label for="Beschrijving">Beschrijving: </label>
-            <textarea type="textarea" class="form-control" name="Beschrijving" placeholder="beschrijving" value="" rows="4"></textarea>
+            <textarea type="textarea" class="form-control" name="Beschrijving" value="" rows="4"></textarea>
         </div>
 
     </div>
 
     <div class="SideContent">
         <div class="form-group">
-            <label for="name">afbeelding: </label>
+            <label for="name">Afbeelding</label>
             <input type="file" name="image" id="image">
         </div>
     </div>

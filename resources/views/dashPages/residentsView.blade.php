@@ -16,7 +16,7 @@
     <div class="MainContentFull">
         <div class="MealOptions clearfix">
             <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
-            <a class="btn btn-success" href='/dashboard/bewoners/create'>Bewoner toevoegen</a>
+            <a class="btn btn-success" href='/dashboard/bewoners/create'>Bewoner Toevoegen</a>
         </div>
 
         <table class="table table-striped">

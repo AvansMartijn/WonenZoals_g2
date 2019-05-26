@@ -7,7 +7,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/sections" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Tekst sectie aanmaken</h3>
+    <h3>Tekst Sectie Aanmaken</h3>
     <hr>
 </div>
 
@@ -22,15 +22,16 @@
        
 
         <div class="form-group">
-            <label for="name">Naam: </label>
-            <input type="text" class="form-control" name="name" placeholder="Sectie naam">
+            <label for="name">Naam</label>
+            <input type="text" class="form-control" name="name" 
+            data-toggle="tooltip" data-placement="top" title="Typ hier de naam van de tekst sectie">
         </div>
         <div class="form-group">
-                <label for="name">afbeelding: </label>
+                <label>Afbeelding</label>
                     <input type="file" name="image" id="image">
             </div>
         <div class="form-group">
-            <label for="content">Tekst: </label>
+            <label for="content">Tekst</label>
             {{-- <input type="hidden" value="{{$section->id}}" name="id"> --}}
             <textarea type="textarea" class="form-control" name="content" placeholder="onderwerp" value="" rows="4"></textarea>
         </div>

@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/sections" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Sponsors overzicht</h3>
+    <h3>Sponsors Overzicht</h3>
     <hr>
 </div>
 
@@ -16,7 +16,7 @@
     <div class="MainContentFull">
         <div class="MealOptions clearfix">
             <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
-            <a class="btn btn-success" href="{{ route('sponsors.build') }}">Sponsor toevoegen</a>
+            <a class="btn btn-success" href="{{ route('sponsors.build') }}">Sponsor Toevoegen</a>
         </div>
 
         <table class="table table-striped">

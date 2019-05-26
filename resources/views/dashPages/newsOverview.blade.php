@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/sections" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Nieuwsitems overzicht</h3>
+    <h3>Nieuwsitems Overzicht</h3>
     <hr>
 </div>
 
