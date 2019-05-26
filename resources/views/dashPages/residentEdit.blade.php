@@ -27,7 +27,7 @@
         <div class="from-group">
             <label for="Beschrijving">Beschrijving</label>
             <input type="hidden" value="{{$resident->id}}" name="id">
-            <textarea type="textarea" rows="10" class="form-control" name="Beschrijving" placeholder="beschrijving" value="{{$resident->description}}" rows="4">{{$resident->description}}</textarea>
+            <textarea type="textarea" rows="10" class="form-control" name="Beschrijving" value="{{$resident->description}}" rows="4">{{$resident->description}}</textarea>
         </div>
 
         {{ Form::hidden('id', $resident->id) }}
@@ -45,7 +45,7 @@
         <br>
 
         <div class="form-group">
-            <label for="name">afbeelding: </label>
+            <label for="name">Afbeelding</label>
             <input type="file" name="image" id="image">
         </div>  
     </div>   

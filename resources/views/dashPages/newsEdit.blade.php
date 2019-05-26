@@ -22,14 +22,14 @@
         </div>
 
         <div class="from-group">
-            <label for="Summary">korte beschrijving</label>
-            <textarea type="textarea" class="form-control" rows="10" name="Summary" placeholder="inhoud" value="{{$newsitem->summary}}" rows="4">{{$newsitem->summary}}</textarea>
+            <label for="Summary">Korte Beschrijving</label>
+            <textarea type="textarea" class="form-control" rows="10" name="Summary" value="{{$newsitem->summary}}" rows="4">{{$newsitem->summary}}</textarea>
         </div>
 
         <div class="from-group">
             <label for="Inhoud">Inhoud</label>
             <input type="hidden" value="{{$newsitem->id}}" name="id">
-            <textarea type="textarea" class="form-control" rows="10" name="Inhoud" placeholder="inhoud" value="{{$newsitem->content}}" rows="4">{{$newsitem->content}}</textarea>
+            <textarea type="textarea" class="form-control" rows="10" name="Inhoud" value="{{$newsitem->content}}" rows="4">{{$newsitem->content}}</textarea>
         </div>
     </div>
 
@@ -37,11 +37,11 @@
         @if ($newsitem->img_url != null && $newsitem->img_url != "")
             <img class="img-fluid float-right ImageMargin image-shadow" src="{{$newsitem->img_url}}" alt="">
         @else
-            <p>nog geen foto</p>            
+            <p>Nog geen foto</p>            
         @endif
 
         <div class="form-group">
-            <label for="name">afbeelding: </label>
+            <label for="name">Afbeelding</label>
             <input type="file" name="image" id="image">
         </div>
     </div>

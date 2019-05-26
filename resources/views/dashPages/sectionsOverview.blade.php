@@ -107,7 +107,8 @@
     
                                 <div class="form-group">
                                         <label for="name">Naam</label>
-                                        <input type="text" class="form-control" name="name" autocomplete="off">
+                                        <input type="text" class="form-control" name="name" autocomplete="off"
+                                        data-toggle="tooltip" data-placement="top" title="Typ hier de naam van de sectie">
                                 </div>
                                 <hr>
                                 <label for="name">Type</label>

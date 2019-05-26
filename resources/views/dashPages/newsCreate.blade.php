@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/nieuws" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Nieuwsitem Toevoegen</h3>
+    <h3>Nieuwsitem Aanmaken</h3>
     <hr>
 </div>
 
@@ -22,20 +22,20 @@
             <input type="text" class="form-control" name="Titel" placeholder="titel">
         </div>
         <div class="from-group">
-                <label for="Inhoud">korte beschrijving</label>
-                <textarea type="textarea" class="form-control" name="Summary" placeholder="inhoud" rows="4"></textarea>
+                <label for="Inhoud">Korte Beschrijving</label>
+                <textarea type="textarea" class="form-control" name="Summary" rows="4"></textarea>
         </div>
         <br>
         <div class="form-group">
-            <label for="Inhoud">Inhoud: </label>
-            <textarea type="textarea" class="form-control" name="Inhoud" placeholder="inhoud" value="" rows="4"></textarea>
+            <label for="Inhoud">Inhoud</label>
+            <textarea type="textarea" class="form-control" name="Inhoud" value="" rows="4"></textarea>
         </div>
         
     </div>
 
     <div class="SideContent">
         <div class="form-group">
-            <label for="name">afbeelding: </label>
+            <label for="name">Afbeelding</label>
             <input type="file" name="image" id="image">
         </div>
     </div>

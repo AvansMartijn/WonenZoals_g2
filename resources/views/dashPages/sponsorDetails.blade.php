@@ -32,11 +32,11 @@
         @if ($sponsor->img_url != null && $sponsor->img_url != "")
             <img class="img-fluid ImageMargin image-shadow" src="{{$sponsor->img_url}}" alt="">
         @else
-            <p>Nog geen logo</p>
+            <p>Nog geen afbeelding</p>
         @endif
 
         <div class="form-group">
-            <label for="name">afbeelding: </label>
+            <label for="name">Afbeelding</label>
             <input type="file" name="imageUrl" id="image">
         </div>
     </div>

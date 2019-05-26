@@ -7,7 +7,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
     <a href="/dashboard/sections" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-    <h3>Leaf-tekst aanpassen</h3>
+    <h3>Blad-tekst aanpassen</h3>
     <hr>
 </div>
 
@@ -36,8 +36,6 @@
 
  <script>
      $( document ).ready(function() {
-    // console.log( "ready!" );
-    //  console.log('test');
         tinymce.init({
             selector: 'textarea',
             toolbar: 'undo redo | forecolor backcolor | bold italic | styleselect'
