@@ -16,11 +16,18 @@
         <div class="MainContentFull">
                 <div class="center">
                         {{-- <a class="btn btn-success bottom-spacer" href="{{ route('meals.build') }}">Nieuw gerecht</a> --}}
-                        <button class="btn btn-success half-width" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
-                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#factory">Fabrieksinstellingen</button>
-                        <a class="btn btn-success half-width" href="{{ route('saveProfile') }}" data-toggle="tooltip" data-placement="top" title="Opgelsagen profiel wordt ingeladen. andere wijzigingen gaan verloren">Profiel opslaan</a>
-                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#profileload">Profiel terugzetten</button>
-                        
+                        <div class="row">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                        <button class="btn btn-success half-width bottom-spacer" data-toggle="modal" data-target="#vangnet">Nieuwe Sectie</button>
+                                
+                                        <button class="btn btn-danger half-width bottom-spacer" data-toggle="modal" data-target="#factory">Fabrieksinstellingen</button>
+                               
+                                        <a class="btn btn-success half-width" href="{{ route('saveProfile') }}" data-toggle="tooltip" data-placement="top" title="Opgelsagen profiel wordt ingeladen. andere wijzigingen gaan verloren">Profiel opslaan</a>
+                                
+                                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#profileload">Profiel terugzetten</button>
+                                </div>
+                        </div>
                 </div>
                 <br>
                 <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
