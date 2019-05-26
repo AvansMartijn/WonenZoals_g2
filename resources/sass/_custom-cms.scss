@@ -431,8 +431,17 @@ body {
     margin-bottom: 0rem;
 }
 
+
 .tox .tox-edit-area__iframe{
     background-color:#fff!important;
+}
+.leafedit .tox .tox-edit-area__iframe{
+    background-color:#cacaca!important;
+}
+.newsimagecontainer{
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
 }
 .tox-statusbar__branding{
     display:none;
