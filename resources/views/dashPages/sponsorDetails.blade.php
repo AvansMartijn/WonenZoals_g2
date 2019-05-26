@@ -13,8 +13,8 @@
 
 {{-- Content --}}
 <div class="container">
+    {!! Form::open(['action' => 'SponsorsController@update', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
     <div class="MainContent">
-        {!! Form::open(['action' => 'SponsorsController@update', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
         <div class="form-group">
             {{ Form::label('naam', 'Naam') }}
@@ -48,8 +48,8 @@
 
         {{Form::submit("Opslaan", ['class' => 'btn btn-success full-width'])}}
 
-        {!! Form::close() !!}
     </div>
+    {!! Form::close() !!}
 </div>
 
 @endsection

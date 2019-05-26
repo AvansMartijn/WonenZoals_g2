@@ -78,6 +78,14 @@ class NewsController extends Controller
     }
 
     public function update(Request $request){
+        $newsitem = Newsitem::find($request->id);
+        if($newsitem->img_url != null && $newsitem->img_url != ""){
+            $request['image'] = 'filled';
+            $imagePath = $newsitem->img_url;
+        }else{
+            $imagePath = null;
+        }
+
         $this->validate(
             $request,
             [
@@ -88,16 +96,16 @@ class NewsController extends Controller
             ]
         );
 
-        $imagePath = null;
-        if(isset($request->image) && $request->image != null){
-            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
-            $path = public_path('img/uploads');
-            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+        if($request->image != 'filled'){ 
+            if(isset($request->image) && $request->image != null){
+                $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+                $path = public_path('img/uploads');
+                $imagePath = url('/') . '/img/uploads/' . $imageName; 
 
-            request()->image->move($path, $imageName);
+                request()->image->move($path, $imageName);
+            }
         }
 
-        $newsitem = Newsitem::find($request->id);
         $newsitem->title = $request->input('Titel');
         $newsitem->content = $request->input('Inhoud');
         $newsitem->summary = $request->input('Summary');

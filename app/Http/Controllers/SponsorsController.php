@@ -76,6 +76,15 @@ class SponsorsController extends Controller
     }
 
     public function update(Request $request){
+        $sponsor = Sponsor::find($request->id);
+
+        if($sponsor->img_url != null && $sponsor->img_url != ""){
+            $request['imageUrl'] = 'filled';
+            $imagePath = $sponsor->img_url;
+        }else{
+            $imagePath = null;
+        }
+        
         $this->validate(
             $request,
             [
@@ -84,16 +93,17 @@ class SponsorsController extends Controller
                 'imageUrl' => 'required',
             ]
         );
-        $imagePath = null;
-        if(isset($request->imageUrl) && $request->imageUrl != null){
-            $imageName = uniqid() . '-' . $request->imageUrl->getClientOriginalName();
-            $path = public_path('img/uploads');
-            $imagePath = url('/') . '/img/uploads/' . $imageName; 
 
-            request()->imageUrl->move($path, $imageName);
+        if($request->imageUrl != 'filled'){ 
+            if(isset($request->imageUrl) && $request->imageUrl != null){
+                $imageName = uniqid() . '-' . $request->imageUrl->getClientOriginalName();
+                $path = public_path('img/uploads');
+                $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+                request()->imageUrl->move($path, $imageName);
+            }
         }
 
-        $sponsor = Sponsor::find($request->id);
         $sponsor->name = $request->input('naam');
         $sponsor->hyperlink = $request->input('link');
         $sponsor->img_url = $imagePath;
