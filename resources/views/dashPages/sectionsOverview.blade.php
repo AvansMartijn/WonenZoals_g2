@@ -23,9 +23,9 @@
                                 
                                         <button class="btn btn-danger half-width bottom-spacer" data-toggle="modal" data-target="#factory">Fabrieksinstellingen</button>
                                
-                                        <a class="btn btn-success half-width" href="{{ route('saveProfile') }}" data-toggle="tooltip" data-placement="top" title="Opgelsagen profiel wordt ingeladen. andere wijzigingen gaan verloren">Profiel opslaan</a>
+                                        <a class="btn btn-success half-width" href="{{ route('saveProfile') }}" data-toggle="tooltip" data-placement="top" title="Opgelsagen profiel wordt ingeladen. andere wijzigingen gaan verloren">Profiel Opslaan</a>
                                 
-                                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#profileload">Profiel terugzetten</button>
+                                        <button class="btn btn-danger half-width" data-toggle="modal" data-target="#profileload">Profiel Terugzetten</button>
                                 </div>
                         </div>
                 </div>

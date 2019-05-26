@@ -4,7 +4,7 @@
 {{-- Page Header --}}
 <div class="BackHeader">
         <a href="/dashboard/sections" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
-        <h3>Contact overzicht</h3>
+        <h3>Contact Overzicht</h3>
         <hr>
 </div>
 
@@ -16,8 +16,8 @@
 <div class="container">
         <div class="MainContentFull">
                 <div class="MealOptions clearfix">
-                        <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
-                        <a class="btn btn-success bottom-spacer" href="{{ route('contactsubjectCreate') }}">Nieuw onderwerp</a>
+                        <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
+                        <a class="btn btn-success bottom-spacer" href="{{ route('contactsubjectCreate') }}">Nieuw Onderwerp</a>
                 </div>
                 <div class="row">
                 <div class="col-md-8">
@@ -25,7 +25,7 @@
                         <thead>
                                 <tr>
                                         <th>Onderwerp</th>
-                                        <th class="text-right">acties</th>
+                                        <th class="text-right">Acties</th>
                                 </tr>
                         </thead>
                         <tbody class="Searchable">

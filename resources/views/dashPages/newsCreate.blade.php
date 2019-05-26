@@ -19,7 +19,8 @@
 
         <div class="form-group">
             <label for="Titel">Titel</label>
-            <input type="text" class="form-control" name="Titel" placeholder="titel">
+            <input type="text" class="form-control" name="Titel"
+            data-toggle="tooltip" data-placement="top" title="Typ hier de titel van de activiteit" autofocus>
         </div>
         <div class="from-group">
                 <label for="Inhoud">Korte Beschrijving</label>
