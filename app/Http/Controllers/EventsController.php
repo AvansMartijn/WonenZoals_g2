@@ -88,16 +88,18 @@ class EventsController extends Controller
                 $color = "red";
             }
             //create a Calendar item for this event
-            $event_list[] = Calendar::event(
-                $event->eventname,
-                false,
-                new \DateTime($event->date),
-                new \DateTime($event->enddate),
-                $event->id,
-                [
-                    'color' => $color,
-                ]
-            );
+            if (!array_key_exists($event->id, $event_list)) {
+                $event_list[] = Calendar::event(
+                    $event->eventname,
+                    false,
+                    new \DateTime($event->date),
+                    new \DateTime($event->enddate),
+                    $event->id,
+                    [
+                        'color' => $color,
+                    ]
+                );
+            }
         }
         //add all events to the calendar
         $calendar_details = Calendar::addEvents($event_list)->setCallbacks(
