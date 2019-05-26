@@ -48844,6 +48844,23 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/Collapse.js":
+/*!**********************************!*\
+  !*** ./resources/js/Collapse.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.CollapseButton').on('click', function () {
+    var TargetDiv = $(this).data("target");
+    TargetDiv = "#" + TargetDiv;
+    $(TargetDiv).toggle("fast");
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/MenuCollapse.js":
 /*!**************************************!*\
   !*** ./resources/js/MenuCollapse.js ***!
@@ -49022,6 +49039,10 @@ __webpack_require__(/*! ./MenuCollapse */ "./resources/js/MenuCollapse.js");
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./tooltip */ "./resources/js/tooltip.js");
+
+__webpack_require__(/*! ./Collapse */ "./resources/js/Collapse.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 
@@ -49139,6 +49160,19 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/tooltip.js":
+/*!*********************************!*\
+  !*** ./resources/js/tooltip.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -49157,8 +49191,8 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Xandor\Documents\AVANS\Blok7\Project\WonenZoals\WonenZoals_g2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Xandor\Documents\AVANS\Blok7\Project\WonenZoals\WonenZoals_g2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\WonenZoals_g2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\WonenZoals_g2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -15,8 +15,8 @@
 <div class="container">
         <div class="MainContentFull">
                 <div class="MealOptions clearfix">
-                        <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search">
-                        <a class="btn btn-success" href="{{ route('meals.build') }}">Nieuw gerecht</a>
+                        <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
+                        <a class="btn btn-success" href="{{ route('meals.build') }}">Nieuw Gerecht</a>
                 </div>
 
                 <table class="table table-striped">

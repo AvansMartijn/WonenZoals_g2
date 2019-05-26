@@ -20,9 +20,9 @@
                 </a>
 
                 {{-- check all auth witin a role --}}
-                @foreach (Auth::user()->authorizations as $userauthorization)
+                @foreach (Auth::user()->authorizations()->get() as $userauthorization)
                     {{-- show agenda --}}
-                    @if ($userauthorization->authorization == "Agenda")
+                    @if ($userauthorization->id == 1)
 
                         <a href="/dashboard/agenda" class="Menu-Item {{ (request()->is('dashboard/agenda*')) ? 'Active' : '' }}">
                             <li>
@@ -33,7 +33,7 @@
 
                     @endif
 
-                    @if ($userauthorization->authorization == "Maaltijden")
+                    @if ($userauthorization->id == 3)
 
                         <a href="/dashboard/maaltijden" class="Menu-Item {{ (request()->is('dashboard/maaltijden*')) ? 'Active' : '' }}">
                             <li>
@@ -45,7 +45,7 @@
                     @endif
 
                     {{-- show newsletter archive --}}
-                    @if ($userauthorization->authorization == "Nieuwsbriefarchief")
+                    @if ($userauthorization->id == 2)
 
                         <a href="/dashboard/nieuwsbriefarchief" class="Menu-Item {{ (request()->is('dashboard/nieuwsbriefarchief*')) ? 'Active' : '' }}">
                             <li>
@@ -55,11 +55,33 @@
                         </a>
 
                     @endif
+
+                    {{-- show page builder --}}
+                    @if ($userauthorization->id == 6)
+
+                        <a href="/dashboard/sections" class="Menu-Item {{ (request()->is('dashboard/sections*', 'dashboard/nieuws', 'dashboard/sponsors*', 'dashboard/bewoners*', 'dashboard/contact*', 'dashboard/location*')) ? 'Active' : '' }}">
+                            <li>
+                                <i class="fas fa-scroll"></i>
+                                <span class="alignpotjandriedubbeltjes">Pagina Bouwer</span>
+                             </li>
+                        </a>
+                    @endif
+                    
+                    {{-- show forum --}}
+                    @if ($userauthorization->id == 4)
+
+                        <a href="/dashboard/forum" class="Menu-Item {{ (request()->is('dashboard/forum*')) ? 'Active' : '' }}">
+                            <li>
+                                <i class="fas fa-book-reader"></i>
+                                <span class="alignpotjandriedubbeltjes">Forum</span>
+                            </li>
+                        </a>
+                    @endif
                     
                 @endforeach
 
                 {{-- checkuser role --}}
-                @if (Auth::user()->role == "Beheerder")
+               @if (Auth::user()->role_id == 1)    {{-- beheerder--}}
 
                     <a href="/dashboard/gebruikers" class="Menu-Item {{ (request()->is('dashboard/gebruikers*')) ? 'Active' : '' }}">
                         <li>

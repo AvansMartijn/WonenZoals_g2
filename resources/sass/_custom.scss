@@ -240,6 +240,18 @@ header > div > h1 {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+// .tox-notification{
+//     display:none;
+// }
+
+#content_ifr{
+    background-color:#cacaca;
+}
+
+.tox .tox-edit-area__iframe{
+    background-color:#cacaca!important;
+}
+
 /* curves */
 
 @media only screen and (max-width: 955px) {

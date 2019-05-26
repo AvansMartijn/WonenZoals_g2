@@ -46,12 +46,12 @@ class NewsletterArchiveController extends Controller
 
                 $userAuth = Auth::user();
 
-                $userAuth = $userAuth->authorizations;
+                $userAuth = $userAuth->authorizations()->get();
 
                 $toegang = false;
 
                 foreach ($userAuth as $userAuthh) {
-                    if ($userAuthh->authorization == "Nieuwsbriefarchief") {
+                    if ($userAuthh->id == 2) {
                         $toegang = true;
                     }
                 }

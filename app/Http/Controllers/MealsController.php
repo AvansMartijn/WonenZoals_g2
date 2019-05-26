@@ -24,12 +24,16 @@ class MealsController extends Controller
 
                 $userAuth = Auth::user();
 
-                $userAuth = $userAuth->authorizations;
+
+                $userAuth = $userAuth->authorizations()->get();
+
 
                 $toegang = false;
 
                 foreach ($userAuth as $userAuthh) {
-                    if ($userAuthh->authorization == "Maaltijden") {
+
+                    if ($userAuthh->id == 3) {
+
                         $toegang = true;
                     }
                 }
@@ -42,8 +46,6 @@ class MealsController extends Controller
             }
         );
     }
-
-
 
     /**
      * Display a listing of the resource.

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuthorizationsTable extends Migration
+class CreateResidentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateAuthorizationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('authorizations', function (Blueprint $table) {
+        Schema::create('residents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('authorization');
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
+            $table->string('name');
+            $table->string('img_url');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateAuthorizationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('authorizations');
+        Schema::dropIfExists('residents');
     }
 }

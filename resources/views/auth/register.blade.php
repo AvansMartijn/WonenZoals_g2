@@ -22,7 +22,9 @@
                 @csrf
 
                 <div class="form-group">
-                    <input id="name" placeholder="Naam" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                    <label for="name">Naam</label>
+                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus
+                    data-toggle="tooltip" data-placement="top" title="Typ hier de naam van de gebruiker">
                     @if ($errors->has('name'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -31,7 +33,9 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="email" placeholder="Email Adres" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                    <label for="email">Emailadres</label>
+                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required
+                    data-toggle="tooltip" data-placement="top" title="Typ hier het Emailadres van de gebruiker">
                     @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
@@ -40,7 +44,9 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="password" placeholder="Wachtwoord" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    <label for="password">Wachtwoord</label>
+                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required
+                    data-toggle="tooltip" data-placement="top" title="Typ hier het wachtwoord van de gebruiker">
                     @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('password') }}</strong>
@@ -49,15 +55,19 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="password-confirm" placeholder="Herhaal Wachtwoord" type="password" class="form-control" name="password_confirmation" required>
+                    <label for="password-confirm">Herhaal Wachtwoord</label>
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+                    data-toggle="tooltip" data-placement="top" title="Typ hier nogmaals het wachtwoord van de gebruiker">
                 </div>
 
                 <div class="form-group">
-                    <select id="role" type="text" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" value="{{ old('role') }}" required autofocus>
-                            <option>Bewoner</option>
-                            <option>Vrijwilliger</option>
-                            <option>Ouder</option>
-                            <option>Beheerder</option>
+                    <label for="role">Rol</label>
+                    <select id="role" type="text" class="form-control{{ $errors->has('role') ? ' is-invalid' : '' }}" name="role" value="{{ old('role') }}" required autofocus
+                            data-toggle="tooltip" data-placement="top" title="Kies hier de rol van de gebruiker">
+                            <option value="4">Bewoner</option>
+                            <option value="2">Vrijwilliger</option>
+                            <option value="3">Ouder</option>
+                            <option value="1">Beheerder</option>
                     </select>
                     @if ($errors->has('role'))
                         <span class="invalid-feedback" role="alert">

@@ -10909,6 +10909,14 @@ header > div > h1 {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+#content_ifr {
+  background-color: #cacaca;
+}
+
+.tox .tox-edit-area__iframe {
+  background-color: #cacaca !important;
+}
+
 /* curves */
 
 @media only screen and (max-width: 955px) {
@@ -11052,6 +11060,19 @@ body {
 
 .sticky-offset {
   top: 56px;
+}
+
+.hidden {
+  display: none;
+}
+
+.table-stripedCustom > thead {
+  background-color: #dddddd;
+}
+
+.table-stripedCustom > tbody > tr:nth-child(4n-1),
+.table-stripedCustom > tbody > tr:nth-child(4n) {
+  background-color: #dddddd;
 }
 
 #body-row {
@@ -11484,6 +11505,50 @@ body {
 .AgendaImage {
   max-width: 100%;
   margin-bottom: 25px;
+}
+
+#content_ifr {
+  background-color: #cacaca;
+}
+
+.ScrollableTable {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.DashboardItem {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  border-radius: 15px;
+  margin: 50px 0px;
+  background-color: #e9e9e9;
+  text-align: center;
+}
+
+.DashboardItem > h2 {
+  color: #227dc7;
+}
+
+.TopicContent > hr {
+  margin-bottom: 0rem;
+}
+
+.tox .tox-edit-area__iframe {
+  background-color: #fff !important;
+}
+
+.leafedit .tox .tox-edit-area__iframe {
+  background-color: #cacaca !important;
+}
+
+.newsimagecontainer {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.tox-statusbar__branding {
+  display: none;
 }
 
 @media only screen and (max-width: 1030px) {
