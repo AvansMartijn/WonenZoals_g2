@@ -68,7 +68,7 @@ class FrontEndSeeder extends Seeder
             ['id' => 2, 'name' => 'NSGK', 'hyperlink' => 'https://www.nsgk.nl/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6ada41c6be-nsgk.png'],
             ['id' => 3, 'name' => 'PLATO', 'hyperlink' => 'https://www.tsvplato.nl/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6adafa846c-plato.png'],
             ['id' => 4, 'name' => 'Yell&Yonkers', 'hyperlink' => 'https://www.yellenyonkers.nl/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6adc0d3863-LogoYY_2015.png'],
-            ['id' => 5, 'name' => 'Fra-pant', 'hyperlink' => 'www.fra-pant.nl/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6adcd2720c-roodborstje.png'],
+            ['id' => 5, 'name' => 'Fra-pant', 'hyperlink' => 'https://www.fra-pant.nl/', 'img_url' => 'http://dev.mardy.tk/img/uploads/5ce6adcd2720c-roodborstje.png'],
 
         ];
 

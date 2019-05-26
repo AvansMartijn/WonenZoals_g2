@@ -187,7 +187,9 @@
                             <div class="row">
                                 @foreach ($sponsors as $sponsor)
                                 <div class="col">
-                                    <a href="{{$sponsor->link}}" target="_blank"><img class="img-fluid" src="{{$sponsor->img_url}}" alt=""></a>
+                                    <a href="{{$sponsor->hyperlink}}" target="_blank">
+                                        <img class="img-fluid" src="{{$sponsor->img_url}}" alt="">
+                                    </a>
                                 </div>
                                 @endforeach
                             </div>
