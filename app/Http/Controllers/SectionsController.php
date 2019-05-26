@@ -83,7 +83,7 @@ class SectionsController extends Controller
             $sectionArr = $section->toArray();
             Section::create($sectionArr);
         }
-        return redirect('dashboard/sections')->with('success', 'Secties zijn terug gezet naar fabrieks instellingen');
+        return redirect('dashboard/sections')->with('success', 'Secties zijn terug gezet naar fabrieksinstellingen');
     }
 
     public function destroy(){
