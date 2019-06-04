@@ -98,9 +98,9 @@ class SectionsController extends Controller
     }
 
     public function updateLeaf(Request $request){
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-        ]);
+        // $validatedData = $request->validate([
+        //     'name' => 'required|max:255',
+        // ]);
         $leaf = Section::where('type_id', 1)->first();
         $leaf->content = $request['content'];
         $leaf->save();
