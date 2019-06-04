@@ -130,7 +130,7 @@
 
         <div class="DashboardItem">
 
-            <h2>Maaltijden</h2>
+            <h2>Maaltijden Beheren</h2>
 
             <p>Totaal Aantal Maaltijden: 
                 @php
