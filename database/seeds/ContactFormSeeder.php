@@ -11,7 +11,7 @@
  * @link     https://wonenzoals.mardy.tk
  */
 use Illuminate\Database\Seeder;
-use App\ContactUs;
+use App\ContactUS;
 /**
  * User Table Seeder with one user of every type
  *
@@ -38,7 +38,7 @@ class ContactFormSeeder extends Seeder
         ];
 
         foreach($contactuss as $contactus){
-            ContactUs::create($contactus);
+            ContactUS::create($contactus);
         };
     }
 }

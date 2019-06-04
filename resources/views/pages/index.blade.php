@@ -8,7 +8,7 @@
             <div class="mx-auto leaf text-center">
                 <h1 class="text-custom-heading-shadow display-1">Wonen Zoals</h1>
                 <p class="text-white">{!!$leaf->content!!}</p>
-                <a class="btn text-white btn-custom-shadow linkie" href="{{url('/')}}/#OverOns">Lees Meer</a>
+                {{-- <a class="btn text-white btn-custom-shadow linkie" href="{{url('/')}}/#OverOns">Lees Meer</a> --}}
             </div>
         </div>
     </header>
@@ -187,7 +187,9 @@
                             <div class="row">
                                 @foreach ($sponsors as $sponsor)
                                 <div class="col">
-                                    <a href="{{$sponsor->link}}" target="_blank"><img class="img-fluid" src="{{$sponsor->img_url}}" alt=""></a>
+                                    <a href="{{$sponsor->hyperlink}}" target="_blank">
+                                        <img class="img-fluid" src="{{$sponsor->img_url}}" alt="">
+                                    </a>
                                 </div>
                                 @endforeach
                             </div>

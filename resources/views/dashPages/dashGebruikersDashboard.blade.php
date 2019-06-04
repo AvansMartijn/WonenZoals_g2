@@ -22,7 +22,7 @@
 
         <div class="DashboardItem">
 
-            <h2>Aankomende events waarvoor ik aangemeld ben</h2>
+            <h2>Nieuwe Activiteiten</h2>
 
             <p>Aantal: {{count($events)}}</p>
             
