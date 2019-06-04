@@ -33,7 +33,7 @@
                                                 <td>{{$user->name}}</td>
                                                 <td>{{$user->role->role_name}}</td>
                                                 <td class="text-left">
-                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/gebruikers/{{$user->id}}">Details</a>
+                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/gebruikers/{{$user->id}}">Wijzigen</a>
                                                         {!!Form::open(['action' => ['ManageUsersController@destroy', $user->id], 'method' => 'POST'])!!}
                                                                 {{Form::hidden('_method', 'DELETE')}}
                                                                 {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-left'])}}
