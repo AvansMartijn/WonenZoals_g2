@@ -48,16 +48,17 @@
                     <th>Forum topics</th>
                     <th>Gemaakt op</th>
                     <th>Aantal reacties</th>
-                    <th>Topic options</th>
                 </tr>
             </thead>
     
             <tbody class="Searchable">
                 @foreach ($topics as $topic)
-                    
+                
                     <tr>
                         <td>
-                            {{$topic->title}}
+                            <a href="/dashboard/forum/topic/{{$topic->id}}">
+                                {{$topic->title}}
+                            </a>
                         </td>
     
                         <td>
@@ -67,20 +68,9 @@
                         <td>
                             {{$topic->forumpost->count()}}
                         </td>
-    
-                        <td>
-                            <a class="btn btn-primary float-left margin-right" href="/dashboard/forum/topic/{{$topic->id}}">Topic</a>
-                            
-                            @if (Auth::user()->role_id == 1 ||$topic->user_id == Auth::user()->id)
-                                {!!Form::open(['action' => ['ForumController@deleteTopic', $topic->id], 'method' => 'POST'])!!}
-                                    {{Form::hidden('_method', 'DELETE')}}
-                                    {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-left'])}}
-                                {!!Form::close()!!}
-                            @endif
-    
-                        </td>
+
                     </tr>
-    
+                
                 @endforeach
     
             </tbody>

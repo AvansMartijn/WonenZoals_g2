@@ -16,14 +16,19 @@
     <div class="col-md-7">
 
         {{-- Buttons --}}
+        <div class="center">
         @foreach (Auth::user()->authorizations()->get() as $userauthorization)
+        
             @if ($userauthorization->id == 5)
-                <div class="center">
                     <a href="/dashboard/agenda/create/activity" class="btn btn-success half-width">Activiteit Inplannen</a>
-                    <a href="/dashboard/agenda/create/meal" class="btn btn-success half-width">Maaltijd Inplannen</a>
-                </div>
             @endif
+
+            @if ($userauthorization->id == 3)
+                <a href="/dashboard/agenda/create/meal" class="btn btn-success half-width">Maaltijd Inplannen</a>
+         @endif
+        
         @endforeach
+    </div>
         <hr>
 
         {{-- Calender --}}

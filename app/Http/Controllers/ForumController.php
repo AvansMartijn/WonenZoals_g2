@@ -106,7 +106,8 @@ class ForumController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+
+        return redirect('/dashboard/forum')->with($notification);
     }
 
     /**
