@@ -34,10 +34,11 @@ class authorizationLookupsSeeder extends Seeder
 
         $authorizationLookups = [
             ['id' => 1, 'name' => 'Agenda'],
-            ['id' => 2, 'name' => 'Nieuwsbriefarchief'],
+            ['id' => 2, 'name' => 'Nieuwsbrief Archief'],
             ['id' => 3, 'name' => 'Maaltijden'],
             ['id' => 4, 'name' => 'Forum'],
-            ['id' => 5, 'name' => 'Activiteit']
+            ['id' => 5, 'name' => 'Activiteit'],
+            ['id' => 6, 'name' => 'Pagina Bouwer']
         ];
 
         foreach($authorizationLookups as $authorizationLookup){

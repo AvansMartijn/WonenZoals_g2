@@ -38,7 +38,7 @@
                         <a href="/dashboard/maaltijden" class="Menu-Item {{ (request()->is('dashboard/maaltijden*')) ? 'Active' : '' }}">
                             <li>
                                 <i class="fas fa-utensils"></i>
-                                <span class="alignpotjandriedubbeltjes">Maaltijden</span>
+                                <span class="alignpotjandriedubbeltjes">Maaltijden Beheren</span>
                             </li>
                         </a>
 
@@ -56,20 +56,27 @@
 
                     @endif
 
+                    {{-- show page builder --}}
+                    @if ($userauthorization->id == 6)
 
+                        <a href="/dashboard/sections" class="Menu-Item {{ (request()->is('dashboard/sections*', 'dashboard/nieuws', 'dashboard/sponsors*', 'dashboard/bewoners*', 'dashboard/contact*', 'dashboard/location*')) ? 'Active' : '' }}">
+                            <li>
+                                <i class="fas fa-scroll"></i>
+                                <span class="alignpotjandriedubbeltjes">Pagina Bouwer</span>
+                             </li>
+                        </a>
+                    @endif
+                    
                     {{-- show forum --}}
                     @if ($userauthorization->id == 4)
 
-                        <a href="/dashboard/forum" class="Menu-Item {{ (request()->is('/dashboard/forum*')) ? 'Active' : '' }}">
+                        <a href="/dashboard/forum" class="Menu-Item {{ (request()->is('dashboard/forum*')) ? 'Active' : '' }}">
                             <li>
                                 <i class="fas fa-book-reader"></i>
                                 <span class="alignpotjandriedubbeltjes">Forum</span>
                             </li>
                         </a>
-
                     @endif
-
-                    
                     
                 @endforeach
 
