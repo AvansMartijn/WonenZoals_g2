@@ -38,6 +38,11 @@ class SectionsController extends Controller
         //
         $sections = Section::orderBy('order', 'ASC')->get();
         $sections->maxOrder = Section::max('order');
+        $sections->profileDate = "";
+        if(DefaultSection::where('default_section', 0)->first() != null){
+            $profile = DefaultSection::where('default_section', 0)->first();
+            $sections->profileDate = $profile->created_at;
+        }
         return View('dashPages.sectionsOverview', compact('sections'));
     }
 
