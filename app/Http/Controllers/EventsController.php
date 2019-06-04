@@ -190,7 +190,7 @@ class EventsController extends Controller
             'location' => 'required|max:255',
             'description' => 'required|max:255',
             'date' => 'date',
-            'image' => 'image',
+            'image' => 'image|max:8192',
             'enddate' => 'date|after:date',
             'role_check' => 'required',
 
