@@ -17,7 +17,7 @@
 
         <div class="DashboardItem">
             
-            <h2>Contact KPI</h2>
+            <h2>Contact</h2>
 
             <p>Totaal Ingevuld: {{count($contacts)}} </p>
             <p>Ingevuld Afgelopen 30 Dagen: {{count($contacts30)}}</p>
@@ -71,7 +71,7 @@
 
         <div class="DashboardItem">
 
-            <h2>Activiteiten KPI</h2>
+            <h2>Activiteiten</h2>
 
             <p>Totaal Aantal Activiteiten: 
             
@@ -130,7 +130,7 @@
 
         <div class="DashboardItem">
 
-            <h2>Maaltijden KPI</h2>
+            <h2>Maaltijden Beheren</h2>
 
             <p>Totaal Aantal Maaltijden: 
                 @php
