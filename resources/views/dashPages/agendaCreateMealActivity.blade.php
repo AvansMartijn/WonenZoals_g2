@@ -109,20 +109,20 @@
                 </h1>
                 <hr>
                 
-                <input type="hidden" name="role_check[]" value="beheerder" id="Beheerder" checked>
+                <input type="hidden" name="role_check[]" value="1" id="Beheerder" checked>
         
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="bewoner" id="Bewoner">
+                    <input type="checkbox" name="role_check[]" value="4" id="Bewoner">
                     <label for="Bewoner">Bewoners</label>
                 </div>
         
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="ouder" id="Ouder">
+                    <input type="checkbox" name="role_check[]" value="3" id="Ouder">
                     <label for="Ouder">Ouders</label>
                 </div>
         
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="vrijwilliger" id="Vrijwilliger">
+                    <input type="checkbox" name="role_check[]" value="2" id="Vrijwilliger">
                     <label for="Vrijwilliger">Vrijwilligers</label>
                 </div>
     
