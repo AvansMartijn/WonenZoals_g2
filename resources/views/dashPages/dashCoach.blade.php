@@ -47,7 +47,7 @@
         </div>
 
         <div class="DashboardItem">
-            <h2>Mijn diensten</h2>
+            <h2>Mijn Diensten</h2>
 
             <table class="table table-striped">
                 <thead>
