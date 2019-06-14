@@ -169,6 +169,7 @@ class EventsController extends Controller
         $hoofdgerecht = $event->meals()->where('type', 'hoofdgerecht')->get()->first();
         $nagerecht = $event->meals()->where('type', 'nagerecht')->get()->first();
 
+
         $meal = ['voorgerecht' => $voorgerecht, 'hoofdgerecht' => $hoofdgerecht, 'nagerecht' => $nagerecht];
         $data = ['event' => $event, 'users' => $users_applied, 'meal' => $meal];
         return View('dashPages.agendaDetail', ["data" => $data]);
@@ -190,7 +191,6 @@ class EventsController extends Controller
             'location' => 'required|max:255',
             'description' => 'required|max:255',
             'date' => 'date',
-            'image' => 'image',
             'enddate' => 'date|after:date',
             'role_check' => 'required',
 

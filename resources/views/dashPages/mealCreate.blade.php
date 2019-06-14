@@ -13,7 +13,7 @@
 </div>
 
 <div class="container">
-    {!! Form::open(['action' => 'MealsController@store', 'methode' => 'POST']) !!}
+    {!! Form::open(['action' => 'MealsController@store', 'methode' => 'POST', 'enctype' => "multipart/form-data"]) !!}
 
     <div class="MainContent">
         <h1>Gerecht</h1>
@@ -51,6 +51,11 @@
                 <input type="radio" name="gerechttype" value="nagerecht" id="nagerecht" />
                 <label for="nagerecht">Nagerecht</label>
             </div>
+        </div>
+
+        <div class="form-group">
+            <label>Upload Afbeelding</label>
+            <input type="file" name="image" id="image">
         </div>
     </div>
 

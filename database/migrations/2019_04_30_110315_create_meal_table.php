@@ -17,6 +17,7 @@ class CreateMealTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->string('name');
+            $table->string('img_url')->nullable();
             $table->string('description');
             $table->timestamps();
         });
