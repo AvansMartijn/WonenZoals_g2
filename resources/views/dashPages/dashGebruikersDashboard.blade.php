@@ -139,6 +139,32 @@
         </div>
 
         @endif
+
+        <div class="DashboardItem">
+            <h2>Coaches</h2>
+
+            <table class="table table-striped">
+                <thead>
+                        <tr>
+                                <th>Naam dienst</th>
+                                <th>Naam coach</th>
+                                <th>start tijd</th>
+                                <th>eind tijd</th>
+                        </tr>
+                </thead>
+                <tbody class="Searchable">
+                        @foreach($diensten as $dienst)
+                                <tr>
+                                        <td>{{$dienst->naam}}</td>
+                                        <td>{{$dienst->coach_naam}}</td>
+                                        <td>{{$dienst->start_datetime}}</td>
+                                        <td>{{$dienst->eind_datetime}}</td>
+                                </tr>
+                        @endforeach
+                </tbody>
+        </table>
+            
+        </div>
         
     @endforeach
 
