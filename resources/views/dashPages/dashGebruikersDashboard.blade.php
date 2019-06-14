@@ -57,16 +57,16 @@
 
         <div class="DashboardItem">
 
-            <h2>Mijn forum topics</h2>
+            <h2>Mijn Forum Topics</h2>
 
             <p>Aantal: {{count($topics)}}</p>
             
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Forum topics</th>
-                        <th>Gemaakt op</th>
-                        <th>Aantal reacties</th>
+                        <th>Forum Topics</th>
+                        <th>Gemaakt Op</th>
+                        <th>Aantal Reacties</th>
                     </tr>
                 <thead>
                     @if (count($topics)>0)
@@ -90,7 +90,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="4">je hebt nog geen forum topics</td>
+                            <td colspan="4">U heeft nog geen forum topics</td>
                         </tr>
                 @endif
             </table>  
@@ -106,9 +106,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Forum topics</th>
-                        <th>Gemaakt op</th>
-                        <th>Aantal reacties</th>
+                        <th>Forum Topics</th>
+                        <th>Gemaakt Op</th>
+                        <th>Aantal Reacties</th>
                     </tr>
                 <thead>
                 @if (count($reactiontopics)>0)
@@ -146,10 +146,10 @@
             <table class="table table-striped">
                 <thead>
                         <tr>
-                                <th>Naam dienst</th>
-                                <th>Naam coach</th>
-                                <th>start tijd</th>
-                                <th>eind tijd</th>
+                                <th>Naam Dienst</th>
+                                <th>Naam Coach</th>
+                                <th>Start Tijd</th>
+                                <th>Eind Tijd</th>
                         </tr>
                 </thead>
                 <tbody class="Searchable">
@@ -157,8 +157,8 @@
                                 <tr>
                                         <td>{{$dienst->naam}}</td>
                                         <td>{{$dienst->coach_naam}}</td>
-                                        <td>{{$dienst->start_datetime}}</td>
-                                        <td>{{$dienst->eind_datetime}}</td>
+                                        <td>{{ date('H:i', strtotime($dienst->start_datetime)) }}</td>
+                                        <td>{{ date('H:i', strtotime($dienst->eind_datetime)) }}</td>
                                 </tr>
                         @endforeach
                 </tbody>

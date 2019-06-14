@@ -190,10 +190,10 @@
             <table class="table table-striped">
                 <thead>
                         <tr>
-                                <th>Naam dienst</th>
-                                <th>Naam coach</th>
-                                <th>start tijd</th>
-                                <th>eind tijd</th>
+                                <th>Naam Dienst</th>
+                                <th>Naam Coach</th>
+                                <th>Start Tijd</th>
+                                <th>Eind Tijd</th>
                         </tr>
                 </thead>
                 <tbody class="Searchable">
@@ -201,8 +201,8 @@
                                 <tr>
                                         <td>{{$dienst->naam}}</td>
                                         <td>{{$dienst->coach_naam}}</td>
-                                        <td>{{$dienst->start_datetime}}</td>
-                                        <td>{{$dienst->eind_datetime}}</td>
+                                        <td>{{ date('H:i', strtotime($dienst->start_datetime)) }}</td>
+                                        <td>{{ date('H:i', strtotime($dienst->eind_datetime)) }}</td>
                                 </tr>
                         @endforeach
                 </tbody>

@@ -16,29 +16,30 @@
     <div class="ContentMainFull">
 
         <div class="DashboardItem">
-            <h2>Diensten inplannen</h2>
+            <h2>Diensten Inplannen</h2>
 
                 {!! Form::open(['action' => 'DashboardController@store', 'methode' => 'POST']) !!}
-                        
+
                 <div class="form-group">
-                    {{Form::text('Naam','',['class' => 'form-control', 'placeholder' => 'Naam',
-                    "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Typ hier de naam van de dienst",
-                    'autocomplete' => 'off'])}}
+                    <label for="Naam">Naam Dienst</label>
+                    <input type="text" class="form-control" name="Naam" value="{{ old('Naam') }}"
+                    data-toggle="tooltip" data-placement="top" title="Typ hier de naam van de dienst" autocomplete="off" autofocus>
                 </div>
 
                 <div class="form-group">
-                    {{Form::text('Start_tijd','',['class' => 'form-control', 'placeholder' => 'start tijd',
-                    "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Type hier de start tijd van de dienst in",
-                    'autocomplete' => 'off'])}}
+                    <label for="Start_tijd">Aanvang</label>
+                    <input type="datetime-local" class="form-control" name="Start_tijd" value="{{ old('Start_tijd') }}"
+                    data-toggle="tooltip" data-placement="top" title="Kies hier de aanvang van de dienst">
                 </div>
 
                 <div class="form-group">
-                    {{Form::text('Eind_tijd','',['class' => 'form-control', 'placeholder' => 'Eind tijd',
-                    "data-toggle" => "tooltip", "data-placement" => "top", "title" => "Type hier de eind tijd van de dienst in",
-                    'autocomplete' => 'off'])}}
+                    <label for="Eind_tijd">Afloop</label>
+                    <input type="datetime-local" class="form-control" name="Eind_tijd" value="{{ old('Eind_tijd') }}"
+                    data-toggle="tooltip" data-placement="top" title="Kies hier de afloop van de dienst">
                 </div>
             
                 {{Form::submit("Toevoegen", ['class' => 'btn btn-success float-right'])}}
+                <br>
                 <br>
 
             {!! Form::close() !!} 
@@ -51,19 +52,17 @@
             <table class="table table-striped">
                 <thead>
                         <tr>
-                                <th>Naam dienst</th>
-                                <th>Naam coach</th>
-                                <th>start tijd</th>
-                                <th>eind tijd</th>
+                                <th>Naam Dienst</th>
+                                <th>Start Tijd</th>
+                                <th>Eind Tijd</th>
                         </tr>
                 </thead>
                 <tbody class="Searchable">
                         @foreach($diensten as $dienst)
                                 <tr>
                                         <td>{{$dienst->naam}}</td>
-                                        <td>{{$dienst->coach_naam}}</td>
-                                        <td>{{$dienst->start_datetime}}</td>
-                                        <td>{{$dienst->eind_datetime}}</td>
+                                        <td>{{ date('d-m-Y H:i', strtotime($dienst->start_datetime)) }}</td>
+                                        <td>{{ date('d-m-Y H:i', strtotime($dienst->eind_datetime)) }}</td>
                                 </tr>
                         @endforeach
                 </tbody>

@@ -107,8 +107,8 @@
 
     <div class="MainContent">
         <input type="hidden" name="voorgerecht" value="">
-        <input type="hidden" name="voorgerecht" value="">
-        <input type="hidden" name="voorgerecht" value="">   
+        <input type="hidden" name="hoofdgerecht" value="">
+        <input type="hidden" name="nagerecht" value="">   
 
         <hr>
         {{Form::submit("Activiteit inplannen", ['class' => 'btn btn-success full-width'])}}

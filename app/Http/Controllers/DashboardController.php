@@ -197,15 +197,15 @@ class DashboardController extends Controller
             $request,
             [
                 'Naam' => 'required',
-                'Start_tijd'   => 'date_format:Y-m-d H:i:s|required',
-                'Eind_tijd' => 'date_format:Y-m-d H:i:s|required|after:Start_tijd',
+                'Start_tijd'   => 'date|required',
+                'Eind_tijd' => 'date|required|after:Start_tijd',
             ]
         );
 
         $dienst = new Diensten();
         $dienst->naam = $request->input('Naam');
-        $dienst->start_datetime = $request->input('Start_tijd');
-        $dienst->eind_datetime = $request->input('Eind_tijd');
+        $dienst->start_datetime = Carbon::parse($request->input('Start_tijd'))->format('Y-m-d H:i:s');
+        $dienst->eind_datetime = Carbon::parse($request->input('Eind_tijd'))->format('Y-m-d H:i:s');
         $dienst->user_id = Auth::user()->id;
         $dienst->coach_naam = Auth::user()->name;
         $dienst->save();
