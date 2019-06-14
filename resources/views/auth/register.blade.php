@@ -68,6 +68,7 @@
                             <option value="2">Vrijwilliger</option>
                             <option value="3">Ouder</option>
                             <option value="1">Beheerder</option>
+                            <option value="5">Coach</option>
                     </select>
                     @if ($errors->has('role'))
                         <span class="invalid-feedback" role="alert">

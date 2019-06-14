@@ -39,6 +39,7 @@ class RoleSeeder extends Seeder
             ['id' => 2, 'role_name' => "Vrijwilliger"],
             ['id' => 3, 'role_name' => "Ouder"],
             ['id' => 4, 'role_name' => "Bewoner"],
+            ['id' => 5, 'role_name' => "Coach"],
      
         ];
 

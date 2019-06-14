@@ -23,6 +23,7 @@ Route::post('/', ['as' => 'contactus.store', 'uses' => 'ContactUSController@cont
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::post('/dashboard', 'DashboardController@store')->middleware('auth');
 
 //gebruikers en machtigingen
 Route::get('/dashboard/gebruikers', 'ManageUsersController@showGebruikers')->middleware('auth');
