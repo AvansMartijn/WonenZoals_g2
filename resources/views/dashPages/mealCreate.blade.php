@@ -55,7 +55,8 @@
 
         <div class="form-group">
             <label>Upload Afbeelding</label>
-            <input type="file" name="image" id="image">
+            <input type="file" name="image" id="image"
+                data-toggle="tooltip" data-placement="bottom" title="Kies een afbeelding. Max 2MB">
         </div>
     </div>
 
