@@ -28,6 +28,13 @@
             
         </div>
     </div>
+    @if ($meal->img_url != null && $meal->img_url != "")
+    <div class="SideContent">
+        <div class="CustomCardContent">
+            <img class="AgendaImage" src="{{$meal->img_url}}">
+        </div>
+    </div>
+    @endif
 </div>
 
 @endsection

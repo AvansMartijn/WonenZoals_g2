@@ -36,13 +36,22 @@
 
                     <p>
                     @if ($data['meal']['voorgerecht'] != null)
-                        <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}<br> 
+                        <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}<br>
+                        @if ($data['meal']['voorgerecht']->img_url != null && $data['meal']['voorgerecht']->img_url != "")
+                            <img class="AgendaImage" style="max-height:150px" src="{{$data['meal']['voorgerecht']->img_url}}">
+                        @endif 
                     @endif
                     @if ($data['meal']['hoofdgerecht'] != null)
                         <b>Hoofdgerecht:</b> {{$data['meal']['hoofdgerecht']->name}} <br> 
+                        @if ($data['meal']['hoofdgerecht']->img_url != null && $data['meal']['hoofdgerecht']->img_url != "")
+                        <img class="AgendaImage" src="{{$data['meal']['hoofdgerecht']->img_url}}">
+                    @endif 
                     @endif
                     @if ($data['meal']['nagerecht'] != null)
                         <b>Nagerecht:</b> {{$data['meal']['nagerecht']->name}} <br> 
+                        @if ($data['meal']['nagerecht']->img_url != null && $data['meal']['nagerecht']->img_url != "")
+                        <img class="AgendaImage" src="{{$data['meal']['nagerecht']->img_url}}">
+                    @endif 
                     @endif
                     </p>
                     <p><b>Locatie:</b> {!!$data['event']->location!!}</p>

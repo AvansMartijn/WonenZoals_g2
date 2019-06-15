@@ -84,10 +84,20 @@ class MealsController extends Controller
             'description' => 'required|max:255',
         ]);
 
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->image->move($path, $imageName);
+        }
+
         $meal = new \App\Meal;
         $meal->name = $request['mealname'];
         $meal->description = $request['description'];
         $meal->type = $request['gerechttype'];
+        $meal->img_url = $imagePath;
         $meal->save();
 
         $notification = array(
