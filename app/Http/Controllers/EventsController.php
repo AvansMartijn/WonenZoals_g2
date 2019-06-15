@@ -193,6 +193,7 @@ class EventsController extends Controller
             'eventname' => 'required|max:255',
             'location' => 'required|max:255',
             'description' => 'required|max:255',
+            'transport' => 'max:255',
             'date' => 'date',
             'image' => 'image|max:2000',
             'enddate' => 'date|after:date',

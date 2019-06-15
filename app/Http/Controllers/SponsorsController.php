@@ -88,8 +88,8 @@ class SponsorsController extends Controller
         $this->validate(
             $request,
             [
-                'naam' => 'required',
-                'link' => 'required',
+                'naam' => 'required|max:255',
+                'link' => 'required|max:255',
                 'imageUrl' => 'required',
             ]
         );

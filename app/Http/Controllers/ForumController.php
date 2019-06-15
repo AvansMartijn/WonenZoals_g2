@@ -68,8 +68,8 @@ class ForumController extends Controller
         $this->validate(
             $request,
             [
-                'Titel' => 'required',
-                'Vraag' => 'required',
+                'Titel' => 'required|max:255',
+                'Vraag' => 'required|max:255',
             ]
         );
 
@@ -138,7 +138,7 @@ class ForumController extends Controller
         $this->validate(
             $request,
             [
-                'Reactie' => 'required',
+                'Reactie' => 'required|max:255',
                 'id' => 'required'
             ]
         );

@@ -87,7 +87,7 @@ class ResidentsController extends Controller
         $this->validate(
             $request,
             [
-                'Naam' => 'required',
+                'Naam' => 'required|max:255',
                 'Beschrijving' => 'required',
                 'image' => 'required',
             ]

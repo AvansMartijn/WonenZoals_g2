@@ -90,7 +90,7 @@ class NewsletterArchiveController extends Controller
         $this->validate(
             $request,
             [
-                'Titel' => 'required',
+                'Titel' => 'required|max:255',
                 'Link' => 'required',
             ]
         );

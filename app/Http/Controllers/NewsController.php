@@ -89,7 +89,7 @@ class NewsController extends Controller
         $this->validate(
             $request,
             [
-                'Titel' => 'required',
+                'Titel' => 'required|max:255',
                 'Inhoud' => 'required',
                 'image' => 'required',
                 'Summary' => 'required'
