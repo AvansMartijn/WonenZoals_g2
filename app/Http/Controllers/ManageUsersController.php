@@ -153,6 +153,7 @@ class ManageUsersController extends Controller
      */
     public function destroy($id)
     {
+
         if (Auth::user()->id == $id) {
             return redirect()->back()->with('error', 'Je kan de huidig gebruiker niet verwijderen');
         }
