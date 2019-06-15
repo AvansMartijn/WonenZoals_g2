@@ -102,7 +102,7 @@ class ForumController extends Controller
         $topic->delete();
 
         $notification = array(
-            'message' => 'Topic is verwijderd van het frorum', 
+            'message' => 'Topic is verwijderd van het forum',
             'alert-type' => 'success'
         );
 
