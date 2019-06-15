@@ -131,10 +131,10 @@ class ManageUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroymachtiging($id)
+    public function destroymachtiging($id,$user_id)
     {
 
-        $authh = authorization::where('authorization_id', $id)->first();
+        $authh = authorization::where('authorization_id', $id)->where('user_id', $user_id)->first();
 
         $user = User::where('id', $authh->user_id)->first();
 

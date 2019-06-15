@@ -29,7 +29,7 @@ Route::post('/dashboard', 'DashboardController@store')->middleware('auth');
 Route::get('/dashboard/gebruikers', 'ManageUsersController@showGebruikers')->middleware('auth');
 Route::get('/dashboard/gebruikers/{id}', 'ManageUsersController@showGebruikersDetails')->name('gebruikers')->middleware('auth');
 Route::post('/dashboard/gebruikers', 'ManageUsersController@store')->middleware('auth');
-Route::delete('/dashboard/gebruikers/{id}', 'ManageUsersController@destroymachtiging')->middleware('auth');
+Route::delete('/dashboard/gebruikers/{id}/{userid}', 'ManageUsersController@destroymachtiging')->middleware('auth');
 Route::delete('/dashboard/gebruikers/machtigingen/{id}', 'ManageUsersController@destroy')->middleware('auth');
 Route::post('/gebruikersupdate', 'ManageUsersController@update')->middleware('auth');
 
