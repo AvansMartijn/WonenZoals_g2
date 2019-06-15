@@ -112,13 +112,13 @@ class ContactUSController extends Controller
 
         if($user = !Auth::user())
         {
-            return redirect('/dashboard');
+            return redirect('/login');
         }
 
         $role = Auth::user()->role_id;
 
         if ($role !== 1) {
-            return redirect('/dashboard');
+            return redirect('/login');
         }
 
         $subjects = ContactSubject::all();
@@ -172,6 +172,18 @@ class ContactUSController extends Controller
     }
 
     public function editLocation(){
+        if($user = !Auth::user())
+        {
+            return redirect('/login');
+        }
+
+        $role = Auth::user()->role_id;
+
+        if ($role !== 1) {
+            return redirect('/login');
+        }
+
+
         $location = Location::first();
         return View('dashPages.contactLocationEdit', compact('location'));
     }
