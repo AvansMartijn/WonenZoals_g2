@@ -135,8 +135,8 @@
                     <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
                 </div>
                
-                
-                    <input type="hidden" name="image" id="image">
+
+                    <input class="hidden" type="file" name="image" id="image">
                 
             </div>
         </div>
