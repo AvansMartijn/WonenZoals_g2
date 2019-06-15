@@ -82,6 +82,7 @@ class MealsController extends Controller
         $validatedData = $request->validate([
             'mealname' => 'required|max:255',
             'description' => 'required|max:255',
+            'image' => 'image|max:8192'
         ]);
 
         $imagePath = null;
