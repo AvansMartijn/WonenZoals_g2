@@ -71,6 +71,7 @@ class EventsController extends Controller
      */
     public function index()
     {
+
         //get events that have a relation with this user
         $events = Auth::user()->events()->get();
         $event_list = [];
@@ -83,26 +84,28 @@ class EventsController extends Controller
                 //relation means he HAS applied for this event
                 $color = "#38c172";
             }
-            if($event->cancelled == 1){
+            if ($event->cancelled == 1) {
                 $color = "red";
             }
             //create a Calendar item for this event
-            $event_list[] = Calendar::event(
-                $event->eventname,
-                false,
-                new \DateTime($event->date),
-                new \DateTime($event->enddate),
-                $event->id,
-                [
-                    'color' => $color,
-                ]
-            );
+            if (!array_key_exists($event->id, $event_list)) {
+                $event_list[] = Calendar::event(
+                    $event->eventname,
+                    false,
+                    new \DateTime($event->date),
+                    new \DateTime($event->enddate),
+                    $event->id,
+                    [
+                        'color' => $color,
+                    ]
+                );
+            }
         }
         //add all events to the calendar
         $calendar_details = Calendar::addEvents($event_list)->setCallbacks(
             [ //set fullcalendar callback options (will not be JSON encoded)
                 'eventClick' =>
-                'function(event) { if(event.id) {window.location.assign("/dashboard/agenda/item/"
+                    'function(event) { if(event.id) {window.location.assign("/dashboard/agenda/item/"
                                         + event.id, "_blank"); return false;}}',
             ]
         );
@@ -130,7 +133,7 @@ class EventsController extends Controller
         $event->pivot->update();
 
         $notification = array(
-            'message' => 'U bent aangemeld', 
+            'message' => 'U bent aangemeld',
             'alert-type' => 'success'
         );
 
@@ -145,7 +148,7 @@ class EventsController extends Controller
         $event->pivot->update();
 
         $notification = array(
-            'message' => 'U bent afgemeld', 
+            'message' => 'U bent afgemeld',
             'alert-type' => 'success'
         );
 
@@ -164,7 +167,7 @@ class EventsController extends Controller
         $event = Auth::user()->events()->where('event_id', $id)->first();
         $event->organiser_name = \App\User::where('id', $event->organiser_id)->first()->name;
         $users_applied = $event->users()->where('applied', 1)->get();
-        
+
         $voorgerecht = $event->meals()->where('type', 'voorgerecht')->get()->first();
         $hoofdgerecht = $event->meals()->where('type', 'hoofdgerecht')->get()->first();
         $nagerecht = $event->meals()->where('type', 'nagerecht')->get()->first();
@@ -184,8 +187,8 @@ class EventsController extends Controller
      */
     public function addEvent(Request $request)
     {
-        
-      
+
+
         $validatedData = $request->validate([
             'eventname' => 'required|max:255',
             'location' => 'required|max:255',
@@ -200,16 +203,16 @@ class EventsController extends Controller
         if ($request['auto_apply'] != null) {
             $autoApply = 1;
         }
-       
+
         $imagePath = null;
-        if(isset($request->image) && $request->image != null){
+        if (isset($request->image) && $request->image != null) {
             $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
             $path = public_path('img/uploads');
-            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+            $imagePath = url('/') . '/img/uploads/' . $imageName;
 
             request()->image->move($path, $imageName);
         }
-        
+
         $event = new AgendaEvent;
         $event->eventname = $request['eventname'];
         $event->location = $request['location'];
@@ -220,58 +223,156 @@ class EventsController extends Controller
         $event->enddate = $request['enddate'];
         $event->image_url = $imagePath;
         $event->save();
-        
-        if($request['voorgerecht'] != ""){
+
+        if ($request['voorgerecht'] != "") {
             // die;
             $meal = \App\Meal::where('id', $request['voorgerecht'])->first();
             $event->meals()->save($meal);
         }
 
-        if($request['hoofdgerecht'] != ""){
+        if ($request['hoofdgerecht'] != "") {
             $meal = \App\Meal::where('id', $request['hoofdgerecht'])->first();
             $event->meals()->save($meal);
         }
 
-        if($request['nagerecht'] != ""){
+        if ($request['nagerecht'] != "") {
             $meal = \App\Meal::where('id', $request['nagerecht'])->first();
             $event->meals()->save($meal);
         }
-       
+
         $user = \App\User::where('id', Auth::id())->first();
         $user->events()->save($event, ['applied' => $autoApply]);
 
         foreach ($request['role_check'] as $group) {
             $users = \App\User::where('role_id', $group)->get();
             foreach ($users as $user) {
-                if($user->id != Auth::id()){
+                if ($user->id != Auth::id()) {
                     $user->events()->save($event, ['applied' => $autoApply]);
                 }
             }
         }
+
         return redirect('dashboard/agenda')->with('success', 'Activiteit is aangemaakt');
     }
 
-    public function cancelEvent($id){
+    public function cancelEvent($id)
+    {
         $event = \App\AgendaEvent::where('id', $id)->update(['cancelled' => 1]);
         return redirect()->back()->with('success', 'Activiteit is geannuleerd');
     }
 
-    public function deleteEvent($id){
+    public function deleteEvent($id)
+    {
         $event = \App\AgendaEvent::where('id', $id)->first();
-        if($event->cancelled == 1){
+        if ($event->cancelled == 1) {
             $event->delete();
             return redirect('dashboard/agenda')->with('success', 'Activiteit is verwijderd');
         }
-        if($event->cancelled == 0){
+        if ($event->cancelled == 0) {
             return redirect()->back()->with('warning', 'Om de activiteit te verwijderen dient deze geannuleerd te zijn.');
         }
 
     }
+    public function retainEvent($id){
+        $event = \App\AgendaEvent::where('id', $id)->update(['cancelled' => 0]);
+        return redirect()->back()->with('success', 'Activiteit is weer zichtbaar');
+    }
+
+    public function updateEvent(Request $request, $eventid)
+    {
+
+        $validatedData = $request->validate([
+            'eventname' => 'required|max:255',
+            'location' => 'required|max:255',
+            'description' => 'required|max:255',
+            'date' => 'date',
+            'image' => 'image',
+            'enddate' => 'date|after:date',
+            'role_check' => 'required',
+
+        ]);
+        $autoApply = 0;
+        if ($request['auto_apply'] != null) {
+            $autoApply = 1;
+        }
+        $imageSet = 0;
+        $imagePath = null;
+        if (isset($request->image) && $request->image != null) {
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName;
+
+            request()->image->move($path, $imageName);
+            $imageSet = 1;
+        }  else {
+
+        }
+
+           $event = \App\AgendaEvent::findOrFail($eventid);
+           $event->eventname = $request['eventname'];
+           $event->location = $request['location'];
+           $event->transport = $request['transport'];
+           $event->description = $request['description'];
+           $event->date = $request['date'];
+           $event->enddate = $request['enddate'];
+          if($imageSet){ $event->image_url = $imagePath;}
+           $event->save();
+
+
+        if ($request['voorgerecht'] != "") {
+            // die;
+            $meal = \App\Meal::where('id', $request['voorgerecht'])->first();
+            AgendaEvent::findOrFail($eventid)->meals()->save($meal);
+        }
+
+        if ($request['hoofdgerecht'] != "") {
+            $meal = \App\Meal::where('id', $request['hoofdgerecht'])->first();
+            AgendaEvent::findOrFail($eventid)->meals()->save($meal);
+        }
+
+        if ($request['nagerecht'] != "") {
+            $meal = \App\Meal::where('id', $request['nagerecht'])->first();
+            AgendaEvent::findOrFail($eventid)->meals()->save($meal);
+        }
+
+        $user = \App\User::where('id', Auth::id())->first();
+        $user->events()->save(AgendaEvent::findOrFail($eventid), ['applied' => $autoApply]);
+
+//        foreach ($request['role_check'] as $group) {
+//            $users = \App\User::where('role_id', $group)->get();
+//            foreach ($users as $user) {
+//                if ($user->id != Auth::id()) {
+//                    $user->events()->save(AgendaEvent::findOrFail($eventid), ['applied' => $autoApply]);
+//                }
+//            }
+//        }
+        return redirect('dashboard/agenda')->with('success', 'Activiteit is aangepast');
+    }
+
+
     /**
      * Create the view
      *
      * @return \Illuminate\Http\Response
      */
+    /**
+     * Create a request
+     *
+     * @param int $id The id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function editMeal($id)
+    {
+        $meals = \App\Meal::all();
+        $event = AgendaEvent::findOrFail($id);
+        return View("dashPages.agendaEditMealActivity", ['meals' => $meals], compact('event'));
+    }
+    public function editActivity($id)
+    {
+        $event = AgendaEvent::findOrFail($id);
+        return View("dashPages.agendaEditActivity", compact('event' ));
+    }
     public function createMeal()
     {
         $meals = \App\Meal::all();
@@ -283,4 +384,5 @@ class EventsController extends Controller
     {
         return View('dashPages.agendaCreateActivity');
     }
+
 }

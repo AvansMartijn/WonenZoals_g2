@@ -56,15 +56,23 @@
                     </p>
                     <p><b>Locatie:</b> {!!$data['event']->location!!}</p>
                     <p><b>Vervoer:</b> {!!$data['event']->transport!!}</p>
-                    <p><b>Aanvang:</b> {{$data['event']->date}}</p>
+                    <p><b>Aanvang:</b> {{date('d/M/Y H:i', strtotime($data['event']->date))}}</p>
+                    <p><b>Eindtijd:</b> {{date('d/M/Y H:i', strtotime($data['event']->enddate))}}</p>
                     <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
-                    
+                    @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role_id == 1 && $data['event']->cancelled == 0 && date('d/M/Y H:i', strtotime($data['event']->date)) > date())
+                        @if ($data['meal']['hoofdgerecht'] != null)
+                             <a href="/dashboard/agenda/item/{{$data['event']->id}}/editMeal" class="btn btn-primary">Bewerken</a>
+                        @else
+                            <a href="/dashboard/agenda/item/{{$data['event']->id}}/editActivity" class="btn btn-primary">Bewerken</a>
+                        @endif
+                    @endif
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role_id == 1 && $data['event']->cancelled == 0 )
-                    <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Annuleren</a>
+                         <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Annuleren</a>
                     @endif
 
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 1) || Auth::user()->role_id == 1 && $data['event']->cancelled == 1)
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#vangnet">Verwijderen</button></button>
+                        <a href="/dashboard/agenda/item/{{$data['event']->id}}/retainEvent" class="btn btn-primary">Door laten gaan</a>
+                         <button class="btn btn-danger" data-toggle="modal" data-target="#vangnet">Verwijderen</button></button>
                     {{-- <a href="/dashboard/agenda/item/{{$data['event']->id}}/deleteEvent" class="btn btn-danger">Verwijderen</a> --}}
                     @endif
               
