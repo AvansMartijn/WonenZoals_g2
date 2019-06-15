@@ -49,7 +49,7 @@ class SponsorsController extends Controller
         $validatedData = $request->validate([
             'sponsorNaam' => 'required|max:255',
             'sponsorLink' => 'required|max:255',
-            'imageUrl' => 'required|max:255',
+            'imageUrl' => 'required|max:2000',
         ]);
 
         $imagePath = null;
