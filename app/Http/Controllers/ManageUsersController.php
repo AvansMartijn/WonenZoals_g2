@@ -160,11 +160,11 @@ class ManageUsersController extends Controller
 
         $user = User::where('id', $id)->first();
 
-        $authh = $user->authorizations;
+        // $authh = $user->authorizations;
 
-        foreach ($authh as $auth) {
-            $auth->delete();
-        }
+        // foreach ($authh as $auth) {
+        //     $auth->delete();
+        // }
 
         $user->delete();
 
