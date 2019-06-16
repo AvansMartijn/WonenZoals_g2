@@ -17,7 +17,7 @@
                 <div class="MealOptions clearfix">
                         <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
                     {!!Form::open(['action' => ['MealsController@create'], 'method' => 'POST'])!!}
-                    {{Form::hidden('_method', 'POST')}}
+                    {{Form::hidden('_method', 'DELETE')}}
                     {{Form::submit('Maaltijd aanmaken', ['class' => 'btn btn-primary float-left'])}}
                     {!!Form::close()!!}
                 </div>
