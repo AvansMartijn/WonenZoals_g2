@@ -131,7 +131,7 @@
                 </h3>
                 <hr>
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">
+                    <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply" checked>
                     <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
                 </div>
                
