@@ -72,7 +72,7 @@
                                             <span style="color: black;" class="userquote"></span></div>
 
                                             <div align="center">
-                                            <button class="btn btn-primary" data-toggle="modal" data-target="#{{$resident->name}}{{$resident->id}}">Lees Meer</button></button>
+                                            <button class="btn btn-primary" data-toggle="modal" data-target="#resident{{$resident->id}}">Lees Meer</button></button>
                                             </div>
                                         </div>
                                     </slide>
