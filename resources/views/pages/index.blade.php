@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="row" id="example">
-                            <carousel-3d :height="400">
+                            <carousel-3d :height="400" :autoplay=true>
                                 @foreach ($residents as $resident)
                                     <slide :index="{{$resident->id -1}}" class="slidee">
                                         <div>
