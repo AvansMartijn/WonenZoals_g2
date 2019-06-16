@@ -109,6 +109,15 @@
     background: #953635;
 }
 
+.person-picture {
+
+    max-width: 362px;
+    max-height: 240px;
+    min-width: 362px;
+    min-height: 240px;
+
+}
+
 @keyframes drift {
     from {
         transform: rotate(0deg);

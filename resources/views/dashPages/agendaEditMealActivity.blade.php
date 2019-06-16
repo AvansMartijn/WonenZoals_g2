@@ -135,16 +135,7 @@
                     <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">
                     <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
                 </div>
-                <h3 data-toggle="tooltip" data-placement="bottom" title="Optioneel een afbeelding voor de maaltijd">
-                    Afbeelding</h3>
-                <hr>
-                <div class="form-group">
-                    @if ($event->image_url != null && $event->image_url != "")
-                        <img class="AgendaImage" src="{{$event->image_url}}">
-                    @endif
-                    <label>Upload Afbeelding</label>
-                    <input type="file" name="image" id="image">
-
+                    <input class="hidden" type="file" name="image" id="image">
                 </div>
             </div>
         </div>
