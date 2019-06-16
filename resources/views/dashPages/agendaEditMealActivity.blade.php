@@ -66,11 +66,9 @@
                     <label for="voorgerecht">Voorgerecht: </label>
                     <select  name="voorgerecht" class="form-control" name="voorgerecht" id="voorgerecht"
                             data-toggle="tooltip" data-placement="top" title="Kies hier het voorgerecht van de maaltijd">
-                        @foreach ($meals as $meal)
-                            @if ($meal->type == "voorgerecht")
-                                <option value="{{$meal->id}}" @if ($meal == old('voorgerecht',$event->voorgerecht)) selected="selected" @endif>{{$meal->name}}</option>
+                            @if ($meal->type == "voorgerecht" && $meal->isDeleted == 0)
+                                <option value="{{$meal->id}}" @if ($meal == old('voorgerecht',$event->voorgerecht)) selected="selected" @endif></option>
                             @endif
-                        @endforeach
                     </select>
                 </div>
 
@@ -78,11 +76,9 @@
                     <label for="hoofdgerecht">Hoofdgerecht: </label>
                     <select name="hoofdgerecht" class="form-control" name="hoofdgerecht" id="hoofdgerecht"
                             data-toggle="tooltip" data-placement="top" title="Kies hier het hoofdgerecht van de maaltijd">
-                        @foreach ($meals as $meal)
-                            @if ($meal->type == "hoofdgerecht")
-                                <option value="{{$meal->id}}" @if ($meal == old('hoofdgerecht',$event->hoofdgerecht)) selected="selected" @endif>{{$meal->name}}</option>
+                            @if ($meal->type == "hoofdgerecht" && $meal->isDeleted == 0)
+                                <option value="{{$meal->id}}" @if ($meal == old('hoofdgerecht',$event->hoofdgerecht)) selected="selected" @endif></option>
                             @endif
-                        @endforeach
                     </select>
                 </div>
 
@@ -90,11 +86,9 @@
                     <label for="nagerecht">Nagerecht: </label>
                     <select  name="nagerecht" class="form-control" name="nagerecht" id="nagerecht"
                             data-toggle="tooltip" data-placement="top" title="Kies hier het nagerecht van de maaltijd">
-                        @foreach ($meals as $meal)
-                            @if ($meal->type == "nagerecht")
-                                <option value="{{$meal->id}}" @if ($meal == old('nagerecht',$event->nagerecht)) selected="selected" @endif>{{$meal->name}}</option>
+                            @if ($meal->type == "nagerecht" && $meal->isDeleted == 0)
+                                <option value="{{$meal->id}}" @if ($meal == old('nagerecht',$event->nagerecht)) selected="selected" @endif></option>
                             @endif
-                        @endforeach
                     </select>
                 </div>
             </div>
@@ -108,22 +102,22 @@
                 <hr>
 
                 {{-- <div class="funkyradio-success"> --}}
-                <input type="hidden" name="role_check[]" value="beheerder" id="Beheerder" checked>
+                <input type="hidden" name="role_check[]" value="1" id="Beheerder" checked>
                 {{-- <label for="Beheerder">Beheerders</label> --}}
                 {{-- </div> --}}
 
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="bewoner" id="Bewoner" {{ old('role_check[]') ? 'checked' : null }}>
+                    <input type="checkbox" name="role_check[]" value="4" id="Bewoner" {{ old('role_check[]') ? 'checked' : null }}>
                     <label for="Bewoner">Bewoners</label>
                 </div>
 
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="ouder" id="Ouder" {{ old('role_check[]') ? 'checked' : null }}>
+                    <input type="checkbox" name="role_check[]" value="3" id="Ouder" {{ old('role_check[]') ? 'checked' : null }}>
                     <label for="Ouder">Ouders</label>
                 </div>
 
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="vrijwilliger" id="Vrijwilliger" {{ old('role_check[]') ? 'checked' : null }}>
+                    <input type="checkbox" name="role_check[]" value="2" id="Vrijwilliger" {{ old('role_check[]') ? 'checked' : null }}>
                     <label for="Vrijwilliger">Vrijwilligers</label>
                 </div>
 
