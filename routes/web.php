@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
- */
+*/
 
 //example
 //route to webpage using a function in pagescontroler
@@ -24,6 +24,7 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::post('/dashboard', 'DashboardController@store')->middleware('auth');
+Route::delete('/dashboard/{id}', 'DashboardController@destroy')->middleware('auth');
 
 //gebruikers en machtigingen
 Route::get('/dashboard/gebruikers', 'ManageUsersController@showGebruikers')->middleware('auth');
@@ -120,7 +121,7 @@ Route::post('/dashboard/sections/text/edit/', 'SectionsController@updateTextSect
 Route::get('/dashboard/maaltijden', 'MealsController@index');
 Route::get('/dashboard/maaltijden/{id}', 'MealsController@show');
 Route::get('/dashboard/maaltijden/edit/{id}', 'MealsController@edit')->name('meal.edit');
-Route::post('/dashboard/maaltijden/delete/{id}', 'MealsController@destroy')->name('meal.destroy');
+Route::get('/dashboard/maaltijden/delete/{id}', 'MealsController@destroy');
 Route::post('/dashboard/maaltijden/update', 'MealsController@update')->name('meal.update');
 Route::post('/dashboard/maaltijden/create', 'MealsController@create')->name('meals.build');
 Route::post('/dashboard/maaltijden/store', 'MealsController@store');
