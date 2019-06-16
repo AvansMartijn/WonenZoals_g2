@@ -129,7 +129,8 @@ class MealsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $meal = \App\Meal::where('id', $id)->first();
+        return View('dashPages.mealEdit', compact('meal'));
     }
 
     /**
@@ -154,7 +155,7 @@ class MealsController extends Controller
         $meal->isDeleted = 0;
         $meal->save();
 
-        return redirect()->back()->with('success', 'Gerecht is aangepast!');
+        return redirect('/dashboard/maaltijden/$id')->with('success', 'Gerecht is aangepast!');
     }
 
     /**
