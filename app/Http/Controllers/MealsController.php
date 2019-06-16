@@ -139,9 +139,22 @@ class MealsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'mealname' => 'required|max:255',
+            'description' => 'required|max:255',
+        ]);
+        $id = $request['mealId'];
+        $meal = \App\Meal::where('id', $id)->first();
+
+        $meal->name = $request['mealname'];
+        $meal->description = $request['description'];
+        $meal->type = $request['gerechttype'];
+        $meal->isDeleted = 0;
+        $meal->save();
+
+        return redirect()->back()->with('success', 'Gerecht is aangepast!');
     }
 
     /**
@@ -153,10 +166,11 @@ class MealsController extends Controller
     public function destroy($id)
     {
         $meal = \App\Meal::where('id', $id)->first();
-        $meal->delete();
+        $meal->isDeleted = 1;
+        $meal->save();
 
         $notification = array(
-            'message' => 'gerecht is verwijderd', 
+            'message' => 'gerecht is verwijderd',
             'alert-type' => 'success'
         );
 
