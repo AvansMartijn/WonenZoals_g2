@@ -101,7 +101,7 @@ class ContactUSController extends Controller
         $subject->save();
 
         $notification = array(
-            'message' => 'onderwerp is aangemaakt', 
+            'message' => 'Onderwerp is aangemaakt', 
             'alert-type' => 'success'
         );
 
