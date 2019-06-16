@@ -217,4 +217,25 @@ class DashboardController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+        /**
+     * Delete the shift
+     *
+     * @param id $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $dienst = Diensten::where('id', $id)->first();
+
+        $dienst->delete();
+
+        $notification = array(
+            'message' => 'De dienst is verwijderd', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard')->with($notification);
+    }
 }

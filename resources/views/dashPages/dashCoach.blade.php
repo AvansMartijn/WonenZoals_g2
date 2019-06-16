@@ -55,6 +55,7 @@
                                 <th>Naam Dienst</th>
                                 <th>Start Tijd</th>
                                 <th>Eind Tijd</th>
+                                <th>Verwijderen</th>
                         </tr>
                 </thead>
                 <tbody class="Searchable">
@@ -63,6 +64,12 @@
                                         <td>{{$dienst->naam}}</td>
                                         <td>{{ date('d-m-Y H:i', strtotime($dienst->start_datetime)) }}</td>
                                         <td>{{ date('d-m-Y H:i', strtotime($dienst->eind_datetime)) }}</td>
+                                        <td class="options">
+                                                {!!Form::open(['action' => ['DashboardController@destroy', $dienst->id], 'method' => 'POST'])!!}
+                                                    {{Form::hidden('_method', 'DELETE')}}
+                                                    {{Form::submit('Verwijderen', ['class' => 'btn btn-danger'])}}
+                                                {!!Form::close()!!}
+                                        </td>
                                 </tr>
                         @endforeach
                 </tbody>
