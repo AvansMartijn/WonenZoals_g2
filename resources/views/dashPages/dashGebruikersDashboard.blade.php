@@ -14,6 +14,32 @@
 <div class="container">
     <div class="ContentMainFull">
 
+            <div class="DashboardItem">
+                    <h2>Coaches</h2>
+        
+                    <table class="table table-striped">
+                        <thead>
+                                <tr>
+                                        <th>Naam Dienst</th>
+                                        <th>Naam Coach</th>
+                                        <th>Start Tijd</th>
+                                        <th>Eind Tijd</th>
+                                </tr>
+                        </thead>
+                        <tbody class="Searchable">
+                                @foreach($diensten as $dienst)
+                                        <tr>
+                                                <td>{{$dienst->naam}}</td>
+                                                <td>{{$dienst->coach_naam}}</td>
+                                                <td>{{ date('H:i', strtotime($dienst->start_datetime)) }}</td>
+                                                <td>{{ date('H:i', strtotime($dienst->eind_datetime)) }}</td>
+                                        </tr>
+                                @endforeach
+                        </tbody>
+                </table>
+                    
+                </div>
+
     {{-- check all auth witin a role --}}
     @foreach (Auth::user()->authorizations()->get() as $userauthorization)
 
@@ -140,31 +166,7 @@
 
         @endif
 
-        <div class="DashboardItem">
-            <h2>Coaches</h2>
-
-            <table class="table table-striped">
-                <thead>
-                        <tr>
-                                <th>Naam Dienst</th>
-                                <th>Naam Coach</th>
-                                <th>Start Tijd</th>
-                                <th>Eind Tijd</th>
-                        </tr>
-                </thead>
-                <tbody class="Searchable">
-                        @foreach($diensten as $dienst)
-                                <tr>
-                                        <td>{{$dienst->naam}}</td>
-                                        <td>{{$dienst->coach_naam}}</td>
-                                        <td>{{ date('H:i', strtotime($dienst->start_datetime)) }}</td>
-                                        <td>{{ date('H:i', strtotime($dienst->eind_datetime)) }}</td>
-                                </tr>
-                        @endforeach
-                </tbody>
-        </table>
-            
-        </div>
+        
         
     @endforeach
 
