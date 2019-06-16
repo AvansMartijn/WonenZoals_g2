@@ -53,14 +53,14 @@
                 </div>
             </div>
             <input type="hidden" value="{{$meal->id}}" name="mealId"/>
-            <div class="form-group">
                 @if ($meal->img_url != null && $meal->img_url != "")
+                <div class="clearfix">
                     <label>Huidige afbeelding</label>
+                </div>
                     <img class="AgendaImage" src="{{$meal->img_url}}">
                 @endif
                 <input type="file" name="image" id="image"
                        data-toggle="tooltip" data-placement="bottom" title="Kies een afbeelding. Max 2MB">
-            </div>
         </div>
 
 

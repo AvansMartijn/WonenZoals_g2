@@ -66,9 +66,11 @@
                     <label for="voorgerecht">Voorgerecht: </label>
                     <select  name="voorgerecht" class="form-control" name="voorgerecht" id="voorgerecht"
                             data-toggle="tooltip" data-placement="top" title="Kies hier het voorgerecht van de maaltijd">
+                        @foreach ($meals as $meal)
                             @if ($meal->type == "voorgerecht" && $meal->isDeleted == 0)
-                                <option value="{{$meal->id}}" @if ($meal == old('voorgerecht',$event->voorgerecht)) selected="selected" @endif></option>
+                                <option value="{{$meal->id}}" >{{$meal->name}}</option>
                             @endif
+                        @endforeach
                     </select>
                 </div>
 
@@ -76,9 +78,11 @@
                     <label for="hoofdgerecht">Hoofdgerecht: </label>
                     <select name="hoofdgerecht" class="form-control" name="hoofdgerecht" id="hoofdgerecht"
                             data-toggle="tooltip" data-placement="top" title="Kies hier het hoofdgerecht van de maaltijd">
+                        @foreach ($meals as $meal)
                             @if ($meal->type == "hoofdgerecht" && $meal->isDeleted == 0)
-                                <option value="{{$meal->id}}" @if ($meal == old('hoofdgerecht',$event->hoofdgerecht)) selected="selected" @endif></option>
+                                <option value="{{$meal->id}}">{{$meal->name}}</option>
                             @endif
+                            @endforeach
                     </select>
                 </div>
 
@@ -86,9 +90,11 @@
                     <label for="nagerecht">Nagerecht: </label>
                     <select  name="nagerecht" class="form-control" name="nagerecht" id="nagerecht"
                             data-toggle="tooltip" data-placement="top" title="Kies hier het nagerecht van de maaltijd">
+                        @foreach ($meals as $meal)
                             @if ($meal->type == "nagerecht" && $meal->isDeleted == 0)
-                                <option value="{{$meal->id}}" @if ($meal == old('nagerecht',$event->nagerecht)) selected="selected" @endif></option>
+                                <option value="{{$meal->id}}">{{$meal->name}}</option>
                             @endif
+                        @endforeach
                     </select>
                 </div>
             </div>
