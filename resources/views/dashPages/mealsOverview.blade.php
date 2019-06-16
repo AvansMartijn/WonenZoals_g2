@@ -29,17 +29,20 @@
                         </thead>
                         <tbody class="Searchable">
                                 @foreach ($meals as $meal)
+                                        @if($meal->isDeleted == 0)
                                         <tr>
                                                 <td>{{$meal->name}}</td>
                                                 <td>{{$meal->type}}</td>
+                                                <input name="id" hidden="hidden" value={{$meal->id}}>
                                                 <td class="text-left">
                                                         <a class="btn btn-primary float-left margin-right" href="/dashboard/maaltijden/{{$meal->id}}">Details</a>
-                                                        {!!Form::open(['action' => ['MealsController@destroy', $meal->id], 'method' => 'POST'])!!}
+                                                                {!!Form::open(['action' => ['MealsController@destroy', $meal->id], 'method' => 'POST'])!!}
                                                                 {{Form::hidden('_method', 'DELETE')}}
                                                                 {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-left'])}}
-                                                        {!!Form::close()!!}
+                                                                {!!Form::close()!!}
                                                 </td>
                                         </tr>
+                                        @endif
                                 @endforeach
                         </tbody>
                 </table>

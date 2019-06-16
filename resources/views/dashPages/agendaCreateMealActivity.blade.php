@@ -67,7 +67,7 @@
                     data-toggle="tooltip" data-placement="top" title="Kies hier het voorgerecht van de maaltijd">
                         <option value="">Geen voorgerecht</option>
                     @foreach ($meals as $meal)
-                        @if ($meal->type == "voorgerecht")
+                        @if ($meal->type == "voorgerecht" && $meal->isDeleted == 0)
                             <option value="{{$meal->id}}">{{$meal->name}}</option>
                         @endif
                     @endforeach
@@ -80,7 +80,7 @@
                     data-toggle="tooltip" data-placement="top" title="Kies hier het hoofdgerecht van de maaltijd">
                         <option value="">Geen hoofdgerecht</option>
                         @foreach ($meals as $meal)
-                            @if ($meal->type == "hoofdgerecht")
+                            @if ($meal->type == "hoofdgerecht" && $meal->isDeleted == 0)
                                 <option value="{{$meal->id}}">{{$meal->name}}</option>
                             @endif
                         @endforeach
@@ -93,7 +93,7 @@
                     data-toggle="tooltip" data-placement="top" title="Kies hier het nagerecht van de maaltijd">
                         <option value="">Geen nagerecht</option>
                         @foreach ($meals as $meal)
-                            @if ($meal->type == "nagerecht")
+                            @if ($meal->type == "nagerecht" && $meal->isDeleted == 0)
                                 <option value="{{$meal->id}}">{{$meal->name}}</option>
                             @endif
                         @endforeach
