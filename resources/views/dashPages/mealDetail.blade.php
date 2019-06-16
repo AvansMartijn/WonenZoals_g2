@@ -5,6 +5,7 @@
 <div class="BackHeader">
     <a href="/dashboard/maaltijden" class="btn btn-primary"><i class="fas fa-caret-left"></i> Terug</a>
     <h3>Gerecht Details</h3>
+    <a href="/dashboard/maaltijden/edit/{{$meal->id}}" class="btn btn-primary"><i class="fas fa-caret-left"></i> Bewerken</a>
     <hr>
 </div>
 

@@ -69,6 +69,12 @@ class MealsController extends Controller
         return View('dashPages.mealCreate');
         //
     }
+    public function edit($id)
+    {
+        $meal = \App\Meal::where('id', $id)->first();
+        return View('dashPages.mealEdit',  compact('meal'));
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -117,10 +123,6 @@ class MealsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -129,9 +131,22 @@ class MealsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
+        $validatedData = $request->validate([
+            'mealname' => 'required|max:255',
+            'description' => 'required|max:255',
+        ]);
+        $id = $request['mealId'];
+        $meal = \App\Meal::where('id', $id)->first();
 
+        $meal->name = $request['mealname'];
+        $meal->description = $request['description'];
+        $meal->type = $request['gerechttype'];
+        $meal->isDeleted = 0;
+        $meal->save();
+
+        return redirect()->back()->with('success', 'Gerecht is aangepast!');
     }
 
     /**
