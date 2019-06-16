@@ -18,6 +18,7 @@
 
     <div class="container">
         <div class="MainContent">
+            <input type="hidden" value="1" name="isMeal"/>
             <h1>Gegevens</h1>
             <hr>
             <div class="form-group">

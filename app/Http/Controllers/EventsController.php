@@ -198,8 +198,11 @@ class EventsController extends Controller
             'image' => 'image|max:2000',
             'enddate' => 'date|after:date',
             'role_check' => 'required',
+            'hoofdgerecht' => 'required_if:isMeal,1'
 
         ]);
+
+
         $autoApply = 0;
         if ($request['auto_apply'] != null) {
             $autoApply = 1;

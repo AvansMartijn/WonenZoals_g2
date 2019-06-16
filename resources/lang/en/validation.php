@@ -92,7 +92,7 @@ return [
     'present'              => ':attribute moet bestaan.',
     'regex'                => ':attribute formaat is ongeldig.',
     'required'             => ':attribute is verplicht.',
-    'required_if'          => ':attribute is verplicht indien :other gelijk is aan :value.',
+    'required_if'          => ':attribute is verplicht.',
     'required_unless'      => ':attribute is verplicht tenzij :other gelijk is aan :values.',
     'required_with'        => ':attribute is verplicht i.c.m. :values',
     'required_with_all'    => ':attribute is verplicht i.c.m. :values',
@@ -173,6 +173,7 @@ return [
         'enddate'               => 'Einddatum',
         'eventname'             => 'Titel',
         'location'              => 'Locatie',
-        'image'                 => 'Afbeelding'
+        'image'                 => 'Afbeelding',
+        'hoofdgerecht'          => 'Hoofdgerecht'
     ],
 ];

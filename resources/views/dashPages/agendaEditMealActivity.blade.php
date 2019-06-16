@@ -18,7 +18,6 @@
 
     <div class="container">
         <div class="MainContent">
-            <input type="hidden" value="1" name="isMeal"/>
             <input name="eventid" value="{{$event->id}}" hidden="hidden">
             <h1>Gegevens</h1>
             <hr>

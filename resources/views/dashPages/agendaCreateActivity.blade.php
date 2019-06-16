@@ -17,6 +17,7 @@
 
 <div class="container">
     <div class="MainContent">
+        <input type="hidden" value="0" name="isMeal"/>
         <h1>Gegevens</h1>
         <hr>
         <div class="form-group">
