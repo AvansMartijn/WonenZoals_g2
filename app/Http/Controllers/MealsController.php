@@ -54,8 +54,20 @@ class MealsController extends Controller
      */
     public function index()
     {
-        //
-        $meals = Meal::orderBy('type', 'DESC')->get();
+        $meals = array();
+        $StarterMeals = Meal::where('type','voorgerecht')->get();
+        $MainMeals = Meal::where('type','hoofdgerecht')->get();
+        $Deserts = Meal::where('type','nagerecht')->get();
+
+        foreach ($StarterMeals as $Meal)
+            array_push($meals, $Meal);
+
+        foreach ($MainMeals as $Meal)
+            array_push($meals, $Meal);
+
+        foreach ($Deserts as $Meal)
+            array_push($meals, $Meal);
+
         return View('dashPages.mealsOverview', compact('meals'));
     }
 
@@ -145,7 +157,17 @@ class MealsController extends Controller
         $validatedData = $request->validate([
             'mealname' => 'required|max:255',
             'description' => 'required|max:255',
+            'image' => 'image|max:8192'
         ]);
+
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName;
+
+            request()->image->move($path, $imageName);
+        }
         $id = $request['mealId'];
         $meal = \App\Meal::where('id', $id)->first();
 
@@ -153,6 +175,7 @@ class MealsController extends Controller
         $meal->description = $request['description'];
         $meal->type = $request['gerechttype'];
         $meal->isDeleted = 0;
+        $meal->img_url = $imagePath;
         $meal->save();
 
         return redirect('/dashboard/maaltijden/')->with('success', 'Gerecht is aangepast!');
