@@ -1,5 +1,5 @@
 @foreach ($residents as $resident)
-<div class="modal fade lg" id="{{$resident->name}}{{$resident->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade lg" id="resident{{$resident->id}}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body">
