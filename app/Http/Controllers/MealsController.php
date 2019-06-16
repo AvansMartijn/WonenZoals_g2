@@ -54,8 +54,20 @@ class MealsController extends Controller
      */
     public function index()
     {
-        //
-        $meals = Meal::orderBy('type', 'DESC')->get();
+        $meals = array();
+        $StarterMeals = Meal::where('type','voorgerecht')->get();
+        $MainMeals = Meal::where('type','hoofdgerecht')->get();
+        $Deserts = Meal::where('type','nagerecht')->get();
+
+        foreach ($StarterMeals as $Meal)
+            array_push($meals, $Meal);
+
+        foreach ($MainMeals as $Meal)
+            array_push($meals, $Meal);
+
+        foreach ($Deserts as $Meal)
+            array_push($meals, $Meal);
+
         return View('dashPages.mealsOverview', compact('meals'));
     }
 
