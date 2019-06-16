@@ -336,17 +336,25 @@ class EventsController extends Controller
             AgendaEvent::findOrFail($eventid)->meals()->save($meal);
         }
 
-        $user = \App\User::where('id', Auth::id())->first();
-        $user->events()->save(AgendaEvent::findOrFail($eventid), ['applied' => $autoApply]);
 
-//        foreach ($request['role_check'] as $group) {
-//            $users = \App\User::where('role_id', $group)->get();
-//            foreach ($users as $user) {
-//                if ($user->id != Auth::id()) {
-//                    $user->events()->save(AgendaEvent::findOrFail($eventid), ['applied' => $autoApply]);
-//                }
-//            }
-//        }
+       foreach ($request['role_check'] as $group) {
+           $users = \App\User::where('role_id', $group)->get();
+           foreach ($users as $user) {
+               if ($user->id != Auth::id()) {
+                $hasevent = false;
+                foreach ($user->events()->get() as $u_event)
+                {
+                    if ($u_event->id == $eventid)
+                    {
+                        $hasevent = true;
+                    }
+                }
+                if(!$hasevent){
+                    $user->events()->save(AgendaEvent::findOrFail($eventid), ['applied' => $autoApply]);
+                }
+               }
+           }
+       }
         return redirect('dashboard/agenda')->with('success', 'Activiteit is aangepast');
     }
 
