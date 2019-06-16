@@ -120,7 +120,7 @@ Route::post('/dashboard/sections/text/edit/', 'SectionsController@updateTextSect
 Route::get('/dashboard/maaltijden', 'MealsController@index');
 Route::get('/dashboard/maaltijden/{id}', 'MealsController@show');
 Route::get('/dashboard/maaltijden/edit/{id}', 'MealsController@edit')->name('meal.edit');
-Route::post('/dashboard/maaltijden/delete/{id}', 'MealsController@destroy')->name('meal.destroy');
+Route::post('/dashboard/maaltijden/delete/{id}', 'MealsController@destroy');
 Route::post('/dashboard/maaltijden/update', 'MealsController@update')->name('meal.update');
 Route::post('/dashboard/maaltijden/create', 'MealsController@create')->name('meals.build');
 Route::post('/dashboard/maaltijden/store', 'MealsController@store');
