@@ -36,7 +36,7 @@ class ResidentsController extends Controller
     }
 
     public function create(){
-        return view('dashpages.residentCreate');
+        return view('dashPages.residentCreate');
     }
 
     public function store(Request $request){
