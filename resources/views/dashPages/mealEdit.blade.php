@@ -55,7 +55,14 @@
         </div>
 
             <input type="hidden" value="{{$meal->id}}" name="mealId"/>
-
+        <div class="form-group">
+            @if ($meal->image_url != null && $meal->image_url != "")
+                <img class="AgendaImage" src="{{$meal->image_url}}">
+            @endif
+            <label>Upload Afbeelding</label>
+            <input type="file" name="image" id="image"
+                   data-toggle="tooltip" data-placement="bottom" title="Kies een afbeelding. Max 2MB">
+        </div>
         <div class="MainContent">
             <hr>
             {{Form::submit("Versturen", ['class' => 'btn btn-success full-width'])}}

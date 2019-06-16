@@ -155,7 +155,7 @@ class MealsController extends Controller
         $meal->isDeleted = 0;
         $meal->save();
 
-        return redirect('/dashboard/maaltijden/$id')->with('success', 'Gerecht is aangepast!');
+        return redirect('/dashboard/maaltijden/')->with('success', 'Gerecht is aangepast!');
     }
 
     /**
