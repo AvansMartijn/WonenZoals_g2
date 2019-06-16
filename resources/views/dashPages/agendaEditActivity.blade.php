@@ -60,62 +60,60 @@
         </div>
     </div>
 
+    <div class="SideContent">
+        <div class="funkyradio">
+            <h1 data-toggle="tooltip" data-placement="bottom" title="Kies hier de groepen waarvoor de maaltijd is">
+                Delen Met
+            </h1>
+            <hr>
 
-        <div class="SideContent">
-            <div class="funkyradio">
-                <h1 data-toggle="tooltip" data-placement="bottom" title="Kies hier de groepen waarvoor de maaltijd is">
-                    Delen Met
-                </h1>
-                <hr>
+            {{-- <div class="funkyradio-success"> --}}
+            <input type="hidden" name="role_check[]" value="beheerder" id="Beheerder" checked>
+            {{-- <label for="Beheerder">Beheerders</label> --}}
+            {{-- </div> --}}
 
-                {{-- <div class="funkyradio-success"> --}}
-                <input type="hidden" name="role_check[]" value="beheerder" id="Beheerder" checked>
-                {{-- <label for="Beheerder">Beheerders</label> --}}
-                {{-- </div> --}}
+            <div class="funkyradio-success">
+                <input type="checkbox" name="role_check[]" value="bewoner" id="Bewoner">
+                <label for="Bewoner">Bewoners</label>
+            </div>
 
-                <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="bewoner" id="Bewoner">
-                    <label for="Bewoner">Bewoners</label>
-                </div>
+            <div class="funkyradio-success">
+                <input type="checkbox" name="role_check[]" value="ouder" id="Ouder">
+                <label for="Ouder">Ouders</label>
+            </div>
 
-                <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="ouder" id="Ouder">
-                    <label for="Ouder">Ouders</label>
-                </div>
+            <div class="funkyradio-success">
+                <input type="checkbox" name="role_check[]" value="vrijwilliger" id="Vrijwilliger">
+                <label for="Vrijwilliger">Vrijwilligers</label>
+            </div>
 
-                <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="vrijwilliger" id="Vrijwilliger">
-                    <label for="Vrijwilliger">Vrijwilligers</label>
-                </div>
-
-                <h3 data-toggle="tooltip" data-placement="bottom" title="Vink aan als de gebruikers automatisch aangemeld moeten worden">
-                    Aanwezig Melden
-                </h3>
-                <hr>
-                <div class="funkyradio-success">
-                    <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">
-                    <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
-                </div>
-                <h3 data-toggle="tooltip" data-placement="bottom" title="Optioneel een afbeelding voor de maaltijd">
-                    Afbeelding</h3>
-                <hr>
-                <div class="form-group">
-                    @if ($event->image_url != null && $event->image_url != "")
-                        <img class="AgendaImage" src="{{$event->image_url}}">
-                    @endif
-                    <label>Upload Afbeelding</label>
-                    <input type="file" name="image" id="image">
-                </div>
+            <h3 data-toggle="tooltip" data-placement="bottom" title="Vink aan als de gebruikers automatisch aangemeld moeten worden">
+                Aanwezig Melden
+            </h3>
+            <hr>
+            <div class="funkyradio-success">
+                <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">
+                <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
+            </div>
+            <h3 data-toggle="tooltip" data-placement="bottom" title="Optioneel een afbeelding voor de maaltijd">
+                Afbeelding</h3>
+            <hr>
+            <div class="form-group">
+                @if ($event->image_url != null && $event->image_url != "")
+                    <img class="AgendaImage" src="{{$event->image_url}}">
+                @endif
+                <label>Upload Afbeelding</label>
+                <input type="file" name="image" id="image">
             </div>
         </div>
-
+    </div>
+    <div class="container">
         <div class="MainContent">
+        
+            <hr>
+            {{Form::submit("Activiteit aanpassen", ['class' => 'btn btn-success full-width'])}}
 
-                    <hr>
-                    {{Form::submit("Activiteit aanpassen", ['class' => 'btn btn-success full-width'])}}
-
-                    {!! Form::close() !!}
-                </div>
-            </div>
+            {!! Form::close() !!}
         </div>
+    </div>
 @endsection
