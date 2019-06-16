@@ -34,26 +34,32 @@
                 <hr>
                 <p>{!!$data['event']->description!!}</p>
 
-                    <p>
-                    @if ($data['meal']['voorgerecht'] != null)
-                        <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}<br>
-                        @if ($data['meal']['voorgerecht']->img_url != null && $data['meal']['voorgerecht']->img_url != "")
-                            <img class="AgendaImage" style="max-height:150px" src="{{$data['meal']['voorgerecht']->img_url}}">
+                    <div>
+                        @if ($data['meal']['voorgerecht'] != null)
+                            @if ($data['meal']['voorgerecht']->img_url != null && $data['meal']['voorgerecht']->img_url != "")
+                                <img class="ActivityImage" style="max-height:150px" src="{{$data['meal']['voorgerecht']->img_url}}">
+                            @endif
+                            <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}
+                        @endif
+                    </div>
+                    <div>
+                        @if ($data['meal']['hoofdgerecht'] != null)
+                            @if ($data['meal']['hoofdgerecht']->img_url != null && $data['meal']['hoofdgerecht']->img_url != "")
+                                <img class="ActivityImage" src="{{$data['meal']['hoofdgerecht']->img_url}}">
+                            @endif 
+                            <b>Hoofdgerecht:</b> {{$data['meal']['hoofdgerecht']->name}}
                         @endif 
-                    @endif
-                    @if ($data['meal']['hoofdgerecht'] != null)
-                        <b>Hoofdgerecht:</b> {{$data['meal']['hoofdgerecht']->name}} <br> 
-                        @if ($data['meal']['hoofdgerecht']->img_url != null && $data['meal']['hoofdgerecht']->img_url != "")
-                        <img class="AgendaImage" src="{{$data['meal']['hoofdgerecht']->img_url}}">
-                    @endif 
-                    @endif
-                    @if ($data['meal']['nagerecht'] != null)
-                        <b>Nagerecht:</b> {{$data['meal']['nagerecht']->name}} <br> 
-                        @if ($data['meal']['nagerecht']->img_url != null && $data['meal']['nagerecht']->img_url != "")
-                        <img class="AgendaImage" src="{{$data['meal']['nagerecht']->img_url}}">
-                    @endif 
-                    @endif
-                    </p>
+                    </div>
+                    <div>
+                        @if ($data['meal']['nagerecht'] != null)
+                            @if ($data['meal']['nagerecht']->img_url != null && $data['meal']['nagerecht']->img_url != "")
+                                <img class="ActivityImage" src="{{$data['meal']['nagerecht']->img_url}}">
+                            @endif 
+                            <b>Nagerecht:</b> {{$data['meal']['nagerecht']->name}}
+                        @endif
+                    </div>
+            
+                    <br>
                     <p><b>Locatie:</b> {!!$data['event']->location!!}</p>
                     <p><b>Vervoer:</b> {!!$data['event']->transport!!}</p>
                     <p><b>Aanvang:</b> {{date('d/M/Y H:i', strtotime($data['event']->date))}}</p>
