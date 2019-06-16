@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use App\AuthorizationLookup;
+use App\authorizationLookup;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -111,50 +111,50 @@ class RegisterController extends Controller
         //beheerder
         if($user->role_id == 1)
         {
-            $auth = AuthorizationLookup::where('id', 1)->first();
+            $auth = authorizationLookup::where('id', 1)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 2)->first();
+            $auth = authorizationLookup::where('id', 2)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 3)->first();
+            $auth = authorizationLookup::where('id', 3)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 4)->first();
+            $auth = authorizationLookup::where('id', 4)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 5)->first();
+            $auth = authorizationLookup::where('id', 5)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 6)->first();
+            $auth = authorizationLookup::where('id', 6)->first();
             $user->authorizations()->save($auth);
         }
         //vrijwilliger
         if($user->role_id == 2)
         {
-            $auth = AuthorizationLookup::where('id', 1)->first();
+            $auth = authorizationLookup::where('id', 1)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 2)->first();
+            $auth = authorizationLookup::where('id', 2)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 3)->first();
+            $auth = authorizationLookup::where('id', 3)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 4)->first();
+            $auth = authorizationLookup::where('id', 4)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 5)->first();
+            $auth = authorizationLookup::where('id', 5)->first();
             $user->authorizations()->save($auth);
             
         }
         //ouder
         if($user->role_id == 3)
         {
-            $auth = AuthorizationLookup::where('id', 2)->first();
+            $auth = authorizationLookup::where('id', 2)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 4)->first();
+            $auth = authorizationLookup::where('id', 4)->first();
             $user->authorizations()->save($auth);
 
 
@@ -162,26 +162,26 @@ class RegisterController extends Controller
         //bewoner
         if($user->role_id == 4)
         {
-            $auth = AuthorizationLookup::where('id', 1)->first();
+            $auth = authorizationLookup::where('id', 1)->first();
             $user->authorizations()->save($auth);
 
         }
         //coach
         if($user->role_id == 5)
         {
-            $auth = AuthorizationLookup::where('id', 1)->first();
+            $auth = authorizationLookup::where('id', 1)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 2)->first();
+            $auth = authorizationLookup::where('id', 2)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 3)->first();
+            $auth = authorizationLookup::where('id', 3)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 4)->first();
+            $auth = authorizationLookup::where('id', 4)->first();
             $user->authorizations()->save($auth);
 
-            $auth = AuthorizationLookup::where('id', 5)->first();
+            $auth = authorizationLookup::where('id', 5)->first();
             $user->authorizations()->save($auth);
 
         }
