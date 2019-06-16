@@ -57,7 +57,7 @@
                                                         @if ($section->type_id == 1)
                                                         {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right disabled', 'disabled' => 'disabled'])}}
                                                         @else
-                                                        {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
+                                                        {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right', 'onclick' => "return confirm('Weet u het zeker?')"])}}
                                                         @endif
 
                                                         {!!Form::close()!!}
