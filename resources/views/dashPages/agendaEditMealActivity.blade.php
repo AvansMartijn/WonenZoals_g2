@@ -66,6 +66,7 @@
                     <label for="voorgerecht">Voorgerecht: </label>
                     <select  name="voorgerecht" class="form-control" name="voorgerecht" id="voorgerecht"
                             data-toggle="tooltip" data-placement="top" title="Kies hier het voorgerecht van de maaltijd">
+                        <option value="">Geen voorgerecht</option>
                         @foreach ($meals as $meal)
                             @if ($meal->type == "voorgerecht" && $meal->isDeleted == 0)
                                 <option value="{{$meal->id}}" >{{$meal->name}}</option>
@@ -78,6 +79,7 @@
                     <label for="hoofdgerecht">Hoofdgerecht: </label>
                     <select name="hoofdgerecht" class="form-control" name="hoofdgerecht" id="hoofdgerecht"
                             data-toggle="tooltip" data-placement="top" title="Kies hier het hoofdgerecht van de maaltijd">
+                        <option value="">Geen hoofdgerecht</option>
                         @foreach ($meals as $meal)
                             @if ($meal->type == "hoofdgerecht" && $meal->isDeleted == 0)
                                 <option value="{{$meal->id}}">{{$meal->name}}</option>
@@ -90,6 +92,7 @@
                     <label for="nagerecht">Nagerecht: </label>
                     <select  name="nagerecht" class="form-control" name="nagerecht" id="nagerecht"
                             data-toggle="tooltip" data-placement="top" title="Kies hier het nagerecht van de maaltijd">
+                        <option value="">Geen nagerecht</option>
                         @foreach ($meals as $meal)
                             @if ($meal->type == "nagerecht" && $meal->isDeleted == 0)
                                 <option value="{{$meal->id}}">{{$meal->name}}</option>
