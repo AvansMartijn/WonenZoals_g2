@@ -65,7 +65,7 @@
                     <p><b>Aanvang:</b> {{date('d/M/Y H:i', strtotime($data['event']->date))}}</p>
                     <p><b>Eindtijd:</b> {{date('d/M/Y H:i', strtotime($data['event']->enddate))}}</p>
                     <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
-                    @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role_id == 1 && $data['event']->cancelled == 0 && date('d/M/Y H:i', strtotime($data['event']->date)) > date())
+                    @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role_id == 1 && $data['event']->cancelled == 0 && date('d/M/Y H:i', strtotime($data['event']->date)) < date('Y-m-d H:i:s'))
                         @if ($data['meal']['hoofdgerecht'] != null || $data['meal']['voorgerecht'] != null || $data['meal']['voorgerecht'] != null)
                              <a href="/dashboard/agenda/item/{{$data['event']->id}}/editMeal" class="btn btn-primary">Bewerken</a>
                         @else
