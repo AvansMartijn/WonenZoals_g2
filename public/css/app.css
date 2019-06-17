@@ -11439,6 +11439,16 @@ body {
   top: -10px;
 }
 
+.ActivityImage {
+  min-width: 100px;
+  min-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 50%;
+  margin: 10px 0;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22) !important;
+}
+
 .NewsbriefLink:hover {
   text-decoration: none;
 }
@@ -11719,6 +11729,13 @@ body {
           animation: drift 9000ms infinite linear;
   opacity: 0.4;
   background: #953635;
+}
+
+.person-picture {
+  max-width: 362px;
+  max-height: 240px;
+  min-width: 362px;
+  min-height: 240px;
 }
 
 @-webkit-keyframes drift {

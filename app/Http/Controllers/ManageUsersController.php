@@ -131,10 +131,10 @@ class ManageUsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroymachtiging($id)
+    public function destroymachtiging($id,$user_id)
     {
 
-        $authh = authorization::where('authorization_id', $id)->first();
+        $authh = authorization::where('authorization_id', $id)->where('user_id', $user_id)->first();
 
         $user = User::where('id', $authh->user_id)->first();
 
@@ -153,17 +153,18 @@ class ManageUsersController extends Controller
      */
     public function destroy($id)
     {
+
         if (Auth::user()->id == $id) {
             return redirect()->back()->with('error', 'Je kan de huidig gebruiker niet verwijderen');
         }
 
         $user = User::where('id', $id)->first();
 
-        $authh = $user->authorizations;
+        // $authh = $user->authorizations;
 
-        foreach ($authh as $auth) {
-            $auth->delete();
-        }
+        // foreach ($authh as $auth) {
+        //     $auth->delete();
+        // }
 
         $user->delete();
 

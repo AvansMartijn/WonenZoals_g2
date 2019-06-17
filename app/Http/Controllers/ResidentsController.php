@@ -36,7 +36,7 @@ class ResidentsController extends Controller
     }
 
     public function create(){
-        return view('dashpages.residentCreate');
+        return view('dashPages.residentCreate');
     }
 
     public function store(Request $request){
@@ -87,7 +87,7 @@ class ResidentsController extends Controller
         $this->validate(
             $request,
             [
-                'Naam' => 'required',
+                'Naam' => 'required|max:255',
                 'Beschrijving' => 'required',
                 'image' => 'required',
             ]

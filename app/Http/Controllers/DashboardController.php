@@ -12,11 +12,13 @@
  */
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\AgendaEvent;
 use App\ContactUS;
 use App\ForumPost;
 use App\Topic;
 use App\User;
+use App\Diensten;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,7 +54,10 @@ class DashboardController extends Controller
             return $this->dashBeheerder();
         } elseif (auth()->user()->role_id == 4 || auth()->user()->role_id == 2 || auth()->user()->role_id == 3) {
             return $this->dashGebruiker();
-        } else {
+        } 
+        elseif (auth()->user()->role_id == 5) {
+            return $this->dashCoach();
+        }else {
             return view('login');
         }
     }
@@ -118,8 +123,9 @@ class DashboardController extends Controller
 
         $date = Carbon::today()->subDays(30);
         $contacts30 = ContactUS::where('created_at', '>=', $date)->get();
+        $diensten = Diensten::whereDate('start_datetime', Carbon::today())->orderBy('start_datetime', 'ASC')->get();
 
-        return view('dashPages.dashBeheerder')->with(compact('events', 'contacts', 'contacts30'));
+        return view('dashPages.dashBeheerder')->with(compact('events', 'contacts', 'contacts30','diensten'));
     }
 
     public function dashGebruiker()
@@ -172,7 +178,64 @@ class DashboardController extends Controller
 
             $counter = 0;
         }
+
+        $diensten = Diensten::whereDate('start_datetime', Carbon::today())->orderBy('start_datetime', 'ASC')->get();
     
-        return view('dashPages.dashGebruikersDashboard')->with(compact('events', 'topics', 'reactiontopics'));
+        return view('dashPages.dashGebruikersDashboard')->with(compact('events', 'topics', 'reactiontopics','diensten'));
+    }
+
+    public function dashCoach()
+    {
+        $diensten = Diensten::where('user_id', auth()->user()->id)->orderBy('start_datetime', 'ASC')->get();
+
+        return view('dashPages.dashCoach')->with('diensten',$diensten);
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate(
+            $request,
+            [
+                'Naam' => 'required',
+                'Start_tijd'   => 'date|required',
+                'Eind_tijd' => 'date|required|after:Start_tijd',
+            ]
+        );
+
+        $dienst = new Diensten();
+        $dienst->naam = $request->input('Naam');
+        $dienst->start_datetime = Carbon::parse($request->input('Start_tijd'))->format('Y-m-d H:i:s');
+        $dienst->eind_datetime = Carbon::parse($request->input('Eind_tijd'))->format('Y-m-d H:i:s');
+        $dienst->user_id = Auth::user()->id;
+        $dienst->coach_naam = Auth::user()->name;
+        $dienst->save();
+
+        $notification = array(
+            'message' => 'dienst is toegevoegd', 
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+        /**
+     * Delete the shift
+     *
+     * @param id $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $dienst = Diensten::where('id', $id)->first();
+
+        $dienst->delete();
+
+        $notification = array(
+            'message' => 'De dienst is verwijderd', 
+            'alert-type' => 'success'
+        );
+
+        return redirect('/dashboard')->with($notification);
     }
 }

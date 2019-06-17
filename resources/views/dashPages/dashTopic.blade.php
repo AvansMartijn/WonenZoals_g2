@@ -17,8 +17,18 @@
     <div class="TopicContent">
         <h1>{{$topic->title}}</h1> 
         <p>{{$topic->message}}</p>
+        
         <hr>
         <small>{{$topic->user->name}} {{$topic->created_at->format('d-m-Y H:i')}}</small>
+        @if (Auth::user()->role_id == 1 ||$topic->user_id == Auth::user()->id)
+                {!!Form::open(['action' => ['ForumController@deleteTopic', $topic->id], 'method' => 'POST'])!!}
+                    {{Form::hidden('_method', 'DELETE')}}
+                    {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-left'])}}
+                {!!Form::close()!!}
+        @endif
+        <br>
+        <hr>
+        
     </div>
 
     <br>

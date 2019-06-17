@@ -84,7 +84,7 @@
                         <tr>
                                 <td>{{$authoriationn->name}}</td>
                                 <td>
-                                {!!Form::open(['action' => ['ManageUsersController@destroymachtiging', $authoriationn->id,], 'method' => 'POST'])!!}
+                                {!!Form::open(['action' => ['ManageUsersController@destroymachtiging', $authoriationn->id,$user->id ], 'method' => 'POST'])!!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
 

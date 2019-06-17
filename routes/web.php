@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
- */
+*/
 
 //example
 //route to webpage using a function in pagescontroler
@@ -23,12 +23,14 @@ Route::post('/', ['as' => 'contactus.store', 'uses' => 'ContactUSController@cont
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::post('/dashboard', 'DashboardController@store')->middleware('auth');
+Route::delete('/dashboard/{id}', 'DashboardController@destroy')->middleware('auth');
 
 //gebruikers en machtigingen
 Route::get('/dashboard/gebruikers', 'ManageUsersController@showGebruikers')->middleware('auth');
 Route::get('/dashboard/gebruikers/{id}', 'ManageUsersController@showGebruikersDetails')->name('gebruikers')->middleware('auth');
 Route::post('/dashboard/gebruikers', 'ManageUsersController@store')->middleware('auth');
-Route::delete('/dashboard/gebruikers/{id}', 'ManageUsersController@destroymachtiging')->middleware('auth');
+Route::delete('/dashboard/gebruikers/verwijderen/{id}/{userid}', 'ManageUsersController@destroymachtiging')->middleware('auth');
 Route::delete('/dashboard/gebruikers/machtigingen/{id}', 'ManageUsersController@destroy')->middleware('auth');
 Route::post('/gebruikersupdate', 'ManageUsersController@update')->middleware('auth');
 
@@ -40,8 +42,12 @@ Route::post('/dashboard/agenda/create/addEvent', 'EventsController@addEvent')->n
 Route::get('/dashboard/agenda/item/{id}', 'EventsController@detail')->name('agendaDetail');
 Route::get('/dashboard/agenda/item/{id}/apply', 'EventsController@apply')->name('agendaApply');
 Route::get('/dashboard/agenda/item/{id}/cancel', 'EventsController@cancel')->name('agendaCancel');
+Route::get('/dashboard/agenda/item/{id}/retainEvent', 'EventsController@retainEvent')->name('agendaRetainActivity');
 Route::get('/dashboard/agenda/item/{id}/cancelEvent', 'EventsController@cancelEvent')->name('agendaCancelActivity');
 Route::get('/dashboard/agenda/item/{id}/deleteEvent', 'EventsController@deleteEvent')->name('agendaDeleteActivity');
+Route::get('/dashboard/agenda/item/{id}/editMeal', 'EventsController@editMeal')->name('agendaEditMeal');
+Route::get('/dashboard/agenda/item/{id}/editActivity', 'EventsController@editActivity')->name('agendaEditActivity');
+Route::post('/dashboard/agenda/item/{id}/updateEvent', 'EventsController@updateEvent')->name('agendaUpdateEvent');
 
 //niewsbrief archief
 Route::get('/dashboard/nieuwsbriefarchief', 'NewsletterArchiveController@index')->middleware('auth');
@@ -109,10 +115,16 @@ Route::get('/dashboard/sections/text/create', 'SectionsController@createTextSect
 Route::post('/dashboard/sections/text', 'SectionsController@storeTextSection');
 Route::post('/dashboard/sections/text/edit/', 'SectionsController@updateTextSection');
 
-Route::resource('/dashboard/maaltijden', 'MealsController')->names([
-    'create' => 'meals.build',
-]);
-
+//Route::resource('/dashboard/maaltijden', 'MealsController')->names([
+//    'create' => 'meals.build',
+//]);
+Route::get('/dashboard/maaltijden', 'MealsController@index');
+Route::get('/dashboard/maaltijden/{id}', 'MealsController@show');
+Route::get('/dashboard/maaltijden/edit/{id}', 'MealsController@edit')->name('meal.edit');
+Route::get('/dashboard/maaltijden/delete/{id}', 'MealsController@destroy');
+Route::post('/dashboard/maaltijden/update', 'MealsController@update')->name('meal.update');
+Route::post('/dashboard/maaltijden/create', 'MealsController@create')->name('meals.build');
+Route::post('/dashboard/maaltijden/store', 'MealsController@store');
 
 //forum
 

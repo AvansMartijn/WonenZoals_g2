@@ -24,8 +24,11 @@
                                         <button class="btn btn-danger half-width bottom-spacer" data-toggle="modal" data-target="#factory">Fabrieksinstellingen</button>
                                
                                         <a class="btn btn-success half-width" href="{{ route('saveProfile') }}" data-toggle="tooltip" data-placement="top" title="Opgelsagen profiel wordt ingeladen. andere wijzigingen gaan verloren">Profiel Opslaan</a>
-                                
+                                        @if ($sections->profileDate != "" && $sections->profileDate != null)
                                         <button class="btn btn-danger half-width" data-toggle="modal" data-target="#profileload">Profiel Terugzetten</button>
+                                        @else
+                                        <button class="btn btn-danger half-width" disabled>Profiel Terugzetten</button>
+                                        @endif
                                 </div>
                         </div>
                 </div>
@@ -54,7 +57,7 @@
                                                         @if ($section->type_id == 1)
                                                         {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right disabled', 'disabled' => 'disabled'])}}
                                                         @else
-                                                        {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right'])}}
+                                                        {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-right', 'onclick' => "return confirm('Weet u het zeker?')"])}}
                                                         @endif
 
                                                         {!!Form::close()!!}
@@ -182,7 +185,7 @@
                                         <b>Let op! Alle onopgeslagen wijzigingen gaan verloren en de website gaat terug naar de laatst opgeslagen staat.</b>
                                 </p>
                                 <p class="text-center">
-                                        Huidige onopgeslagen wijzigingen gaan verloren en de website gaat gaat terug naar de laatst opgeslagen staat.
+                                        De website gaat terug naar hoe deze was op {{$sections->profileDate}}. Weet u het zeker?
                                 </p>
                                         <div class="text-center">
                                                 <a class="btn btn-danger half-width" href="{{ route('loadProfile') }}" data-toggle="tooltip" data-placement="top" title="Pas op! Alle huidige onopgeslagen wijzigingen zullen worden verwijderd!">Profiel Terugzetten</a>

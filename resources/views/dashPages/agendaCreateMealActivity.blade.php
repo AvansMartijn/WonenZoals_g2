@@ -18,6 +18,7 @@
 
     <div class="container">
         <div class="MainContent">
+            <input type="hidden" value="1" name="isMeal"/>
             <h1>Gegevens</h1>
             <hr>
             <div class="form-group">
@@ -67,7 +68,7 @@
                     data-toggle="tooltip" data-placement="top" title="Kies hier het voorgerecht van de maaltijd">
                         <option value="">Geen voorgerecht</option>
                     @foreach ($meals as $meal)
-                        @if ($meal->type == "voorgerecht")
+                        @if ($meal->type == "voorgerecht" && $meal->isDeleted == 0)
                             <option value="{{$meal->id}}">{{$meal->name}}</option>
                         @endif
                     @endforeach
@@ -80,7 +81,7 @@
                     data-toggle="tooltip" data-placement="top" title="Kies hier het hoofdgerecht van de maaltijd">
                         <option value="">Geen hoofdgerecht</option>
                         @foreach ($meals as $meal)
-                            @if ($meal->type == "hoofdgerecht")
+                            @if ($meal->type == "hoofdgerecht" && $meal->isDeleted == 0)
                                 <option value="{{$meal->id}}">{{$meal->name}}</option>
                             @endif
                         @endforeach
@@ -93,7 +94,7 @@
                     data-toggle="tooltip" data-placement="top" title="Kies hier het nagerecht van de maaltijd">
                         <option value="">Geen nagerecht</option>
                         @foreach ($meals as $meal)
-                            @if ($meal->type == "nagerecht")
+                            @if ($meal->type == "nagerecht" && $meal->isDeleted == 0)
                                 <option value="{{$meal->id}}">{{$meal->name}}</option>
                             @endif
                         @endforeach
@@ -109,20 +110,20 @@
                 </h1>
                 <hr>
                 
-                <input type="hidden" name="role_check[]" value="beheerder" id="Beheerder" checked>
+                <input type="hidden" name="role_check[]" value="1" id="Beheerder" checked>
         
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="bewoner" id="Bewoner">
+                    <input type="checkbox" name="role_check[]" value="4" id="Bewoner">
                     <label for="Bewoner">Bewoners</label>
                 </div>
         
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="ouder" id="Ouder">
+                    <input type="checkbox" name="role_check[]" value="3" id="Ouder">
                     <label for="Ouder">Ouders</label>
                 </div>
         
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="role_check[]" value="vrijwilliger" id="Vrijwilliger">
+                    <input type="checkbox" name="role_check[]" value="2" id="Vrijwilliger">
                     <label for="Vrijwilliger">Vrijwilligers</label>
                 </div>
     
@@ -131,16 +132,13 @@
                 </h3>
                 <hr>
                 <div class="funkyradio-success">
-                    <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply">
+                    <input type="checkbox" name="auto_apply" value="auto_apply" id="Auto_apply" checked>
                     <label for="Auto_apply">Gebruikers automatisch aanmelden</label>
                 </div>
-                <h3 data-toggle="tooltip" data-placement="bottom" title="Optioneel een afbeelding voor de maaltijd">
-                        Afbeelding</h3>
-                    <hr>
-                <div class="form-group">
-                    <label>Upload Afbeelding</label>
-                    <input type="file" name="image" id="image">
-                </div>
+               
+
+                    <input class="hidden" type="file" name="image" id="image">
+                
             </div>
         </div>
 

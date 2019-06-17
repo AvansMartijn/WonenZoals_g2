@@ -17,6 +17,7 @@
 
 <div class="container">
     <div class="MainContent">
+        <input type="hidden" value="0" name="isMeal"/>
         <h1>Gegevens</h1>
         <hr>
         <div class="form-group">
@@ -99,7 +100,8 @@
             <hr>
             <div class="form-group">
                 <label>Upload Afbeelding</label>
-                <input type="file" name="image" id="image">
+                <input type="file" name="image" id="image"
+                data-toggle="tooltip" data-placement="bottom" title="Kies een afbeelding. Max 2MB">
             </div>
 
         </div>
@@ -107,8 +109,8 @@
 
     <div class="MainContent">
         <input type="hidden" name="voorgerecht" value="">
-        <input type="hidden" name="voorgerecht" value="">
-        <input type="hidden" name="voorgerecht" value="">   
+        <input type="hidden" name="hoofdgerecht" value="">
+        <input type="hidden" name="nagerecht" value="">   
 
         <hr>
         {{Form::submit("Activiteit inplannen", ['class' => 'btn btn-success full-width'])}}

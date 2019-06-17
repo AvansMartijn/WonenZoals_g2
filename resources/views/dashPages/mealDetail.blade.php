@@ -18,16 +18,24 @@
         <div class="CustomCardContent">
             <h1>{{$meal->name}}</h1>
             <hr>
-
             <p>
                 <b>Type Gerecht:</b> {{$meal->type}}
             </p>
             <p>
                 <b>Beschrijving:</b><br> {{$meal->description}}
             </p>
-            
+            <a href="/dashboard/maaltijden/edit/{{$meal->id}}" class="btn btn-primary">Bewerken</a>
         </div>
     </div>
+
+    
+    @if ($meal->img_url != null && $meal->img_url != "")
+    <div class="SideContent">
+        <div class="CustomCardContent">
+            <img class="AgendaImage" src="{{$meal->img_url}}">
+        </div>
+    </div>
+    @endif
 </div>
 
 @endsection

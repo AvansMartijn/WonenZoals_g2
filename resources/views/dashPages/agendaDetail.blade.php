@@ -34,28 +34,51 @@
                 <hr>
                 <p>{!!$data['event']->description!!}</p>
 
-                    <p>
-                    @if ($data['meal']['voorgerecht'] != null)
-                        <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}<br> 
-                    @endif
-                    @if ($data['meal']['hoofdgerecht'] != null)
-                        <b>Hoofdgerecht:</b> {{$data['meal']['hoofdgerecht']->name}} <br> 
-                    @endif
-                    @if ($data['meal']['nagerecht'] != null)
-                        <b>Nagerecht:</b> {{$data['meal']['nagerecht']->name}} <br> 
-                    @endif
-                    </p>
+                    <div>
+                        @if ($data['meal']['voorgerecht'] != null)
+                            @if ($data['meal']['voorgerecht']->img_url != null && $data['meal']['voorgerecht']->img_url != "")
+                                <img class="ActivityImage" style="max-height:150px" src="{{$data['meal']['voorgerecht']->img_url}}">
+                            @endif
+                            <b>Voorgerecht:</b> {{$data['meal']['voorgerecht']->name}}
+                        @endif
+                    </div>
+                    <div>
+                        @if ($data['meal']['hoofdgerecht'] != null)
+                            @if ($data['meal']['hoofdgerecht']->img_url != null && $data['meal']['hoofdgerecht']->img_url != "")
+                                <img class="ActivityImage" src="{{$data['meal']['hoofdgerecht']->img_url}}">
+                            @endif 
+                            <b>Hoofdgerecht:</b> {{$data['meal']['hoofdgerecht']->name}}
+                        @endif 
+                    </div>
+                    <div>
+                        @if ($data['meal']['nagerecht'] != null)
+                            @if ($data['meal']['nagerecht']->img_url != null && $data['meal']['nagerecht']->img_url != "")
+                                <img class="ActivityImage" src="{{$data['meal']['nagerecht']->img_url}}">
+                            @endif 
+                            <b>Nagerecht:</b> {{$data['meal']['nagerecht']->name}}
+                        @endif
+                    </div>
+            
+                    <br>
                     <p><b>Locatie:</b> {!!$data['event']->location!!}</p>
                     <p><b>Vervoer:</b> {!!$data['event']->transport!!}</p>
-                    <p><b>Aanvang:</b> {{$data['event']->date}}</p>
+                    <p><b>Aanvang:</b> {{date('d/M/Y H:i', strtotime($data['event']->date))}}</p>
+                    <p><b>Eindtijd:</b> {{date('d/M/Y H:i', strtotime($data['event']->enddate))}}</p>
                     <p><b>Organisator:</b> {!!$data['event']->organiser_name!!}</p>
-                    
+                    @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role_id == 1 && $data['event']->cancelled == 0 && date('d/M/Y H:i', strtotime($data['event']->date)) < date('Y-m-d H:i:s'))
+                        @if ($data['meal']['hoofdgerecht'] != null || $data['meal']['voorgerecht'] != null || $data['meal']['voorgerecht'] != null)
+                             <a href="/dashboard/agenda/item/{{$data['event']->id}}/editMeal" class="btn btn-primary">Bewerken</a>
+                        @else
+                            <a href="/dashboard/agenda/item/{{$data['event']->id}}/editActivity" class="btn btn-primary">Bewerken</a>
+                        @endif
+                    @endif
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 0) || Auth::user()->role_id == 1 && $data['event']->cancelled == 0 )
-                    <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Annuleren</a>
+                         <a href="/dashboard/agenda/item/{{$data['event']->id}}/cancelEvent" class="btn btn-danger">Annuleren</a>
                     @endif
 
                     @if (($data['event']->organiser_id == Auth::id() && $data['event']->cancelled == 1) || Auth::user()->role_id == 1 && $data['event']->cancelled == 1)
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#vangnet">Verwijderen</button></button>
+                        <a href="/dashboard/agenda/item/{{$data['event']->id}}/retainEvent" class="btn btn-primary">Door laten gaan</a>
+                         <button class="btn btn-danger" data-toggle="modal" data-target="#vangnet">Verwijderen</button></button>
                     {{-- <a href="/dashboard/agenda/item/{{$data['event']->id}}/deleteEvent" class="btn btn-danger">Verwijderen</a> --}}
                     @endif
               

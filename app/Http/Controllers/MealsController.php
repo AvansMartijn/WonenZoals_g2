@@ -54,8 +54,20 @@ class MealsController extends Controller
      */
     public function index()
     {
-        //
-        $meals = Meal::orderBy('type', 'DESC')->get();
+        $meals = array();
+        $StarterMeals = Meal::where('type','voorgerecht')->get();
+        $MainMeals = Meal::where('type','hoofdgerecht')->get();
+        $Deserts = Meal::where('type','nagerecht')->get();
+
+        foreach ($StarterMeals as $Meal)
+            array_push($meals, $Meal);
+
+        foreach ($MainMeals as $Meal)
+            array_push($meals, $Meal);
+
+        foreach ($Deserts as $Meal)
+            array_push($meals, $Meal);
+
         return View('dashPages.mealsOverview', compact('meals'));
     }
 
@@ -82,12 +94,23 @@ class MealsController extends Controller
         $validatedData = $request->validate([
             'mealname' => 'required|max:255',
             'description' => 'required|max:255',
+            'image' => 'image|max:8192'
         ]);
+
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName; 
+
+            request()->image->move($path, $imageName);
+        }
 
         $meal = new \App\Meal;
         $meal->name = $request['mealname'];
         $meal->description = $request['description'];
         $meal->type = $request['gerechttype'];
+        $meal->img_url = $imagePath;
         $meal->save();
 
         $notification = array(
@@ -118,7 +141,8 @@ class MealsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $meal = \App\Meal::where('id', $id)->first();
+        return View('dashPages.mealEdit', compact('meal'));
     }
 
     /**
@@ -128,9 +152,33 @@ class MealsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'mealname' => 'required|max:255',
+            'description' => 'required|max:255',
+            'image' => 'image|max:8192'
+        ]);
+
+        $imagePath = null;
+        if(isset($request->image) && $request->image != null){
+            $imageName = uniqid() . '-' . $request->image->getClientOriginalName();
+            $path = public_path('img/uploads');
+            $imagePath = url('/') . '/img/uploads/' . $imageName;
+
+            request()->image->move($path, $imageName);
+        }
+        $id = $request['mealId'];
+        $meal = \App\Meal::where('id', $id)->first();
+
+        $meal->name = $request['mealname'];
+        $meal->description = $request['description'];
+        $meal->type = $request['gerechttype'];
+        $meal->isDeleted = 0;
+        $meal->img_url = $imagePath;
+        $meal->save();
+
+        return redirect('/dashboard/maaltijden/')->with('success', 'Gerecht is aangepast!');
     }
 
     /**
@@ -142,10 +190,11 @@ class MealsController extends Controller
     public function destroy($id)
     {
         $meal = \App\Meal::where('id', $id)->first();
-        $meal->delete();
+        $meal->isDeleted = 1;
+        $meal->save();
 
         $notification = array(
-            'message' => 'gerecht is verwijderd', 
+            'message' => 'gerecht is verwijderd',
             'alert-type' => 'success'
         );
 

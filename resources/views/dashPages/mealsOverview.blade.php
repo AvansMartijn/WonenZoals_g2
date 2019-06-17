@@ -16,7 +16,10 @@
         <div class="MainContentFull">
                 <div class="MealOptions clearfix">
                         <input type="text" class="form-control margin-right" name="Search" placeholder="Zoeken..." id="Search" autofocus>
-                        <a class="btn btn-success" href="{{ route('meals.build') }}">Nieuw Gerecht</a>
+                    {!!Form::open(['action' => ['MealsController@create'], 'method' => 'POST'])!!}
+                    {{Form::hidden('_method', 'POST')}}
+                    {{Form::submit('Maaltijd aanmaken', ['class' => 'btn btn-primary float-left'])}}
+                    {!!Form::close()!!}
                 </div>
 
                 <table class="table table-striped">
@@ -29,17 +32,17 @@
                         </thead>
                         <tbody class="Searchable">
                                 @foreach ($meals as $meal)
+                                        @if($meal->isDeleted == 0)
                                         <tr>
                                                 <td>{{$meal->name}}</td>
                                                 <td>{{$meal->type}}</td>
+                                                <input name="id" hidden="hidden" value={{$meal->id}}>
                                                 <td class="text-left">
-                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/maaltijden/{{$meal->id}}">Details</a>
-                                                        {!!Form::open(['action' => ['MealsController@destroy', $meal->id], 'method' => 'POST'])!!}
-                                                                {{Form::hidden('_method', 'DELETE')}}
-                                                                {{Form::submit('Verwijderen', ['class' => 'btn btn-danger float-left'])}}
-                                                        {!!Form::close()!!}
+                                                        <a class="btn btn-primary float-left margin-right" href="/dashboard/maaltijden/{{$meal->id}}">Details</a>                                                              
+                                                        <a class="btn btn-danger float-left margin-right" href="/dashboard/maaltijden/delete/{{$meal->id}}">Verwijderen</a>
                                                 </td>
                                         </tr>
+                                        @endif
                                 @endforeach
                         </tbody>
                 </table>
